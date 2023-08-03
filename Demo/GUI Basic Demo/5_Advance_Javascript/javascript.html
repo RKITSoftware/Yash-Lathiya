@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Testing</title>
+    <style>
+      * {
+        margin: 4px;
+        padding: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- For visulizing concept of cache -->
+    <img
+      src="https://upload.wikimedia.org/wikipedia/en/5/54/JioMart_logo.svg"
+    />
+    <div class="clickCounterDiv">
+      <button id="clickCounterBtn">Click Counter (Local Storage)</button>
+      <div id="clickCounterAck"></div>
+    </div>
+    <div class="clickCounterDivSS">
+      <button id="clickCounterBtnSS">Click Counter (Session Storage)</button>
+      <div id="clickCounterAckSS"></div>
+    </div>
+    <div class="cookies">
+      <div class="cookie">
+        <button id="showCookiesButton">Show Cookies</button>
+        <button id="clearOutputCookiesButton">Hide Cookies</button>
+        <div>
+          <code id="cookies"></code>
+        </div>
+      </div>
+      <div class="cookieValue">
+        <button id="findCookieValueButton">name cookie</button>
+        <div>
+          <code id="cookieValue"></code>
+        </div>
+      </div>
+      <div class="checkCookie">
+        <input id="inputCookie" type="text" placeholder="cookie_name" />
+        <button id="isCookieButton">Check</button>
+        <div>
+          <code id="isCookieText"></code>
+        </div>
+      </div>
+      <div class="validateCookie">
+        <input id="inputCookieName" type="text" placeholder="cookie_name" />
+        <input id="inputCookieValue" type="text" placeholder="cookie_value" />
+        <button id="inputCookieNameButton">Search</button>
+        <div>
+          <code id="cookieValidation"></code>
+        </div>
+      </div>
+    </div>
+    <script src="javascript.js"></script>
+  </body>
+</html>
