@@ -102,7 +102,7 @@ isCookieBtn.addEventListener("click", () => {
   if (
     document.cookie
       .split(";")
-      .some((item) => item.trim().startsWith(inputCookie.value + "="))
+      .find((item) => item.trim().startsWith(inputCookie.value + "="))
   ) {
     console.log("present");
     const output = document.getElementById("isCookieText");
@@ -123,7 +123,7 @@ inputCookieNameBtn.addEventListener("click", () => {
   if (
     document.cookie
       .split(";")
-      .some(
+      .find(
         (item) => item === inputCookieName.value + "=" + inputCookieValue.value
       )
   ) {
@@ -213,5 +213,5 @@ caches.open("myCache").then((cache) => {
 
 //Delete cache completely
 // caches.delete("myCache").then((cache) => {
-//   console.log("myCache is deleted successfully"); //prints undefined because
+//   console.log("myCache is deleted successfully"); //prints undefined
 // });

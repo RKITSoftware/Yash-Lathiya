@@ -1,11 +1,10 @@
-// There is doubt in below code, its not working prpperly
 const textBox = document.querySelector("#cnf_pwd");
 const output = document.querySelector("#cnf_pwd_output");
 textBox.addEventListener("keydown", (event) => {
   console.log(event.key);
   output.textContent = `You pressed "${event.key}".`;
 });
-function resetMsg() {
+function resetMsgClick() {
   alert("Reset button clicked");
 }
 function resetMsg() {
