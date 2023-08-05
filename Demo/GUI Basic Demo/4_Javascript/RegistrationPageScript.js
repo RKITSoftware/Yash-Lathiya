@@ -1,6 +1,6 @@
 const textBox = document.querySelector("#cnf_pwd");
 const output = document.querySelector("#cnf_pwd_output");
-textBox.addEventListener("keydown", (event) => {
+textBox.addEventListener("keypress", (event) => {
   console.log(event.key);
   output.textContent = `You pressed "${event.key}".`;
 });
