@@ -1,3 +1,9 @@
+const subscriptionFeeFeild = document.querySelector("#subscriptionFee");
+subscriptionFeeFeild.addEventListener("blur", () => {
+  subscriptionFeeFeild.value = parseFloat(subscriptionFeeFeild.value).toFixed(
+    2
+  );
+});
 const textBox = document.querySelector("#cnf_pwd");
 const output = document.querySelector("#cnf_pwd_output");
 textBox.addEventListener("keypress", (event) => {
@@ -21,9 +27,9 @@ function assuranceMsg() {
   document.getElementById("assuranceMsg").innerHTML =
     "Dont Worry, We'll never share your information with others";
 }
-function loadingMsg() {
-  alert("Click OK to redirect website");
-}
+// function loadingMsg() {
+//   alert("Click OK to redirect website");
+// }
 function validation() {
   var f_name = document.getElementById("f_name").value;
   if (f_name.length == 0 || f_name == null) {
