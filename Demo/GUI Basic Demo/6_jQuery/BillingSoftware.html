@@ -38,8 +38,13 @@
             <form name="customerDetailsForm">
               <div class="row">
                 <div class="formGroup col">
-                  <label for="customerName">Customer Name : </label>
-                  <input class="form-control" type="text" id="customerName" />
+                  <label for="customerId">Bill No: </label>
+                  <input
+                    class="form-control text-danger border-danger font-weight-bold"
+                    type="text"
+                    id="billNumberId"
+                    disabled
+                  />
                 </div>
                 <div class="formGroup col">
                   <label for="customerId">Customer ID : </label>
@@ -48,6 +53,10 @@
                     type="text"
                     id="customerId"
                   />
+                </div>
+                <div class="formGroup col">
+                  <label for="customerName">Customer Name : </label>
+                  <input class="form-control" type="text" id="customerName" />
                 </div>
               </div>
               <div class="row">
@@ -75,13 +84,13 @@
               <td>Qty</td>
               <td>Amount</td>
               <td>
-                <!-- <button
+                <button
                   type="button"
                   class="btn btn-outline-danger"
-                  id="btnresetItems"
+                  id="btnResetItems"
                 >
                   Reset
-                </button> -->
+                </button>
               </td>
             </tr>
             <tr>
@@ -138,7 +147,7 @@
               physical signature.
             </div>
             <div class="col-3 mt-3">
-              <button class="btn btn-danger">Confirm</button>
+              <button class="btn btn-danger" id="btnConfirm">Confirm</button>
             </div>
           </div>
         </div>
