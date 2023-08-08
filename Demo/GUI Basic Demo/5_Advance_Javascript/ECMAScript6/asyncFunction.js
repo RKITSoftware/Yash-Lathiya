@@ -32,7 +32,7 @@ async function asyncFunction() {
   console.log("2 second completed");
 
   console.log("Wait for 3 seconds");
-  await wait(2000);
+  await wait(3000);
   console.log("3 second completed");
 }
 asyncFunction();

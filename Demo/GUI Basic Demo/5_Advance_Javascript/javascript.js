@@ -63,8 +63,9 @@ clickCounterBtnSS.addEventListener("click", () => {
 //Cookies
 
 //Create Cookies
-document.cookie = "name = yash; SameSite = None; Secure";
+document.cookie = "name = yash";
 document.cookie = "favorite_color = green";
+document.cookie = "company = RKIT";
 
 //Show Cookies
 const showCookiesBtn = document.querySelector("#showCookiesButton");
@@ -94,6 +95,7 @@ findCookieValueBtn.addEventListener("click", () => {
 });
 
 //reset Cookie Value
+document.cookie = "name = Yash";
 
 //Check a cookie existance
 const isCookieBtn = document.querySelector("#isCookieButton");
