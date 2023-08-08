@@ -1,0 +1,18 @@
+[
+  {
+    "billNumber": "1234",
+    "billDate": "08-08-2023",
+    "customerId": "4564",
+    "customerName": "Yash",
+    "customerAddress": "Surat",
+    "billTotalAmount": "324000"
+  },
+  {
+    "billNumber": "5678",
+    "billDate": "08-08-2023",
+    "customerId": "55",
+    "customerName": "Arth",
+    "customerAddress": "Surat",
+    "billTotalAmount": "324000"
+  }
+]

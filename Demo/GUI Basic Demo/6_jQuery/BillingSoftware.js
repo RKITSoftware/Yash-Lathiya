@@ -7,6 +7,12 @@ $(document).ready(function () {
   }
   $("#billNumberId").val(localStorage.billNumber);
 
+  //red star is assigned to compulsory fields
+  $("span").addClass("requiredSpan");
+
+  //Set Current date
+  $("#billDate").val(new Date().toISOString().split("T")[0]);
+
   //Initialize Total Amount
   var totalAmount = 0.0;
   $("#totalAmount").val(Number(totalAmount).toFixed(2));
@@ -14,6 +20,29 @@ $(document).ready(function () {
   //Initialize Sr No.
   var srNumber = 1;
   $("#srNo").val(srNumber);
+
+  //Load Bills from JSON file
+  $("#bills").load("Bills.json", function (data) {
+    var bills = JSON.parse(data);
+    console.log(bills);
+    for (let i = 0; i < bills.length; i++) {
+      let rowPriviousBills =
+        "<tr><td>" +
+        bills[i].billDate +
+        "</td><td>" +
+        bills[i].billNumber +
+        "</td><td>" +
+        bills[i].billTotalAmount +
+        "</td><td>" +
+        bills[i].customerName +
+        "</td><td>" +
+        bills[i].customerId +
+        "</td><td>" +
+        bills[i].customerAddress +
+        "</td></tr>";
+      $("#tablePreviousBills").append(rowPriviousBills);
+    }
+  });
 
   //Print Amount
   $("#itemQuantity, #itemPrice").keyup(function () {
@@ -46,7 +75,7 @@ $(document).ready(function () {
     const itemPrice = Number($("#itemPrice").val()).toFixed(2);
     const itemQuantity = Number($("#itemQuantity").val()).toFixed(2);
     const itemAmount = Number($("#itemAmount").val()).toFixed(2);
-    //Blank fields are not allowed
+    // Blank fields are not allowed
     if (itemName.trim() === "") {
       alert("Enter Item Name");
       return false;
@@ -82,7 +111,70 @@ $(document).ready(function () {
 
   //Confirm Bill Details
   $("#btnConfirm").click(function () {
+    //data of bill
+    const billNo = $("#billNumberId").val();
+    const customerId = $("#customerId").val();
+    const billDate = $("#billDate").val();
+    const customerName = $("#customerName").val();
+    const customerAddress = $("#customerAddress").val();
+    const billTotalAmount = $("#totalAmount").val();
+
+    //before confirmation checks all fields are filled up or not
+    //[date, customerName, totalAmount]
+    requiredFormValidation = [1, 1, 1];
+    let errorMessage = "";
+    if (billDate === "") {
+      requiredFormValidation[0] = 0;
+      errorMessage += "Bill Date is required,";
+    }
+    if (customerName.trim() === "") {
+      requiredFormValidation[1] = 0;
+      errorMessage += "\nPlease Enter Customer Name, ";
+    }
+    if (billTotalAmount == 0.0) {
+      requiredFormValidation[2] = 0;
+      errorMessage += "\nYou can not generate bill with 0 amount";
+    }
+    console.log(errorMessage);
+    for (let i = 0; i < 3; i++) {
+      if (requiredFormValidation[i] == 0) {
+        alert(errorMessage);
+        return false;
+      }
+    }
+
+    //Make a object of all Bill Details...
+    let billDetails = {
+      billNumber: billNo,
+      billDate: billDate,
+      customerId: customerId,
+      customerName: customerName,
+      customerAddress: customerAddress,
+      billTotalAmount: billTotalAmount,
+    };
+    console.log(billDetails);
+
+    //Store that object (bill) in local storage
+    // if (localStorage.storedBill) {
+    //   localStorage.storedBill.push(billDetails);
+    // } else {
+    //   localStorage.storedBill = "[]";
+    // }
+
+    // console.log("*******");
+    // console.log(localStorage.storedBill);
+    // console.log("*******");
+
+    //Increment billNumber in local storage
     localStorage.billNumber = Number(localStorage.billNumber) + 1;
     $("#billNumberId").val(localStorage.billNumber);
+
+    //reset bill inputs
+    $("#btnResetItems").trigger("click");
+    $("#customerId").val("");
+    $("#customerName").val("");
+    $("#customerAddress").val("");
+    $("#billDate").val(new Date().toISOString().split("T")[0]);
+    alert("Bill added successfully");
   });
 });
