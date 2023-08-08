@@ -21,7 +21,7 @@ $(document).ready(function () {
   var srNumber = 1;
   $("#srNo").val(srNumber);
 
-  //Load Bills from JSON file
+  //Load Bills from External JSON file
   $("#bills").load("Bills.json", function (data) {
     var bills = JSON.parse(data);
     console.log(bills);
@@ -155,15 +155,13 @@ $(document).ready(function () {
     console.log(billDetails);
 
     //Store that object (bill) in local storage
-    // if (localStorage.storedBill) {
-    //   localStorage.storedBill.push(billDetails);
-    // } else {
-    //   localStorage.storedBill = "[]";
-    // }
-
-    // console.log("*******");
-    // console.log(localStorage.storedBill);
-    // console.log("*******");
+    const billDetail = JSON.stringify(billDetails);
+    if (localStorage.bills) {
+      localStorage.bills = localStorage.bills + "," + billDetail;
+    } else {
+      localStorage.bills = billDetail;
+    }
+    console.log(billDetail);
 
     //Increment billNumber in local storage
     localStorage.billNumber = Number(localStorage.billNumber) + 1;
@@ -176,5 +174,27 @@ $(document).ready(function () {
     $("#customerAddress").val("");
     $("#billDate").val(new Date().toISOString().split("T")[0]);
     alert("Bill added successfully");
+
+    //Load Confirmed Bills from localstorage
+    let confirmedBillsString = "[" + localStorage.bills + "]";
+    var confirmedBills = JSON.parse(confirmedBillsString);
+    console.log(confirmedBills);
+    for (let i = 0; i < confirmedBills.length; i++) {
+      let rowConfirmedBills =
+        "<tr><td>" +
+        confirmedBills[i].billDate +
+        "</td><td>" +
+        confirmedBills[i].billNumber +
+        "</td><td>" +
+        confirmedBills[i].billTotalAmount +
+        "</td><td>" +
+        confirmedBills[i].customerName +
+        "</td><td>" +
+        confirmedBills[i].customerId +
+        "</td><td>" +
+        confirmedBills[i].customerAddress +
+        "</td></tr>";
+      $("#tableConfirmedBills").append(rowConfirmedBills);
+    }
   });
 });
