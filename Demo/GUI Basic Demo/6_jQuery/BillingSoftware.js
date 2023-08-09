@@ -179,6 +179,7 @@ $(document).ready(function () {
     let confirmedBillsString = "[" + localStorage.bills + "]";
     var confirmedBills = JSON.parse(confirmedBillsString);
     console.log(confirmedBills);
+    $("#tableConfirmedBills tr:nth-child(2)").nextAll().remove();
     for (let i = 0; i < confirmedBills.length; i++) {
       let rowConfirmedBills =
         "<tr><td>" +
