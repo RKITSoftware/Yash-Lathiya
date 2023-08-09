@@ -11,7 +11,6 @@
     />
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="style.css" />
-    <!-- jQuery Link -->
   </head>
   <body>
     <div class="container bg-dark">
@@ -179,7 +178,7 @@
         </div>
       </div>
       <div id="bills" hidden></div>
-      <div class="confirmedBills">
+      <!-- <div class="confirmedBills">
         <div class="text-white text-dark bg-white text-center">
           Confirmed Bills
         </div>
@@ -193,8 +192,8 @@
             <td>Customer Address</td>
           </tr>
         </table>
-      </div>
-      <div class="previousBills">
+      </div> -->
+      <!-- <div class="previousBills">
         <div class="text-white text-dark bg-white text-center">
           Previous Bills (From JSON File)
         </div>
@@ -208,7 +207,37 @@
             <td>Customer Address</td>
           </tr>
         </table>
+      </div> -->
+      <div class="showBillSections row">
+        <button
+          type="button"
+          class="btn btn-danger col mx-1"
+          id="btnShowPreviousBills"
+        >
+          <a
+            href="PreviousYearBills.html"
+            class="text-white"
+            style="text-decoration: none"
+          >
+            Previous Year Bills <br />(From JSON File)</a
+          >
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger col mr-1"
+          id="btnShowConfirmedBills"
+        >
+          <a
+            href="CurrentYearBills.html"
+            class="text-white"
+            style="text-decoration: none"
+          >
+            Current Year Bills <br />
+            (Confirmed from here)</a
+          >
+        </button>
       </div>
+      <div class="extraSection" style="height: 20px"></div>
     </div>
     <!-- Bootstrap link -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>

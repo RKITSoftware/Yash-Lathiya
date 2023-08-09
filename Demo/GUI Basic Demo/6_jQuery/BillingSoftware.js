@@ -44,6 +44,47 @@ $(document).ready(function () {
     }
   });
 
+  //Load Confirmed Bills from localstorage
+  let confirmedBillsString = "[" + localStorage.bills + "]";
+  var confirmedBills = JSON.parse(confirmedBillsString);
+  console.log(confirmedBills);
+  $("#tableConfirmedBills tr:nth-child(2)").nextAll().remove();
+  for (let i = 0; i < confirmedBills.length; i++) {
+    let rowConfirmedBills =
+      "<tr><td>" +
+      confirmedBills[i].billDate +
+      "</td><td>" +
+      confirmedBills[i].billNumber +
+      "</td><td>" +
+      confirmedBills[i].billTotalAmount +
+      "</td><td>" +
+      confirmedBills[i].customerName +
+      "</td><td>" +
+      confirmedBills[i].customerId +
+      "</td><td>" +
+      confirmedBills[i].customerAddress +
+      "</td></tr>";
+    $("#tableConfirmedBills").append(rowConfirmedBills);
+  }
+
+  //SearchBar for Confirmed Bill
+  $("#searchBar").on("keyup", function () {
+    var value = $("#searchBar").val().toLowerCase();
+    $("#tableConfirmedBills tr").filter(function () {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      $("#tableConfirmedBills tr:nth-child(1)").show();
+    });
+  });
+
+  //SearchBar for Previous Bill
+  $("#searchBar").on("keyup", function () {
+    var value = $("#searchBar").val().toLowerCase();
+    $("#tablePreviousBills tr").filter(function () {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      $("#tablePreviousBills tr:nth-child(1)").show();
+    });
+  });
+
   //Print Amount
   $("#itemQuantity, #itemPrice").keyup(function () {
     const amount =
@@ -176,26 +217,26 @@ $(document).ready(function () {
     alert("Bill added successfully");
 
     //Load Confirmed Bills from localstorage
-    let confirmedBillsString = "[" + localStorage.bills + "]";
-    var confirmedBills = JSON.parse(confirmedBillsString);
-    console.log(confirmedBills);
-    $("#tableConfirmedBills tr:nth-child(2)").nextAll().remove();
-    for (let i = 0; i < confirmedBills.length; i++) {
-      let rowConfirmedBills =
-        "<tr><td>" +
-        confirmedBills[i].billDate +
-        "</td><td>" +
-        confirmedBills[i].billNumber +
-        "</td><td>" +
-        confirmedBills[i].billTotalAmount +
-        "</td><td>" +
-        confirmedBills[i].customerName +
-        "</td><td>" +
-        confirmedBills[i].customerId +
-        "</td><td>" +
-        confirmedBills[i].customerAddress +
-        "</td></tr>";
-      $("#tableConfirmedBills").append(rowConfirmedBills);
-    }
+    // let confirmedBillsString = "[" + localStorage.bills + "]";
+    // var confirmedBills = JSON.parse(confirmedBillsString);
+    // console.log(confirmedBills);
+    // $("#tableConfirmedBills tr:nth-child(2)").nextAll().remove();
+    // for (let i = 0; i < confirmedBills.length; i++) {
+    //   let rowConfirmedBills =
+    //     "<tr><td>" +
+    //     confirmedBills[i].billDate +
+    //     "</td><td>" +
+    //     confirmedBills[i].billNumber +
+    //     "</td><td>" +
+    //     confirmedBills[i].billTotalAmount +
+    //     "</td><td>" +
+    //     confirmedBills[i].customerName +
+    //     "</td><td>" +
+    //     confirmedBills[i].customerId +
+    //     "</td><td>" +
+    //     confirmedBills[i].customerAddress +
+    //     "</td></tr>";
+    //   $("#tableConfirmedBills").append(rowConfirmedBills);
+    // }
   });
 });
