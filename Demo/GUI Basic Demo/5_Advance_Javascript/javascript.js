@@ -18,7 +18,7 @@ console.log("Your position is " + localStorage.getItem("Position"));
 //remove
 localStorage.removeItem("Position");
 if (!localStorage.getItem("Position")) {
-  //here value in if contion is null..
+  //here value in if condition is null..
   console.log("Position does not exist");
 }
 
@@ -126,7 +126,8 @@ inputCookieNameBtn.addEventListener("click", () => {
     document.cookie
       .split(";")
       .find(
-        (item) => item === inputCookieName.value + "=" + inputCookieValue.value
+        (item) =>
+          item.trim() == inputCookieName.value + "=" + inputCookieValue.value
       )
   ) {
     const output = document.getElementById("cookieValidation");
@@ -193,7 +194,7 @@ caches.open("myCache").then((cache) => {
 
 //Returns all items from cache
 caches.open("myCache").then((cache) => {
-  console.log("********" + cache.keys());
+  console.log("*", cache.keys());
 });
 
 //Retrieving all items from cache
