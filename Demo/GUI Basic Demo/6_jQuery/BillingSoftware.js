@@ -45,6 +45,9 @@ $(document).ready(function () {
   });
 
   //Load Confirmed Bills from localstorage
+  if (!localStorage.bills) {
+    localStorage.bills = "";
+  }
   let confirmedBillsString = "[" + localStorage.bills + "]";
   var confirmedBills = JSON.parse(confirmedBillsString);
   console.log(confirmedBills);
@@ -85,6 +88,27 @@ $(document).ready(function () {
     });
   });
 
+  //CustomerId Identification
+  $("#customerId").on("blur", function () {
+    $.ajax({
+      url: "Customers.json",
+      success: function (data) {
+        console.log(data);
+        $.each(data, function (index, customerObject) {
+          $.each(customerObject, function (propertyName, propertyValue) {
+            if (
+              propertyName === "customerId" &&
+              propertyValue == $("#customerId").val()
+            ) {
+              $("#customerName").val(customerObject.customerName);
+              $("#customerAddress").val(customerObject.customerAddress);
+            }
+          });
+        });
+      },
+    });
+  });
+
   //Print Amount
   $("#itemQuantity, #itemPrice").keyup(function () {
     const amount =
@@ -121,12 +145,12 @@ $(document).ready(function () {
       alert("Enter Item Name");
       return false;
     }
-    if (itemPrice.trim() == 0.0) {
-      alert("Enter Item Price");
+    if (itemPrice.trim() <= 0.0) {
+      alert("Enter Valid Item Price");
       return false;
     }
-    if (itemQuantity.trim() == 0.0) {
-      alert("Enter Item Quantity");
+    if (itemQuantity.trim() <= 0.0) {
+      alert("Enter Valid Item Quantity");
       return false;
     }
     var tableRow =

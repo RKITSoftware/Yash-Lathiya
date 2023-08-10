@@ -1,0 +1,17 @@
+[
+  {
+    "customerId": 12345,
+    "customerName": "Yash Lathiya",
+    "customerAddress": "Mota Varachha, Surat"
+  },
+  {
+    "customerId": 12346,
+    "customerName": "Arth Lathiya",
+    "customerAddress": "Varachha, Surat"
+  },
+  {
+    "customerId": 12347,
+    "customerName": "Satyam Kharote",
+    "customerAddress": "Bhavnagar"
+  }
+]
