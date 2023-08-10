@@ -149,8 +149,16 @@ $(document).ready(function () {
       alert("Enter Valid Item Price");
       return false;
     }
+    if (isNaN(itemPrice)) {
+      alert("Enter Valid Item Price");
+      return false;
+    }
     if (itemQuantity.trim() <= 0.0) {
       alert("Enter Valid Item Quantity");
+      return false;
+    }
+    if (isNaN(itemQuantity)) {
+      alert("Enter Valid Item Price");
       return false;
     }
     var tableRow =
