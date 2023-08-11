@@ -253,28 +253,5 @@ $(document).ready(function () {
     $("#customerAddress").val("");
     $("#billDate").val(new Date().toISOString().split("T")[0]);
     alert("Bill added successfully");
-
-    //Load Confirmed Bills from localstorage
-    // let confirmedBillsString = "[" + localStorage.bills + "]";
-    // var confirmedBills = JSON.parse(confirmedBillsString);
-    // console.log(confirmedBills);
-    // $("#tableConfirmedBills tr:nth-child(2)").nextAll().remove();
-    // for (let i = 0; i < confirmedBills.length; i++) {
-    //   let rowConfirmedBills =
-    //     "<tr><td>" +
-    //     confirmedBills[i].billDate +
-    //     "</td><td>" +
-    //     confirmedBills[i].billNumber +
-    //     "</td><td>" +
-    //     confirmedBills[i].billTotalAmount +
-    //     "</td><td>" +
-    //     confirmedBills[i].customerName +
-    //     "</td><td>" +
-    //     confirmedBills[i].customerId +
-    //     "</td><td>" +
-    //     confirmedBills[i].customerAddress +
-    //     "</td></tr>";
-    //   $("#tableConfirmedBills").append(rowConfirmedBills);
-    // }
   });
 });
