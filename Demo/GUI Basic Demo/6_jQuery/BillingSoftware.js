@@ -180,6 +180,12 @@ $(document).ready(function () {
     //Update srNumber
     srNumber += 1;
     $("#srNo").val(srNumber);
+
+    //Set values as blank
+    $("#itemName").val("");
+    $("#itemPrice").val("");
+    $("#itemQuantity").val("");
+    $("#itemAmount").val("");
   });
 
   //Confirm Bill Details
