@@ -29,4 +29,4 @@ employee1.#companyInformation();
 
 //prints 'undefined' or 'function not found' as it cant access
 console.log(employee1.companyName);
-employee1.#companyInformation();
+employee1.companyInformation();

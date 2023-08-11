@@ -30,11 +30,16 @@
             >
               <div class="contactNumber">+91 7046985354</div>
               <div class="contactPerson text-right">Yash Lathiya</div>
+              <div class="mode">
+                <button class="border rounded mt-2" id="btnMode">
+                  Light Mode
+                </button>
+              </div>
             </div>
           </div>
         </div>
         <div class="customerDetails">
-          <div class="customerId text-white">
+          <div class="customerId text-white" id="themeCustomerId">
             <form name="customerDetailsForm">
               <div class="row">
                 <div class="formGroup col">
@@ -218,6 +223,7 @@
             href="PreviousYearBills.html"
             class="text-white"
             style="text-decoration: none"
+            id="themeBtnPreviousBills"
           >
             Previous Year Bills <br />(From JSON File)</a
           >
@@ -231,6 +237,7 @@
             href="CurrentYearBills.html"
             class="text-white"
             style="text-decoration: none"
+            id="themeBtnConfirmedBills"
           >
             Current Year Bills <br />
             (Confirmed from here)</a
@@ -247,5 +254,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="BillingSoftware.js"></script>
+    <!-- Theme Change Script -->
+    <script src="mode.js"></script>
   </body>
 </html>

@@ -22,7 +22,7 @@ console.log(employee.firstName);
 console.log(employee.lastName);
 employee.who();
 
-//Assigning prototype to object by assign method
+//Assigning prototype to function by assign method
 
 function student(studentId) {
   this.studentId = studentId;

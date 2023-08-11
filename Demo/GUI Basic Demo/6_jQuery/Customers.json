@@ -13,5 +13,20 @@
     "customerId": 12347,
     "customerName": "Satyam Kharote",
     "customerAddress": "Bhavnagar"
+  },
+  {
+    "customerId": 12348,
+    "customerName": "Sachin Tendulkar",
+    "customerAddress": "Mumbai, Maharashtra"
+  },
+  {
+    "customerId": 12349,
+    "customerName": "Mahendra Singh Dhoni",
+    "customerAddress": "Ranchi"
+  },
+  {
+    "customerId": 12350,
+    "customerName": "A B Devilliers",
+    "customerAddress": "South Africa"
   }
 ]
