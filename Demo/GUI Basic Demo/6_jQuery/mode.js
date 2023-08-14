@@ -78,12 +78,14 @@ setLightTheme.add(setThemeVariableDark);
 
 //Set Appereance while loading the page
 if (localStorage.theme == 1) {
-  //Here we are not changing localStorage.theme because it is just for loading, Toggling occurs when user changes the theme by clicking button.
+  //Here we are not changing localStorage.theme because it is just for loading,
+  //Toggling occurs when user changes the theme by clicking button.
   setDarkTheme.remove(setThemeVariableLight);
   setDarkTheme.fire();
   setDarkTheme.add(setThemeVariableLight);
 } else {
-  //Here we are not changing localStorage.theme because it is just for loading, Toggling occurs when user changes the theme by clicking button.
+  //Here we are not changing localStorage.theme because it is just for loading,
+  //Toggling occurs when user changes the theme by clicking button.
   setLightTheme.remove(setThemeVariableDark);
   setLightTheme.fire();
   setLightTheme.add(setThemeVariableDark);

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extra Events</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="event">
+        <a href="https://rkit-training.vercel.app/" id="link">RKIT Training</a>
+      </div>
+      <div class="event" id="divLevel1" style="background: lightblue">
+        <div class="eventNested" id="divLevel2" style="background: darkblue">
+          <div
+            class="eventNestedNested"
+            id="divLevel3"
+            style="background: pink"
+          >
+            Click Here
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery Script -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        //Implimentation of prevent default event
+
+        $("#link").on("click", function (event) {
+          event.preventDefault();
+          alert(
+            "Page is not redirected as onclick event has used preventDefault()"
+          );
+        });
+
+        //Demonstration of stopPropogation & stopImmediatePropogation
+
+        $("#divLevel1").on("click", function () {
+          alert("Clicked on Div-Level1");
+        });
+        $("#divLevel2").on("click", function () {
+          alert("Clicked on Div-Level2");
+        });
+        $("#divLevel3").on("click", function (event) {
+          event.stopPropagation(); //Level1 & Level2 alert will not show
+          event.stopImmediatePropagation(); //Dont allow any other events on this element & also stops bubbling of events
+          alert("Clicked on Div-Level3");
+        });
+        $("#divLevel3").on("click", function () {
+          $(this).css("background-color", "hotpink");
+        });
+      });
+    </script>
+  </body>
+</html>
