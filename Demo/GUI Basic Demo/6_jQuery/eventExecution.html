@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Execution Sequence</title>
+  </head>
+  <body>
+    <button onclick="alert('Inline event execution')" id="btn">Click me</button>
+
+    <!-- jQuery Script -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      //jQuery
+      $(document).ready(function () {
+        //if document.ready is not implemented, events will occur in chronological order
+        $("#btn").on("click", function () {
+          alert("event execution from jQuery ");
+        });
+      });
+
+      //Javascript
+      const btn = document.querySelector("#btn");
+      btn.addEventListener("click", function () {
+        alert("event execution from script ");
+      });
+    </script>
+  </body>
+</html>
