@@ -78,6 +78,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script>
       $(document).ready(function () {
+        //When password & confirm password matches --> errorMsg hides
         $("#confirmPassword").keyup(function () {
           if ($("#confirmPassword").val() === $("#password").val()) {
             $(".confirmPasswordMsg").hide();
@@ -85,10 +86,21 @@
             $(".confirmPasswordMsg").show();
           }
         });
+
+        //Regex based email validation is added in validator
+        $.validator.addMethod(
+          "emailRegexValidation",
+          function (value) {
+            return /^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]$/.test(value);
+          },
+          "Email Regex Validation failed"
+        );
+
+        //Implimentation of validate method
         $("#form").validate({
           rules: {
             username: "required",
-            email: { required: true, email: true },
+            email: { required: true, emailRegexValidation: true },
             mobileNumber: {
               required: true,
               number: true,
@@ -100,7 +112,6 @@
           },
           messages: {
             username: "Username is required",
-            email: "Please enter a valid email address",
             password:
               "Password length must be between 8 and 16 characters (inclusive)",
           },
