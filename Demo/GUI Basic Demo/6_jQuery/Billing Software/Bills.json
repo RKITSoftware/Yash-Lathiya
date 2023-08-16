@@ -2,7 +2,7 @@
   {
     "billNumber": "1234",
     "billDate": "08-08-2022",
-    "customerId": "4564",
+
     "customerName": "Yash",
     "customerAddress": "Surat",
     "billTotalAmount": "324000"
