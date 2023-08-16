@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax</title>
+  </head>
+  <body>
+    <form id="personalDetails">
+      <label for="firstName">First Name :</label>
+      <input type="text" id="firstName" name="firstName" />
+      <label for="lastName">Last Name :</label>
+      <input type="text" id="lastName" name="lastName" />
+      <input type="submit" id="btnSubmit" />
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#btnSubmit").on("click", function (event) {
+          event.preventDefault();
+
+          //Form Details
+          var formData = {
+            firstName: $("#firstName").val(),
+            lastName: $("#lastName").val(),
+          };
+
+          //Ajax Request with data
+          $.ajax({
+            url: "data.json",
+            type: "GET",
+            dataType: "json",
+            data: formData,
+            success: function (response) {
+              //Update firstname and lastname according to form
+              response.firstName = formData.firstName;
+              response.lastName = formData.lastName;
+              console.log(response);
+              alert(JSON.stringify(response));
+            },
+            error: function (xhr, status, error) {
+              //xml http request object , status -> error, error -> error detail is mentioned
+              console.log(xhr, status, error);
+            },
+          });
+
+          //Serialize Form Data
+          var serializedData = $("#personalDetails").serialize();
+          console.log("Serialized Data", serializedData);
+
+          //Deserialization of data
+          var deserializedData = new URLSearchParams(serializedData);
+          console.log(
+            "Deserialized first name : ",
+            deserializedData.get("firstName")
+          );
+          console.log(
+            "Deserialized last name : ",
+            deserializedData.get("lastName")
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
