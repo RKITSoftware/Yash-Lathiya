@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trigger Events</title>
+  </head>
+  <body>
+    <p>Press CTRL+P</p>
+    <div id="container" style="background-color: pink; padding: 10px">
+      <button id="btnTrigger">Trigger</button>
+      <button id="btnTriggerHandler">TriggerHandler</button>
+    </div>
+
+    <!-- jQuery Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        //Custom Event printMessage is created
+        $(document).on("printMessage", function () {
+          alert("Pressed CTRL + p");
+        });
+        $(document).on("printMessage", function () {
+          alert("Default Ctrl+p execution stopped");
+        });
+
+        //Custom Event backgroundChange is created
+        $(document).on("backgroundChange", function () {
+          $("body").css("background-color", "pink");
+        });
+
+        //When User press CTRL + p , It will trigger both custom events
+        $(document).on("keydown", function (event) {
+          if (event.ctrlKey && event.key === "p") {
+            event.preventDefault();
+            $(document).trigger("printMessage");
+            $(document).trigger("backgroundChange");
+          }
+        });
+
+        //Difference between trigger and trigger handler
+
+        $("#container").on("consoleEvent", function () {
+          console.log("Triggered Execution on container...");
+        });
+        $("#btnTrigger").on("consoleEvent", function () {
+          console.log("Triggered event btnTrigger ...");
+        });
+        $("#btnTriggerHandler").on("consoleEvent", function () {
+          console.log("Triggered event btnTriggerHandler ...");
+        });
+
+        //Trigger will call events on container as well as on btnTrigger (bubbling nature)
+        $("#btnTrigger").click(function () {
+          $("#btnTrigger").trigger("consoleEvent");
+        });
+
+        //TriggerHandler will call only event on triggerHandlerBtn
+        $("#btnTriggerHandler").click(function () {
+          $("#btnTriggerHandler").triggerHandler("consoleEvent");
+        });
+      });
+    </script>
+  </body>
+</html>
