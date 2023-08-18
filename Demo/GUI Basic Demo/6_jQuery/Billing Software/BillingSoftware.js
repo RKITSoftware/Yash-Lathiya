@@ -243,7 +243,7 @@ $(document).ready(function () {
     console.log(billDetail);
 
     //Increment billNumber in local storage
-    localStorage.billNumber = Number(localStorage.billNumber) + 1;
+    localStorage.billNumber = Number(localStorage.billNumber)++ ;
     $("#billNumberId").val(localStorage.billNumber);
 
     //reset bill inputs
