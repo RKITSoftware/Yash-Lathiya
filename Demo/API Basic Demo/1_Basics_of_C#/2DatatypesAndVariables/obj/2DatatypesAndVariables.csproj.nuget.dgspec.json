@@ -1,0 +1,63 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\1_Basics_of_C#\\2DatatypesAndvariables\\2DatatypesAndVariables.csproj": {}
+  },
+  "projects": {
+    "D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\1_Basics_of_C#\\2DatatypesAndvariables\\2DatatypesAndVariables.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\1_Basics_of_C#\\2DatatypesAndvariables\\2DatatypesAndVariables.csproj",
+        "projectName": "2DatatypesAndVariables",
+        "projectPath": "D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\1_Basics_of_C#\\2DatatypesAndvariables\\2DatatypesAndVariables.csproj",
+        "packagesPath": "C:\\Users\\Yash\\.nuget\\packages\\",
+        "outputPath": "D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\1_Basics_of_C#\\2DatatypesAndvariables\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Yash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
