@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Calls</title>
+  </head>
+  <body>
+    <button id="btnGet">GET</button>
+    <button id="btnPost">POST</button>
+    <button id="btnPut">PUT</button>
+    <button id="btnPatch">PATCH</button>
+    <button id="btnDelete">DELETE</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        //Ajax call by get method
+
+        $("#btnGet").on("click", function () {
+          $.get({
+            url: "https://jsonplaceholder.typicode.com/todos/",
+            success: function (data) {
+              console.log(data);
+              $.each(data, function (index, object) {
+                console.log(index, object);
+              });
+            },
+          });
+        });
+
+        //Ajax call by post method
+
+        $("#btnPost").on("click", function () {
+          var newObject = {
+            userId: 11,
+            id: 201,
+            title: "Added object via post method",
+            completed: true,
+          };
+          $.post({
+            url: "https://jsonplaceholder.typicode.com/todos/",
+            data: newObject,
+            success: function (response) {
+              console.log(response);
+            },
+          });
+        });
+
+        //Ajax call by put method
+        //Before using put method --> last object
+
+        $.get({
+          url: "https://jsonplaceholder.typicode.com/todos/200",
+          success: function (response) {
+            console.log("last object", response);
+          },
+        });
+
+        //Changing title of 200th object by using put method
+
+        var updatedTitle = { title: "Title updated by put call" };
+        $("#btnPut").on("click", function () {
+          $.ajax({
+            url: "https://jsonplaceholder.typicode.com/todos/200",
+            type: "PUT",
+            data: updatedTitle,
+            success: function (response) {
+              console.log(response);
+            },
+          });
+        });
+
+        //If i want to change title only, PATCH call should be used
+        //It will not delete any other details
+
+        var updatedTitle = { title: "Title updated by put call" };
+        $("#btnPatch").on("click", function () {
+          $.ajax({
+            url: "https://jsonplaceholder.typicode.com/todos/200",
+            type: "PATCH",
+            data: updatedTitle,
+            success: function (response) {
+              console.log(response);
+            },
+          });
+        });
+
+        //Ajax call by delete method
+
+        $("#btnDelete").on("click", function () {
+          $.ajax({
+            url: "https://jsonplaceholder.typicode.com/todos/200",
+            type: "DELETE",
+            success: function (response) {
+              console.log("DELETED 200th object", response);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
