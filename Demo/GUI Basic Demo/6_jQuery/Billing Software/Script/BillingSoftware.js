@@ -22,26 +22,30 @@ $(document).ready(function () {
   $("#srNo").val(srNumber);
 
   //Load Bills from External JSON file
-  $("#bills").load("Bills.json", function (data) {
-    var bills = JSON.parse(data);
-    console.log(bills);
-    for (let i = 0; i < bills.length; i++) {
-      let rowPriviousBills =
-        "<tr><td>" +
-        bills[i].billDate +
-        "</td><td>" +
-        bills[i].billNumber +
-        "</td><td>" +
-        bills[i].billTotalAmount +
-        "</td><td>" +
-        bills[i].customerName +
-        "</td><td>" +
-        bills[i].customerId +
-        "</td><td>" +
-        bills[i].customerAddress +
-        "</td></tr>";
-      $("#tablePreviousBills").append(rowPriviousBills);
-    }
+  $.ajax({
+    url: "../JSON/Bills.json",
+    success: function (data) {
+      // var bills = JSON.parse(data);
+      var bills = data;
+      console.log(bills);
+      for (let i = 0; i < bills.length; i++) {
+        let rowPriviousBills =
+          "<tr><td>" +
+          bills[i].billDate +
+          "</td><td>" +
+          bills[i].billNumber +
+          "</td><td>" +
+          bills[i].billTotalAmount +
+          "</td><td>" +
+          bills[i].customerName +
+          "</td><td>" +
+          bills[i].customerId +
+          "</td><td>" +
+          bills[i].customerAddress +
+          "</td></tr>";
+        $("#tablePreviousBills").append(rowPriviousBills);
+      }
+    },
   });
 
   //Load Confirmed Bills from localstorage
@@ -91,7 +95,7 @@ $(document).ready(function () {
   //CustomerId Identification
   $("#customerId").on("blur", function () {
     $.ajax({
-      url: "Customers.json",
+      url: "./JSON/Customers.json",
       success: function (data) {
         console.log(data);
         $.each(data, function (index, customerObject) {
@@ -243,7 +247,7 @@ $(document).ready(function () {
     console.log(billDetail);
 
     //Increment billNumber in local storage
-    localStorage.billNumber = Number(localStorage.billNumber)++ ;
+    localStorage.billNumber = Number(localStorage.billNumber) + 1;
     $("#billNumberId").val(localStorage.billNumber);
 
     //reset bill inputs

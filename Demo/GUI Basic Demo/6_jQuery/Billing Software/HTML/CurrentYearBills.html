@@ -3,14 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Previous Year Bills</title>
+    <title>Current Year Bills</title>
     <!-- Bootstrap link -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     />
-    <!-- custom stylesheet -->
-    <link rel="stylesheet" href="style.css" />
     <!-- Font Awosome -->
     <script
       src="https://kit.fontawesome.com/dec0fb98b5.js"
@@ -46,8 +44,12 @@
           class="btn btn-danger col mx-1"
           id="btnShowPreviousBills"
         >
-          <a href="index.html" class="text-white" style="text-decoration: none">
-            Home</a
+          <a
+            href="./PreviousYearBills.html"
+            class="text-white"
+            style="text-decoration: none"
+          >
+            Previous Year Bills <br />(From JSON File)</a
           >
         </button>
         <button
@@ -56,12 +58,10 @@
           id="btnShowConfirmedBills"
         >
           <a
-            href="CurrentYearBills.html"
+            href="../index.html"
             class="text-white"
             style="text-decoration: none"
-          >
-            Current Year Bills <br />
-            (Confirmed from here)</a
+            >Home</a
           >
         </button>
       </div>
@@ -77,14 +77,14 @@
           style="color: #ffffff"
         ></i>
       </div>
-      <div class="previousBills">
+      <div class="confirmedBills">
         <div
           class="text-white text-dark bg-white text-center"
-          id="themePreviousBillsPage"
+          id="themeCurrentBillsPage"
         >
-          Previous Bills (From JSON File)
+          Confirmed Bills
         </div>
-        <table id="tablePreviousBills" class="table table-bordered text-white">
+        <table id="tableConfirmedBills" class="table table-bordered text-white">
           <tr>
             <td>Bill Date</td>
             <td>Bill Number</td>
@@ -104,8 +104,8 @@
     <!-- jQuery Script -->
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="BillingSoftware.js"></script>
+    <script src="../Script/BillingSoftware.js"></script>
     <!-- theme Change Script -->
-    <script src="themePreviousBills.js"></script>
+    <script src="../Script/themeCurrentBills.js"></script>
   </body>
 </html>
