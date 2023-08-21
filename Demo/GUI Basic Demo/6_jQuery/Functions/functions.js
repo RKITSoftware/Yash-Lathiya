@@ -29,7 +29,7 @@ $(document).ready(function () {
   };
 
   //Implementation of extend function
-  var object3 = $.extend(true, object1, object2);
+  console.log("**", $.extend(false, object1, object2, object3));
   console.log("Object 3 :", object3);
 
   //Each function on object
