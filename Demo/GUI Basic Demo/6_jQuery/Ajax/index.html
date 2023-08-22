@@ -27,7 +27,7 @@
 
           //Ajax Request with data
           $.ajax({
-            url: "daata.json",
+            url: "data.json",
             type: "GET",
             dataType: "json",
             data: formData,
@@ -37,6 +37,17 @@
               response.lastName = formData.lastName;
               console.log(response);
               alert(JSON.stringify(response));
+            },
+            statusCode: {
+              200: function () {
+                console.log("OKKK, Request is solved successfully");
+              },
+              404: function () {
+                console.log("There is problem to server data fetching");
+              },
+              500: function () {
+                console.log("Internal Server Error");
+              },
             },
             error: function (xhr, status, error) {
               //xml http request object , status -> error, error -> error detail is mentioned
