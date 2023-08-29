@@ -12,7 +12,7 @@ Console.WriteLine("Last Name : " + person.LastName);
 
 //Accessing Method of MyFirstClass
 
-MyFirstClass.MainMethod();
+MyFirstClass.mainMethod();
 
 //Creating instance of Structure
 
@@ -23,7 +23,7 @@ Console.WriteLine("Number : " + myStruct.Number);
 //Accessing method of interface
 
 MyFirstImplementation myInterface = new MyFirstImplementation();
-myInterface.SayHello();
+myInterface.sayHello();
 
 //Simple calculation by using delegate
 
@@ -44,7 +44,7 @@ namespace MyFirstNamespace
     }
     class MyFirstClass
     {
-        public static void MainMethod()
+        public static void mainMethod()
         {
             Console.WriteLine("Hello from Main method");
         }
@@ -57,12 +57,12 @@ namespace MyFirstNamespace
 
     interface IMyFirstInterface
     {
-        void SayHello();
+        void sayHello();
     }
 
     class MyFirstImplementation : IMyFirstInterface
     {
-        public void SayHello()
+        public void sayHello()
         {
             Console.WriteLine("Heloo from Implementation");
         }

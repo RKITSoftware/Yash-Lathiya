@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\2DatatypesAndvariables"
+    "\\3OperatorsAndExpressions",
+    "\\4Statements",
+    "\\4Statements\\4Statements"
   ],
-  "SelectedNode": "\\2DatatypesAndvariables\\Program.cs",
+  "SelectedNode": "\\3OperatorsAndExpressions\\3OperatorsAndExpressions.sln",
   "PreviewInSolutionExplorer": false
 }
