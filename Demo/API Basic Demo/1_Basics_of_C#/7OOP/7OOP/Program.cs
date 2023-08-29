@@ -1,4 +1,5 @@
-﻿class ObjectOrientedProgramming
+﻿using EmployeeNamespace;
+class ObjectOrientedProgramming
 {
     static void Main(string[] args)
     {
@@ -86,46 +87,51 @@ class Person
 
 //Implementation of Polymorphism
 
-//Base Class
-class Employee
+namespace EmployeeNamespace
 {
-    public virtual void getProfileDetails()
-    {
-        Console.WriteLine("I am emplyee of the company.");
-    }
-}
+    //Base Class
 
-//Derived Class
-class WebDesigner : Employee
-{
-    public override void getProfileDetails()
+    public class Employee
     {
-        Console.WriteLine("I am web designer.");
-    }
-}
-
-//Derived Class
-class FullStackDeveloper : Employee
-{
-    //Method Overloading
-    public void getProfileDetails()
-    {
-        Console.WriteLine("I am full stack developer.");
+        public virtual void getProfileDetails()
+        {
+            Console.WriteLine("I am emplyee of the company.");
+        }
     }
 
-    public void getProfileDetails(string name)
+    //Derived Class
+    class WebDesigner : Employee
     {
-        Console.WriteLine("I am full stack developer. My name is "+name);
+        public override void getProfileDetails()
+        {
+            Console.WriteLine("I am web designer.");
+        }
     }
-}
 
-//Derived Class
-class Coordinator : Employee
-{
-    public override void getProfileDetails()
+    //Derived Class
+    public class FullStackDeveloper : Employee
     {
-        Console.WriteLine("I am project coordinator.");
+        //Method Overloading
+        public void getProfileDetails()
+        {
+            Console.WriteLine("I am full stack developer.");
+        }
+
+        public void getProfileDetails(string name)
+        {
+            Console.WriteLine("I am full stack developer. My name is " + name);
+        }
     }
+
+    //Derived Class
+    class Coordinator : Employee
+    {
+        public override void getProfileDetails()
+        {
+            Console.WriteLine("I am project coordinator.");
+        }
+    }
+
 }
 
 //This class does not allow Inheritance

@@ -2,9 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\3OperatorsAndExpressions",
+    "\\3OperatorsAndExpressions\\3OperatorsAndExpressions",
     "\\4Statements",
-    "\\4Statements\\4Statements"
+    "\\5Arrays",
+    "\\5Arrays\\5Arrays",
+    "\\6Class",
+    "\\6Class\\6Class",
+    "\\7OOP",
+    "\\8AccessModifiers",
+    "\\8AccessModifiers\\8AccessModifiers"
   ],
-  "SelectedNode": "\\3OperatorsAndExpressions\\3OperatorsAndExpressions.sln",
+  "SelectedNode": "\\8AccessModifiers\\ClassLibrary",
   "PreviewInSolutionExplorer": false
 }
