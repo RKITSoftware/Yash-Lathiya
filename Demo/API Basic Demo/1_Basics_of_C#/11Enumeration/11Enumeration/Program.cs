@@ -1,8 +1,11 @@
 ﻿//Enumeration is special class which contains constants..
 class Enumeration
 {
+    #region Enumerations
+
     //Declare Enum
-    enum Days{
+    enum Days
+    {
         Monday,     //0
         Tuesday,    //1 
         Wednesday,  //2
@@ -19,6 +22,11 @@ class Enumeration
         Dehram
     }
 
+    #endregion
+
+    /// <summary>
+    /// IDemonstate of basic operations with enumeration..
+    /// </summary>
     static void Main(string[] args)
     {
         //Accessing Enum Values

@@ -7,9 +7,9 @@ class MainClass
     {
         //Reference of MyNamespace --> Namespace.cs
 
-        India.sayHello();
-        America.sayHello();
-        NestedClass.sayHello();
+        India.SayHello();
+        America.SayHello();
+        NestedClass.SayHello();
 
         //Reference of another project --> 7OOP
 

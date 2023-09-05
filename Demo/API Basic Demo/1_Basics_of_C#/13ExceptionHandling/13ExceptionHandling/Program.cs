@@ -3,27 +3,37 @@ using System.Globalization;
 
 class ExceptionHandling
 {
+    #region Class Methods
     static void Main(string[] args)
     {
-        basicFlowOfException();
+        BasicFlowOfException();
 
-        implementCustomException();
+        ImplementCustomException();
         
     }
 
-    static int division(int a, int b)
+    /// <summary>
+    /// Performs Devision Operation
+    /// </summary>
+    /// <param name="a">Numerator</param>
+    /// <param name="b">Denominator</param>
+    /// <returns> a devide by b </returns>
+    static int Division(int a, int b)
     {
         return a / b;
     }
 
-    static void basicFlowOfException()
+    /// <summary>
+    /// It shows execution flow of try, catch and finally block. 
+    /// </summary>
+    static void BasicFlowOfException()
     {
         // try block where exception can be arrived
         try
         {
             Console.WriteLine("I'm performing division by 0");
 
-            int ans = division(5, 0);
+            int ans = Division(5, 0);
         }
 
         //to catch that exception
@@ -39,8 +49,10 @@ class ExceptionHandling
         }
     }
 
-    //this method uses custom exception to remove white spaces from username..
-    static void implementCustomException()
+    /// <summary>
+    /// custom exception to remove white spaces from username..
+    /// </summary>
+    static void ImplementCustomException()
     {
         string userName = "yash lathiya";
         Console.WriteLine("Username entered by user :" + userName);
@@ -83,7 +95,11 @@ class ExceptionHandling
         }
     }
 
-    //If whitespace found in string --> will throw ContainsWhiteSpace Exception
+    /// <summary>
+    /// If whitespace found in string --> will throw ContainsWhiteSpace Exception
+    /// </summary>
+    /// <param name="str"> A field in which checks whitespace or not</param>
+    /// <exception cref="ContainsWhiteSpace"> Deal with ContainsWhiteSpace </exception>
     static void checkWhiteSpace(string str)
     {
         foreach (char c in str.ToCharArray())
@@ -94,13 +110,17 @@ class ExceptionHandling
             }
         }
     }
+
+    #endregion
 }
 
 // Implement custom exception --> ContainsWhiteSpace
 class ContainsWhiteSpace : Exception
 {
+    #region Constructor
     public ContainsWhiteSpace(string value)
     {
         Console.WriteLine("This is ContainsWhiteSpace Exception");
     }
+    #endregion
 }

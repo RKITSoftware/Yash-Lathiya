@@ -5,22 +5,26 @@ using System.Collections.Concurrent;
 
 class Collection
 {
+    #region Public Methods
     public static void Main(string[] args)
     {
-        list();
+        ListImplementation();
 
-        dictionary();
+        DictionaryImplementation();
 
-        stack();
+        StackImplementation();
 
-        queue();
+        QueueImplementation();
 
-        hashTable();
+        HashTableImplementation();
 
-        customCollection();
+        CustomCollection();
     }
 
-    public static void list()
+    /// <summary>
+    /// Demonstration of list collection with its operation
+    /// </summary>
+    public static void ListImplementation()
     {
         //Collection --> List
 
@@ -71,14 +75,17 @@ class Collection
 
         foreach(Person person in listOfPerson)
         {
-            person.printDetails();
+            person.PrintDetails();
         }
 
         //Clear List
         list.Clear();
     }
 
-    public static void dictionary()
+    /// <summary>
+    /// Demonstration of dictionary collection with its operation
+    /// </summary>
+    public static void DictionaryImplementation()
     {
         // Collection --> dictionary
 
@@ -117,7 +124,10 @@ class Collection
         }
     }
 
-    public static void stack()
+    /// <summary>
+    /// Demonstration of stack collection with its operation
+    /// </summary>
+    public static void StackImplementation()
     {
         // Collection --> Stack
 
@@ -151,7 +161,10 @@ class Collection
 
     }
 
-    public static void queue()
+    /// <summary>
+    /// Demonstration of queue collection with its operation
+    /// </summary>
+    public static void QueueImplementation()
     {
         // Collection --> Queue
 
@@ -193,7 +206,10 @@ class Collection
         }
     }
 
-    public static void hashTable()
+    /// <summary>
+    /// Demonstration of hashtable collection with its operation
+    /// </summary>
+    public static void HashTableImplementation()
     {
         // Collection --> Hash Table
 
@@ -230,7 +246,10 @@ class Collection
         hashTable.Remove(1004);
     }
 
-    public static void customCollection()
+    /// <summary>
+    /// Demonstration of custom collection with its basic implementation
+    /// </summary>
+    public static void CustomCollection()
     {
         // Collection --> Custom Collection
 
@@ -246,12 +265,23 @@ class Collection
         }
 
     }
+
+    #endregion
 }
 
+/// <summary>
+/// class which contains name and age of person
+/// </summary>
 class Person
 {
+    #region Class Variables
+
     string name;
     int age;
+
+    #endregion
+
+    #region Constructors
 
     public Person(string name)
     {
@@ -263,26 +293,47 @@ class Person
         this.age = age;
     }
 
-    public void printDetails()
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Prints Name and age of the Person object
+    /// </summary>
+    public void PrintDetails()
     {
         Console.WriteLine("Name : " + this.name);
         Console.WriteLine("Age : " + this.age);
     }
 
+    #endregion
 }
 
-// Vehicle Class which contains vehicleName property
+/// <summary>
+/// Vehicle Class which contains vehicleName property
+/// </summary>
 class Vehicle
 {
+    #region Public Methods
+
+    /// <summary>
+    /// get, set method for VehicleName
+    /// </summary>
     public string VehicleName
     {
         get; set;
     }
+
+    #endregion
 }
 
-//All vehicle is a collection classs which is used for vehicle
+/// <summary>
+/// All vehicle is a collection classs which is used for vehicle
+/// </summary>
 class AllVehicles : System.Collections.IEnumerable
 {
+    #region Private Members
+
     //Initialize array of vehicles by adding 3 vehicles by default
     private Vehicle[] _vehicles =
     {
@@ -290,20 +341,36 @@ class AllVehicles : System.Collections.IEnumerable
         new Vehicle() {VehicleName = "Bike"},
         new Vehicle() {VehicleName = "Truck"}
     };
+
+    #endregion
+
+    #region Public Methods
     public System.Collections.IEnumerator GetEnumerator()
     {
         return new VehicleEnumerator(_vehicles);
     }
 
+    #endregion
+
     class VehicleEnumerator : System.Collections.IEnumerator
     {
+        #region Private Members
+
         private Vehicle[] _vehicles;
         private int _index = -1;
+
+        #endregion
+
+        #region Constructor
 
         public VehicleEnumerator(Vehicle[] vehicles)
         {
             _vehicles = vehicles;
         }
+
+        #endregion
+
+        #region Methods
 
         //Accessing Current Vehicle
         object System.Collections.IEnumerator.Current
@@ -314,18 +381,24 @@ class AllVehicles : System.Collections.IEnumerable
             }
         }
 
-        //Accessing next element until collection ends
+        /// <summary>
+        /// Accessing next element until collection ends
+        /// </summary>
+        /// <returns> Next item's index in collection</returns>
         bool System.Collections.IEnumerator.MoveNext()
         {
             _index++;
             return (_index < _vehicles.Length);
         }
 
-        //Directly not using this method.. 
-        //But important to initilize with default values
+        /// <summary>
+        /// Directly not using this method.. But important to initilize with default values 
+        /// </summary>
         void System.Collections.IEnumerator.Reset()
         {
             _index = -1;
         }
+
+        #endregion
     }
 }

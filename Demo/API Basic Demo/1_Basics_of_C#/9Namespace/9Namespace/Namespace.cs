@@ -4,7 +4,7 @@ namespace MyNamespace
 {
     class India
     {
-        public static void sayHello()
+        public static void SayHello()
         {
             Console.WriteLine("Hello from India");
         }
@@ -12,7 +12,7 @@ namespace MyNamespace
 
     class America
     {
-        public static void sayHello()
+        public static void SayHello()
         {
             Console.WriteLine("Hello from America");
         }
@@ -24,7 +24,7 @@ namespace MyNamespace
     {
         class NestedClass
         {
-            public static void sayHello()
+            public static void SayHello()
             {
                 Console.WriteLine("Hello from nested namespace");
             }

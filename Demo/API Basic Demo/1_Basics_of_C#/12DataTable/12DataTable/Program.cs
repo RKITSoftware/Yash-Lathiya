@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Data;
+
+/// <summary>
+/// Basic Implementation of DataTable
+/// </summary>
 class DataTable
 {
     static void Main(string[] args)
