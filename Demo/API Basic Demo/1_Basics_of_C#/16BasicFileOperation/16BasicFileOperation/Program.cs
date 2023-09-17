@@ -2,6 +2,7 @@
 using System.IO;
 class BasicFileOperation
 {
+    #region Static Methods
     static void Main(String[] args)
     {
         FileReading();
@@ -41,8 +42,7 @@ class BasicFileOperation
             str = sr.ReadLine();
         }
 
-        Console.ReadLine();
-
         sr.Close();
     }
+    #endregion
 }
