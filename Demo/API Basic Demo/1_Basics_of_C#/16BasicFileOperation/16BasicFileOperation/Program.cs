@@ -17,6 +17,7 @@ class BasicFileOperation
         StreamWriter sw = new StreamWriter("D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\1_Basics_of_C#\\16BasicFileOperation\\16BasicFileOperation\\textFile.txt");
 
         sw.WriteLine("Hello, I am writing file");
+        sw.WriteLine("Hello, I am second line");
 
         sw.Flush();
 
