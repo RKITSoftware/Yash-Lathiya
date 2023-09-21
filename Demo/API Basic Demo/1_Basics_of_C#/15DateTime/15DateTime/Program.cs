@@ -110,7 +110,10 @@
         //Date to String
 
         Console.WriteLine("String : " + date.ToString());
-
+        Console.WriteLine("d : " + date.ToString("d"));
+        Console.WriteLine("D : " + date.ToString("D"));
+        Console.WriteLine("dd/MM/yy : " + date.ToString("dd/MM/yy"));
+        Console.WriteLine("dd/MMM/yy : " + date.ToString("dd/MMM/yy"));
     }
 
     #endregion

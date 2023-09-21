@@ -1,17 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\10Collection",
-    "\\10Collection\\10Collections",
-    "\\11Enumeration",
-    "\\11Enumeration\\11Enumeration",
-    "\\12DataTable",
-    "\\12DataTable\\12DataTable",
-    "\\13ExceptionHandling",
     "\\13ExceptionHandling\\13ExceptionHandling",
-    "\\9Namespace",
+    "\\14String",
+    "\\14String\\14String",
+    "\\15DateTime",
+    "\\15DateTime\\15DateTime",
+    "\\16BasicFileOperation",
+    "\\16BasicFileOperation\\16BasicFileOperation",
+    "\\17IntroductionToWebDevelopment",
     "\\9Namespace\\9Namespace"
   ],
-  "SelectedNode": "\\10Collection\\10Collections\\Program.cs",
+  "SelectedNode": "\\14String\\14String.sln",
   "PreviewInSolutionExplorer": false
 }
