@@ -88,7 +88,10 @@ ReturnBook 16 16
 ReturnBook 17 17
 ReturnBook 18 18
 ReturnBook 19 19
-DisplayAllBooks
+CheckOutBook 10 10
+CheckOutBook 11 11
+CheckOutBook 12 12
+CheckOutBook 13 13
 DisplayAvailableBooks
 DisplayCheckedOutBooks 1
 DisplayCheckedOutBooks 2
@@ -109,3 +112,4 @@ DisplayCheckedOutBooks 16
 DisplayCheckedOutBooks 17
 DisplayCheckedOutBooks 18
 DisplayCheckedOutBooks 19
+DisplayAllBooks

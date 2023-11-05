@@ -26,47 +26,47 @@
         /// <param name="env">provides information about the hosting environment</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //app.Use(async (context, next) =>
-            //{
-            //    await context.Response.WriteAsync("Hello from Use 1.1 \n");
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Hello from Use 1.1 \n");
 
-            //    await next(); //perform next middleware
+                await next(); //perform next middleware
 
-            //    await context.Response.WriteAsync("Hello from Use 1.2 \n");
-            //});
+                await context.Response.WriteAsync("Hello from Use 1.2 \n");
+            });
 
-            //app.UseMiddleware<CustomMiddleware1>();
+            app.UseMiddleware<CustomMiddleware1>();
 
-            //app.Use(async (context, next) =>
-            //{
-            //    await context.Response.WriteAsync("Hello from Use 2.1 \n");
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Hello from Use 2.1 \n");
 
-            //    await next(); //perform next middleware
+                await next(); //perform next middleware
 
-            //    await context.Response.WriteAsync("Hello from Use 2.2 \n");
-            //});
+                await context.Response.WriteAsync("Hello from Use 2.2 \n");
+            });
 
-            //app.Map("/yash", CustomCode);
+            app.Map("/yash", CustomCode);
 
-            //app.Use(async (context, next) =>
-            //{
-            //    await context.Response.WriteAsync("Hello from Use 3.1 \n");
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Hello from Use 3.1 \n");
 
-            //    await next(); //perform next middleware
+                await next(); //perform next middleware
 
-            //    await context.Response.WriteAsync("Hello from Use 3.2 \n");
-            //});
+                await context.Response.WriteAsync("Hello from Use 3.2 \n");
+            });
 
-            //app.Run(async context =>
-            //{
-            //    await context.Response.WriteAsync("Hello From Run \n");
-            //});
+            app.Run(async context =>
+            {
+                await context.Response.WriteAsync("Hello From Run \n");
+            });
 
-            ////Below code has no impact on output because middleware implementation is already performed above..
-            //app.Run(async context =>
-            //{
-            //    await context.Response.WriteAsync("Hello From Run 2");
-            //});
+            //Below code has no impact on output because middleware implementation is already performed above..
+            app.Run(async context =>
+            {
+                await context.Response.WriteAsync("Hello From Run 2");
+            });
 
             if (env.IsDevelopment())
             {
