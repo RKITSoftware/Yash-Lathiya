@@ -29,7 +29,9 @@ VALUES (1001, "Yash", "Lathiya"),
 -- Show Table Data
 
 SELECT
-	Id, FirstName, LastName
+	Id, 
+    FirstName, 
+    LastName
 FROM 
 	MyFirstTable;
     
@@ -38,7 +40,9 @@ FROM
 -- Here data is sorted by ID then FirstName then LastName in ascending order
 
 SELECT
-	Id, FirstName, LastName
+	Id, 
+    FirstName, 
+    LastName
 FROM 
 	MyFirstTable
 ORDER BY
@@ -47,7 +51,9 @@ ORDER BY
 -- Here data is sorted by ID then FirstName then LastName in decending order
 
 SELECT
-	Id, FirstName, LastName
+	Id, 
+    FirstName, 
+    LastName
 FROM 
 	MyFirstTable
 ORDER BY

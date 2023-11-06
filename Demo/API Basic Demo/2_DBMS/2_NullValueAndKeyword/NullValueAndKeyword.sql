@@ -40,6 +40,11 @@ VALUES
 -- Show Table Data
 
 SELECT
-	Id, FirstName, LastName, City, Address, Country
+	Id, 
+    FirstName, 
+    LastName, 
+    City, 
+    Address, 
+    Country
 FROM
 	MyFirstTable;
