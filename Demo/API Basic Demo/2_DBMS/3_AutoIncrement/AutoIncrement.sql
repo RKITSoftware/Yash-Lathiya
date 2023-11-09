@@ -4,7 +4,7 @@ USE
 	MyNewDatabase;
 
 -- Create Table which contains one auto increment field
--- Auto Increment strats from 1001 with increment of 2
+-- Auto Increment strats from 1001 with increment of 1
 -- while both contains 1 as default values.
 
 CREATE TABLE 
