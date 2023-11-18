@@ -6,7 +6,8 @@ SELECT
     ShipperName
 FROM 
 	Shippers
-UNION SELECT
+UNION 
+SELECT
 	'Supplier' AS Type,
 	SupplierID,
     SupplierName
@@ -21,7 +22,8 @@ SELECT
     ShipperName
 FROM 
 	Shippers
-UNION SELECT
+UNION ALL
+SELECT
 	'Supplier' AS Type,
 	SupplierID,
     SupplierName

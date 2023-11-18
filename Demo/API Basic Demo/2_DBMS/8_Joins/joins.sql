@@ -6,9 +6,7 @@ SELECT
     Customers.CustomerID,
     OrderDate
 FROM
-	Customers
-INNER JOIN
-	Orders
+	Customers INNER JOIN Orders
 ON
 	Orders.CustomerID = Customers.CustomerID;
 

@@ -26,7 +26,7 @@ AS SELECT
 FROM
 	Employee;
 	
--- Drop
+-- Drop                                        
 -- Used to delete whole database or table
 
 DROP TABLE
