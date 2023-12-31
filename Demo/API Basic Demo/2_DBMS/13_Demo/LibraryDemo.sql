@@ -1,0 +1,121 @@
+-- Create Database
+
+CREATE DATABASE 
+	LibraryDemo;
+    
+-- Using a LibraryDemo Database
+
+USE 
+	LibraryDemo;
+    
+-- Create table of Books
+
+CREATE TABLE 
+	BOO01(						-- Book01 Table 			 
+		O01F01 INT PRIMARY KEY, -- ISBN Number 
+		O01F02 VARCHAR(50),		-- Book Name 
+		O01F03 VARCHAR(50),		-- Author Name
+		O01F04 VARCHAR(50),		-- Publisher Name  
+		O01F05 VARCHAR(50),		-- Genre 
+        O01F06 INT, 			-- Number of Pages
+        O01F07 INT, 			-- Shelf Location
+        O01F08 BOOL DEFAULT TRUE -- Availability Status 
+);
+
+CREATE TABLE 
+	BOO02(						-- Book02 Table 			 
+		O02F01 INT PRIMARY KEY, -- ISBN Number 
+		O02F02 VARCHAR(50),		-- Book Name 
+		O02F03 VARCHAR(50),		-- Author Name
+		O02F04 VARCHAR(50),		-- Publisher Name  
+		O02F05 VARCHAR(50),		-- Genre 
+        O02F06 INT, 			-- Number of Pages
+        O02F07 INT, 			-- Shelf Location
+        O02F08 BOOL DEFAULT TRUE -- Availability Status 
+);
+
+-- Create Reader Table 
+
+CREATE TABLE 
+	REA01 (
+		A01F01 int PRIMARY KEY AUTO_INCREMENT, 	-- Reader ID
+		A01F02 varchar(255),			  	 	-- First Name 
+        A01F03 varchar(255),					-- Last Name 
+        A01F04 varchar(255)						-- Address 
+    ) AUTO_INCREMENT = 1001;
+
+-- Enter Data into Table
+
+INSERT INTO
+	BOO01 
+VALUES (10011001, "Book1", "Author1", "Publisher1", "Genre1", 120, 1, TRUE),
+	   (10011002, "Book2", "Author2", "Publisher1", "Genre1", 140, 2, TRUE),
+       (10011003, "Book3", "Author3", "Publisher1", "Genre2", 160, 3, TRUE),
+       (10011004, "Book4", "Author1", "Publisher2", "Genre3", 80, 1, TRUE),
+       (10011005, "Book5", "Author1", "Publisher2", "Genre4", 1120, 1, TRUE),
+	   (10011006, "Book6", "Author2", "Publisher3", "Genre5", 1000, 2, TRUE),
+       (10011007, "Book7", "Author3", "Publisher2", "Genre6", 185, 4, TRUE),
+       (10011008, "Book8", "Author4", "Publisher2", "Genre1", 192, 5, TRUE);
+       
+INSERT INTO
+	BOO02 
+VALUES (10011009, "Book9", "Author5", "Publisher1", "Genre1", 120, 1, TRUE),
+	   (10011010, "Book10", "Author2", "Publisher1", "Genre1", 140, 2, TRUE),
+       (10011011, "Book11", "Author6", "Publisher1", "Genre2", 160, 3, TRUE),
+       (10011012, "Book12", "Author1", "Publisher2", "Genre3", 80, 1, TRUE),
+       (10011013, "Book13", "Author7", "Publisher2", "Genre4", 1120, 1, TRUE),
+	   (10011014, "Book14", "Author7", "Publisher3", "Genre5", 1000, 2, TRUE),
+       (10011015, "Book15", "Author8", "Publisher2", "Genre6", 185, 4, FALSE),
+       (10011016, "Book816", "Author4", "Publisher2", "Genre1", 192, 5, FALSE);
+       
+-- Reader Id will auto increment by starting 1001
+
+INSERT INTO
+	REA01 
+    (A01F02, A01F03, A01F04)
+VALUES 
+	("Sachin", "Tendulkar", "Mumbai"),
+    ("Mahindra", "Dhoni", "Ranchi"),
+    ("Virat", "Kohli", "Jalandhar"),
+    ("Surya", "Yadav", "Rajasthan"),
+    ("Ravindra", "Jadeja", "Gujarat");
+    
+SELECT
+	A01F01,
+    A01F02
+FROM
+	REA01;
+       
+-- Sorting of the data
+-- Books are sorted as per the genre -> AUthor -> Publisher
+
+SELECT
+	O01F01,
+    O01F02,
+    O01F03,
+    O01F04,
+    O01F05
+FROM
+	BOO01
+ORDER BY
+	O01F05, O01F03, O01F02;
+    
+-- Create table of Books by using another Books table
+-- Table of Genre 1 Books 
+
+CREATE TABLE 
+	BOO03 						
+AS SELECT
+	O01F01,
+    O01F02,
+    O01F03
+FROM
+	BOO01
+WHERE
+	O01F05 = "Genre1";
+    
+SELECT 
+	*
+FROM 
+	BOO03;
+    
