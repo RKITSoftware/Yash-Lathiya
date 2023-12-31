@@ -119,3 +119,151 @@ SELECT
 FROM 
 	BOO03;
     
+-- Drop                                        
+-- Delete BOO03 Table
+
+DROP TABLE
+	BOO03;
+
+-- Alter
+
+-- Add Columns
+
+ALTER TABLE 
+	REA01
+ADD(
+	A01F05 VARCHAR(50),	-- Remarks1
+    A01F06 VARCHAR(50)	-- Remarks2
+);
+
+-- Drop Column A01F06
+
+ALTER TABLE
+	REA01
+DROP COLUMN
+	A01F06;
+    
+-- Modifiing Column 
+-- Datatype is modifies to varchar(30)
+
+ALTER TABLE
+	REA01
+MODIFY COLUMN
+	A01F05 VARCHAR(30);
+
+-- Truncate
+-- Removes all data within database or table 
+
+TRUNCATE TABLE 
+	REA01;
+
+-- Rename
+
+-- Renaming Column Name
+
+ALTER TABLE 
+	REA01
+RENAME COLUMN
+	A01F05 TO A01F06;
+    
+ALTER TABLE 
+	REA01
+RENAME COLUMN
+	A01F06 TO A01F05;
+    
+-- Renaming Table Name Reader to User USE01
+
+ALTER TABLE 
+	REA01
+RENAME TO
+	USE01;
+    
+ALTER TABLE 
+	USE01
+RENAME TO
+	REA01;
+    
+-- Update
+
+UPDATE 
+	REA01
+SET 
+	A01F02 = 'Yash'
+WHERE
+	A01F01 = 1001;
+
+-- Delete
+
+DELETE FROM
+	REA01
+WHERE 
+	A01F01 = 1005;
+
+SELECT 
+	A01F01,
+    A01F02
+FROM 
+	REA01;
+
+-- Limit
+
+-- Using Where Clause || Select books which pages are less than 200
+
+SELECT
+	O01F01,
+    O01F02,
+    O01F03
+FROM
+	BOO01
+WHERE
+	O01F06 < 200
+LIMIT 
+	10;
+
+-- Using Offset
+
+SELECT
+	O01F01,
+    O01F02,
+    O01F03
+FROM
+	BOO01
+LIMIT 
+	10
+OFFSET		-- Neglecting first 3 records
+	3;
+    
+-- Count || Number of books in BOO01 Table
+
+SELECT 
+	COUNT(O01F01)
+FROM 
+	BOO01;
+    
+-- Sum || Total Pages in B001 Table
+
+SELECT 
+	SUM(O01F06)
+FROM 
+	BOO01;
+
+-- Average || Avg pages in BOO01 Table
+
+SELECT 
+	AVG(O01F06)
+FROM 
+	BOO01;
+
+-- Minimum || Book with minimum pages in BOO01 Table
+
+SELECT 
+	MIN(O01F06)
+FROM 
+	BOO01;
+
+-- Maximum || Book with maximum pages in BOO01 Table
+
+SELECT 
+	MAX(O01F06)
+FROM 
+	BOO01;
