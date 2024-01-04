@@ -323,4 +323,79 @@ WHERE
 				BOO01
     );
 
+-- join
+-- Books which has same number in pages but are in different table
+
+SELECT 
+	BOO01.O01F01,
+    BOO01.O01F02,
+    BOO01.O01F06,
+    BOO02.O02F01,
+    BOO02.O02F02,
+    BOO02.O02F06
+FROM
+	BOO01 JOIN BOO02
+ON
+	BOO01.O01F06 = BOO02.O02F06;
+
+-- Union
+-- All books of Genre 1
+
+SELECT
+	'BookTable1' AS Type,
+    O01F01 AS BookId,
+    O01F02 AS BookName
+FROM 
+	BOO01
+WHERE
+	O01F05 = 'Genre1'
+UNION 
+SELECT
+	'BookTable2' AS Type,
+	O02F01,
+    O02F02
+FROM
+	BOO02
+WHERE
+	O02F05 = 'Genre1';
     
+-- View
+
+-- Virtual Table for books of publisher1
+
+CREATE OR REPLACE VIEW
+	v_publisher1
+AS 
+(SELECT
+	'BookTable1' AS Type,
+    O01F01 AS BookId,
+    O01F02 AS BookName
+FROM 
+	BOO01
+WHERE
+	O01F04 = 'Publisher1'
+UNION 
+SELECT
+	'BookTable2' AS Type,
+	O02F01,
+    O02F02
+FROM
+	BOO02
+WHERE
+	O02F05 = 'Publisher1');
+    
+SELECT 
+	*
+FROM
+	v_publisher1;
+
+-- Explain Keyword
+
+EXPLAIN SELECT 
+	O01F01,
+    O01F02
+    O01F03
+FROM
+	BOO01
+WHERE
+	O01F04 = 'Publisher3';
