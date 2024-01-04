@@ -267,3 +267,60 @@ SELECT
 	MAX(O01F06)
 FROM 
 	BOO01;
+    
+-- Sub Queries
+
+-- Show book deatails in shelf 4 for table 1
+
+SELECT 
+	O01F01,
+    O01F02,
+    O01F03
+FROM 
+	BOO01
+WHERE
+	O01F07
+IN
+	(SELECT 
+		O01F07
+	FROM
+		BOO01
+	WHERE
+		O01F07 = 4
+    );
+
+-- Find details of books whose pages are more than avg. pages per book in library
+
+SELECT 
+	O01F01,
+    O01F02,
+    O01F03
+FROM
+	BOO01
+WHERE
+	O01F06
+IN 
+	(SELECT 
+		O01F06
+     FROM
+		BOO01
+	 WHERE
+		O01F06 > (SELECT AVG(O01F06) FROM BOO01)
+	);
+    
+-- Corelated Subqueries with alias name
+
+SELECT 
+	O01F01,
+    O01F02,
+    O01F03
+FROM 
+	BOO01 v_book_more_pages 
+WHERE 
+	O01F06 > (SELECT 
+				AVG(O01F06)
+			FROM
+				BOO01
+    );
+
+    
