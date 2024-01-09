@@ -1,14 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\14String\\14String",
-    "\\15DateTime\\15DateTime",
-    "\\16BasicFileOperation\\16BasicFileOperation",
     "\\17IntroductionToWebDevelopment",
     "\\17IntroductionToWebDevelopment\\17IntroductionToWebDevelopment",
     "\\18WebAPIApplication",
     "\\18WebAPIApplication\\18WebAPIApplication"
   ],
-  "SelectedNode": "\\18WebAPIApplication\\18WebAPIApplication.sln",
+  "SelectedNode": "\\18WebAPIApplication",
   "PreviewInSolutionExplorer": false
 }

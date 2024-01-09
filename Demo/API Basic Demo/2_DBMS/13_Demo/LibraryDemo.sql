@@ -12,38 +12,48 @@ USE
 
 CREATE TABLE 
 	BOO01(						-- Book01 Table 			 
-		O01F01 INT PRIMARY KEY, -- ISBN Number 
-		O01F02 VARCHAR(50),		-- Book Name 
-		O01F03 VARCHAR(50),		-- Author Name
-		O01F04 VARCHAR(50),		-- Publisher Name  
-		O01F05 VARCHAR(50),		-- Genre 
-        O01F06 INT, 			-- Number of Pages
-        O01F07 INT, 			-- Shelf Location
-        O01F08 BOOL DEFAULT TRUE -- Availability Status 
+		O01F01 INT PRIMARY KEY COMMENT "ISBN Number", 
+		O01F02 VARCHAR(50) COMMENT "Book Name", 
+		O01F03 VARCHAR(50) COMMENT "Author Name",
+		O01F04 VARCHAR(50) COMMENT "Publisher Name",  
+		O01F05 VARCHAR(50) COMMENT "Genre", 
+        O01F06 INT COMMENT "Number of Pages",
+        O01F07 INT COMMENT "Shelf Location",
+        O01F08 BOOL DEFAULT TRUE COMMENT "Availability Status" 
 );
 
 CREATE TABLE 
 	BOO02(						-- Book02 Table 			 
-		O02F01 INT PRIMARY KEY, -- ISBN Number 
-		O02F02 VARCHAR(50),		-- Book Name 
-		O02F03 VARCHAR(50),		-- Author Name
-		O02F04 VARCHAR(50),		-- Publisher Name  
-		O02F05 VARCHAR(50),		-- Genre 
-        O02F06 INT, 			-- Number of Pages
-        O02F07 INT, 			-- Shelf Location
-        O02F08 BOOL DEFAULT TRUE -- Availability Status 
+		O02F01 INT PRIMARY KEY COMMENT "ISBN Number", 
+		O02F02 VARCHAR(50) COMMENT "Book Name", 
+		O02F03 VARCHAR(50) COMMENT "Author Name",
+		O02F04 VARCHAR(50) COMMENT "Publisher Name  ",
+		O02F05 VARCHAR(50) COMMENT "Genre ",
+        O02F06 INT COMMENT "Number of Pages",
+        O02F07 INT COMMENT "Shelf Location",
+        O02F08 BOOL DEFAULT TRUE COMMENT "Availability Status"
 );
 
 -- Create Reader Table 
 
 CREATE TABLE 
 	REA01 (
-		A01F01 int PRIMARY KEY AUTO_INCREMENT, 	-- Reader ID
-		A01F02 varchar(255),			  	 	-- First Name 
-        A01F03 varchar(255),					-- Last Name 
-        A01F04 varchar(255)						-- Address 
+		A01F01 INT PRIMARY KEY COMMENT "Reader ID",
+		A01F02 varchar(255) COMMENT "First Name", 
+        A01F03 varchar(255) COMMENT "Last Name",
+        A01F04 varchar(255)	COMMENT "Address"
     ) AUTO_INCREMENT = 1001;
 
+-- Create Status Table 
+
+CREATE TABLE 
+	STA01 (
+        A01F01 INT COMMENT "Reader ID",
+		A01F02 INT COMMENT "Book ID",
+        CONSTRAINT FK_ReaderID FOREIGN KEY (A01F01) REFERENCES REA01(A01F01),
+        CONSTRAINT FK_BookID FOREIGN KEY (A01F02) REFERENCES BOO02(O02F01)
+    );
+    
 -- Enter Data into Table
 
 INSERT INTO
