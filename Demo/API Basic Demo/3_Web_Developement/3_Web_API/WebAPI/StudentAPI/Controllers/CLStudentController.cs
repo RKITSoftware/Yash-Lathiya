@@ -1,0 +1,125 @@
+﻿using StudentAPI.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace StudentAPI.Controllers
+{
+    /// <summary>
+    /// Student Controller which manages all Http methods relates to student
+    /// </summary>
+    public class CLStudentController : ApiController
+    {
+        // List of Studdent's objects
+        // Static bcz it should not initialize every time method runs.
+
+        static List<Student> lstStudent;
+        
+        // Static constructor which adds initial data to the list
+        static CLStudentController() 
+        { 
+            lstStudent = new List<Student>();
+            lstStudent.Add(new Student() {u01f01 = 1001, u01f02 = "Sachin Tendulkar", u01f03 = "Computer", u01f04 = DateTime.Today});
+            lstStudent.Add(new Student() {u01f01 = 1002, u01f02 = "Mahendra Singh Dhoni", u01f03 = "Computer", u01f04 = DateTime.Today });
+        }
+
+        /// <summary>
+        /// GET : /api/student
+        /// To get deatils of all students
+        /// </summary>
+        /// <returns> 
+        ///     List of all studnet in json format
+        /// </returns>
+        [HttpGet]
+        [Route("api/student")]
+        public IHttpActionResult GetStudent()
+        {
+            return Ok(lstStudent);
+        }
+
+        /// <summary>
+        ///     GET : api/student/{enrollment}
+        ///     To get details of particular student
+        /// </summary>
+        /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to get</param>
+        /// <returns> Details of particular student object with that enrollment id </returns>
+        [HttpGet]
+        [Route("api/student/{enrollment}")]
+        public IHttpActionResult GetStudent(int enrollment)
+        {
+            Student currentStudent = lstStudent.FirstOrDefault( student  => student.u01f01 == enrollment);
+
+            if(currentStudent == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(currentStudent);
+            }
+
+        }
+
+        /// <summary>
+        /// POST : /api/student
+        /// Adds the object of student in database
+        /// </summary>
+        /// <param name="student"> Object of student which we want to add in database </param>
+        /// <returns> List of all students with added object </returns>
+        [HttpPost]
+        [Route("api/student")]
+        public IHttpActionResult PostStudent(Student student)
+        {
+            lstStudent.Add(student);
+            return Ok(lstStudent);
+        }
+
+        /// <summary>
+        /// PUT : /api/student
+        /// Updates the object of student in database
+        /// </summary>
+        /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to update </param>
+        /// <param name="student"> New object of student which we want to add in the database with that enrollment </param>
+        /// <returns> List of all students with updated object </returns>
+        [HttpPut]
+        [Route("api/student")]
+        public IHttpActionResult PutStudent(int enrollment, Student student) 
+        {
+            int index = lstStudent.FindIndex(stu => stu.u01f01 == enrollment);
+
+            if(index == -1)
+            {
+                return NotFound();
+            }
+
+            lstStudent[index] = student;
+
+            return Ok(lstStudent);
+        }
+
+        /// <summary>
+        /// DELETE : /api/student
+        /// Deletes the object of student in database
+        /// </summary>
+        /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to delete </param>
+        /// <returns> Updated List of all students after deletion of that object </returns>
+        [HttpDelete]
+        [Route("api/student")]
+        public IHttpActionResult DeleteStudent(int enrollment)
+        {
+            int index = lstStudent.FindIndex(stu => stu.u01f01 == enrollment);
+
+            if (index == -1)
+            {
+                return NotFound();
+            }
+
+            lstStudent.RemoveAt(index);
+
+            return Ok(lstStudent);
+        }
+    }
+}

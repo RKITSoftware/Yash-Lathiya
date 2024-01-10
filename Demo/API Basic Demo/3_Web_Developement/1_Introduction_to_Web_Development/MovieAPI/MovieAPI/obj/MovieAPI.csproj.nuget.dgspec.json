@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\3_Web_Developement\\1_Introduction_to_Web_Development\\MovieAPI\\MovieAPI\\MovieAPI.csproj": {}
+    "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\3_Web_Developement\\1_Introduction_to_Web_Development\\MovieAPI\\MovieAPI\\MovieAPI.csproj": {}
   },
   "projects": {
-    "D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\3_Web_Developement\\1_Introduction_to_Web_Development\\MovieAPI\\MovieAPI\\MovieAPI.csproj": {
+    "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\3_Web_Developement\\1_Introduction_to_Web_Development\\MovieAPI\\MovieAPI\\MovieAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\3_Web_Developement\\1_Introduction_to_Web_Development\\MovieAPI\\MovieAPI\\MovieAPI.csproj",
+        "projectUniqueName": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\3_Web_Developement\\1_Introduction_to_Web_Development\\MovieAPI\\MovieAPI\\MovieAPI.csproj",
         "projectName": "MovieAPI",
-        "projectPath": "D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\3_Web_Developement\\1_Introduction_to_Web_Development\\MovieAPI\\MovieAPI\\MovieAPI.csproj",
-        "packagesPath": "C:\\Users\\Yash\\.nuget\\packages\\",
-        "outputPath": "D:\\RKIT\\Github Repo\\Demo\\API Basic Demo\\3_Web_Developement\\1_Introduction_to_Web_Development\\MovieAPI\\MovieAPI\\obj\\",
+        "projectPath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\3_Web_Developement\\1_Introduction_to_Web_Development\\MovieAPI\\MovieAPI\\MovieAPI.csproj",
+        "packagesPath": "C:\\Users\\yash.l\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\3_Web_Developement\\1_Introduction_to_Web_Development\\MovieAPI\\MovieAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Yash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yash.l\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
