@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 
 namespace StudentAPI.Controllers
@@ -37,7 +38,7 @@ namespace StudentAPI.Controllers
         [Route("api/student")]
         public IHttpActionResult GetStudent()
         {
-            return Ok(lstStudent);
+            return Ok(lstStudent);  //status code 200
         }
 
         /// <summary>
@@ -54,11 +55,11 @@ namespace StudentAPI.Controllers
 
             if(currentStudent == null)
             {
-                return NotFound();
+                return NotFound(); // status code 404
             }
             else
             {
-                return Ok(currentStudent);
+                return Ok(currentStudent); //status code 200 
             }
 
         }
@@ -74,7 +75,8 @@ namespace StudentAPI.Controllers
         public IHttpActionResult PostStudent(Student student)
         {
             lstStudent.Add(student);
-            return Ok(lstStudent);
+            //return Ok(lstStudent);  //status code 200
+            return Created("Student entry created successfully", student);  // status code 201
         }
 
         /// <summary>
@@ -93,12 +95,12 @@ namespace StudentAPI.Controllers
 
             if(index == -1)
             {
-                return NotFound();
+                return NotFound();  // Status code 404
             }
 
             lstStudent[index] = student;
 
-            return Ok(lstStudent);
+            return Ok(lstStudent); // status code 200
         }
 
         /// <summary>
@@ -117,12 +119,13 @@ namespace StudentAPI.Controllers
 
             if (index == -1)
             {
-                return NotFound();
+                //return NotFound(); // status code 404
+                return BadRequest("Invalid enrollment ID"); // status code 400
             }
 
             lstStudent[index].u01f02 = name;
 
-            return Ok(lstStudent);
+            return Ok(lstStudent); // status code 200 
         }
 
         /// <summary>
@@ -139,12 +142,12 @@ namespace StudentAPI.Controllers
 
             if (index == -1)
             {
-                return NotFound();
+                return BadRequest("Invalid enrollment ID"); // status code 400
             }
 
             lstStudent.RemoveAt(index);
 
-            return Ok(lstStudent);
+            return Ok(lstStudent);  // status code 200
         }
     }
 }
