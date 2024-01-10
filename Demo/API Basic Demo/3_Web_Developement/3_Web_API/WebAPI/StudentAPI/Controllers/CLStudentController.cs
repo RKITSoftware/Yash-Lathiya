@@ -1,4 +1,5 @@
-﻿using StudentAPI.Models;
+﻿using StudentAPI.Authentication;
+using StudentAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace StudentAPI.Controllers
     /// <summary>
     /// Student Controller which manages all Http methods relates to student
     /// </summary>
+    
     public class CLStudentController : ApiController
     {
         // List of Studdent's objects
@@ -34,6 +36,7 @@ namespace StudentAPI.Controllers
         /// <returns> 
         ///     List of all studnet in json format
         /// </returns>
+        [UserAuthenticationAttribute]
         [HttpGet]
         [Route("api/student")]
         public IHttpActionResult GetStudent()
@@ -47,6 +50,7 @@ namespace StudentAPI.Controllers
         /// </summary>
         /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to get</param>
         /// <returns> Details of particular student object with that enrollment id </returns>
+        [UserAuthenticationAttribute]
         [HttpGet]
         [Route("api/student/{enrollment}")]
         public IHttpActionResult GetStudent(int enrollment)

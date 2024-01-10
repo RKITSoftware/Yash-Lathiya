@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace StudentAPI
 {
@@ -9,6 +10,14 @@ namespace StudentAPI
     {
         public static void Register(HttpConfiguration config)
         {
+            //Enable CORS
+
+            //First Parameter   : Allows requests from any origin - host
+            //Second Parameter  : Allowed Headers
+            //Third Parameter   : Allows all HTTP Methods ( GET, POST, PUT , DELETE, etc.) 
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
             // Web API configuration and services
 
             // Web API routes
