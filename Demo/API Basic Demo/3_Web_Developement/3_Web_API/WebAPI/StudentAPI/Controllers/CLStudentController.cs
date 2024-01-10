@@ -78,14 +78,15 @@ namespace StudentAPI.Controllers
         }
 
         /// <summary>
-        /// PUT : /api/student
+        /// PUT : /api/student/{enrollment}
         /// Updates the object of student in database
+        /// Updates all details within the object
         /// </summary>
         /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to update </param>
         /// <param name="student"> New object of student which we want to add in the database with that enrollment </param>
         /// <returns> List of all students with updated object </returns>
         [HttpPut]
-        [Route("api/student")]
+        [Route("api/student/{enrollment}")]
         public IHttpActionResult PutStudent(int enrollment, Student student) 
         {
             int index = lstStudent.FindIndex(stu => stu.u01f01 == enrollment);
@@ -101,13 +102,37 @@ namespace StudentAPI.Controllers
         }
 
         /// <summary>
-        /// DELETE : /api/student
+        /// PUT : /api/student/{enrollment}
+        /// Updates the object of student in database
+        /// Updates only name of the student , no need to provide other details
+        /// </summary>
+        /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to update </param>
+        /// <param name="name"> name of student which we want to modify in the database    </param>
+        /// <returns> List of all students with updated object </returns>
+        [HttpPatch]
+        [Route("api/student/{enrollment}")]
+        public IHttpActionResult PatchStudent(int enrollment, string name)
+        {
+            int index = lstStudent.FindIndex(stu => stu.u01f01 == enrollment);
+
+            if (index == -1)
+            {
+                return NotFound();
+            }
+
+            lstStudent[index].u01f02 = name;
+
+            return Ok(lstStudent);
+        }
+
+        /// <summary>
+        /// DELETE : /api/student/{enrollment}
         /// Deletes the object of student in database
         /// </summary>
         /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to delete </param>
         /// <returns> Updated List of all students after deletion of that object </returns>
         [HttpDelete]
-        [Route("api/student")]
+        [Route("api/student/{enrollment}")]
         public IHttpActionResult DeleteStudent(int enrollment)
         {
             int index = lstStudent.FindIndex(stu => stu.u01f01 == enrollment);
