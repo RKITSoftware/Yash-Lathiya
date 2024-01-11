@@ -18,6 +18,8 @@ namespace StudentAPI.Authentication
     /// </summary>
     public class UserAuthenticationAttribute : AuthorizationFilterAttribute
     {
+        #region Public Methods
+
         /// <summary>
         /// Implements authorization logic by extracting information from the request header
         /// </summary>
@@ -93,5 +95,7 @@ namespace StudentAPI.Authentication
                 
             }
         }
+
+        #endregion
     }
 }

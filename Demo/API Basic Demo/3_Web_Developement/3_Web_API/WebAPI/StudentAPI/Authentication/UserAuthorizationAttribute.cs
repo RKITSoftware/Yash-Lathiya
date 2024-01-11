@@ -15,6 +15,8 @@ namespace StudentAPI.Authentication
     /// </summary>
     public class UserAuthorizationAttribute : AuthorizeAttribute
     {
+        #region Protected Method
+
         protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
         {
             //User is authorized
@@ -31,5 +33,7 @@ namespace StudentAPI.Authentication
                 actionContext.Response = new HttpResponseMessage(HttpStatusCode.Forbidden); // Status Code 403
             }
         }
+
+        #endregion
     }
 }

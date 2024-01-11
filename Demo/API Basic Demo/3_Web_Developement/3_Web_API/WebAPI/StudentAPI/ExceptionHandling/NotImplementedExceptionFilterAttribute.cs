@@ -14,6 +14,8 @@ namespace StudentAPI.ExceptionHandling
     /// </summary>
     public class NotImplementedExceptionFilterAttribute : ExceptionFilterAttribute
     {
+        #region Public Methods
+
         /// <summary>
         /// Configures details of the NotImplementedException 
         /// like StatusCode, ResponseMesage etc . 
@@ -47,5 +49,7 @@ namespace StudentAPI.ExceptionHandling
             context.Response = response;
 
         }
+
+        #endregion
     }
 }

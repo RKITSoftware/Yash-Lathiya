@@ -16,6 +16,8 @@ namespace StudentAPI.Controllers
     /// </summary>
     public class EXExceptionController : ApiController
     {
+        #region Model Data Insertion
+
         // List of Studdent's objects
         // Static bcz it should not initialize every time method runs.
 
@@ -30,6 +32,10 @@ namespace StudentAPI.Controllers
             lstStudent.Add(new Student() { u01f01 = 1003, u01f02 = "Virat Kohli", u01f03 = "Chemical", u01f04 = DateTime.Today });
             lstStudent.Add(new Student() { u01f01 = 1004, u01f02 = "Suresh Raina", u01f03 = "Mechanical", u01f04 = DateTime.Today });
         }
+
+        #endregion
+
+        #region Public Methods
 
         // HttpResponceException
 
@@ -105,5 +111,7 @@ namespace StudentAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK); //status code 200 
             }
         }
+
+        #endregion
     }
 }

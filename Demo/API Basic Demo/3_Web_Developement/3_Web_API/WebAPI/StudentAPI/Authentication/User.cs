@@ -10,6 +10,8 @@ namespace StudentAPI.Authentication
     /// </summary>
     public class User
     {
+        #region Public Methods
+
         /// <summary>
         /// Id of User
         /// </summary>
@@ -44,5 +46,7 @@ namespace StudentAPI.Authentication
 
             return users;
         }
+
+        #endregion
     }
 }

@@ -11,6 +11,7 @@ namespace StudentAPI.Authentication
     /// </summary>
     public class UserAuthentication
     {
+        #region Public Methods
 
         // Check User exists or not
         public static bool Login(string username, string password)
@@ -39,5 +40,6 @@ namespace StudentAPI.Authentication
             return User.GetUsers().FirstOrDefault(user => user.UserName == username && user.Password == password);
         }
 
+        #endregion
     }
 }

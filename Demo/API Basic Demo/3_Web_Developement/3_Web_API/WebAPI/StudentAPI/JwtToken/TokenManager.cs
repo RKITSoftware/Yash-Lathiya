@@ -15,8 +15,14 @@ namespace StudentAPI.JwtToken
     /// </summary>
     public class TokenManager
     {
+        #region Private Variables
+
         // Secret key with the minimum 72 char
         private const string secretKey = "123456789012345678901234567890123456789012345678901234567890123456789012";
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// This method generates token by using appropriate algorithm & encoding
@@ -51,5 +57,7 @@ namespace StudentAPI.JwtToken
             // return that jwt token
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        #endregion
     }
 }
