@@ -123,6 +123,7 @@
     <Compile Include="Authentication\User.cs" />
     <Compile Include="Authentication\UserAuthentication.cs" />
     <Compile Include="Authentication\UserAuthenticationAttribute.cs" />
+    <Compile Include="Authentication\UserAuthorizationAttribute.cs" />
     <Compile Include="Controllers\CLStudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

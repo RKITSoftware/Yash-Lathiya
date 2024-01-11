@@ -5,6 +5,10 @@ using System.Web;
 
 namespace StudentAPI.Authentication
 {
+    /// <summary>
+    /// UserAuthentication class validates user, if user is valid or not 
+    /// It will check only id & password, not the role of the user
+    /// </summary>
     public class UserAuthentication
     {
 
@@ -31,6 +35,7 @@ namespace StudentAPI.Authentication
         // Extract user details
         public static User GetDetails(string username, string password)
         {
+            // FirstOrDefault Method returns the user object with its details
             return User.GetUsers().FirstOrDefault(user => user.UserName == username && user.Password == password);
         }
 

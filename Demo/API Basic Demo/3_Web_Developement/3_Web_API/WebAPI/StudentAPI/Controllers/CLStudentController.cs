@@ -12,8 +12,9 @@ namespace StudentAPI.Controllers
 {
     /// <summary>
     /// Student Controller which manages all Http methods relates to student
+    /// It will allow to access the host ony if user is authenticated ..
     /// </summary>
-    
+    [UserAuthenticationAttribute]
     public class CLStudentController : ApiController
     {
         // List of Studdent's objects
@@ -30,13 +31,14 @@ namespace StudentAPI.Controllers
         }
 
         /// <summary>
-        /// GET : /api/student
-        /// To get deatils of all students
+        ///     GET : /api/student
+        ///     To get deatils of all students
+        ///     This functionality is only provided to the user whoose role is student
         /// </summary>
         /// <returns> 
         ///     List of all studnet in json format
         /// </returns>
-        [UserAuthenticationAttribute]
+        [UserAuthorizationAttribute(Roles = "student")]
         [HttpGet]
         [Route("api/student")]
         public IHttpActionResult GetStudent()
@@ -47,10 +49,11 @@ namespace StudentAPI.Controllers
         /// <summary>
         ///     GET : api/student/{enrollment}
         ///     To get details of particular student
+        ///     This functionality is only provided to the user whoose role is student
         /// </summary>
         /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to get</param>
         /// <returns> Details of particular student object with that enrollment id </returns>
-        [UserAuthenticationAttribute]
+        [UserAuthorizationAttribute(Roles = "student")]
         [HttpGet]
         [Route("api/student/{enrollment}")]
         public IHttpActionResult GetStudent(int enrollment)
@@ -69,11 +72,13 @@ namespace StudentAPI.Controllers
         }
 
         /// <summary>
-        /// POST : /api/student
-        /// Adds the object of student in database
+        ///     POST : /api/student
+        ///     Adds the object of student in database
+        ///     This functionality is only provided to the user whoose role is teacher
         /// </summary>
         /// <param name="student"> Object of student which we want to add in database </param>
         /// <returns> List of all students with added object </returns>
+        [UserAuthorizationAttribute(Roles = "teacher")]
         [HttpPost]
         [Route("api/student")]
         public IHttpActionResult PostStudent(Student student)
@@ -84,13 +89,15 @@ namespace StudentAPI.Controllers
         }
 
         /// <summary>
-        /// PUT : /api/student/{enrollment}
-        /// Updates the object of student in database
-        /// Updates all details within the object
+        ///     PUT : /api/student/{enrollment}
+        ///     Updates the object of student in database
+        ///     Updates all details within the object
+        ///     This functionality is only provided to the user whoose role is teacher
         /// </summary>
         /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to update </param>
         /// <param name="student"> New object of student which we want to add in the database with that enrollment </param>
         /// <returns> List of all students with updated object </returns>
+        [UserAuthorizationAttribute(Roles = "teacher")]
         [HttpPut]
         [Route("api/student/{enrollment}")]
         public IHttpActionResult PutStudent(int enrollment, Student student) 
@@ -108,13 +115,15 @@ namespace StudentAPI.Controllers
         }
 
         /// <summary>
-        /// PUT : /api/student/{enrollment}
-        /// Updates the object of student in database
-        /// Updates only name of the student , no need to provide other details
+        ///     PUT : /api/student/{enrollment}
+        ///     Updates the object of student in database
+        ///     Updates only name of the student , no need to provide other details
+        ///     This functionality is only provided to the user whoose role is teacher
         /// </summary>
         /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to update </param>
         /// <param name="name"> name of student which we want to modify in the database    </param>
         /// <returns> List of all students with updated object </returns>
+        [UserAuthorizationAttribute(Roles = "teacher")]
         [HttpPatch]
         [Route("api/student/{enrollment}")]
         public IHttpActionResult PatchStudent(int enrollment, string name)
@@ -133,11 +142,13 @@ namespace StudentAPI.Controllers
         }
 
         /// <summary>
-        /// DELETE : /api/student/{enrollment}
-        /// Deletes the object of student in database
+        ///     DELETE : /api/student/{enrollment}
+        ///     Deletes the object of student in database
+        ///     This functionality is only provided to the user whoose role is hod 
         /// </summary>
         /// <param name="enrollment"> Enrollment (u01f01) of the student object which we want to delete </param>
         /// <returns> Updated List of all students after deletion of that object </returns>
+        [UserAuthorizationAttribute(Roles = "hod")]
         [HttpDelete]
         [Route("api/student/{enrollment}")]
         public IHttpActionResult DeleteStudent(int enrollment)
