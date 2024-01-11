@@ -91,18 +91,18 @@ namespace StudentAPI.Controllers
         /// <returns> Details of particular student object with that enrollment id </returns>
         [HttpGet]
         [Route("api/exceptionHttpError/{enrollment}")]
-        public IHttpActionResult GetStudentHttpError(int enrollment)
+        public HttpResponseMessage GetStudentHttpError(int enrollment)
         {
             Student currentStudent = lstStudent.FirstOrDefault(student => student.u01f01 == enrollment);
 
             if (currentStudent == null)
             {
                 var message = String.Format($"There is no student in the database with the enrollment : {enrollment}");
-                return (IHttpActionResult)Request.CreateErrorResponse(HttpStatusCode.NotFound, message);
+                return (Request.CreateErrorResponse(HttpStatusCode.NotFound, message));
             }
             else
             {
-                return Ok(currentStudent); //status code 200 
+                return Request.CreateResponse(HttpStatusCode.OK); //status code 200 
             }
         }
     }
