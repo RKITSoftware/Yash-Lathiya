@@ -28,6 +28,8 @@ namespace StudentAPI.Controllers
             lstStudent = new List<Student>();
             lstStudent.Add(new Student() {u01f01 = 1001, u01f02 = "Sachin Tendulkar", u01f03 = "Computer", u01f04 = DateTime.Today});
             lstStudent.Add(new Student() {u01f01 = 1002, u01f02 = "Mahendra Singh Dhoni", u01f03 = "Computer", u01f04 = DateTime.Today });
+            lstStudent.Add(new Student() {u01f01 = 1003, u01f02 = "Virat Kohli", u01f03 = "Chemical", u01f04 = DateTime.Today });
+            lstStudent.Add(new Student() {u01f01 = 1004, u01f02 = "Suresh Raina", u01f03 = "Mechanical", u01f04 = DateTime.Today });
         }
 
         /// <summary>
@@ -68,7 +70,6 @@ namespace StudentAPI.Controllers
             {
                 return Ok(currentStudent); //status code 200 
             }
-
         }
 
         /// <summary>

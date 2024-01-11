@@ -85,7 +85,7 @@ namespace StudentAPI.Authentication
 
                 }
                 // If any exception occurs within the process, It returns  Internal Server Error with the exception
-                catch(Exception exception)
+                catch (Exception exception)
                 {
                     // Returns Internal servar error with the stack of exception 
                     actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception); // Status Code 500

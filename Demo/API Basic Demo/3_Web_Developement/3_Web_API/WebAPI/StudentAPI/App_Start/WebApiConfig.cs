@@ -18,6 +18,10 @@ namespace StudentAPI
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
 
+            // Add NotImplemented Filter Exception
+            // config.Filters.Add(new StudentAPI.ExceptionHandling.NotImplementedExceptionFilterAttribute());
+            // Thiese exceptionFilter is workng witho
+
             // Web API configuration and services
 
             // Web API routes

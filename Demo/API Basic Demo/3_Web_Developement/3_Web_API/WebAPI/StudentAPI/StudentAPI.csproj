@@ -125,6 +125,8 @@
     <Compile Include="Authentication\UserAuthenticationAttribute.cs" />
     <Compile Include="Authentication\UserAuthorizationAttribute.cs" />
     <Compile Include="Controllers\CLStudentController.cs" />
+    <Compile Include="Controllers\EXExceptionController.cs" />
+    <Compile Include="ExceptionHandling\NotImplementedExceptionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
