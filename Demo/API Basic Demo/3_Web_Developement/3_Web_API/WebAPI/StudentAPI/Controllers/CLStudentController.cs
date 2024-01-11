@@ -17,7 +17,7 @@ namespace StudentAPI.Controllers
     [UserAuthenticationAttribute]
     public class CLStudentController : ApiController
     {
-        #region Model Data Addition
+        #region Model Data Insertion
 
         // List of Studdent's objects
         // Static bcz it should not initialize every time method runs.
