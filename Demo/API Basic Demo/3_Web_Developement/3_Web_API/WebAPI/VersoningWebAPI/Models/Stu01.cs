@@ -5,7 +5,7 @@ using System.Web;
 
 namespace VersoningWebAPI.Models
 {
-    public class Student1
+    public class Stu01
     {
         #region Public Methods
 

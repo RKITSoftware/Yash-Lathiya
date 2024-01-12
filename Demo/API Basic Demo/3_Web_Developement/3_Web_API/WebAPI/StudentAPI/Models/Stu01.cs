@@ -5,7 +5,7 @@ using System.Web;
 
 namespace StudentAPI.Models
 {
-    public class Student
+    public class Stu01
     {
         #region Public Methods
 

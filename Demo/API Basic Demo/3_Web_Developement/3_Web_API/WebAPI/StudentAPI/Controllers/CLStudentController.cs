@@ -22,16 +22,16 @@ namespace StudentAPI.Controllers
         // List of Studdent's objects
         // Static bcz it should not initialize every time method runs.
 
-        static List<Student> lstStudent;
+        static List<Stu01> lstStudent;
         
         // Static constructor which adds initial data to the list
         static CLStudentController() 
         { 
-            lstStudent = new List<Student>();
-            lstStudent.Add(new Student() {u01f01 = 1001, u01f02 = "Sachin Tendulkar", u01f03 = "Computer", u01f04 = DateTime.Today});
-            lstStudent.Add(new Student() {u01f01 = 1002, u01f02 = "Mahendra Singh Dhoni", u01f03 = "Computer", u01f04 = DateTime.Today });
-            lstStudent.Add(new Student() {u01f01 = 1003, u01f02 = "Virat Kohli", u01f03 = "Chemical", u01f04 = DateTime.Today });
-            lstStudent.Add(new Student() {u01f01 = 1004, u01f02 = "Suresh Raina", u01f03 = "Mechanical", u01f04 = DateTime.Today });
+            lstStudent = new List<Stu01>();
+            lstStudent.Add(new Stu01() {u01f01 = 1001, u01f02 = "Sachin Tendulkar", u01f03 = "Computer", u01f04 = DateTime.Today});
+            lstStudent.Add(new Stu01() {u01f01 = 1002, u01f02 = "Mahendra Singh Dhoni", u01f03 = "Computer", u01f04 = DateTime.Today });
+            lstStudent.Add(new Stu01() {u01f01 = 1003, u01f02 = "Virat Kohli", u01f03 = "Chemical", u01f04 = DateTime.Today });
+            lstStudent.Add(new Stu01() {u01f01 = 1004, u01f02 = "Suresh Raina", u01f03 = "Mechanical", u01f04 = DateTime.Today });
         }
 
         #endregion
@@ -66,7 +66,7 @@ namespace StudentAPI.Controllers
         [Route("api/student/{enrollment}")]
         public IHttpActionResult GetStudent(int enrollment)
         {
-            Student currentStudent = lstStudent.FirstOrDefault( student  => student.u01f01 == enrollment);
+            Stu01 currentStudent = lstStudent.FirstOrDefault( student  => student.u01f01 == enrollment);
 
             if(currentStudent == null)
             {
@@ -88,7 +88,7 @@ namespace StudentAPI.Controllers
         [UserAuthorizationAttribute(Roles = "teacher")]
         [HttpPost]
         [Route("api/student")]
-        public IHttpActionResult PostStudent(Student student)
+        public IHttpActionResult PostStudent(Stu01 student)
         {
             lstStudent.Add(student);
             //return Ok(lstStudent);  //status code 200
@@ -107,7 +107,7 @@ namespace StudentAPI.Controllers
         [UserAuthorizationAttribute(Roles = "teacher")]
         [HttpPut]
         [Route("api/student/{enrollment}")]
-        public IHttpActionResult PutStudent(int enrollment, Student student) 
+        public IHttpActionResult PutStudent(int enrollment, Stu01 student) 
         {
             int index = lstStudent.FindIndex(stu => stu.u01f01 == enrollment);
 

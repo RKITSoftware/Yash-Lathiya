@@ -3,28 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
-using System.Web.Http;
 using System.Web.Http.Controllers;
+using System.Web.Http;
 using System.Web.Http.Dispatcher;
 
-namespace VersoningWebAPI.CustomControllSelector
+namespace VersoningWebAPI.Custom
 {
-    public class CustomControllerSelector : DefaultHttpControllerSelector
+    /// <summary>
+    /// Manages Versioning by applying method of Accept Header
+    /// </summary>
+    public class CustomControllerSelectorAcceptHeader : DefaultHttpControllerSelector
     {
         // To pass in constructor
         HttpConfiguration _config;
+
+        #region Public Methods
 
         /// <summary>
         /// Calling constructor by passing private variable config
         /// </summary>
         /// <param name="config"> Object of the HttpConfiguration </param>
-        public CustomControllerSelector(HttpConfiguration config) : base(config) 
+        public CustomControllerSelectorAcceptHeader(HttpConfiguration config) : base(config)
         {
             config = _config;
         }
 
         /// <summary>
-        /// Logic of web api to select which controller
+        /// Logic of web api to select which controller on basis of Accept Header
         /// </summary>
         /// <param name="request"> Request by user </param>
         /// <returns></returns>
@@ -42,13 +47,20 @@ namespace VersoningWebAPI.CustomControllSelector
             // Default version as 1
             string versionNumber = "1";
 
-            // fethches the query string from the request
-            var versionQueryString = HttpUtility.ParseQueryString(request.RequestUri.Query);
+            // Get accept header which contains version of web api
+            // Count method finds out instaces of name 'version' in header which returns to where clause
+            var acceptHeader = request.Headers.Accept
+                .Where(req => 
+                    req.Parameters
+                        .Count(field =>
+                            field.Name == "version") > 0);
 
-            // Set the version number as per the request
-            if (versionQueryString["v"] != null)
+            // If it contains version in accept header
+            if (acceptHeader.Any())
             {
-                versionNumber = versionQueryString["v"].ToString();
+                // Get the first value of version from the accept header parameter
+                // First method retrieves the first element in property field specified in header
+                versionNumber = acceptHeader.First().Parameters.First(field => field.Name == "version").Value;
             }
 
             // Select the controller as per the version number
@@ -73,5 +85,7 @@ namespace VersoningWebAPI.CustomControllSelector
             // If not found then it returns null.
             return null;
         }
+
+        #endregion
     }
 }

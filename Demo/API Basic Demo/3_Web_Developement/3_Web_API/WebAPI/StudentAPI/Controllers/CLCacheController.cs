@@ -12,7 +12,7 @@ namespace StudentAPI.Controllers
     /// Shows data by using Cache
     /// If user has added items in cart then that cart items with price in the local storage
     /// </summary>
-    public class CACacheController : ApiController
+    public class CLCacheController : ApiController
     {
         #region Public Methods
 

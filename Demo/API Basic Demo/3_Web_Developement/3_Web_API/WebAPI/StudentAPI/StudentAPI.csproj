@@ -168,16 +168,16 @@
     <Compile Include="Authentication\UserAuthenticationAttribute.cs" />
     <Compile Include="Authentication\UserAuthorizationAttribute.cs" />
     <Compile Include="Caching\CacheFilter.cs" />
-    <Compile Include="Controllers\CACacheController.cs" />
+    <Compile Include="Controllers\CLCacheController.cs" />
     <Compile Include="Controllers\CLStudentController.cs" />
-    <Compile Include="Controllers\EXExceptionController.cs" />
-    <Compile Include="Controllers\JWJwtTokenSecurityController.cs" />
+    <Compile Include="Controllers\CLExceptionController.cs" />
+    <Compile Include="Controllers\CLJwtTokenSecurityController.cs" />
     <Compile Include="ExceptionHandling\NotImplementedExceptionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="JwtToken\TokenManager.cs" />
-    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Stu01.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

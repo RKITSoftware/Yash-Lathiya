@@ -15,23 +15,23 @@ namespace StudentAPI.Controllers
     /// <summary>
     /// This implements functionality of jwt token.
     /// </summary>
-    public class JWJwtTokenSecurityController : ApiController
+    public class CLJwtTokenSecurityController : ApiController
     {
         #region Model Data Insertion
 
         // List of Studdent's objects
         // Static bcz it should not initialize every time method runs.
 
-        static List<Student> lstStudent;
+        static List<Stu01> lstStudent;
 
         // Static constructor which adds initial data to the list
-        static JWJwtTokenSecurityController()
+        static CLJwtTokenSecurityController()
         {
-            lstStudent = new List<Student>();
-            lstStudent.Add(new Student() { u01f01 = 1001, u01f02 = "Sachin Tendulkar", u01f03 = "Computer", u01f04 = DateTime.Today });
-            lstStudent.Add(new Student() { u01f01 = 1002, u01f02 = "Mahendra Singh Dhoni", u01f03 = "Computer", u01f04 = DateTime.Today });
-            lstStudent.Add(new Student() { u01f01 = 1003, u01f02 = "Virat Kohli", u01f03 = "Chemical", u01f04 = DateTime.Today });
-            lstStudent.Add(new Student() { u01f01 = 1004, u01f02 = "Suresh Raina", u01f03 = "Mechanical", u01f04 = DateTime.Today });
+            lstStudent = new List<Stu01>();
+            lstStudent.Add(new Stu01() { u01f01 = 1001, u01f02 = "Sachin Tendulkar", u01f03 = "Computer", u01f04 = DateTime.Today });
+            lstStudent.Add(new Stu01() { u01f01 = 1002, u01f02 = "Mahendra Singh Dhoni", u01f03 = "Computer", u01f04 = DateTime.Today });
+            lstStudent.Add(new Stu01() { u01f01 = 1003, u01f02 = "Virat Kohli", u01f03 = "Chemical", u01f04 = DateTime.Today });
+            lstStudent.Add(new Stu01() { u01f01 = 1004, u01f02 = "Suresh Raina", u01f03 = "Mechanical", u01f04 = DateTime.Today });
         }
 
         #endregion
@@ -80,5 +80,6 @@ namespace StudentAPI.Controllers
         }
 
         #endregion
+
     }
 }
