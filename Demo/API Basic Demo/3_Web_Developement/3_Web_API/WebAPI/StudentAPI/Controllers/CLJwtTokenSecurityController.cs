@@ -60,6 +60,14 @@ namespace StudentAPI.Controllers
             return Unauthorized();
         }
 
+        [HttpGet]
+        [Route("api/IsJwtTokenValid")]
+        [Authorize]
+        public IHttpActionResult IsJwtTokenValid()
+        {
+            return Ok("Yes - Valid");
+        }
+
         /// <summary>
         /// Checks user is valid or not
         /// </summary>
