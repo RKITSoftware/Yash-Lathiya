@@ -176,6 +176,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="JwtToken\JwtTokenAuthentication.cs" />
     <Compile Include="JwtToken\TokenManager.cs" />
     <Compile Include="Models\Stu01.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

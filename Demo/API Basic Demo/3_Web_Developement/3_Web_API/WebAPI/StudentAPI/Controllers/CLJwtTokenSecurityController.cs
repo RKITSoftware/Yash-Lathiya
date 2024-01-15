@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Security;
 
@@ -60,19 +61,24 @@ namespace StudentAPI.Controllers
             return Unauthorized();
         }
 
+        /// <summary>
+        ///     GET : /api/IsJwtTokenValid
+        ///     Authenticates that Jwt token is valid or not.
+        /// </summary>
+        /// <returns> If token is correct it retuens Ok response </returns>
         [HttpGet]
         [Route("api/IsJwtTokenValid")]
-        [Authorize]
+        [JwtTokenAuthentication]
         public IHttpActionResult IsJwtTokenValid()
         {
-            return Ok("Yes - Valid");
+            return Ok("Yes - Jwt Token is Valid"); // Status Code 200
         }
 
         /// <summary>
         /// Checks user is valid or not
         /// </summary>
         /// <param name="username"> Username </param>
-        /// <param name="password"> PAssword </param>
+        /// <param name="password"> Password </param>
         /// <returns></returns>
         public bool IsValidUser(string username, string password)
         {

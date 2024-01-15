@@ -46,7 +46,7 @@ namespace StudentAPI.JwtToken
 
             // Jwt Token Generation with the 1 hr timeout
             var token = new JwtSecurityToken(
-            
+
                 issuer: "http://localhost:53929/",
                 audience: "http://localhost:53929/",
                 claims: claims,
