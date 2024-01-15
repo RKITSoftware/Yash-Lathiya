@@ -21,7 +21,7 @@ namespace UrlShortner.Controllers
         private static int shortCodeLength = 6;
 
         // Out domain
-        const string domain = "http://www.urlShortner.com/";  
+        const string domain = "http://localhost:50704/api/redirect/";  
 
         /// <summary>
         ///     POST : /api/shorturl
