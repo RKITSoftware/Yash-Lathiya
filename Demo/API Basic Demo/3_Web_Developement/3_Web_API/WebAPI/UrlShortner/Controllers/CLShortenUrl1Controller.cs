@@ -1,19 +1,23 @@
-﻿using System;
+﻿using UrlShortner.ExceptionHandling;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Security;
 using System.Web.Services.Description;
+using UrlShortner.Authentication;
 using UrlShortner.Models;
-
 namespace UrlShortner.Controllers
 {
     /// <summary>
     /// This controller handles the request related to Url Shortning, Redirection & analytics
     /// </summary>
-    public class CLShortenUrlController : ApiController
+    public class CLShortenUrl1Controller : ApiController
     {
+        #region Private Fields
+
         // Generates list of URL - Works as a database in this project 
         private static List<Sho01> urlDatabase = new List<Sho01>();
 
@@ -21,7 +25,11 @@ namespace UrlShortner.Controllers
         private static int shortCodeLength = 6;
 
         // Out domain
-        const string domain = "http://localhost:50704/api/redirect/";  
+        private const string domain = "http://localhost:50704/api/redirect/";
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     POST : /api/shorturl
@@ -30,6 +38,8 @@ namespace UrlShortner.Controllers
         /// <returns> Shorten Url </returns>
         [HttpPost]
         [Route("api/shortUrl")]
+        [UserAuthenticationAttribute]
+        [UserAuthorizationAttribute(Roles = "user")]
         public IHttpActionResult ShortUrl([FromBody] string originalUrl)
         {
             // If original url is wrong
@@ -39,7 +49,10 @@ namespace UrlShortner.Controllers
                 return BadRequest("Please Enter Valid Url"); 
             }
 
+            // Generate short code
             string shortCode = GenerateShortCode(originalUrl);
+
+            // Add shorten url details in the urlDatabase.
 
             var shortenedUrl = new Sho01
             {
@@ -48,9 +61,9 @@ namespace UrlShortner.Controllers
                 o01f03 = DateTime.Now.AddDays(30),
                 o01f04 = 0
             };
-
             urlDatabase.Add(shortenedUrl);
 
+            // Return shortenUrl
             return Ok(new
             {
                 Message = "Shorten Url is created Successfully",
@@ -100,7 +113,19 @@ namespace UrlShortner.Controllers
             // If shorten url not found -> returns error " Not found "
             if(shortenedUrl == null)
             {
-                return NotFound();
+                try
+                {
+                    throw new UrlNotFoundException(shortCode);
+                }
+                catch(UrlNotFoundException ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+            // If url is expired -> returns error " Url is expired "
+            else if (DateTime.Now > shortenedUrl.o01f03 )
+            {
+                return BadRequest(" Url is expired");
             }
             // Otherwise redirects to the original url by incrementing click count
             else
@@ -121,6 +146,8 @@ namespace UrlShortner.Controllers
         /// <returns> Proviedes analytics of that url </returns>
         [HttpGet]
         [Route("api/analytics/{shortCode}")]
+        [UserAuthenticationAttribute]
+        [UserAuthorizationAttribute(Roles = "user")]
         public IHttpActionResult UrlAnalytics(string shortCode)
         {
             // Select that Url object
@@ -129,7 +156,14 @@ namespace UrlShortner.Controllers
             // If shorten url not found -> returns error " Not found "
             if (shortenedUrl == null)
             {
-                return NotFound();
+                try
+                {
+                    throw new UrlNotFoundException(shortCode);
+                }
+                catch (UrlNotFoundException ex)
+                {
+                    return BadRequest(ex.Message);
+                }
             }
             // Otherwise shows analytics of that shorten Url
             else
@@ -144,5 +178,36 @@ namespace UrlShortner.Controllers
                 }) ;
             }
         }
+
+        /// <summary>
+        /// This method deletes the shorten url.
+        /// </summary>
+        /// <param name="shortCode"> Short Code </param>
+        /// <returns> Ok Response </returns>
+        [HttpDelete]
+        [Route("api/deleteShortenUrl/{shortCode}")]
+        [UserAuthenticationAttribute]
+        [UserAuthorizationAttribute(Roles = "admin")]
+        public IHttpActionResult DeleteShortenUrl(string shortCode)
+        {
+            // Find index of the url
+            int index = urlDatabase.FindIndex( url => url.o01f01 == shortCode);
+
+            //If shorten url not exists
+            if(index == -1)
+            {
+                return BadRequest(" Url is invalid ");
+            }
+
+            // Delete the shortenUrl from database
+            urlDatabase.RemoveAt(index);
+
+            return Ok(new
+            {
+                Message = $"Shorten url with short code {shortCode} deleted successfully"
+            });
+        }
+
+        #endregion
     }
 }

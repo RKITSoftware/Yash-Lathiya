@@ -19,8 +19,7 @@ namespace StudentAPI
             config.EnableCors(cors);
 
             // Add NotImplemented Filter Exception
-            // config.Filters.Add(new StudentAPI.ExceptionHandling.NotImplementedExceptionFilterAttribute());
-            // Thiese exceptionFilter is workng witho
+            config.Filters.Add(new StudentAPI.ExceptionHandling.NotImplementedExceptionFilterAttribute());
 
             // Web API configuration and services
 

@@ -27,7 +27,7 @@ namespace VersoningWebAPI
             //config.Routes.MapHttpRoute(
             //    name: "ApiVersion1",
             //    routeTemplate: "api/v1/student1",
-            //    defaults: new { controller = "STStudentV1" }
+            //    defaults: new { controller = "CLStudentV1" }
             //);
 
             // API Version 2
@@ -35,7 +35,7 @@ namespace VersoningWebAPI
             //config.Routes.MapHttpRoute(
             //    name: "ApiVersion2",
             //    routeTemplate: "api/v1/student2",
-            //    defaults: new { controller = "STStudentV2" }
+            //    defaults: new { controller = "CLStudentV2" }
             //);
 
 
