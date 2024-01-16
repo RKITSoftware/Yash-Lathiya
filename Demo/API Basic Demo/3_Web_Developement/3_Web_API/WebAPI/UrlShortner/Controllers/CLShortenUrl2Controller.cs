@@ -49,7 +49,7 @@ namespace UrlShortner.Controllers
         {
             // If original url is wrong
             // Null or Contains white space 
-            if (originalUrl == null || originalUrl.Contains(' '))
+            if (originalUrl == "" || originalUrl.Contains(' '))
             {
                 return BadRequest("Please Enter Valid Url");
             }
