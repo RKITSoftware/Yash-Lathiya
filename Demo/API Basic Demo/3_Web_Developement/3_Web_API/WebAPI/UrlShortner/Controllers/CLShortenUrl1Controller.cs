@@ -9,11 +9,14 @@ using System.Web.Security;
 using System.Web.Services.Description;
 using UrlShortner.Authentication;
 using UrlShortner.Models;
+using UrlShortner.Caching;
+
 namespace UrlShortner.Controllers
 {
     /// <summary>
     /// This controller handles the request related to Url Shortning, Redirection & analytics
     /// </summary>
+    [RoutePrefix("api/v1")]
     public class CLShortenUrl1Controller : ApiController
     {
         #region Private Fields
@@ -25,19 +28,20 @@ namespace UrlShortner.Controllers
         private static int shortCodeLength = 6;
 
         // Out domain
-        private const string domain = "http://localhost:50704/api/redirect/";
+        private const string domain = "http://localhost:50704/api/v1/redirect";
 
         #endregion
 
         #region Public Methods
 
         /// <summary>
-        ///     POST : /api/shorturl
+        ///     POST : /api/v1/shorturl
         ///     Accepts long url form body of request & generate short url of it & stores in database
+        ///     Role based authorization for -> user
         /// </summary>
         /// <returns> Shorten Url </returns>
         [HttpPost]
-        [Route("api/shortUrl")]
+        [Route("shortUrl")]
         [UserAuthenticationAttribute]
         [UserAuthorizationAttribute(Roles = "user")]
         public IHttpActionResult ShortUrl([FromBody] string originalUrl)
@@ -98,13 +102,14 @@ namespace UrlShortner.Controllers
         }
 
         /// <summary>
-        ///     GET : /api/redirect/{shortCode}
+        ///     GET : /api/v1/redirect/{shortCode}
         ///     Redirects to short url & increment click count of that url
+        ///     No authentication -> Public access
         /// </summary>
         /// <param name="shortCode"> Generated Short Code of Url </param>
         /// <returns> Redirects to original Url </returns>
         [HttpGet]
-        [Route("api/redirect/{shortCode}")]
+        [Route("redirect/{shortCode}")]
         public IHttpActionResult RedirectUrl(string shortCode)
         {
             // Select that Url object
@@ -141,13 +146,15 @@ namespace UrlShortner.Controllers
         /// <summary>
         ///     GET : /api/analytics/{shortCode}
         ///     Get analytics of particular url 
+        ///     Role based authorization for -> User
         /// </summary>
         /// <param name="shortCode"> Generated Short Code of Url </param>
         /// <returns> Proviedes analytics of that url </returns>
         [HttpGet]
-        [Route("api/analytics/{shortCode}")]
+        [Route("analytics/{shortCode}")]
         [UserAuthenticationAttribute]
         [UserAuthorizationAttribute(Roles = "user")]
+        [CacheFilter(TimeDuration = 10)]
         public IHttpActionResult UrlAnalytics(string shortCode)
         {
             // Select that Url object
@@ -181,11 +188,13 @@ namespace UrlShortner.Controllers
 
         /// <summary>
         /// This method deletes the shorten url.
+        /// DELETE : api/v1/deleteUrl/{shortCode}
+        /// Role based authorization for -> admin
         /// </summary>
         /// <param name="shortCode"> Short Code </param>
         /// <returns> Ok Response </returns>
         [HttpDelete]
-        [Route("api/deleteShortenUrl/{shortCode}")]
+        [Route("deleteUrl/{shortCode}")]
         [UserAuthenticationAttribute]
         [UserAuthorizationAttribute(Roles = "admin")]
         public IHttpActionResult DeleteShortenUrl(string shortCode)

@@ -23,31 +23,31 @@ namespace UrlShortner
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
 
-           
+
 
             // Web API routes
 
-            //config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes();
 
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
 
             /// Custom Header Versioning
 
             // Replace the customController with the default httpControllerselector of the web api
 
-            config.Services.Replace(typeof(IHttpControllerSelector), new VersionControllerSelector(config));
+            //config.Services.Replace(typeof(IHttpControllerSelector), new VersionControllerSelector(config));
 
             // Routing path of the customControllerSelector
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultRoute",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultRoute",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
 
 
         }
