@@ -1,0 +1,140 @@
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\GenericDictionary.dll.config
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\GenericDictionary.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\GenericDictionary.pdb
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\csc.exe
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\csc.exe.config
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\csc.rsp
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\csi.exe
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\csi.exe.config
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\csi.rsp
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.Managed.Core.targets
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.Win32.Primitives.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.AppContext.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Collections.Immutable.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Console.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Globalization.Calendars.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.IO.Compression.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.IO.Compression.ZipFile.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.IO.FileSystem.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Net.Http.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Net.Sockets.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Reflection.Metadata.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Security.Cryptography.Encoding.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Security.Cryptography.Primitives.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Threading.Tasks.Extensions.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.ValueTuple.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Xml.ReaderWriter.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Xml.XmlDocument.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Xml.XPath.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\System.Xml.XPath.XDocument.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\vbc.exe
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\vbc.exe.config
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\vbc.rsp
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\VBCSCompiler.exe
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\roslyn\VBCSCompiler.exe.config
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\Newtonsoft.Json.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\System.Net.Http.Formatting.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\System.Web.Http.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\System.Web.Http.WebHost.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\Newtonsoft.Json.xml
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\System.Net.Http.Formatting.xml
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\System.Web.Http.xml
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\System.Web.Http.WebHost.xml
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\obj\Debug\GenericDictionary.csproj.AssemblyReference.cache
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\obj\Debug\GenericDictionary.csproj.CoreCompileInputs.cache
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\obj\Debug\GenericDictionary.csproj.CopyComplete
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\obj\Debug\GenericDictionary.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\obj\Debug\GenericDictionary.pdb
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\Microsoft.Web.Infrastructure.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\Swashbuckle.Core.dll
+F:\Yash Lathiya\Yash-Lathiya\GenericDictionary\GenericDictionary\bin\WebActivatorEx.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\GenericDictionary.dll.config
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\GenericDictionary.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\GenericDictionary.pdb
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\csc.exe
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\csc.exe.config
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\csc.rsp
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\csi.exe
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\csi.exe.config
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\csi.rsp
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.AppContext.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Console.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.IO.Compression.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Net.Http.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Net.Sockets.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.ValueTuple.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Xml.XPath.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\vbc.exe
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\vbc.exe.config
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\vbc.rsp
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\VBCSCompiler.exe
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\Newtonsoft.Json.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\Swashbuckle.Core.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\System.Net.Http.Formatting.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\System.Web.Http.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\System.Web.Http.WebHost.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\WebActivatorEx.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\Newtonsoft.Json.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\System.Net.Http.Formatting.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\System.Web.Http.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\System.Web.Http.WebHost.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\obj\Debug\GenericDictionary.csproj.AssemblyReference.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\obj\Debug\GenericDictionary.csproj.CoreCompileInputs.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\obj\Debug\GenericDictionary.csproj.CopyComplete
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\obj\Debug\GenericDictionary.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericDictionary\GenericDictionary\obj\Debug\GenericDictionary.pdb
