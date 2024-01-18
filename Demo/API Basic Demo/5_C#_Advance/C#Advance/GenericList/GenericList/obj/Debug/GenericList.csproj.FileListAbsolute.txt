@@ -138,3 +138,9 @@ C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Adv
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericList\GenericList\obj\Debug\GenericList.csproj.CopyComplete
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericList\GenericList\obj\Debug\GenericList.dll
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericList\GenericList\obj\Debug\GenericList.pdb
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericList\GenericList\bin\Autofac.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericList\GenericList\bin\Autofac.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericList\GenericList\bin\Castle.Core.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericList\GenericList\bin\Castle.Windsor.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericList\GenericList\bin\Castle.Core.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\GenericList\GenericList\bin\Castle.Windsor.xml

@@ -77,13 +77,12 @@ namespace GenericList.Controllers
             }
         }
 
-        // You need to implement this method in your derived classes to get the ID of the entity
+        // We need to implement this method in your derived classes to get the ID of the entity
         protected virtual int GetEntityId(T entity)
         {
-            // You may need to implement this based on your entity structure
-            // For simplicity, we assume the entity has an integer property named "Id"
             // This method can be overridden in derived classes for custom implementations
-            return (int)entity.GetType().GetProperty("Id").GetValue(entity);
+            return 0;
+
         }
     }
 }
