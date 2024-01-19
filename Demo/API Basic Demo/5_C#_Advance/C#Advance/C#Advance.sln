@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_Types_of_Class", "1_Types
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_Generics", "2_Generics\2_Generics.csproj", "{7FC0868B-2E2D-49C7-BBA4-6529D102E08A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_1_Generics_Stack", "2_1_Generics_Stack\2_1_Generics_Stack.csproj", "{EDAD849B-8EB0-4FE0-961C-2133E3797286}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericList", "GenericList\GenericList\GenericList.csproj", "{209B1BB4-FE75-4E98-B191-E718BFEF1EB2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericDictionary", "GenericDictionary\GenericDictionary\GenericDictionary.csproj", "{C855D7B8-5230-466D-859A-3E331E3689AD}"
@@ -31,10 +29,6 @@ Global
 		{7FC0868B-2E2D-49C7-BBA4-6529D102E08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC0868B-2E2D-49C7-BBA4-6529D102E08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FC0868B-2E2D-49C7-BBA4-6529D102E08A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EDAD849B-8EB0-4FE0-961C-2133E3797286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EDAD849B-8EB0-4FE0-961C-2133E3797286}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EDAD849B-8EB0-4FE0-961C-2133E3797286}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EDAD849B-8EB0-4FE0-961C-2133E3797286}.Release|Any CPU.Build.0 = Release|Any CPU
 		{209B1BB4-FE75-4E98-B191-E718BFEF1EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{209B1BB4-FE75-4E98-B191-E718BFEF1EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{209B1BB4-FE75-4E98-B191-E718BFEF1EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU

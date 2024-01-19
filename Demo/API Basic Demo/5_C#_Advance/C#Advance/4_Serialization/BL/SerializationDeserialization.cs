@@ -1,18 +1,10 @@
 ﻿using _4_Serialization.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Swashbuckle.Swagger;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Script.Serialization;
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-using System.Web.Http;
 
 namespace _4_Serialization.BL
 {
