@@ -124,6 +124,8 @@
     <Compile Include="Authentication\UserAuthentication.cs" />
     <Compile Include="Authentication\UserAuthenticationAttribute.cs" />
     <Compile Include="Authentication\UserAuthorizationAttribute.cs" />
+    <Compile Include="BL\BLShortenUrl1.cs" />
+    <Compile Include="BL\BLShortenUrl2.cs" />
     <Compile Include="Caching\CacheFilter.cs" />
     <Compile Include="Controllers\CLShortenUrl2Controller.cs" />
     <Compile Include="Controllers\CLShortenUrl1Controller.cs" />

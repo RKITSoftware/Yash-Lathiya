@@ -66,7 +66,6 @@ namespace StudentAPI.Controllers
             {
                 return Ok(currentStudent); //status code 200 
             }
-
         }
 
         // Exception Filter

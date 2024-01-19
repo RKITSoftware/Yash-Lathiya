@@ -1,4 +1,5 @@
-﻿using StudentAPI.Caching;
+﻿using StudentAPI.BL;
+using StudentAPI.Caching;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,20 +26,10 @@ namespace StudentAPI.Controllers
         /// </returns>
         [HttpGet]
         [Route("api/cart/")]
-        [CacheFilter(TimeDuration = 10)]
+        [CacheFilter(TimeDuration = 100)]
         public IHttpActionResult GetCart()
         {
-            // Cart consists data of itemname and price
-            Dictionary<string, int> cart = new Dictionary<string, int>();
-
-            cart.Add("item1", 12000);
-            cart.Add("item2", 14000);
-            cart.Add("item3", 16000);
-            cart.Add("item4", 18000);
-            cart.Add("item5", 22000);
-            cart.Add("item6", 24000);
-
-            return Ok(cart);
+            return Ok(CacheManager.GetProducts());    
         }
 
         #endregion
