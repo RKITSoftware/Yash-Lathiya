@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_File_System", "3_File_Sys
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_Serialization", "4_Serialization\4_Serialization.csproj", "{8B9EE8AD-820C-47B9-9D5E-2BF49C705EE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9_ORM_Tool", "9_ORM_Tool\9_ORM_Tool.csproj", "{BED30691-CB59-4F6D-8A9B-9D71DA35780A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{8B9EE8AD-820C-47B9-9D5E-2BF49C705EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B9EE8AD-820C-47B9-9D5E-2BF49C705EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B9EE8AD-820C-47B9-9D5E-2BF49C705EE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BED30691-CB59-4F6D-8A9B-9D71DA35780A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BED30691-CB59-4F6D-8A9B-9D71DA35780A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BED30691-CB59-4F6D-8A9B-9D71DA35780A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BED30691-CB59-4F6D-8A9B-9D71DA35780A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
