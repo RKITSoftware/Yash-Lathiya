@@ -8,6 +8,8 @@ using System.Web.Http;
 
 namespace _6_Lambda_Expression.Controllers
 {
+    #region Public Methods
+
     /// <summary>
     /// Controller which demonstrates use of Lambda Expression
     /// </summary>
@@ -38,5 +40,7 @@ namespace _6_Lambda_Expression.Controllers
             MovieManager movieManager = new MovieManager();
             return Ok(movieManager.GetbyGenre(genre));
         }
+
+        #endregion
     }
 }
