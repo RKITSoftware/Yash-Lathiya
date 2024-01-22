@@ -1,0 +1,15 @@
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\bin\Debug\net6.0\8_LINQ.exe
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\bin\Debug\net6.0\8_LINQ.deps.json
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\bin\Debug\net6.0\8_LINQ.runtimeconfig.json
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\bin\Debug\net6.0\8_LINQ.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\bin\Debug\net6.0\8_LINQ.pdb
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\obj\Debug\net6.0\8_LINQ.csproj.AssemblyReference.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\obj\Debug\net6.0\8_LINQ.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\obj\Debug\net6.0\8_LINQ.AssemblyInfoInputs.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\obj\Debug\net6.0\8_LINQ.AssemblyInfo.cs
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\obj\Debug\net6.0\8_LINQ.csproj.CoreCompileInputs.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\obj\Debug\net6.0\8_LINQ.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\obj\Debug\net6.0\refint\8_LINQ.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\obj\Debug\net6.0\8_LINQ.pdb
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\obj\Debug\net6.0\8_LINQ.genruntimeconfig.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\8_LINQ\obj\Debug\net6.0\ref\8_LINQ.dll
