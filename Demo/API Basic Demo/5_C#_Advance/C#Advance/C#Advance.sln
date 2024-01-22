@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_Serialization", "4_Serial
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9_ORM_Tool", "9_ORM_Tool\9_ORM_Tool.csproj", "{BED30691-CB59-4F6D-8A9B-9D71DA35780A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6_Lambda_Expression", "6_Lambda_Expression\6_Lambda_Expression.csproj", "{1647A695-6AFD-400B-A1D1-340ACE54A661}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{BED30691-CB59-4F6D-8A9B-9D71DA35780A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BED30691-CB59-4F6D-8A9B-9D71DA35780A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BED30691-CB59-4F6D-8A9B-9D71DA35780A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1647A695-6AFD-400B-A1D1-340ACE54A661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1647A695-6AFD-400B-A1D1-340ACE54A661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1647A695-6AFD-400B-A1D1-340ACE54A661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1647A695-6AFD-400B-A1D1-340ACE54A661}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
