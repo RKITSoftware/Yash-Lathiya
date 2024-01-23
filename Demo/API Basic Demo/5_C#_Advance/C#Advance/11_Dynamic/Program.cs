@@ -1,6 +1,6 @@
 ﻿namespace _11_Dynamic
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {

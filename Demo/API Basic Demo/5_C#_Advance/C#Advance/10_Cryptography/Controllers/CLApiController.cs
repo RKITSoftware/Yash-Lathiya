@@ -40,6 +40,52 @@ namespace _10_Cryptography.Controllers
             return Ok(AesAlgo.DecryptCipherText(cipherText));
         }
 
+        /// <summary>
+        /// Encryption by Triple DES Algorithm
+        /// </summary>
+        /// <returns> Ciphertext </returns>
+        [HttpGet]
+        [Route("api/tripleDes/encryption")]
+        public IHttpActionResult GetTripleDesCipher(string plainText)
+        {
+            return Ok(TripleDes.Encrypt(plainText));
+        }
+
+        /// <summary>
+        /// Decryption by Triple DES Algorithm
+        /// </summary>
+        /// <param name="cipherText"> Generated ciphertext in previous method </param>
+        /// <returns> Plain text </returns>
+        [HttpGet]
+        [Route("api/TripleDes/decryption")]
+        public IHttpActionResult GetTripleDesPlain(string cipherText)
+        {
+            return Ok(TripleDes.Decrypt(cipherText));
+        }
+
+
+        /// <summary>
+        /// Encryption by RSA Algorithm
+        /// </summary>
+        /// <returns> Ciphertext </returns>
+        [HttpGet]
+        [Route("api/Rsa/encryption")]
+        public IHttpActionResult GetRsaCipher(string plainText)
+        {
+            return Ok(RsaAlgo.Encrypt(plainText));
+        }
+
+        /// <summary>
+        /// Decryption by RSA Algorithm
+        /// </summary>
+        /// <param name="cipherText"> Generated ciphertext in previous method </param>
+        /// <returns> Plain text </returns>
+        [HttpGet]
+        [Route("api/Rsa/decryption")]
+        public IHttpActionResult GetRsaPlain(string cipherText)
+        {
+            return Ok(RsaAlgo.Decrypt(cipherText));
+        }
         #endregion
     }
 }
