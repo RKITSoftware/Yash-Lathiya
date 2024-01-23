@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _8_LINQ.QueryExpression
+namespace _8_LINQ.Types
 {
     /// <summary>
     /// Explains LINQ Query Expression
     /// </summary>
     static class QueryExpression
     {
+        #region Public Methods
+
         public static void QueryExpressionLINQ()
         {
             // Specify the data source.
@@ -27,6 +29,10 @@ namespace _8_LINQ.QueryExpression
             {
                 Console.Write(i + " ");
             }
+
+            Console.WriteLine();
         }
+
+        #endregion
     }
 }
