@@ -1,0 +1,15 @@
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\bin\Debug\net6.0\11_Dynamic.exe
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\bin\Debug\net6.0\11_Dynamic.deps.json
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\bin\Debug\net6.0\11_Dynamic.runtimeconfig.json
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\bin\Debug\net6.0\11_Dynamic.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\bin\Debug\net6.0\11_Dynamic.pdb
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\obj\Debug\net6.0\11_Dynamic.csproj.AssemblyReference.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\obj\Debug\net6.0\11_Dynamic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\obj\Debug\net6.0\11_Dynamic.AssemblyInfoInputs.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\obj\Debug\net6.0\11_Dynamic.AssemblyInfo.cs
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\obj\Debug\net6.0\11_Dynamic.csproj.CoreCompileInputs.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\obj\Debug\net6.0\11_Dynamic.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\obj\Debug\net6.0\refint\11_Dynamic.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\obj\Debug\net6.0\11_Dynamic.pdb
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\obj\Debug\net6.0\11_Dynamic.genruntimeconfig.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\11_Dynamic\obj\Debug\net6.0\ref\11_Dynamic.dll
