@@ -97,7 +97,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\AesAlgo.cs" />
     <Compile Include="BL\RsaAlgo.cs" />
-    <Compile Include="BL\TripleDes.cs" />
+    <Compile Include="BL\TripleDesAlgo.cs" />
     <Compile Include="Controllers\CLApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

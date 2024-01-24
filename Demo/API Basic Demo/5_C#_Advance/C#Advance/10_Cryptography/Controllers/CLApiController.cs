@@ -23,9 +23,9 @@ namespace _10_Cryptography.Controllers
         /// <returns> Ciphertext </returns>
         [HttpGet]
         [Route("api/Aes/encryption")]
-        public IHttpActionResult GetAesCipher()
+        public IHttpActionResult GetAesCipher(string plainText)
         {
-            return Ok(AesAlgo.GetCipher());
+            return Ok(AesAlgo.Encrypt(plainText));
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace _10_Cryptography.Controllers
         [Route("api/Aes/decryption")]
         public IHttpActionResult GetAesPlain(string cipherText)
         {
-            return Ok(AesAlgo.DecryptCipherText(cipherText));
+            return Ok(AesAlgo.Decrypt(cipherText));
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace _10_Cryptography.Controllers
         [Route("api/tripleDes/encryption")]
         public IHttpActionResult GetTripleDesCipher(string plainText)
         {
-            return Ok(TripleDes.Encrypt(plainText));
+            return Ok(TripleDesAlgo.Encrypt(plainText));
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace _10_Cryptography.Controllers
         [Route("api/TripleDes/decryption")]
         public IHttpActionResult GetTripleDesPlain(string cipherText)
         {
-            return Ok(TripleDes.Decrypt(cipherText));
+            return Ok(TripleDesAlgo.Decrypt(cipherText));
         }
 
 
