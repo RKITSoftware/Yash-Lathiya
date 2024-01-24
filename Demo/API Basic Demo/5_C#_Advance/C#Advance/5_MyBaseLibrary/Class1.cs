@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 namespace _5_MyBaseLibrary
 {
+    /// <summary>
+    /// This is library which converts string to int items in list
+    /// </summary>
     public static class Class1
     {
         public static List<int> ToIntList(this List<string> lst)
