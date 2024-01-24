@@ -109,13 +109,13 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "5_Document_Generator_Base_Library/1.0.0": {
+      "5_MyBaseLibrary/1.0.0": {
         "type": "project",
         "compile": {
-          "bin/placeholder/5_Document_Generator_Base_Library.dll": {}
+          "bin/placeholder/5_MyBaseLibrary.dll": {}
         },
         "runtime": {
-          "bin/placeholder/5_Document_Generator_Base_Library.dll": {}
+          "bin/placeholder/5_MyBaseLibrary.dll": {}
         }
       }
     }
@@ -292,15 +292,15 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "5_Document_Generator_Base_Library/1.0.0": {
+    "5_MyBaseLibrary/1.0.0": {
       "type": "project",
-      "path": "../5_Document_Generator_Base_Library/5_Document_Generator_Base_Library.csproj",
-      "msbuildProject": "../5_Document_Generator_Base_Library/5_Document_Generator_Base_Library.csproj"
+      "path": "../5_MyBaseLibrary/5_MyBaseLibrary.csproj",
+      "msbuildProject": "../5_MyBaseLibrary/5_MyBaseLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "5_Document_Generator_Base_Library >= 1.0.0",
+      "5_MyBaseLibrary >= 1.0.0",
       "System.Collections.Immutable >= 8.0.0",
       "System.Composition.TypedParts >= 8.0.0"
     ]
@@ -332,8 +332,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_Document_Generator_Base_Library\\5_Document_Generator_Base_Library.csproj": {
-              "projectPath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_Document_Generator_Base_Library\\5_Document_Generator_Base_Library.csproj"
+            "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_MyBaseLibrary\\5_MyBaseLibrary.csproj": {
+              "projectPath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_MyBaseLibrary\\5_MyBaseLibrary.csproj"
             }
           }
         }

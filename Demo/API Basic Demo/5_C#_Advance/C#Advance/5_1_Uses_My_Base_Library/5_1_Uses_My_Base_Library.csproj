@@ -9,16 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\5_Document_Generator_Base_Library\5_Document_Generator_Base_Library.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Output\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
     <PackageReference Include="System.Composition.TypedParts" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\5_MyBaseLibrary\5_MyBaseLibrary.csproj" />
   </ItemGroup>
 
 </Project>

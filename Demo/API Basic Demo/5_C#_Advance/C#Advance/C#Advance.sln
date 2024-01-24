@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5_Document_Generator_Base_L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12_Database_With_CRUD", "12_Database_With_CRUD\12_Database_With_CRUD.csproj", "{3F01056F-BD30-446A-B368-2561C69E963B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5_MyBaseLibrary", "5_MyBaseLibrary\5_MyBaseLibrary.csproj", "{B4179D4A-5B7C-40EF-AA4F-6FB8AC96E1BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{3F01056F-BD30-446A-B368-2561C69E963B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F01056F-BD30-446A-B368-2561C69E963B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F01056F-BD30-446A-B368-2561C69E963B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4179D4A-5B7C-40EF-AA4F-6FB8AC96E1BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4179D4A-5B7C-40EF-AA4F-6FB8AC96E1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4179D4A-5B7C-40EF-AA4F-6FB8AC96E1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4179D4A-5B7C-40EF-AA4F-6FB8AC96E1BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

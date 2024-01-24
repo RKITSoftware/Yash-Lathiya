@@ -1,0 +1,6 @@
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\5_MyBaseLibrary\bin\Debug\5_MyBaseLibrary.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\5_MyBaseLibrary\bin\Debug\5_MyBaseLibrary.pdb
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\5_MyBaseLibrary\obj\Debug\5_MyBaseLibrary.csproj.AssemblyReference.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\5_MyBaseLibrary\obj\Debug\5_MyBaseLibrary.csproj.CoreCompileInputs.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\5_MyBaseLibrary\obj\Debug\5_MyBaseLibrary.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\5_C#_Advance\C#Advance\5_MyBaseLibrary\obj\Debug\5_MyBaseLibrary.pdb

@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_Document_Generator_Base_Library\\5_Document_Generator_Base_Library.csproj": {
-                "projectPath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_Document_Generator_Base_Library\\5_Document_Generator_Base_Library.csproj"
+              "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_MyBaseLibrary\\5_MyBaseLibrary.csproj": {
+                "projectPath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_MyBaseLibrary\\5_MyBaseLibrary.csproj"
               }
             }
           }
@@ -73,11 +73,11 @@
         }
       }
     },
-    "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_Document_Generator_Base_Library\\5_Document_Generator_Base_Library.csproj": {
+    "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_MyBaseLibrary\\5_MyBaseLibrary.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_Document_Generator_Base_Library\\5_Document_Generator_Base_Library.csproj",
-        "projectName": "5_Document_Generator_Base_Library",
-        "projectPath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_Document_Generator_Base_Library\\5_Document_Generator_Base_Library.csproj",
+        "projectUniqueName": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_MyBaseLibrary\\5_MyBaseLibrary.csproj",
+        "projectName": "5_MyBaseLibrary",
+        "projectPath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_MyBaseLibrary\\5_MyBaseLibrary.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {}
