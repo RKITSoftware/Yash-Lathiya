@@ -65,7 +65,7 @@ namespace _7_Extension_Methods
 
             foreach(Mob01 objMob01 in lstMob01)
             {
-                if(objMob01.b01f03.ToLower() == companyName.ToLower())
+                if(objMob01.b01f03?.ToLower() == companyName.ToLower())
                 {
                     count++;
                 }

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "1+jP3oAinDh1QQOfcgARWkkT/KBqiVyKYamB7Enm+uQYmfjXFUrJNho/CGnL9wsPyNc9/KAvRud68suBe6bYOw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\C#Advance\\5_1_Uses_My_Base_Library\\5_1_Uses_My_Base_Library.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yash.l\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\system.composition.attributedmodel\\8.0.0\\system.composition.attributedmodel.8.0.0.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\system.composition.hosting\\8.0.0\\system.composition.hosting.8.0.0.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\system.composition.runtime\\8.0.0\\system.composition.runtime.8.0.0.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\system.composition.typedparts\\8.0.0\\system.composition.typedparts.8.0.0.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -19,12 +19,12 @@ namespace _7_Extension_Methods.Model
         /// <summary>
         /// Name of Mobile
         /// </summary>
-        public string b01fo2 { get; set; }
+        public string? b01fo2 { get; set; }
 
         /// <summary>
         /// Company Name
         /// </summary>
-        public string b01f03 { get; set; }
+        public string? b01f03 { get; set; }
 
         /// <summary>
         /// Number of Sim card slots
