@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace _1_Types_of_Class.Class.Sealed_Class
+﻿namespace _1_Types_of_Class.Class.Sealed_Class
 {
     /// <summary>
     /// Demonstration of sealed class

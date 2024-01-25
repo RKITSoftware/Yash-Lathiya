@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _7_Extension_Methods.Model
+﻿namespace _7_Extension_Methods.Model
 {
     /// <summary>
     /// Class of Model - Mobile

@@ -1,5 +1,4 @@
 ﻿using _7_Extension_Methods.Model;
-using _7_Extension_Methods;
 
 namespace _7_Extension_Methods
 {

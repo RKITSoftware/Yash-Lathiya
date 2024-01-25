@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace _12_Database_With_CRUD.Models
+﻿namespace _12_Database_With_CRUD.Models
 {
     /// <summary>
     /// Class of Model - Employee

@@ -1,11 +1,5 @@
 ﻿using _12_Database_With_CRUD.BL;
 using _12_Database_With_CRUD.Models;
-using _12_Database_With_CRUD.Connection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace _12_Database_With_CRUD.Controllers

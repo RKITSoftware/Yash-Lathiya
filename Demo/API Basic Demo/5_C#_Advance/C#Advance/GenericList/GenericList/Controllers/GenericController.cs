@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 namespace GenericList.Controllers
 {
+    /// <summary>
+    /// Generic Controller which implements HTTP methods 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class GenericController<T>: ApiController where T : class
     {
         static List<T> entities = new List<T>();

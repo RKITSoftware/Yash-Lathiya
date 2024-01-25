@@ -59,6 +59,7 @@ namespace _6_Lambda_Expression.BL
             });
 
             return lstMov01Genre.ToArray();
+
         }
 
         #endregion

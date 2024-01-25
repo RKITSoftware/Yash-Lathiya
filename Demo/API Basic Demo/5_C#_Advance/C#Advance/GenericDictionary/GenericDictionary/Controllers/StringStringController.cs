@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-
-namespace GenericDictionary.Controllers
+﻿namespace GenericDictionary.Controllers
 {
+    /// <summary>
+    /// Key is type of string & 
+    /// Value is typeof string 
+    /// </summary>
     public class StringStringController : GenericDictionaryController<string, string>
     {
     }

@@ -1,11 +1,4 @@
-﻿
-using _8_LINQ.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _8_LINQ.Model;
 
 namespace _8_LINQ.Types
 {

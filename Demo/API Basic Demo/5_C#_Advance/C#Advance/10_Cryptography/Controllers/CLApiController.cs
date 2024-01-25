@@ -1,10 +1,4 @@
 ﻿using _10_Cryptography.BL;
-using System;
-using System.Collections.Generic;
-using System.EnterpriseServices.Internal;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace _10_Cryptography.Controllers

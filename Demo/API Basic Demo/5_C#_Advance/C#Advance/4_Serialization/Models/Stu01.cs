@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace _4_Serialization.Models
+﻿namespace _4_Serialization.Models
 {
     /// <summary>
     /// Model of Student
