@@ -168,11 +168,11 @@ IN
 -- Corelated Subqueries with alias name
 
 SELECT 
-	O01F01,
-    O01F02,
-    O01F03
+	O01F01 AS BOOK_ID,
+    O01F02 AS BOOK_NAME,
+    O01F03 AS AUTHOR_NAME
 FROM 
-	BOO01 v_book_more_pages 
+	BOO01 AS O01
 WHERE 
 	O01F06 > (SELECT 
 				AVG(O01F06)

@@ -39,7 +39,10 @@ namespace _12_Database_With_CRUD.BL
             using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
-                command.CommandText = "INSERT INTO EMP01 (p01f01, p01f02, p01f03, p01f04) VALUES (@p01f01, @p01f02, @p01f03, @p01f04)";
+                command.CommandText = @"INSERT INTO 
+                                            EMP01 
+                                            (p01f01, p01f02, p01f03, p01f04) 
+                                        VALUES (@p01f01, @p01f02, @p01f03, @p01f04)";
 
                 command.Parameters.AddWithValue("@p01f01", objEmp01.p01f01);
                 command.Parameters.AddWithValue("@p01f02", objEmp01.p01f02);
@@ -72,7 +75,17 @@ namespace _12_Database_With_CRUD.BL
             using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
-                command.CommandText = "SELECT * FROM EMP01 WHERE p01f01 = @p01f01";
+
+                command.CommandText = @"SELECT 
+                                            p01f01,
+                                            p01f02,
+                                            p01f03,
+                                            p01f04
+                                        FROM 
+                                            EMP01 
+                                        WHERE 
+                                            p01f01 = @p01f01";
+
                 command.Parameters.AddWithValue("@p01f01", p01f01);
 
                 try
@@ -119,7 +132,15 @@ namespace _12_Database_With_CRUD.BL
             using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
-                command.CommandText = "UPDATE EMP01 SET p01f02 = @p01f02, p01f03 = @p01f03, p01f04 = @p01f04 WHERE p01f01 = @p01f01";
+
+                command.CommandText = @"UPDATE 
+                                            EMP01 
+                                        SET 
+                                            p01f02 = @p01f02, 
+                                            p01f03 = @p01f03, 
+                                            p01f04 = @p01f04 
+                                        WHERE 
+                                            p01f01 = @p01f01";
 
                 // Assuming the actual column names and values need to be replaced in the query
                 command.Parameters.AddWithValue("@p01f01", objEmp01.p01f01);
@@ -153,7 +174,12 @@ namespace _12_Database_With_CRUD.BL
             using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
-                command.CommandText = "DELETE FROM EMP01 WHERE p01f01 = @p01f01";
+
+                command.CommandText = @"DELETE FROM 
+                                            EMP01 
+                                        WHERE 
+                                            p01f01 = @p01f01";
+
                 command.Parameters.AddWithValue("@p01f01", p01f01);
 
                 try

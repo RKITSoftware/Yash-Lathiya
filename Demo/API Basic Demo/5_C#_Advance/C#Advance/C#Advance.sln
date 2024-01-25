@@ -29,8 +29,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11_Dynamic", "11_Dynamic\11
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5_1_Uses_My_Base_Library", "5_1_Uses_My_Base_Library\5_1_Uses_My_Base_Library.csproj", "{30B59F9B-5D73-493A-84F0-D5AA401D7585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5_Document_Generator_Base_Library", "5_Document_Generator_Base_Library\5_Document_Generator_Base_Library.csproj", "{10E200E2-764C-421D-94C4-8F823B35F79C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12_Database_With_CRUD", "12_Database_With_CRUD\12_Database_With_CRUD.csproj", "{3F01056F-BD30-446A-B368-2561C69E963B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5_MyBaseLibrary", "5_MyBaseLibrary\5_MyBaseLibrary.csproj", "{B4179D4A-5B7C-40EF-AA4F-6FB8AC96E1BB}"
@@ -93,10 +91,6 @@ Global
 		{30B59F9B-5D73-493A-84F0-D5AA401D7585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30B59F9B-5D73-493A-84F0-D5AA401D7585}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30B59F9B-5D73-493A-84F0-D5AA401D7585}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10E200E2-764C-421D-94C4-8F823B35F79C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10E200E2-764C-421D-94C4-8F823B35F79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10E200E2-764C-421D-94C4-8F823B35F79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10E200E2-764C-421D-94C4-8F823B35F79C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3F01056F-BD30-446A-B368-2561C69E963B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3F01056F-BD30-446A-B368-2561C69E963B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F01056F-BD30-446A-B368-2561C69E963B}.Release|Any CPU.ActiveCfg = Release|Any CPU
