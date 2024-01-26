@@ -52,5 +52,6 @@ namespace _12_Database_With_CRUD.Connection
         {
             return _mySqlConnection;
         }
+
     }
 }

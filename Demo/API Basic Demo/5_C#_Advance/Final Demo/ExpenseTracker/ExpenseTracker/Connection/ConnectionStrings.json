@@ -1,0 +1,12 @@
+{
+  "ConnectionStrings": {
+    "name": "MySqlConnection",
+    "connectionString": {
+      "Server": "127.0.0.1",
+      "Port": 3306,
+      "Database": "expense_tracker_yashl",
+      "User Id": "Admin",
+      "Passoword": "gs@123"
+    }
+  }
+}
