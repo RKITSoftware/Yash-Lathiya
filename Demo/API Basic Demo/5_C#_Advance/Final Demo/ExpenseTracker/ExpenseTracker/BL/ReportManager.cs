@@ -32,11 +32,23 @@ namespace ExpenseTracker.BL
 
         #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Generates report which includes credit & Expense
+        /// </summary>
+        /// <param name="p01f02"> User Id </param>
+        /// <returns> Path of file which contains this data </returns>
         public static string GenerateReport(int p01f02)
         {
-            // For demonstration purposes, let's assume the report is a text file
+            // list of Expense & Credit 
             List<Exp01> lstExp01 = new List<Exp01>();
-            string reportContent = "";
+            List<Cre01> lstCre01 = new List<Cre01>();
+
+            // Report Content 
+            string reportContent = "***** Expense *****\r\n";
+
+            // Add expense in list & reportContent 
             using(MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
@@ -82,17 +94,68 @@ namespace ExpenseTracker.BL
                 }
             }
 
+            reportContent += "***** Credit *****\r\n";
+
+            // Add credit in list & reportContent 
+            using (MySqlCommand command = new MySqlCommand())
+            {
+                command.Connection = _mySqlConnection;
+                command.CommandText = @"SELECT
+                                            e01f01,
+                                            e01f02,
+                                            e01f03,
+                                            e01f04
+                                        FROM 
+                                            cre01
+                                        WHERE
+                                            e01f02 = @p01f02";
+
+                command.Parameters.AddWithValue("@p01f02", p01f02);
+
+                try
+                {
+                    _mySqlConnection.Open();
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lstCre01.Add(new Cre01()
+                            {
+                                e01f01 = Convert.ToInt32(reader["e01f01"]),
+                                e01f02 = Convert.ToInt32(reader["e01f02"]),
+                                e01f03 = Convert.ToDecimal(reader["e01f03"]),
+                                e01f04 = Convert.ToString(reader["e01f04"]),
+                                
+                            });
+                            reportContent += $" Credit Id : {reader["e01f01"]}, \t User Id : {reader["e01f02"]}, \t Credit Amount : {reader["e01f03"]}, \t Description : {reader["e01f04"]}  \r\n";                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    reportContent = ex.Message;
+                }
+                finally
+                {
+                    _mySqlConnection.Close();
+                }
+            }
+
             // Save the report content to a file
             string filePath = "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\Final Demo\\ExpenseTracker\\ExpenseTracker\\Report\\report.txt";
             System.IO.File.WriteAllText(filePath, reportContent);
 
             // Serialize List of objects to string
-            // Purpose  : To store that data in database
+            // Purpose  : To store that data in database ( REP01 class )
 
             JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
-            string serializedReportData = javaScriptSerializer.Serialize(lstExp01);
+            string serializedExpenseData = javaScriptSerializer.Serialize(lstExp01);
+            string serializedCreditData = javaScriptSerializer.Serialize(lstCre01);
 
-            using(MySqlCommand command = new MySqlCommand())
+            // Combine Credit & Expense data which will be stored in database
+            string serializedReportData = serializedCreditData + serializedExpenseData;
+
+            using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
                 command.CommandText = @"INSERT INTO 
@@ -114,5 +177,7 @@ namespace ExpenseTracker.BL
 
             return filePath;
         }
+
+        #endregion
     }
 }

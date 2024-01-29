@@ -10,6 +10,8 @@ namespace ExpenseTracker.Models
     /// </summary>
     public class rep01
     {
+        #region Public Members
+
         /// <summary>
         /// ReportId
         /// </summary>
@@ -19,5 +21,7 @@ namespace ExpenseTracker.Models
         /// Report
         /// </summary>
         public string p01f02 { get; set; }
+
+        #endregion
     }
 }

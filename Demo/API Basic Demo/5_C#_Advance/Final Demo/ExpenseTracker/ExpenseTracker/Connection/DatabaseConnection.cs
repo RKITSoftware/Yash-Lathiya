@@ -10,6 +10,8 @@ namespace ExpenseTracker.Connection
     /// </summary>
     public static class DatabaseConnection
     {
+        #region Static Members
+
         static MySqlConnection _mySqlConnection;
         /// <summary>
         /// Connect to database by MySql String 
@@ -44,6 +46,10 @@ namespace ExpenseTracker.Connection
 
         }
 
+        #endregion
+
+        #region Public methods
+
         /// <summary>
         /// Get the MySQL connection instance
         /// </summary>
@@ -51,5 +57,7 @@ namespace ExpenseTracker.Connection
         {
             return _mySqlConnection;
         }
+
+        #endregion
     }
 }

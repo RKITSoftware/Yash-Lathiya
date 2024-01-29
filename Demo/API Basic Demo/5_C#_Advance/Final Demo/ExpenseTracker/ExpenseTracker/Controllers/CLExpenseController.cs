@@ -7,10 +7,14 @@ using System.Web.Http;
 namespace ExpenseTracker.Controllers
 {
     /// <summary>
-    /// All operations related to expense is done through this controller
+    /// Controller which contains endpoints to deal with Expense details 
+    /// Its sealed for security > No other class can inherit it
+    /// It uses BL from ExpenseManager class
     /// </summary>
     public sealed class CLExpenseController : ApiController
     {
+        #region Public Methods 
+
         /// <summary>
         /// To add Expense in Database
         /// </summary>
@@ -43,7 +47,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         /// <returns> Details of all Expense </returns>
         [HttpGet]
-        [Route("api/Expense/Get")]
+        [Route("api/Expense/Get/{p01f02}")]
         public IHttpActionResult GetExpenses(int p01f02) 
         {
             return Ok(ExpenseManager.GetAllExpense(p01f02));
@@ -75,5 +79,6 @@ namespace ExpenseTracker.Controllers
             return Ok("Expense Deleted");
         }
 
+        #endregion
     }
 }

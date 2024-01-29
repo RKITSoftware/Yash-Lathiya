@@ -6,10 +6,14 @@ using System.Web.Http;
 namespace ExpenseTracker.Controllers
 {
     /// <summary>
-    /// All operations related to User is done through this controller
+    /// Controller which contains endpoints to deal with User details 
+    /// Its sealed for security > No other class can inherit it
+    /// It uses BL from UserManager class
     /// </summary>
     public sealed class CLUserController : ApiController
     {
+        #region Public Methods
+
         /// <summary>
         /// To Register User in database 
         /// </summary>
@@ -44,5 +48,7 @@ namespace ExpenseTracker.Controllers
                 return Ok("Login Successful");
             }
         }
+
+        #endregion
     }
 }

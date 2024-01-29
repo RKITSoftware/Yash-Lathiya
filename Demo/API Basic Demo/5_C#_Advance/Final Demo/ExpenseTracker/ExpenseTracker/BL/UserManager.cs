@@ -11,9 +11,12 @@ namespace ExpenseTracker.BL
     /// </summary>
     public static class UserManager
     {
-        #region Private Members
+        #region Private Static Members
 
+        // Sql Connection
         private static MySqlConnection _mySqlConnection;
+
+        // For Security Purpose
         private static string _encryptedPassword;
 
         static UserManager()
@@ -30,7 +33,14 @@ namespace ExpenseTracker.BL
         }
 
         #endregion
- 
+
+        #region Public Methods
+
+        /// <summary>
+        /// To Register user i database
+        /// </summary>
+        /// <param name="objUsr01"> Object of User </param>
+        /// <exception cref="Exception"> If Mobile Number is not Valid ..</exception>
         public static void RegisterUser(Usr01 objUsr01 )
         {
             // Mobile Number must contain 10 digits
@@ -41,7 +51,7 @@ namespace ExpenseTracker.BL
             }
 
             // Encrypt the password by using Aes Algorithm
-
+            // Encrypted password will be stored in database
             AesAlgo aes = new AesAlgo();
             _encryptedPassword = aes.Encrypt(objUsr01.r01f05);
 
@@ -75,9 +85,16 @@ namespace ExpenseTracker.BL
             }
         }
 
-        private static bool IsMobileNumber(long r01f04)
+        /// <summary>
+        /// Checks is Mobile number contsins 10 digits or not 
+        /// </summary>
+        /// <param name="r01f04"> Mobile Number </param>
+        /// <returns> true for valid mobile number otherwise invalid </returns>
+        public static bool IsMobileNumber(long r01f04)
         {
+            // Regex pattern to check length of digits 
             Regex mobileNumberPattern = new Regex(@"\d{10}");
+
             Match match = mobileNumberPattern.Match(r01f04.ToString());
             if (match.Success)
             {
@@ -86,11 +103,19 @@ namespace ExpenseTracker.BL
             return false;
         }
 
+        /// <summary>
+        /// To authenticate user 
+        /// </summary>
+        /// <param name="r01f02"> Username </param>
+        /// <param name="r01f05"> Password </param>
+        /// <returns> true -> if credential is correct
+        ///           false -> if credential is incorrect </returns>
         public static bool LoginUser(string r01f02,  string r01f05)
         {
             AesAlgo aes = new AesAlgo();
             _encryptedPassword = aes.Encrypt(r01f05);
 
+            // Compare encrypted password to encrypted password 
             using(MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
@@ -139,5 +164,7 @@ namespace ExpenseTracker.BL
 
             }
         }
+
+        #endregion
     }
 }

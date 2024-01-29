@@ -10,10 +10,14 @@ using System.Web.Http;
 namespace ExpenseTracker.Controllers
 {
     /// <summary>
-    /// Controller which provides facility of Report 
+    /// Controller which contains endpoints to deal with Report Generation 
+    /// Its sealed for security > No other class can inherit it
+    /// It uses BL from ReportManager class
     /// </summary>
     public sealed class CLReportController : ApiController
     {
+        #region Public Methods 
+
         /// <summary>
         /// Generates Report for USer
         /// </summary>
@@ -38,10 +42,12 @@ namespace ExpenseTracker.Controllers
 
                 response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
                 {
+                    // File Name = expense_report_userId.txt
                     FileName = $"expense_report_{r01f01}.txt" // Set the desired file name
                 };
                 response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
 
+                // In response file is downloaded
                 return ResponseMessage(response);
             }
             else
@@ -50,5 +56,7 @@ namespace ExpenseTracker.Controllers
             }
 
         }
+
+        #endregion
     }
 }

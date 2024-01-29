@@ -12,6 +12,8 @@ namespace ExpenseTracker.Models
     [Alias("exp01")]
     public class Exp01
     {
+        #region Public Members
+
         /// <summary>
         /// Expense Id 
         /// </summary>
@@ -41,5 +43,7 @@ namespace ExpenseTracker.Models
         /// Description of Expense 
         /// </summary>
         public string p01f06 { get; set; } = string.Empty;
+
+        #endregion
     }
 }

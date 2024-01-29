@@ -10,6 +10,8 @@ namespace ExpenseTracker.Models
     /// </summary>
     public class Usr01
     {
+        #region Public Members
+
         /// <summary>
         /// User Id
         /// </summary>
@@ -34,5 +36,7 @@ namespace ExpenseTracker.Models
         /// Password
         /// </summary>
         public string r01f05 { get; set; }
+
+        #endregion
     }
 }

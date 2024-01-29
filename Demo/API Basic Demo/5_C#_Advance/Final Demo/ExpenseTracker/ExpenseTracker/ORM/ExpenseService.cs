@@ -8,6 +8,9 @@ using System.Web;
 
 namespace ExpenseTracker.ORM
 {
+    /// <summary>
+    /// Provides ORM Service to Expense EXP01 class in database
+    /// </summary>
     public class ExpenseService
     {
         #region dbFactory Configuration 
@@ -26,6 +29,12 @@ namespace ExpenseTracker.ORM
 
         #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Add Expense in database
+        /// </summary>
+        /// <param name="objExp01"> Object of expense </param>
         public void AddExpense(Exp01 objExp01)
         {
             using (var db = dbFactory.OpenDbConnection())
@@ -34,6 +43,12 @@ namespace ExpenseTracker.ORM
             }
         }
 
+        /// <summary>
+        /// Get list of expense by user id and time of expense 
+        /// </summary>
+        /// <param name="p01f02"> User Id </param>
+        /// <param name="p01f04">DateTime of Expense </param>
+        /// <returns> List of Expense</returns>
         public List<Exp01> GetExpense(int p01f02, DateTime p01f04)
         {
           
@@ -45,6 +60,11 @@ namespace ExpenseTracker.ORM
    
         }
 
+        /// <summary>
+        /// Get all expense for specic user
+        /// </summary>
+        /// <param name="p01f02"> User Id </param>
+        /// <returns>List of Expense </returns>
         public List<Exp01> GetAllExpense(int p01f02)
         {
             using(var db = dbFactory.OpenDbConnection())
@@ -54,14 +74,22 @@ namespace ExpenseTracker.ORM
             }
         }
 
-        public void UpdateExpense(Exp01 exp01)
+        /// <summary>
+        /// To update expense in the database
+        /// </summary>
+        /// <param name="objExp01"> Object of new details </param>
+        public void UpdateExpense(Exp01 objExp01)
         {
             using(var db = dbFactory.OpenDbConnection())
             {
-                db.Update(exp01);
+                db.Update(objExp01);
             }
         }
 
+        /// <summary>
+        /// Delete Expense from the database
+        /// </summary>
+        /// <param name="p01f01"> Expense Id </param>
         public void DeleteExpense(int p01f01)
         {
             using(var db = dbFactory.OpenDbConnection())
@@ -70,5 +98,7 @@ namespace ExpenseTracker.ORM
             }
 
         }
+
+        #endregion
     }
 }
