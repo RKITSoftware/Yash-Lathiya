@@ -23,7 +23,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/report/{r01f01}")]
         public IHttpActionResult GenerateReport(int r01f01) 
         {
-            string filePath = ReportManager.GenerateReport();
+            string filePath = ReportManager.GenerateReport(r01f01);
 
             // Check if the file exists
             if (File.Exists(filePath))
@@ -38,7 +38,7 @@ namespace ExpenseTracker.Controllers
 
                 response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
                 {
-                    FileName = $"report{r01f01}.txt" // Set the desired file name
+                    FileName = $"expense_report_{r01f01}.txt" // Set the desired file name
                 };
                 response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
 

@@ -25,7 +25,7 @@ namespace ExpenseTracker.BL
             objEmployeeService.AddExpense(objExp01); 
         }
 
-        public static Exp01 GetExpense(int p01f02, DateTime p01f04)
+        public static List<Exp01> GetExpense(int p01f02, DateTime p01f04)
         {
             return objEmployeeService.GetExpense(p01f02, p01f04);
         }

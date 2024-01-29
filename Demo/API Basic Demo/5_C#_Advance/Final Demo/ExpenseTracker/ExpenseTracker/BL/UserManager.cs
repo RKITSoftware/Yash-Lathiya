@@ -1,9 +1,12 @@
 ﻿using ExpenseTracker.Models;
+using ExpenseTracker.Security;
 using MySql.Data.MySqlClient;
 using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace ExpenseTracker.BL
@@ -13,9 +16,10 @@ namespace ExpenseTracker.BL
     /// </summary>
     public static class UserManager
     {
-        #region Connect to Database
+        #region Private Members
 
         private static MySqlConnection _mySqlConnection;
+        private static string _encryptedPassword;
 
         static UserManager()
         {
@@ -31,8 +35,20 @@ namespace ExpenseTracker.BL
         }
 
         #endregion
+ 
         public static void RegisterUser(Usr01 objUsr01 )
         {
+            // Mobile Number must contain 10 digits
+
+            if (!IsMobileNumber(objUsr01.r01f04))
+            {
+                throw new Exception(" Mobile Number is invalid ");
+            }
+
+            // Encrypt the password by using Aes Algorithm
+
+            _encryptedPassword = AesAlgo.Encrypt(objUsr01.r01f05);
+
             using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
@@ -45,7 +61,7 @@ namespace ExpenseTracker.BL
                 command.Parameters.AddWithValue("@r01f02", objUsr01.r01f02);
                 command.Parameters.AddWithValue("@r01f03", objUsr01.r01f03);
                 command.Parameters.AddWithValue("@r01f04", objUsr01.r01f04);
-                command.Parameters.AddWithValue("@r01f05", objUsr01.r01f05);
+                command.Parameters.AddWithValue("@r01f05", _encryptedPassword);
 
                 try
                 {
@@ -63,8 +79,21 @@ namespace ExpenseTracker.BL
             }
         }
 
+        private static bool IsMobileNumber(long r01f04)
+        {
+            Regex mobileNumberPattern = new Regex(@"\d{10}");
+            Match match = mobileNumberPattern.Match(r01f04.ToString());
+            if (match.Success)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public static bool LoginUser(string r01f02,  string r01f05)
         {
+            _encryptedPassword = AesAlgo.Encrypt(r01f05);
+
             using(MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
@@ -78,7 +107,7 @@ namespace ExpenseTracker.BL
                                             r01f05 = @r01f05";
 
                 command.Parameters.AddWithValue("@r01f02", r01f02);
-                command.Parameters.AddWithValue("@r01f05", r01f05);
+                command.Parameters.AddWithValue("@r01f05", _encryptedPassword);
 
                 try 
                 {
