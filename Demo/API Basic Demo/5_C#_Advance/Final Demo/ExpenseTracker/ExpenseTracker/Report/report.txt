@@ -1,2 +1,2 @@
-Expense Id : 13, 		 Amount : 25000, 		 Time : 29-01-2024 11:16:47, 		 Category : Electronics, 		 Description : Mobile - Vivo Y23  
-Expense Id : 20, 		 Amount : 1200, 		 Time : 29-01-2024 11:21:18, 		 Category : Other, 		 Description : Flowers Bookey  
+Expense Id : 16, 	 Amount : 6000, 	 Time : 29-01-2024 11:18:59, 	 Category : Food, 	 Description : Monthly Pass  
+Expense Id : 17, 	 Amount : 6000, 	 Time : 29-01-2024 09:12:11, 	 Category : string, 	 Description : string  

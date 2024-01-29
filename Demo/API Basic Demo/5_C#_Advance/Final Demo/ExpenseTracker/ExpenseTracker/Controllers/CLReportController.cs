@@ -12,7 +12,7 @@ namespace ExpenseTracker.Controllers
     /// <summary>
     /// Controller which provides facility of Report 
     /// </summary>
-    public class CLReportController : ApiController
+    public sealed class CLReportController : ApiController
     {
         /// <summary>
         /// Generates Report for USer

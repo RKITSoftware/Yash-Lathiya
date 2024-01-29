@@ -43,9 +43,6 @@ namespace ExpenseTracker
             // Create an instance of OrmLiteConnectionFactory using the retrieved connection string
             var dbFactory = new OrmLiteConnectionFactory(mysqlConnectionString, MySqlDialect.Provider);
 
-            // Set the default dialect provider for OrmLite to MySQL
-            OrmLiteConfig.DialectProvider = MySqlDialect.Provider;
-
             // Store the IDbConnectionFactory instance in a static variable for application-wide usage
             MyAppDbConnectionFactory.Instance = dbFactory;
 

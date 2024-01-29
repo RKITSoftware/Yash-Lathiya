@@ -1,13 +1,8 @@
 ﻿using ExpenseTracker.Models;
 using ExpenseTracker.Security;
 using MySql.Data.MySqlClient;
-using ServiceStack;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace ExpenseTracker.BL
 {
@@ -47,7 +42,8 @@ namespace ExpenseTracker.BL
 
             // Encrypt the password by using Aes Algorithm
 
-            _encryptedPassword = AesAlgo.Encrypt(objUsr01.r01f05);
+            AesAlgo aes = new AesAlgo();
+            _encryptedPassword = aes.Encrypt(objUsr01.r01f05);
 
             using (MySqlCommand command = new MySqlCommand())
             {
@@ -92,7 +88,8 @@ namespace ExpenseTracker.BL
 
         public static bool LoginUser(string r01f02,  string r01f05)
         {
-            _encryptedPassword = AesAlgo.Encrypt(r01f05);
+            AesAlgo aes = new AesAlgo();
+            _encryptedPassword = aes.Encrypt(r01f05);
 
             using(MySqlCommand command = new MySqlCommand())
             {

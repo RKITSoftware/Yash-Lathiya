@@ -9,7 +9,7 @@ namespace ExpenseTracker.Controllers
     /// <summary>
     /// All operations related to expense is done through this controller
     /// </summary>
-    public class CLExpenseController : ApiController
+    public sealed class CLExpenseController : ApiController
     {
         /// <summary>
         /// To add Expense in Database
@@ -30,7 +30,7 @@ namespace ExpenseTracker.Controllers
         /// <param name="p01f04"> Date of Expense </param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Expense/GetByUserIdAndExpenseId")]
+        [Route("api/Expense/GetByUserIdAndDateOfExpense")]
         public IHttpActionResult GetExpense()
         {
             int p01f02 = Convert.ToInt32(HttpContext.Current.Request.Form["p01f01"]);

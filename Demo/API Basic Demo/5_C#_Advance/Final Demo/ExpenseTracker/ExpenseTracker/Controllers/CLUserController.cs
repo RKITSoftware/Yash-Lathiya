@@ -1,10 +1,5 @@
 ﻿using ExpenseTracker.BL;
 using ExpenseTracker.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
@@ -13,7 +8,7 @@ namespace ExpenseTracker.Controllers
     /// <summary>
     /// All operations related to User is done through this controller
     /// </summary>
-    public class CLUserController : ApiController
+    public sealed class CLUserController : ApiController
     {
         /// <summary>
         /// To Register User in database 

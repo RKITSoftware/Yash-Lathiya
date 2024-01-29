@@ -49,7 +49,7 @@ namespace ExpenseTracker.ORM
         {
             using(var db = dbFactory.OpenDbConnection())
             {
-                List<Exp01> allExpense = db.Select<Exp01>();
+                List<Exp01> allExpense = db.Select<Exp01>(expense => expense.p01f02.Equals(p01f02));
                 return allExpense;
             }
         }

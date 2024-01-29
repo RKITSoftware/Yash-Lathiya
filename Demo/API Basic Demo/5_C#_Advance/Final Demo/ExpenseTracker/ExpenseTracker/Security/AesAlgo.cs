@@ -11,9 +11,9 @@ namespace ExpenseTracker.Security
     /// Implementation of AES Algorithm
     /// Plaintext & key -> 128 bits
     /// </summary>
-    public static class AesAlgo
+    public class AesAlgo
     {
-        #region Static Members 
+        #region Private - Static Members 
 
         // AES Crypto Service Provider class implements logic of AES Algorithm
         private static AesCryptoServiceProvider _aes;
@@ -23,7 +23,7 @@ namespace ExpenseTracker.Security
         /// <summary>
         /// Provide Instance to class
         /// </summary>
-        static AesAlgo()
+        public AesAlgo()
         {
             _aes = new AesCryptoServiceProvider();
             _aes.Key = key;
@@ -39,7 +39,7 @@ namespace ExpenseTracker.Security
         /// </summary>
         /// <param name="plainText"> Plain text in base64 string </param>
         /// <returns> Cipher Text in base64 string </returns>
-        public static string Encrypt(string plainText)
+        public string Encrypt(string plainText)
         {
             // String to bytes
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
@@ -56,13 +56,13 @@ namespace ExpenseTracker.Security
                 return Convert.ToBase64String(encryptedBytes);
             }
         }
-
+                                                                                                                                                                                          
         /// <summary>
         /// Decryption of cipher text to plain text
         /// </summary>
         /// <param name="cipherText"> Cipher text in base64 string </param>
         /// <returns> Plain text in UTF8 string </returns>
-        public static string Decrypt(string cipherText)
+        public string Decrypt(string cipherText)
         {
             // string to bytes
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
