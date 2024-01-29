@@ -16,6 +16,22 @@ namespace _5_1_Uses_My_Base_Library
             {
                 Console.WriteLine(i);
             }
+
+            // To use overriden list
+
+            MySortedList<string> lst = new MySortedList<string>();
+            lst.Add("yash");
+            lst.Add("Prajval");
+            lst.Add("Arnab");
+            lst.Add("NewItem");
+            lst.Add("Aayesha");
+
+            lst.Remove("NewItem");
+
+            foreach(string item in lst)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
