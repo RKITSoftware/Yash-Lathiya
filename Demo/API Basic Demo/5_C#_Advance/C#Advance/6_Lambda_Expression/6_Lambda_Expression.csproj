@@ -95,7 +95,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BL\MovieManager.cs" />
+    <Compile Include="BL\BLMovieManager.cs" />
     <Compile Include="Controllers\CLMovieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

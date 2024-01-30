@@ -162,7 +162,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BL\EmployeeManager.cs" />
+    <Compile Include="BL\BLEmployeeManager.cs" />
     <Compile Include="Connection\EmployeeService.cs" />
     <Compile Include="Connection\MyAppDbConnectionFactory.cs" />
     <Compile Include="Controllers\CLEmployeeController.cs" />

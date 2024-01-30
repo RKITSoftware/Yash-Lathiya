@@ -7,7 +7,7 @@ namespace _4_Serialization.Controllers
     /// <summary>
     /// Serialization and Deserialization of the data
     /// </summary>
-    public class SerializationController : ApiController
+    public class CLSerializationController : ApiController
     {
         /// <summary>
         /// Serialization -> JsonObject to JsonString
@@ -17,7 +17,7 @@ namespace _4_Serialization.Controllers
         [Route("api/JsonSerialization")]
         public IHttpActionResult JsonSerialization()
         {
-            return Ok(SerializationDeserialization.JsonSerialization());
+            return Ok(BLSerializationDeserialization.JsonSerialization());
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace _4_Serialization.Controllers
         [Route("api/JsonDeserialization")]
         public IHttpActionResult JsonDeserialization([FromBody] string json)
         {
-            return Ok(SerializationDeserialization.JsonDeserialization(json));
+            return Ok(BLSerializationDeserialization.JsonDeserialization(json));
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace _4_Serialization.Controllers
         [Route("api/XmlSerialization")]
         public IHttpActionResult XmlSerialization([FromBody] XElement xml)
         {
-            return Ok(SerializationDeserialization.XmlSerialization(xml));
+            return Ok(BLSerializationDeserialization.XmlSerialization(xml));
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace _4_Serialization.Controllers
         [Route("api/XmlDeserialization")]
         public IHttpActionResult XmlDeserialization(string xml)
         {
-            return Ok(SerializationDeserialization.XmlDeserialization(xml));
+            return Ok(BLSerializationDeserialization.XmlDeserialization(xml));
         }
 
     }

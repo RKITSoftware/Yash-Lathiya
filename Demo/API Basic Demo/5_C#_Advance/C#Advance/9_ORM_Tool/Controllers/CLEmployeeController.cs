@@ -20,7 +20,7 @@ namespace _9_ORM_Tool.Controllers
         [Route("api/Employee/add")]
         public IHttpActionResult AddEmployee([FromBody] Emp01 objEmp01)
         {
-            EmployeeManager.AddEmployee(objEmp01);
+            BLEmployeeManager.AddEmployee(objEmp01);
             return Ok("Added");
         }
 
@@ -33,7 +33,7 @@ namespace _9_ORM_Tool.Controllers
         [Route("api/Employee/Get/{p01f01}")]
         public IHttpActionResult GetEmployee(int p01f01)
         {
-            return Ok(EmployeeManager.GetEmployee(p01f01));
+            return Ok(BLEmployeeManager.GetEmployee(p01f01));
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace _9_ORM_Tool.Controllers
         [Route("api/Employee/Update")]
         public IHttpActionResult UpdateEmployee([FromBody] Emp01 objEmp01)
         {
-            EmployeeManager.UpdateEmployee(objEmp01);
+            BLEmployeeManager.UpdateEmployee(objEmp01);
             return Ok("Updated");
         }
 
@@ -58,7 +58,7 @@ namespace _9_ORM_Tool.Controllers
         [Route("api/Employee/Delete/{p01f01}")]
         public IHttpActionResult DeleteEmployee(int p01f01)
         {
-            EmployeeManager.DeleteEmployee(p01f01);
+            BLEmployeeManager.DeleteEmployee(p01f01);
             return Ok("Deleted");
         }
 

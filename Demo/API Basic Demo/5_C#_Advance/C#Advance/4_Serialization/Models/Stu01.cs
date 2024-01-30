@@ -1,4 +1,6 @@
-﻿namespace _4_Serialization.Models
+﻿using System;
+
+namespace _4_Serialization.Models
 {
     /// <summary>
     /// Model of Student
@@ -19,7 +21,6 @@
         /// University Name
         /// </summary>
         public string u01f03 { get; set; }
-
 
     }
 }

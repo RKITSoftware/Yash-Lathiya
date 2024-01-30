@@ -6,14 +6,14 @@ namespace _9_ORM_Tool.BL
     /// <summary>
     /// Consisting buisness logic of all methiods in Employee controller
     /// </summary>
-    public static class EmployeeManager
+    public static class BLEmployeeManager
     {
         #region Connect to dbFactory
 
         // To use Employee Service 
         private static EmployeeService objEmployeeService;
         // To assign dbFactory
-        static EmployeeManager()
+        static BLEmployeeManager()
         {
             objEmployeeService = new EmployeeService(MyAppDbConnectionFactory.Instance);
         }

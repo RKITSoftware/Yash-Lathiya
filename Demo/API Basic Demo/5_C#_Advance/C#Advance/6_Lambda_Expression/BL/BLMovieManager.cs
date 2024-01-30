@@ -8,13 +8,13 @@ namespace _6_Lambda_Expression.BL
     /// <summary>
     /// A class consists of buisness logic of all methods which are entitled in Movie Controller
     /// </summary>
-    public class MovieManager
+    public class BLMovieManager
     {
         #region Model Data Insertion
 
         static List<MOV01> lstMov01;
 
-        public MovieManager() 
+        public BLMovieManager() 
         {
             lstMov01 = new List<MOV01>();
             lstMov01.Add(new MOV01 { v01f01 = "Animal", v01f02 = "Director1", v01f03 = 55005500, v01f04 = "Action", v01f05 = DateTime.Today});

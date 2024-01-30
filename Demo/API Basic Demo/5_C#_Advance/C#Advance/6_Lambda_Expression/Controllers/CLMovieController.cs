@@ -19,7 +19,7 @@ namespace _6_Lambda_Expression.Controllers
         [Route("api/Movie/Get/{movieName}")]
         public IHttpActionResult GetMovie(string movieName)
         {
-            MovieManager movieManager = new MovieManager();
+            BLMovieManager movieManager = new BLMovieManager();
             return Ok(movieManager.GetMovieDetails(movieName));
         }
 
@@ -32,7 +32,7 @@ namespace _6_Lambda_Expression.Controllers
         [Route("api/Movie/GetByGenre")]
         public IHttpActionResult GetMovieByGenre(string genre)
         {
-            MovieManager movieManager = new MovieManager();
+            BLMovieManager movieManager = new BLMovieManager();
             return Ok(movieManager.GetbyGenre(genre));
         }
 

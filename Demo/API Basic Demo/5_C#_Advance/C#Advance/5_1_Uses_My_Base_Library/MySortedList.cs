@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace _5_1_Uses_My_Base_Library
+﻿namespace _5_1_Uses_My_Base_Library
 {
     class MySortedList<T> : List<T> 
     {
