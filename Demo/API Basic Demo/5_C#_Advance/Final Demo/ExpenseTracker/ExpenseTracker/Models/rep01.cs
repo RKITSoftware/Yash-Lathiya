@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace ExpenseTracker.Models
+﻿namespace ExpenseTracker.Models
 {
     /// <summary>
     /// Class of Model - Report

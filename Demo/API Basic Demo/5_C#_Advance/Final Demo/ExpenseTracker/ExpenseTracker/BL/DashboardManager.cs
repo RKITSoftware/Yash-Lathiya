@@ -1,9 +1,6 @@
 ﻿using ExpenseTracker.Models;
-using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ExpenseTracker.BL
 {
