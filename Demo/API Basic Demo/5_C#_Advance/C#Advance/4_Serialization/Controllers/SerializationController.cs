@@ -1,5 +1,6 @@
 ﻿using _4_Serialization.BL;
 using System.Web.Http;
+using System.Xml.Linq;
 
 namespace _4_Serialization.Controllers
 {
@@ -9,48 +10,49 @@ namespace _4_Serialization.Controllers
     public class SerializationController : ApiController
     {
         /// <summary>
-        /// Serialization -> Object to Json
+        /// Serialization -> JsonObject to JsonString
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/ObjectToJson")]
-        public IHttpActionResult ObjectToJson()
+        [Route("api/JsonSerialization")]
+        public IHttpActionResult JsonSerialization()
         {
-            return Ok(SerializationDeserialization.ObjectToJosn());
+            return Ok(SerializationDeserialization.JsonSerialization());
         }
 
         /// <summary>
-        /// Deserialization -> Json to Object
+        /// Deserialization -> JsonString to JsonObject
         /// </summary>
         /// <param name="json"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/JsonToObject")]
-        public IHttpActionResult JsonToObject([FromBody] string json)
+        [Route("api/JsonDeserialization")]
+        public IHttpActionResult JsonDeserialization([FromBody] string json)
         {
-            return Ok(SerializationDeserialization.JsonToObject(json));
+            return Ok(SerializationDeserialization.JsonDeserialization(json));
         }
 
         /// <summary>
-        /// Serialization -> Json to Xml
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("api/JsonToXml")]
-        public IHttpActionResult JsonToXMl([FromBody]string json)
-        {
-            return Ok(SerializationDeserialization.JsonToXml(json));
-        }
-
-        /// <summary>
-        /// Serialization -> Xml to Json
+        /// Serialization -> XmlObject to XmlString
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/XmlToJson")]
-        public IHttpActionResult XmlToJson([FromBody] string xml)
+        [Route("api/XmlSerialization")]
+        public IHttpActionResult XmlSerialization([FromBody] XElement xml)
         {
-            return Ok(SerializationDeserialization.XmlToJson(xml));
+            return Ok(SerializationDeserialization.XmlSerialization(xml));
+        }
+
+        /// <summary>
+        /// Deserialization -> XmlString to XmlObject
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/XmlDeserialization")]
+        public IHttpActionResult XmlDeserialization(string xml)
+        {
+            return Ok(SerializationDeserialization.XmlDeserialization(xml));
         }
 
     }

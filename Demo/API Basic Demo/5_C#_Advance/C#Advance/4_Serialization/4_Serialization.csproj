@@ -90,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Models\Stu01.xml" />
+    <Content Include="Models\Stu01.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -1,10 +1,15 @@
 ﻿using _4_Serialization.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Swashbuckle.Swagger;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.Script.Serialization;
+using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace _4_Serialization.BL
 {
@@ -17,7 +22,7 @@ namespace _4_Serialization.BL
         /// Convert object to Json String
         /// </summary>
         /// <returns></returns>
-        public static string ObjectToJosn()
+        public static string JsonSerialization()
         {
             // Object of Stu01 class
             Stu01 objStu01 = new Stu01 { u01f01 = 1001, u01f02 = "Yash Lathiya", u01f03 = "Gujarat Technological University" };
@@ -34,7 +39,7 @@ namespace _4_Serialization.BL
         /// </summary>
         /// <param name="json"> string of json data</param>
         /// <returns> Object of that json data </returns>
-        public static Stu01 JsonToObject(string json)
+        public static Stu01 JsonDeserialization(string json)
         {
             // Deserialize JSON to Stu01 object
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -42,64 +47,85 @@ namespace _4_Serialization.BL
 
             return objStu01;
         }
+
+        /// <summary>
+        /// Xml Serialization
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <returns></returns>
+        public static string XmlSerialization(XElement xml)
+        {
+            return JsonConvert.SerializeXNode(xml);
+        }
+
+        /// <summary>
+        /// Xml Deserialization
+        /// </summary>
+        /// <param name="xmlString"></param>
+        /// <returns></returns>
+        public static XElement XmlDeserialization(string xmlString)
+        {
+            return JsonConvert.DeserializeXNode($"{{\"Root\":{xmlString}}}").Root;
+        }
+
         /// <summary>
         /// Convert json string to xml string
         /// </summary>
         /// <param name="json"> json data in string format </param>
         /// <returns> Xml srring </returns>
-        public static string JsonToXml(string json)
-        {
-            // Deserialize JSON to Dictionary
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            var dictionary = serializer.Deserialize<Dictionary<string, object>>(json);
+        //public static string JsonToXml(string json)
+        //{
+        //    // Deserialize JSON to Dictionary
+        //    JavaScriptSerializer serializer = new JavaScriptSerializer();
+        //    var dictionary = serializer.Deserialize<Dictionary<string, object>>(json);
 
-            // Convert dictionary to xml
-            var xmlDocument = new XDocument(new XElement("root", ConvertToXml(dictionary)));
+        //    // Convert dictionary to xml
+        //    var xmlDocument = new XDocument(new XElement("root", ConvertToXml(dictionary)));
 
-            return xmlDocument.ToString();
-        }
+        //    return xmlDocument.ToString();
+        //}
 
         /// <summary>
         /// Logic of converting dictionary to xml component
         /// </summary>
         /// <param name="dictionary"> contains data of object </param>
         /// <returns> Xml Element s</returns>
-        public static XElement ConvertToXml(Dictionary<string, object> dictionary)
-        {
-            // Convert Dictionary to XML elements recursively
-            return new XElement("root",
-                dictionary.Select(kv =>
-                {
-                    if (kv.Value is Dictionary<string, object>)
-                    {
-                        // If the value is a nested dictionary, recursively call ConvertToXml
-                        return new XElement(kv.Key, ConvertToXml((Dictionary<string, object>)kv.Value));
-                    }
-                    else
-                    {
-                        // If the value is a simple type, convert it to string and create an XElement
-                        return new XElement(kv.Key, kv.Value.ToString());
-                    }
-                }));
-        }
+        //public static XElement ConvertToXml(Dictionary<string, object> dictionary)
+        //{
+        //    // Convert Dictionary to XML elements recursively
+        //    return new XElement("root",
+        //        dictionary.Select(kv =>
+        //        {
+        //            if (kv.Value is Dictionary<string, object>)
+        //            {
+        //                // If the value is a nested dictionary, recursively call ConvertToXml
+        //                return new XElement(kv.Key, ConvertToXml((Dictionary<string, object>)kv.Value));
+        //            }
+        //            else
+        //            {
+        //                // If the value is a simple type, convert it to string and create an XElement
+        //                return new XElement(kv.Key, kv.Value.ToString());
+        //            }
+        //        }));
+        //}
 
         /// <summary>
         /// Convert xml string to json string 
         /// </summary>
         /// <param name="xml"> xml data in string fomat </param>
         /// <returns> xml data in string form </returns>
-        public static string XmlToJson(string xml)
-        {
-            // Trim string so it can be parsed easily
-            xml = xml.Trim();
+        //public static string XmlToJson(string xml)
+        //{
+        //    // Trim string so it can be parsed easily
+        //    xml = xml.Trim();
 
-            // To parse xml document
-            XDocument xmlDocument = XDocument.Parse(xml);
+        //    // To parse xml document
+        //    XDocument xmlDocument = XDocument.Parse(xml);
 
-            string jsonString = JsonConvert.SerializeXNode(xmlDocument);
-            JObject json = JObject.Parse(jsonString);
+        //    string jsonString = JsonConvert.SerializeXNode(xmlDocument);
+        //    JObject json = JObject.Parse(jsonString);
 
-            return json.ToString();
-        }
+        //    return json.ToString();
+        //}
     }
 }
