@@ -1,4 +1,5 @@
 ﻿using _3_File_System.Models;
+using System.Collections.Generic;
 using System.IO;
 using System.Web;
 
@@ -20,23 +21,38 @@ namespace _3_File_System.BL
         /// To get list of files in directory
         /// </summary>
         /// <returns> List of files </returns>
-        public string[] GetListFile()
+        public List<string> GetListFile()
         {
             string directoryPath = HttpContext.Current.Server.MapPath(path);
 
-            // Get list of fileNames in directory
-            string[] files = Directory.GetFiles(directoryPath);
+            DirectoryInfo objDirectoryInfo = new DirectoryInfo(directoryPath);
 
-            // Extract file names from file
-            int index = 0;
-            string[] fileName = new string[files.Length];
-            foreach (string file in files)
+            // List of all file names in current directory
+            List<string> lstFileNames = new List<string>();
+
+            // Checks directory exist or not 
+            if(objDirectoryInfo.Exists)
             {
-                fileName[index] = Path.GetFileName(file);
-                index++;
+                foreach(FileInfo file in objDirectoryInfo.GetFiles())
+                {
+                    lstFileNames.Add(file.Name);
+                }
             }
 
-            return fileName;
+            return lstFileNames;
+            //// Get list of fileNames in directory
+            //string[] files = Directory.GetFiles(directoryPath);
+
+            //// Extract file names from file
+            //int index = 0;
+            //string[] fileName = new string[files.Length];
+            //foreach (string file in files)
+            //{
+            //    fileName[index] = Path.GetFileName(file);
+            //    index++;
+            //}
+
+            //return fileName;
         }  
 
         /// <summary>
