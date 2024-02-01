@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
@@ -16,7 +13,6 @@ namespace StudentAPI.JwtToken
     /// </summary>
     public class JwtTokenAuthentication : AuthorizationFilterAttribute
     {
-
         #region Public Methods 
 
         /// <summary>
@@ -85,8 +81,6 @@ namespace StudentAPI.JwtToken
                     {
                         actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "JWT Token has expired");
                     }
-
-
                 }
                 // If any exception occurs within the process, It returns  Internal Server Error with the exception
                 catch (Exception exception)

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
@@ -25,6 +22,7 @@ namespace StudentAPI.Authentication
                 //This method provides authorization to authenticated used .. 
                 base.HandleUnauthorizedRequest(actionContext);
             }
+            
             // User is not authorized
             else
             {

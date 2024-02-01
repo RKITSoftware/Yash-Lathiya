@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
+using System.Security.Principal;
+using System.Text; // Encoding Class
+using System.Threading;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters; // HttpStatusCode
-using System.Net;
-using System.Text; // Encoding Class
-using System.Threading;
-using System.Security.Principal;
-using System.Security.Claims; 
 
 namespace StudentAPI.Authentication
 {
@@ -29,7 +27,7 @@ namespace StudentAPI.Authentication
             // If request header han no credential for login --> Login failed
             if (actionContext.Request.Headers.Authorization == null)
             {
-                actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Login Failed"); // Status Code 401
+                actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Login credential is not provided in request"); // Status Code 401
             }
             // If request consists credential for login
             else
@@ -84,7 +82,6 @@ namespace StudentAPI.Authentication
                         // Returns unauthenticated user - " Login Failed " 
                         actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Login Failed"); // Status Code 401
                     }
-
                 }
                 // If any exception occurs within the process, It returns  Internal Server Error with the exception
                 catch (Exception exception)
@@ -92,7 +89,6 @@ namespace StudentAPI.Authentication
                     // Returns Internal servar error with the stack of exception 
                     actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception); // Status Code 500
                 }
-                
             }
         }
 

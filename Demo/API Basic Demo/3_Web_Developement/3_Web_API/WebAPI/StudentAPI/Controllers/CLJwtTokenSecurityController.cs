@@ -1,15 +1,8 @@
-﻿using StudentAPI.Authentication;
-using StudentAPI.JwtToken;
+﻿using StudentAPI.JwtToken;
 using StudentAPI.Models;
-using Swashbuckle.Swagger;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Claims;
 using System.Web.Http;
-using System.Web.Security;
 
 namespace StudentAPI.Controllers
 {
@@ -53,7 +46,7 @@ namespace StudentAPI.Controllers
             // If user is valid then generates jwt token
             if(IsValidUser(username, password))
             {
-                var token = TokenManager.GenerateToken(username);
+                string token = TokenManager.GenerateToken(username);
                 return Ok(new { access_token = token } );
             }
 

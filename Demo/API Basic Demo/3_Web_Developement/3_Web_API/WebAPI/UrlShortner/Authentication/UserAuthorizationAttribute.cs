@@ -19,13 +19,13 @@ namespace UrlShortner.Authentication
 
         protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
         {
-            //User is authorized
+            //User is authenticated but not authorized 
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 //This method provides authorization to authenticated used .. 
                 base.HandleUnauthorizedRequest(actionContext);
             }
-            // User is not authorized
+            // Never programs comes here shows condition that user is not authenticated
             else
             {
                 // Constructor accepts argument as status code

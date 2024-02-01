@@ -42,6 +42,7 @@ namespace UrlShortner.Authentication
 
             users.Add(new User() { Id = 1, UserName = "user", Password = "user", Role = "user" });
             users.Add(new User() { Id = 2, UserName = "admin", Password = "admin", Role = "user,admin" });
+            
             users.Add(new User() { Id = 3, UserName = "superadmin", Password = "superadmin", Role = "superadmin,admin,user" });
 
             return users;
