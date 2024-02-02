@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
-using System.Web.Http.Controllers;
+﻿using System.Web.Http;
 using System.Web.Http.Dispatcher;
-using Microsoft.Web.Http;
 using VersoningWebAPI.Custom;
-using VersoningWebAPI.CustomControllSelector;
 
 namespace VersoningWebAPI
 {
@@ -34,7 +28,7 @@ namespace VersoningWebAPI
 
             //config.Routes.MapHttpRoute(
             //    name: "ApiVersion2",
-            //    routeTemplate: "api/v1/student2",
+            //    routeTemplate: "api/v2/student2",
             //    defaults: new { controller = "CLStudentV2" }
             //);
 
