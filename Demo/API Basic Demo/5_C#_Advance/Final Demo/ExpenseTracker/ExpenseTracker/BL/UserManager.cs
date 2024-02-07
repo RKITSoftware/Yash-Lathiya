@@ -18,7 +18,7 @@ namespace ExpenseTracker.BL
 
         // For Security Purpose
         private static string _encryptedPassword;
-
+        
         static UserManager()
         {
             try

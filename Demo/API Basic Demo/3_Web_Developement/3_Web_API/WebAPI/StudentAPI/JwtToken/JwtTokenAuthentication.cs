@@ -71,7 +71,7 @@ namespace StudentAPI.JwtToken
 
                     // Logic for jwt token expiry validation
 
-                    //Extract properties of jwt token by default methods
+                    // Extract properties of jwt token by default methods
                     // We can validate token by this properties too, but in this code of section custom logic is written
                     var handler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
                     var jsonToken = handler.ReadToken(authToken) as System.IdentityModel.Tokens.Jwt.JwtSecurityToken;

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "7AI3nY7LL8wGsKNh08OZj6PqDG6lYsWafkV9pXf2C27DSNa+HqNZY/b1ZZrRG6ioOEjOcKrXVoUYswi2d7bz0w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\3_Web_Developement\\3_Web_API\\WebAPI\\Scrapper\\Scrapper.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yash.l\\.nuget\\packages\\htmlagilitypack\\1.11.58\\htmlagilitypack.1.11.58.nupkg.sha512"
+  ],
+  "logs": []
+}

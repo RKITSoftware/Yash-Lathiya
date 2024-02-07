@@ -1,0 +1,17 @@
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\bin\Debug\net6.0\Scrapper.exe
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\bin\Debug\net6.0\Scrapper.deps.json
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\bin\Debug\net6.0\Scrapper.runtimeconfig.json
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\bin\Debug\net6.0\Scrapper.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\bin\Debug\net6.0\Scrapper.pdb
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\bin\Debug\net6.0\HtmlAgilityPack.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\Scrapper.csproj.AssemblyReference.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\Scrapper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\Scrapper.AssemblyInfoInputs.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\Scrapper.AssemblyInfo.cs
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\Scrapper.csproj.CoreCompileInputs.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\Scrapper.csproj.CopyComplete
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\Scrapper.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\refint\Scrapper.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\Scrapper.pdb
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\Scrapper.genruntimeconfig.cache
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Scrapper\obj\Debug\net6.0\ref\Scrapper.dll

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VersoningWebAPI", "Versonin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortner", "UrlShortner\UrlShortner.csproj", "{C4623FB5-5085-4D7C-8057-B5A8B0D1A058}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrapper", "Scrapper\Scrapper.csproj", "{384944FD-10AA-484B-930E-8C8CD7FEE9BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C4623FB5-5085-4D7C-8057-B5A8B0D1A058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4623FB5-5085-4D7C-8057-B5A8B0D1A058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4623FB5-5085-4D7C-8057-B5A8B0D1A058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{384944FD-10AA-484B-930E-8C8CD7FEE9BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{384944FD-10AA-484B-930E-8C8CD7FEE9BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{384944FD-10AA-484B-930E-8C8CD7FEE9BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{384944FD-10AA-484B-930E-8C8CD7FEE9BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -168,6 +168,7 @@
     <Compile Include="Authentication\UserAuthenticationAttribute.cs" />
     <Compile Include="Authentication\UserAuthorizationAttribute.cs" />
     <Compile Include="BL\CacheManager.cs" />
+    <Compile Include="BL\JwtAuthentication.cs" />
     <Compile Include="Caching\CacheFilter.cs" />
     <Compile Include="Controllers\CLCacheController.cs" />
     <Compile Include="Controllers\CLStudentController.cs" />

@@ -1,4 +1,5 @@
-﻿using StudentAPI.JwtToken;
+﻿using StudentAPI.BL;
+using StudentAPI.JwtToken;
 using StudentAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,8 @@ namespace StudentAPI.Controllers
         public IHttpActionResult GetJwtToken(string username, string password)
         {
             // If user is valid then generates jwt token
-            if(IsValidUser(username, password))
+            JwtAuthentication objJwtAuthentication = new JwtAuthentication();
+            if (objJwtAuthentication.IsValidUser(username, password))
             {
                 string token = TokenManager.GenerateToken(username);
                 return Ok(new { access_token = token } );
@@ -67,24 +69,7 @@ namespace StudentAPI.Controllers
             return Ok("Yes - Jwt Token is Valid"); // Status Code 200
         }
 
-        /// <summary>
-        /// Checks user is valid or not
-        /// </summary>
-        /// <param name="username"> Username </param>
-        /// <param name="password"> Password </param>
-        /// <returns></returns>
-        public bool IsValidUser(string username, string password)
-        {
-            // Hard-Code Validation Implementation
-            if(username == "jwt" && password == "jwt")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        
 
         #endregion
 
