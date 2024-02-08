@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace StudentAPI.BL
+﻿namespace StudentAPI.BL
 {
     public class JwtAuthentication
     {
@@ -17,7 +12,6 @@ namespace StudentAPI.BL
         /// <returns></returns>
         public bool IsValidUser(string username, string password)
         {
-
             // Hard-Code Validation Implementation
             if (username == "jwt" && password == "jwt")
             {
