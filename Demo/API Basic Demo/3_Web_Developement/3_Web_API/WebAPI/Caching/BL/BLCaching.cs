@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Configuration;
 using System.Web;
 using System.Web.Caching;
+using System.Data.SqlClient;
 
 namespace Caching.BL
 {
@@ -21,8 +23,14 @@ namespace Caching.BL
         {
             // here 3rd argument represents dependencies 
             // null means no dependecies which leadss to change cache data
-            // If any dependency is given then cache also changes as per dependency changes
-            HttpContext.Current.Cache.Insert(key, value, null, DateTime.Now.AddMinutes(cacheDurationInMinutes), Cache.NoSlidingExpiration);
+            // If any dependency is given then cache also changes as per dependency
+
+            // Specify your connection string and SQL query
+            string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+            // Create a SqlCacheDependency using the specified query and connection string
+            SqlCacheDependency sqlDependency = new SqlCacheDependency("employee_yashl", "emp01");
+
+            HttpContext.Current.Cache.Insert(key, value, sqlDependency, DateTime.Now.AddMinutes(cacheDurationInMinutes), Cache.NoSlidingExpiration);
         }
 
 
