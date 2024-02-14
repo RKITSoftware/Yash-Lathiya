@@ -12,8 +12,12 @@ namespace UrlShortner.Controllers
     [RoutePrefix("api/v1")]
     public class CLShortenUrl1Controller : ApiController
     {
+        #region Private Fields
+
         // Out domain
         private const string domain = "http://localhost:50704/api/v1/redirect/";
+
+        #endregion
 
         #region Public Methods
 

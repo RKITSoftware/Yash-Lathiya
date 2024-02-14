@@ -145,6 +145,7 @@
     <Compile Include="Models\Sho01.cs" />
     <Compile Include="Models\Sho02.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Swagger\SwaggerAuthentication.cs" />
     <Compile Include="Versioning\VersionControllerSelector.cs" />
   </ItemGroup>
   <ItemGroup>

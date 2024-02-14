@@ -18,6 +18,8 @@ namespace UrlShortner.BL
 
         #endregion
 
+        #region Public Methods
+
         /// <summary>
         /// Generate short code of Original url
         /// </summary>
@@ -164,5 +166,7 @@ namespace UrlShortner.BL
 
             return true;
         }
+
+        #endregion
     }
 }

@@ -9,7 +9,9 @@ using UrlShortner.Models;
 
 namespace UrlShortner.BL
 {
-
+    /// <summary>
+    /// Consist buisness logic of v2
+    /// </summary>
     public class BLShortenUrl2
     {
         #region Private Fields
@@ -21,6 +23,8 @@ namespace UrlShortner.BL
         private static int shortCodeLength = 8;
 
         #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Generate short code of Original url
@@ -187,5 +191,7 @@ namespace UrlShortner.BL
 
             return true;
         }
+
+        #endregion
     }
 }
