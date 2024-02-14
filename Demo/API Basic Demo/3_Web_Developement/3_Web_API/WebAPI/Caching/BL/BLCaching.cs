@@ -28,9 +28,9 @@ namespace Caching.BL
             HttpContext.Current.Cache.Insert(key, value, null, DateTime.Now.AddMinutes(cacheDurationInMinutes), Cache.NoSlidingExpiration);
         }
 
+        /// Remove item from cache by using key
 
         /// <summary>
-        /// Remove item from cache by using key
         /// </summary>
         /// <param name="key"></param>
         internal void RemoveFromCache(string key)

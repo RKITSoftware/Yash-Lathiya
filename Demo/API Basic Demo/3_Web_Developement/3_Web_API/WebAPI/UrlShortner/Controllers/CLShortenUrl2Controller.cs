@@ -86,7 +86,7 @@ namespace UrlShortner.Controllers
         [CacheFilter(TimeDuration = 10)]
         public IHttpActionResult UrlAnalytics(string shortCode, [FromBody] int userId)
         {
-            return Ok(BLShortenUrl2.UrlAnalytics(shortCode));
+            return Ok(BLShortenUrl2.UrlAnalytics(shortCode, userId));
         }
 
         /// <summary>
@@ -116,9 +116,9 @@ namespace UrlShortner.Controllers
         [Route("deleteurl/{shortCode}")]
         [UserAuthenticationAttribute]
         [UserAuthorizationAttribute(Roles = "admin")]
-        public IHttpActionResult DeleteShortenUrl(string shortCode)
+        public IHttpActionResult DeleteShortenUrl(string shortCode, [FromBody] int userID)
         {
-            if (BLShortenUrl2.DeleteUrl(shortCode))
+            if (BLShortenUrl2.DeleteUrl(shortCode, userID))
             {
                 return Ok($"Url with shortCode {shortCode} deleted successfully");
             }

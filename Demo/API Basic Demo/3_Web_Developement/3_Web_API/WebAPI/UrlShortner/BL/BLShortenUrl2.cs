@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
+using System.Web.Services.Description;
 using UrlShortner.ExceptionHandling;
 using UrlShortner.Models;
 
@@ -128,7 +130,7 @@ namespace UrlShortner.BL
         /// </summary>
         /// <param name="shortCode"></param>
         /// <returns> Object of Sho01 </returns>
-        public static object UrlAnalytics(string shortCode)
+        public static object UrlAnalytics(string shortCode, int userId)
         {
             // Select that Url object
             var objSho02 = lstSho02.FirstOrDefault(url => url.o02f01 == shortCode);
@@ -138,15 +140,26 @@ namespace UrlShortner.BL
                 throw new UrlNotFoundException();
             }
 
-            return new
+            if(objSho02.o02f05 == userId)
             {
-                Message = "Analytics of the Shorten Url",
-                UserId = objSho02.o02f05,
-                ShortenedUrl = "http://localhost:50704/api/v2/redirect/" + objSho02.o02f01,
-                OriginalUrl = objSho02.o02f02,
-                Expiry = objSho02.o02f03,
-                ClickCount = objSho02.o02f04,
-            };
+                return new
+                {
+                    Message = "Analytics of the Shorten Url",
+                    UserId = objSho02.o02f05,
+                    ShortenedUrl = "http://localhost:50704/api/v2/redirect/" + objSho02.o02f01,
+                    OriginalUrl = objSho02.o02f02,
+                    Expiry = objSho02.o02f03,
+                    ClickCount = objSho02.o02f04,
+                };
+            }
+            else
+            {
+                return new
+                {
+                    Message = "You have no access for analytics of enetered url"
+                };
+            }
+            
         }
 
         /// <summary>
@@ -154,13 +167,17 @@ namespace UrlShortner.BL
         /// </summary>
         /// <param name="shortCode"></param>
         /// <returns></returns>
-        public static bool DeleteUrl(string shortCode)
+        public static bool DeleteUrl(string shortCode, [FromBody]int userId)
         {
             // Find index of the url
             int index = lstSho02.FindIndex(url => url.o02f01 == shortCode);
 
             //If shorten url not exists
             if (index == -1)
+            {
+                return false;
+            }
+            if (lstSho02[index].o02f05 != userId)
             {
                 return false;
             }
