@@ -12,14 +12,14 @@ namespace Caching.Controllers
     public class CLCachingController : ApiController
     {
         // Instance of BLCaching
-        private readonly BLCaching _blCaching;
+        private readonly BLCaching _objBlCaching;
 
         /// <summary>
         /// initialized instance of BLCaching class
         /// </summary>
         public CLCachingController()
         {
-            _blCaching = new BLCaching();
+            _objBlCaching = new BLCaching();
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Caching.Controllers
         [Route("api/cache/get/{e01f01}")]
         public HttpResponseMessage GetCache(string e01f01)
         {
-            var cachedValue = _blCaching.RetrieveFromCache(e01f01);
+            var cachedValue = _objBlCaching.RetrieveFromCache(e01f01);
 
             if (cachedValue != null)
             {
@@ -52,7 +52,7 @@ namespace Caching.Controllers
         [Route("api/cache/add")]
         public HttpResponseMessage PostCache([FromBody] Cre01 objCre01)
         {
-            _blCaching.AddToCache(objCre01.e01f01, objCre01.e01f02, objCre01.e01f03);
+            _objBlCaching.AddToCache(objCre01.e01f01, objCre01.e01f02, objCre01.e01f03);
 
             return Request.CreateResponse(HttpStatusCode.OK, $"Login with username '{objCre01.e01f01}' added to cache.");
         }
@@ -68,11 +68,11 @@ namespace Caching.Controllers
         [Route("api/cache/update")]
         public HttpResponseMessage UpdateCache([FromBody] Cre01 objCre01)
         {
-            var existingValue = _blCaching.RetrieveFromCache(objCre01.e01f01);
+            var existingValue = _objBlCaching.RetrieveFromCache(objCre01.e01f01);
 
             if (existingValue != null)
             {
-                _blCaching.UpdateCache(objCre01.e01f01, objCre01.e01f02, objCre01.e01f03);
+                _objBlCaching.UpdateCache(objCre01.e01f01, objCre01.e01f02, objCre01.e01f03);
                 return Request.CreateResponse(HttpStatusCode.OK, $"Login with username '{objCre01.e01f01}' updated in cache.");
             }
 
@@ -88,11 +88,11 @@ namespace Caching.Controllers
         [Route("api/cache/delete/{e01f01}")]
         public HttpResponseMessage DeleteCache(string e01f01)
         {
-            var existingValue = _blCaching.RetrieveFromCache(e01f01);
+            var existingValue = _objBlCaching.RetrieveFromCache(e01f01);
 
             if (existingValue != null)
             {
-                _blCaching.RemoveFromCache(e01f01);
+                _objBlCaching.RemoveFromCache(e01f01);
                 return Request.CreateResponse(HttpStatusCode.OK, $"Login with username '{e01f01}' removed from cache.");
             }
 

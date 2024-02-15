@@ -8,6 +8,9 @@ using UrlShortner.Swagger;
 
 namespace UrlShortner
 {
+    /// <summary>
+    /// Set configuration of Swagger
+    /// </summary>
     public class SwaggerConfig
     {
         public static void Register()
