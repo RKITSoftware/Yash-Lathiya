@@ -21,7 +21,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/balance/{r01f01}")]
         public IHttpActionResult MyCurrentBalance(int r01f01)
         {
-            DashboardManager dashboard = new DashboardManager();
+            BLDashboardManager dashboard = new BLDashboardManager();
             return Ok(dashboard.CurrentBalance(r01f01));
         }
 
@@ -34,7 +34,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/credit/{r01f01}")]
         public IHttpActionResult GetToatlCredit(int r01f01)
         {
-            DashboardManager dashboard = new DashboardManager();
+            BLDashboardManager dashboard = new BLDashboardManager();
             return Ok(dashboard.TotalCredit(r01f01));
         }
 
@@ -47,7 +47,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/expense/{r01f01}")]
         public IHttpActionResult GetTotalExpense(int r01f01)
         {
-            DashboardManager dashboard = new DashboardManager();
+            BLDashboardManager dashboard = new BLDashboardManager();
             return Ok(dashboard.TotalExpense(r01f01));
         }
 

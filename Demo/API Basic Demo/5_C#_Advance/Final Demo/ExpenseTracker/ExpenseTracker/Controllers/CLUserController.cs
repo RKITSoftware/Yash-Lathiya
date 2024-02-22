@@ -23,7 +23,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/User/Register")]
         public IHttpActionResult RegisterUser([FromBody] Usr01 objUsr01) 
         {
-            UserManager.RegisterUser(objUsr01);
+            BLUserManager objBLUserManager = new BLUserManager();
+            objBLUserManager.RegisterUser(objUsr01);
             return Ok("User Registered");
         }
 
@@ -33,12 +34,10 @@ namespace ExpenseTracker.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/User/Login")]
-        public IHttpActionResult LoginUser() 
+        public IHttpActionResult LoginUser([FromBody] Log01 objLog01) 
         {
-            string r01f02 = HttpContext.Current.Request.Form["r01f02"];
-            string r01f05 = HttpContext.Current.Request.Form["r01f05"];
-
-            bool isAuthenticated = UserManager.LoginUser(r01f02, r01f05);
+            BLUserManager objBLUserManager = new BLUserManager();
+            bool isAuthenticated = objBLUserManager.LoginUser(objLog01.g01f01, objLog01.g01f02);
             if(!isAuthenticated)
             {
                 return BadRequest("Login Failed");

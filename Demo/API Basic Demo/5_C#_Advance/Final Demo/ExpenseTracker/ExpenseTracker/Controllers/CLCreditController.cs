@@ -22,7 +22,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/Credit/Add")]
         public IHttpActionResult AddCredit(Cre01 objCre01)
         {
-            CreditManager.AddCredit(objCre01);
+            BLCreditManager objBLCreditManager = new BLCreditManager();
+            objBLCreditManager.AddCredit(objCre01);
             return Ok("Added Credit");
         }
 
@@ -34,7 +35,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/Credit/Get/{e01f02}")]
         public IHttpActionResult GetCredits(int e01f02)
         {
-            return Ok(CreditManager.GetAllCredit(e01f02));
+            BLCreditManager objBLCreditManager = new BLCreditManager();
+            return Ok(objBLCreditManager.GetAllCredit(e01f02));
         }
 
         /// <summary>
@@ -46,7 +48,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/credit/Update")]
         public IHttpActionResult UpdateCredit(Cre01 objCre01)
         {
-            CreditManager.UpdateCredit(objCre01);
+            BLCreditManager objBLCreditManager = new BLCreditManager();
+            objBLCreditManager.UpdateCredit(objCre01);
             return Ok("Credit Updated");
         }
 
@@ -59,7 +62,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/Credit/Delete")]
         public IHttpActionResult DeleteCredit(int e01f01)
         {
-            CreditManager.DeleteCredit(e01f01);
+            BLCreditManager objBLCreditManager = new BLCreditManager();
+            objBLCreditManager.DeleteCredit(e01f01);
             return Ok("Credit Deleted");
         }
 

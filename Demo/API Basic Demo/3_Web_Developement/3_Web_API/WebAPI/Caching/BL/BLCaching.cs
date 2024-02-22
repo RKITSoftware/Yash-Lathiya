@@ -44,7 +44,7 @@ namespace Caching.BL
         /// <param name="key"></param>
         /// <param name="newValue"></param>
         /// <param name="cacheDurationInMinutes"> New duration of cache </param>
-        internal void UpdateCache(string key, object newValue, int cacheDurationInMinutes)
+        internal void UpdateCache(string key, string newValue, int cacheDurationInMinutes)
         {
             RemoveFromCache(key); // Remove existing item
             AddToCache(key, newValue, cacheDurationInMinutes); // Add updated item

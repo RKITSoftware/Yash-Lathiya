@@ -24,7 +24,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/report/{r01f01}")]
         public IHttpActionResult GenerateReport(int r01f01) 
         {
-            string filePath = ReportManager.GenerateReport(r01f01);
+            BLReportManager objBLReportManager = new BLReportManager();
+            string filePath = objBLReportManager.GenerateReport(r01f01);
 
             // Check if the file exists
             if (File.Exists(filePath))

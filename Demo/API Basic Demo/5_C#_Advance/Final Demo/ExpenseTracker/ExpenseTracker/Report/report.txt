@@ -1,3 +1,4 @@
 ***** Expense *****
+Expense Id : 9, 	 Amount : 1245, 	 Time : 29-01-2024 10:17:50, 	 Category : Travel, 	 Description : Rajkot to Surat  
+Expense Id : 10, 	 Amount : 2650, 	 Time : 29-01-2024 10:19:15, 	 Category : Clothing, 	 Description : T-shirt  
 ***** Credit *****
- Credit Id : 106, 	 User Id : 1008, 	 Credit Amount : 1200000, 	 Description : Mutual Funds  

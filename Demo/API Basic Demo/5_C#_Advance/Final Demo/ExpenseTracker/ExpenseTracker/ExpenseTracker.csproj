@@ -163,12 +163,12 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BL\CreditManager.cs" />
-    <Compile Include="BL\DashboardManager.cs" />
-    <Compile Include="BL\ExpenseManager.cs" />
-    <Compile Include="BL\ReportManager.cs" />
-    <Compile Include="BL\UserManager.cs" />
-    <Compile Include="BL\Wallet.cs" />
+    <Compile Include="BL\BLCreditManager.cs" />
+    <Compile Include="BL\BLDashboardManager.cs" />
+    <Compile Include="BL\BLExpenseManager.cs" />
+    <Compile Include="BL\BLReportManager.cs" />
+    <Compile Include="BL\BLUserManager.cs" />
+    <Compile Include="BL\BLWallet.cs" />
     <Compile Include="Connection\DatabaseConnection.cs" />
     <Compile Include="Controllers\CLCreditController.cs" />
     <Compile Include="Controllers\CLDashboardController.cs" />
@@ -178,6 +178,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Log01.cs" />
     <Compile Include="Models\Cre01.cs" />
     <Compile Include="Models\Exp01.cs" />
     <Compile Include="Models\rep01.cs" />

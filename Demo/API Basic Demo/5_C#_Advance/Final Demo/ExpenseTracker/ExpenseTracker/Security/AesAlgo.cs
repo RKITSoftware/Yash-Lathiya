@@ -10,12 +10,12 @@ namespace ExpenseTracker.Security
     /// </summary>
     public class AesAlgo
     {
-        #region Private - Static Members 
+        #region Private Members 
 
         // AES Crypto Service Provider class implements logic of AES Algorithm
-        private static AesCryptoServiceProvider _aes;
-        private static byte[] key = Encoding.UTF8.GetBytes("IamPrivateKeyofExpenseTracker123");
-        private static byte[] iv = Encoding.UTF8.GetBytes("IamInitialVector");
+        private AesCryptoServiceProvider _aes;
+        private byte[] key = Encoding.UTF8.GetBytes("IamPrivateKeyofExpenseTracker123");
+        private byte[] iv = Encoding.UTF8.GetBytes("IamInitialVector");
 
         /// <summary>
         /// Provide Instance to class

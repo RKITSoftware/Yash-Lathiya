@@ -41,7 +41,7 @@ namespace UrlShortner.BL
 
             // Add shorten url details in the lstSho02.
 
-            var objSho01 = new Sho01
+            Sho01 objSho01 = new Sho01
             {
                 o01f01 = shortCode,
                 o01f02 = originalUrl,
