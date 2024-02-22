@@ -92,7 +92,16 @@ namespace ExpenseTracker.ORM
         {
             using(var db = dbFactory.OpenDbConnection())
             {
-                db.DeleteById<Exp01>(p01f01);
+                Exp01 objExp01 = db.SingleById<Exp01>(p01f01);
+                if (objExp01.p01f02 == Static.Static.GetUserIdFromClaims())
+                {
+                    db.DeleteById<Exp01>(p01f01);
+                }
+                else
+                {
+                    throw new Exception("You can delete only yours credit entry");
+                }
+                
             }
 
         }

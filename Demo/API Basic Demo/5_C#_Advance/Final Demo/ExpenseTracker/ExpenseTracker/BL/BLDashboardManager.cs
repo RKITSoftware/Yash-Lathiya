@@ -16,20 +16,19 @@ namespace ExpenseTracker.BL
         /// </summary>
         /// <param name="r01f01"> User Id </param>
         /// <returns> Current Balance </returns>
-        public override decimal CurrentBalance(int r01f01)
+        public override decimal CurrentBalance()
         {
-            return TotalCredit() - TotalExpense(r01f01);
+            return TotalCredit() - TotalExpense();
         }
 
         /// <summary>
         /// To find total expense for specified user
         /// </summary>
-        /// <param name="r01f01"> User Id </param>
         /// <returns> Total Expense </returns>
-        public override decimal TotalExpense(int r01f01)
+        public override decimal TotalExpense()
         {
             BLExpenseManager objBLExpenseManager = new BLExpenseManager();
-            List<Exp01> lstExp01 = objBLExpenseManager.GetAllExpense(r01f01);
+            List<Exp01> lstExp01 = objBLExpenseManager.GetAllExpense();
             
             // Calculate by LINQ
             var totalExpense = (from expense in lstExp01

@@ -26,9 +26,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/balance")]
         public IHttpActionResult MyCurrentBalance()
         {
-            int r01f01 = Static.Static.GetUserIdFromClaims();
             BLDashboardManager dashboard = new BLDashboardManager();
-            return Ok(dashboard.CurrentBalance(r01f01));
+            return Ok(dashboard.CurrentBalance());
         }
 
         /// <summary>
@@ -51,9 +50,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/expense")]
         public IHttpActionResult GetTotalExpense()
         {
-            int r01f01 = Static.Static.GetUserIdFromClaims();
             BLDashboardManager dashboard = new BLDashboardManager();
-            return Ok(dashboard.TotalExpense(r01f01));
+            return Ok(dashboard.TotalExpense());
         }
 
         #endregion
