@@ -1,7 +1,12 @@
 ﻿using ExpenseTracker.Models;
 using ExpenseTracker.Security;
+using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ExpenseTracker.BL
@@ -113,7 +118,7 @@ namespace ExpenseTracker.BL
         /// <param name="r01f05"> Password </param>
         /// <returns> true -> if credential is correct
         ///           false -> if credential is incorrect </returns>
-        public bool LoginUser(string r01f02,  string r01f05)
+        public bool LoginUser(int r01f01,  string r01f05)
         {
             AesAlgo aes = new AesAlgo();
             _encryptedPassword = aes.Encrypt(r01f05);
@@ -123,15 +128,15 @@ namespace ExpenseTracker.BL
             {
                 command.Connection = _mySqlConnection;
                 command.CommandText = @"SELECT
-                                            r01f02,
+                                            r01f01,
                                             r01f05
                                         FROM
                                             usr01
                                         WHERE
-                                            r01f02 = @r01f02 and 
+                                            r01f01 = @r01f01 and 
                                             r01f05 = @r01f05";
 
-                command.Parameters.AddWithValue("@r01f02", r01f02);
+                command.Parameters.AddWithValue("@r01f01", r01f01);
                 command.Parameters.AddWithValue("@r01f05", _encryptedPassword);
 
                 try 
@@ -168,6 +173,30 @@ namespace ExpenseTracker.BL
             }
         }
 
+        public string GenerateJwtToken(int r01f01)
+        {
+            // Add your JWT generation logic here
+            // Include claims, expiration, signing key, etc.
+
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("315a6e8435387977315a6e8435387977"));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new List<Claim>
+            {
+                new Claim("r01f01", r01f01.ToString()),
+                // Add additional claims as needed
+            };
+
+            var token = new JwtSecurityToken(
+                issuer: "https://localhost:44303/",
+                audience: "https://localhost:44303/",
+                claims: claims,
+                expires: DateTime.Now.AddHours(1), // Token expiration time
+                signingCredentials: credentials
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
         #endregion
     }
 }

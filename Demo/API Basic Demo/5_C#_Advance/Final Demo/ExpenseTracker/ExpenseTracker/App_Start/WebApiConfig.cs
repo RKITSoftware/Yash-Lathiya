@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ExpenseTracker.Security;
+using System;
 using System.Web.Http;
 
 namespace ExpenseTracker
@@ -10,6 +9,9 @@ namespace ExpenseTracker
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+
+            // Enable JWT authentication
+            config.MessageHandlers.Add(new JwtTokenValidationHandler());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
