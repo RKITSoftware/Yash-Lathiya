@@ -8,21 +8,18 @@
         /// <summary>
         /// Current Balance = Total Credit - Total Expense
         /// </summary>
-        /// <param name="r01f01"> User Id </param>
         /// <returns> Current Balance</returns>
-        public abstract decimal CurrentBalance(int r01f01);
+        public abstract decimal CurrentBalance();
 
         /// <summary>
         /// Total Expense for specific user
         /// </summary>
-        /// <param name="r01f01"> User Id </param>
         /// <returns> Total Expense </returns>
-        public abstract decimal TotalExpense(int r01f01);
+        public abstract decimal TotalExpense();
 
         /// <summary>
         /// Total Credit for specific user
         /// </summary>
-        /// <param name="r01f01"> USer Id </param>
         /// <returns> Total Credit </returns>
         public abstract decimal TotalCredit();
     }

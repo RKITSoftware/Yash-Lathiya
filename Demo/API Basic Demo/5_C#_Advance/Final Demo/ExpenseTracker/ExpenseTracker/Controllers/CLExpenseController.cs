@@ -38,11 +38,10 @@ namespace ExpenseTracker.Controllers
         [Route("api/Expense/GetByUserIdAndDateOfExpense")]
         public IHttpActionResult GetExpense()
         {
-            int p01f02 = Convert.ToInt32(HttpContext.Current.Request.Form["p01f01"]);
             DateTime p01f04 = Convert.ToDateTime(HttpContext.Current.Request.Form["p01f04"]);
 
             BLExpenseManager objBLExpenseManager = new BLExpenseManager();
-            return Ok(objBLExpenseManager.GetExpense(p01f02, p01f04));
+            return Ok(objBLExpenseManager.GetExpense(p01f04));
         }
 
         /// <summary>
@@ -50,11 +49,11 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         /// <returns> Details of all Expense </returns>
         [HttpGet]
-        [Route("api/Expense/Get/{p01f02}")]
-        public IHttpActionResult GetExpenses(int p01f02) 
+        [Route("api/Expense/Get")]
+        public IHttpActionResult GetExpenses() 
         {
             BLExpenseManager objBLExpenseManager = new BLExpenseManager();
-            return Ok(objBLExpenseManager.GetAllExpense(p01f02));
+            return Ok(objBLExpenseManager.GetAllExpense());
         }
 
         /// <summary>
