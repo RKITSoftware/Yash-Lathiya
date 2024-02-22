@@ -11,6 +11,7 @@ namespace ExpenseTracker.Controllers
     /// Its sealed for security > No other class can inherit it
     /// It uses BL from ExpenseManager class
     /// </summary>
+    [Authorize]
     public sealed class CLExpenseController : ApiController
     {
         #region Public Methods 
