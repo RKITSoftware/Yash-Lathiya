@@ -29,7 +29,7 @@ namespace ExpenseTracker.Controllers
         }
 
         /// <summary>
-        /// To Login User with help of username and password 
+        /// To Login User with help of userid and password 
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -44,7 +44,9 @@ namespace ExpenseTracker.Controllers
             }
             else
             {
-                return Ok("Login Successful");
+                // Generate Jwt token
+                var token = objBLUserManager.GenerateJwtToken(objLog01.g01f01); 
+                return Ok(new { Token = token, Message = "Login Successful" });
             }
         }
 

@@ -11,9 +11,9 @@ namespace ExpenseTracker.Models
     public class Log01
     {
         /// <summary>
-        /// username
+        /// userid
         /// </summary>
-        public string g01f01 { get; set; }
+        public int g01f01 { get; set; }
 
         /// <summary>
         /// password

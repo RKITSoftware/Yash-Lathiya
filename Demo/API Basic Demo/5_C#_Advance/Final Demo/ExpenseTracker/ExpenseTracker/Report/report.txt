@@ -1,4 +1,5 @@
 ***** Expense *****
-Expense Id : 9, 	 Amount : 1245, 	 Time : 29-01-2024 10:17:50, 	 Category : Travel, 	 Description : Rajkot to Surat  
-Expense Id : 10, 	 Amount : 2650, 	 Time : 29-01-2024 10:19:15, 	 Category : Clothing, 	 Description : T-shirt  
+Expense Id : 22, 	 Amount : 100000, 	 Time : 22-02-2024 15:25:38, 	 Category : Home Expense, 	 Description : Abhishek Bachhan  
+Expense Id : 23, 	 Amount : 150000, 	 Time : 22-02-2024 15:25:58, 	 Category : Home Expense, 	 Description : Aishwariya  
 ***** Credit *****
+ Credit Id : 109, 	 User Id : 1012, 	 Credit Amount : 400000, 	 Description : Jaya Bachchan  
