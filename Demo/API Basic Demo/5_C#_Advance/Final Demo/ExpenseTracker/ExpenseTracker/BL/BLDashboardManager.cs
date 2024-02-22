@@ -18,7 +18,7 @@ namespace ExpenseTracker.BL
         /// <returns> Current Balance </returns>
         public override decimal CurrentBalance(int r01f01)
         {
-            return TotalCredit(r01f01) - TotalExpense(r01f01);
+            return TotalCredit() - TotalExpense(r01f01);
         }
 
         /// <summary>
@@ -41,12 +41,11 @@ namespace ExpenseTracker.BL
         /// <summary>
         /// To find total credit for specified user
         /// </summary>
-        /// <param name="r01f01"> User Id </param>
         /// <returns> Total Credit </returns>
-        public override decimal TotalCredit(int r01f01)
+        public override decimal TotalCredit()
         {
             BLCreditManager objBLCreditManager = new BLCreditManager();
-            List<Cre01> lstCre01 = objBLCreditManager.GetAllCredit(r01f01);
+            List<Cre01> lstCre01 = objBLCreditManager.GetAllCredit();
 
             // Calculate by LINQ
             var totalExpense = (from credit in lstCre01

@@ -8,7 +8,9 @@ namespace ExpenseTracker.Controllers
     /// Controller which contains endpoints to deal with credit details 
     /// Its sealed for security > No other class can inherit it
     /// It uses BL from the CreditManager class
+    /// All methods are authorized by JWT Token
     /// </summary>
+    [Authorize]
     public sealed class CLCreditController : ApiController
     {
         #region Public Methods
@@ -32,11 +34,11 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         /// <returns> Details of all credits of particular user </returns>
         [HttpGet]
-        [Route("api/Credit/Get/{e01f02}")]
-        public IHttpActionResult GetCredits(int e01f02)
+        [Route("api/Credit/Get")]
+        public IHttpActionResult GetCredits()
         {
             BLCreditManager objBLCreditManager = new BLCreditManager();
-            return Ok(objBLCreditManager.GetAllCredit(e01f02));
+            return Ok(objBLCreditManager.GetAllCredit());
         }
 
         /// <summary>

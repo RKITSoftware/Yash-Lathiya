@@ -39,9 +39,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/credit")]
         public IHttpActionResult GetToatlCredit()
         {
-            int r01f01 = Static.Static.GetUserIdFromClaims();
             BLDashboardManager dashboard = new BLDashboardManager();
-            return Ok(dashboard.TotalCredit(r01f01));
+            return Ok(dashboard.TotalCredit());
         }
 
         /// <summary>
