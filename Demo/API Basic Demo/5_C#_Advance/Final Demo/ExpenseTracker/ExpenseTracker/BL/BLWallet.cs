@@ -24,6 +24,6 @@
         /// </summary>
         /// <param name="r01f01"> USer Id </param>
         /// <returns> Total Credit </returns>
-        public abstract decimal TotalCredit(int r01f01);
+        public abstract decimal TotalCredit();
     }
 }
