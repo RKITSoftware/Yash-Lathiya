@@ -10,6 +10,7 @@ namespace ExpenseTracker.Controllers
     /// Controller which contains endpoints to deal with Expense details 
     /// Its sealed for security > No other class can inherit it
     /// It uses BL from ExpenseManager class
+    /// All methods are authorized from jwt token
     /// </summary>
     [Authorize]
     public sealed class CLExpenseController : ApiController

@@ -1,5 +1,3 @@
 ***** Expense *****
-Expense Id : 22, 	 Amount : 100000, 	 Time : 22-02-2024 15:25:38, 	 Category : Home Expense, 	 Description : Abhishek Bachhan  
-Expense Id : 23, 	 Amount : 150000, 	 Time : 22-02-2024 15:25:58, 	 Category : Home Expense, 	 Description : Aishwariya  
+Expense Id : 25, 	 Amount : 15000, 	 Time : 22-02-2024 18:06:22, 	 Category : Electronics, 	 Description : Mobile  
 ***** Credit *****
- Credit Id : 109, 	 User Id : 1012, 	 Credit Amount : 400000, 	 Description : Jaya Bachchan  
