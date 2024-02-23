@@ -1,5 +1,9 @@
 ﻿using ExpenseTracker.BL;
+using System.Security.Claims;
+using System;
 using System.Web.Http;
+using System.Linq;
+using ExpenseTracker.Static;
 
 namespace ExpenseTracker.Controllers
 {
@@ -7,7 +11,9 @@ namespace ExpenseTracker.Controllers
     /// Controller which contains endpoints to deal with Dashboard details 
     /// Its sealed for security > No other class can inherit it
     /// It uses BL from DashboardManager class
+    /// All methods are authorized by JWT Token
     /// </summary>
+    [Authorize]
     public class CLDashboardController : ApiController
     {
         #region Public Methods 
@@ -15,40 +21,37 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// To check current balance for specific user
         /// </summary>
-        /// <param name="r01f01"> User Id </param>
         /// <returns> Current Balance </returns>
         [HttpGet]
-        [Route("api/dashboard/balance/{r01f01}")]
-        public IHttpActionResult MyCurrentBalance(int r01f01)
+        [Route("api/dashboard/balance")]
+        public IHttpActionResult MyCurrentBalance()
         {
             BLDashboardManager dashboard = new BLDashboardManager();
-            return Ok(dashboard.CurrentBalance(r01f01));
+            return Ok(dashboard.CurrentBalance());
         }
 
         /// <summary>
         /// To get total amount of credit for specific user
         /// </summary>
-        /// <param name="r01f01"> User Id </param>
         /// <returns> Tota credit </returns>
         [HttpGet]
-        [Route("api/dashboard/credit/{r01f01}")]
-        public IHttpActionResult GetToatlCredit(int r01f01)
+        [Route("api/dashboard/credit")]
+        public IHttpActionResult GetToatlCredit()
         {
             BLDashboardManager dashboard = new BLDashboardManager();
-            return Ok(dashboard.TotalCredit(r01f01));
+            return Ok(dashboard.TotalCredit());
         }
 
         /// <summary>
         /// To get total amount of expense for specific user 
         /// </summary>
-        /// <param name="r01f01"> User Id </param>
         /// <returns> Total Expense </returns>
         [HttpGet]
-        [Route("api/dashboard/expense/{r01f01}")]
-        public IHttpActionResult GetTotalExpense(int r01f01)
+        [Route("api/dashboard/expense")]
+        public IHttpActionResult GetTotalExpense()
         {
             BLDashboardManager dashboard = new BLDashboardManager();
-            return Ok(dashboard.TotalExpense(r01f01));
+            return Ok(dashboard.TotalExpense());
         }
 
         #endregion

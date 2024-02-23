@@ -10,7 +10,9 @@ namespace ExpenseTracker.Controllers
     /// Controller which contains endpoints to deal with Report Generation 
     /// Its sealed for security > No other class can inherit it
     /// It uses BL from ReportManager class
+    /// All methods are authorized from jwt token
     /// </summary>
+    [Authorize]
     public sealed class CLReportController : ApiController
     {
         #region Public Methods 
@@ -18,14 +20,13 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// Generates Report for USer
         /// </summary>
-        /// <param name="r01f01"> User Id </param>
         /// <returns> Downloads Report File </returns>
         [HttpGet]
-        [Route("api/report/{r01f01}")]
-        public IHttpActionResult GenerateReport(int r01f01) 
+        [Route("api/report")]
+        public IHttpActionResult GenerateReport() 
         {
             BLReportManager objBLReportManager = new BLReportManager();
-            string filePath = objBLReportManager.GenerateReport(r01f01);
+            string filePath = objBLReportManager.GenerateReport();
 
             // Check if the file exists
             if (File.Exists(filePath))
@@ -41,7 +42,7 @@ namespace ExpenseTracker.Controllers
                 response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
                 {
                     // File Name = expense_report_userId.txt
-                    FileName = $"expense_report_{r01f01}.txt" // Set the desired file name
+                    FileName = $"expense_report_{Static.Static.GetUserIdFromClaims()}.txt" // Set the desired file name
                 };
                 response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
 

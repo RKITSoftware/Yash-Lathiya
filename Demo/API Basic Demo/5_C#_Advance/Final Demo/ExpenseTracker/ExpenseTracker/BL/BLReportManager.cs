@@ -13,9 +13,16 @@ namespace ExpenseTracker.BL
     /// </summary>
     public class BLReportManager
     {
-        #region Connect to Database
+        #region Private Members
 
         private MySqlConnection _mySqlConnection;
+
+        // user id retrieved from current user context
+        private int _r01f01 = Static.Static.GetUserIdFromClaims();
+
+        #endregion
+
+        #region Public Methods
 
         public BLReportManager()
         {
@@ -30,16 +37,11 @@ namespace ExpenseTracker.BL
             }
         }
 
-        #endregion
-
-        #region Public Methods
-
         /// <summary>
         /// Generates report which includes credit & Expense
         /// </summary>
-        /// <param name="p01f02"> User Id </param>
         /// <returns> Path of file which contains this data </returns>
-        public string GenerateReport(int p01f02)
+        public string GenerateReport()
         {
             // list of Expense & Credit 
             List<Exp01> lstExp01 = new List<Exp01>();
@@ -63,7 +65,7 @@ namespace ExpenseTracker.BL
                                         WHERE
                                             p01f02 = @p01f02";
 
-                command.Parameters.AddWithValue("@p01f02", p01f02);
+                command.Parameters.AddWithValue("@p01f02", _r01f01);
 
                 try
                 {
@@ -74,7 +76,7 @@ namespace ExpenseTracker.BL
                         while (reader.Read())
                         {
                             lstExp01.Add(new Exp01() { p01f01 = Convert.ToInt32(reader["p01f01"]),
-                                                       p01f02 = p01f02,
+                                                       p01f02 = _r01f01,
                                                        p01f03 = Convert.ToDecimal(reader["p01f03"]),
                                                        p01f04 = Convert.ToDateTime(reader["p01f04"]),
                                                        p01f05 = Convert.ToString(reader["p01f05"]),
@@ -110,7 +112,7 @@ namespace ExpenseTracker.BL
                                         WHERE
                                             e01f02 = @p01f02";
 
-                command.Parameters.AddWithValue("@p01f02", p01f02);
+                command.Parameters.AddWithValue("@p01f02", _r01f01);
 
                 try
                 {
