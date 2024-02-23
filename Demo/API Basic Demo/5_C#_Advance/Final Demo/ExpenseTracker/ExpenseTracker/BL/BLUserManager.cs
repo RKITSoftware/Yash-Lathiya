@@ -106,7 +106,11 @@ namespace ExpenseTracker.BL
             }
         }
 
-        // SendRegistrationEmail method
+        /// <summary>
+        /// Sending userId on registered email
+        /// </summary>
+        /// <param name="userId"> In database (r01f01)</param>
+        /// <param name="userEmail">In database (r01f03)</param>
         private void SendRegistrationEmail(int userId, string userEmail)
         {
             try
@@ -134,7 +138,11 @@ namespace ExpenseTracker.BL
             }
         }
 
-        // FetchUserIdByEmail method
+        /// <summary>
+        /// Fetch userId from database by providing email id
+        /// </summary>
+        /// <param name="userEmail"> In database (r01f03) </param>
+        /// <returns> User ID @string </returns>
         private string FetchUserIdByEmail(string userEmail)
         {
             using (MySqlCommand command = new MySqlCommand())
@@ -247,18 +255,23 @@ namespace ExpenseTracker.BL
             }
         }
 
+        /// <summary>
+        /// Generate Jwt token 
+        /// Also add userId as claim 
+        /// </summary>
+        /// <param name="r01f01"> User Id </param>
+        /// <returns> Jwt token </returns>
         public string GenerateJwtToken(int r01f01)
         {
-            // Add your JWT generation logic here
-            // Include claims, expiration, signing key, etc.
+            // Logic of Jwt Token 
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("315a6e8435387977315a6e8435387977"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new List<Claim>
             {
+                // user id added as claim
                 new Claim("r01f01", r01f01.ToString()),
-                // Add additional claims as needed
             };
 
             var token = new JwtSecurityToken(
@@ -271,6 +284,7 @@ namespace ExpenseTracker.BL
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
         #endregion
     }
 }
