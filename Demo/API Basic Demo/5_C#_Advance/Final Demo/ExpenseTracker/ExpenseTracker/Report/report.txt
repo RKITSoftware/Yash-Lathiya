@@ -1,7 +1,5 @@
 ***** Expense *****
-Expense Id : 26, 	 Amount : 15999, 	 Time : 23-02-2024 09:51:10, 	 Category : Electronics, 	 Description : Mobile  
-Expense Id : 27, 	 Amount : 2199, 	 Time : 23-02-2024 09:51:34, 	 Category : Electronics, 	 Description : Earbuds  
+Expense Id : 35, 	 Amount : 1104, 	 Time : 23-02-2024 15:41:20, 	 Category : Appeareals, 	 Description : Watch  
 ***** Credit *****
- Credit Id : 112, 	 User Id : 1014, 	 Credit Amount : 50000, 	 Description : Yash Lathiya  
- Credit Id : 113, 	 User Id : 1014, 	 Credit Amount : 50000, 	 Description : Ashish Zapadiya  
- Credit Id : 114, 	 User Id : 1014, 	 Credit Amount : 12000, 	 Description : Zapadiya paid interest  
+ Credit Id : 115, 	 User Id : 1021, 	 Credit Amount : 50000, 	 Description : Ashish Zapadiya  
+ Credit Id : 116, 	 User Id : 1021, 	 Credit Amount : 60000, 	 Description : salary  
