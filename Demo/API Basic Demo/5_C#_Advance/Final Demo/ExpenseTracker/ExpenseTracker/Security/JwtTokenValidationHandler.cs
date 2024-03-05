@@ -60,6 +60,7 @@ namespace ExpenseTracker.Security
             // Extract the token from the Authorization header or other location
             // Customize this based on how your client sends the token
             var authorizationHeader = request.Headers.Authorization;
+            //var x = request.Headers.Authorization.Scheme;
             return authorizationHeader?.Parameter;
         }
 
