@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
-using System.Web.Services.Description;
 using UrlShortner.ExceptionHandling;
 using UrlShortner.Models;
 
@@ -78,8 +76,9 @@ namespace UrlShortner.BL
             // If generated short code is found in database, then generate new short code by do-while loop
             do
             {
-                // Repeat method repeats process for 6 times
+                // Repeat method repeats process for 8 times
                 // in process -> Select random char from chars
+                //            -> .Next method creates index within chars 
                 // result is converted into array
                 generatedShortCode = new string(Enumerable.Repeat(chars, shortCodeLength)
                   .Select(s => s[random.Next(s.Length)]).ToArray());
@@ -176,7 +175,7 @@ namespace UrlShortner.BL
             // Find index of the url
             int index = lstSho02.FindIndex(url => url.o02f01 == shortCode);
 
-            //If shorten url not exists
+            // If shorten url not exists
             if (index == -1)
             {
                 return false;

@@ -1,16 +1,8 @@
-﻿using UrlShortner.ExceptionHandling;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Web.Security;
-using System.Web.Services.Description;
+﻿using System.Web.Http;
 using UrlShortner.Authentication;
-using UrlShortner.Models;
-using UrlShortner.Caching;
 using UrlShortner.BL;
+using UrlShortner.Caching;
+using UrlShortner.Models;
 
 namespace UrlShortner.Controllers
 {

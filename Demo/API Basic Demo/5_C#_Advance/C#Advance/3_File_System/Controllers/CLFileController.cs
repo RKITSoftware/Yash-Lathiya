@@ -1,11 +1,15 @@
 ﻿using _3_File_System.BL;
 using _3_File_System.Models;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
 using System;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Xml.Linq;
 
 namespace _3_File_System.Controllers
 {
@@ -174,5 +178,6 @@ namespace _3_File_System.Controllers
                 return InternalServerError(ex);
             }
         }
+
     }
 }

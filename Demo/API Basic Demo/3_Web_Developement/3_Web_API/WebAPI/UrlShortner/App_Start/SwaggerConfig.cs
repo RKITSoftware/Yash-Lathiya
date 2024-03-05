@@ -67,11 +67,11 @@ namespace UrlShortner
                         //
                         // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         c.ApiKey("Basic Authentication")
-                            .Description("API Key Authentication")
-                            .Name("apiKey")
+                            .Description("Basic Authentication")
+                            .Name("Authorization")
                             .In("header");
                         //Adding basic authentication to calls where authorization needed
-                        c.OperationFilter<SwaggerAuthentication>();
+                        //c.OperationFilter<SwaggerAuthentication>();
 
                         c.UseFullTypeNameInSchemaIds();
 
@@ -256,7 +256,7 @@ namespace UrlShortner
                         // If your API supports ApiKey, you can override the default values.
                         // "apiKeyIn" can either be "query" or "header"
                         //
-                        //c.EnableApiKeySupport("apiKey", "header");
+                        c.EnableApiKeySupport("Authorization", "header");
                     });
         }
     }
