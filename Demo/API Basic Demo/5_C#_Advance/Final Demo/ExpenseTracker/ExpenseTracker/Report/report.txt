@@ -1,5 +1,6 @@
 ***** Expense *****
 Expense Id : 35, 	 Amount : 1104, 	 Time : 23-02-2024 15:41:20, 	 Category : Appeareals, 	 Description : Watch  
+
 ***** Credit *****
- Credit Id : 115, 	 User Id : 1021, 	 Credit Amount : 50000, 	 Description : Ashish Zapadiya  
- Credit Id : 116, 	 User Id : 1021, 	 Credit Amount : 60000, 	 Description : salary  
+Credit Id : 115, 	 User Id : 1021, 	 Credit Amount : 50000, 	 Description : Ashish Zapadiya  
+Credit Id : 116, 	 User Id : 1021, 	 Credit Amount : 60000, 	 Description : salary  

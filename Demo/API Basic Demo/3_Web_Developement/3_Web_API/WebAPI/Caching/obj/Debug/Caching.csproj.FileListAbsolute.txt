@@ -99,3 +99,11 @@ C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\System.Numerics.Vectors.xml
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\Pipelines.Sockets.Unofficial.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\StackExchange.Redis.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\System.Threading.Channels.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\Pipelines.Sockets.Unofficial.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\StackExchange.Redis.xml
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\API Basic Demo\3_Web_Developement\3_Web_API\WebAPI\Caching\bin\System.Threading.Channels.xml
