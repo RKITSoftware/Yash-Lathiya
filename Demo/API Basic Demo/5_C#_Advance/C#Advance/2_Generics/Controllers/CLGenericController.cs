@@ -11,7 +11,7 @@ namespace _2_Generics.Controllers
         #region Public Method
 
         /// <summary>
-        /// Any tiype of information retrieved
+        /// Any type of information retrieved
         /// </summary>
         /// <param name="information"></param>
         /// <returns> Information </returns>

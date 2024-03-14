@@ -194,7 +194,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\FileManager.cs" />
     <Compile Include="Controllers\CLFileController.cs" />
-    <Compile Include="Controllers\PdfWriter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -1,15 +1,11 @@
 ﻿using _3_File_System.BL;
 using _3_File_System.Models;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
 using System;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
-using System.Xml.Linq;
 
 namespace _3_File_System.Controllers
 {
@@ -22,6 +18,10 @@ namespace _3_File_System.Controllers
 
         FileManager fileManager = new FileManager(path);
 
+        /// <summary>
+        /// Get list of files which are in directory
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/File/ListFile")]
         public IHttpActionResult GetListFile()
@@ -84,19 +84,23 @@ namespace _3_File_System.Controllers
 
                 // To Download file with response
 
-                // Read the file content
-                byte[] fileBytes = File.ReadAllBytes(filePath);
+                // Provide the file for download
+                var fileStream = new FileStream(filePath, FileMode.Open);
 
-                // Create a response with the file content
-                HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-                response.Content = new ByteArrayContent(fileBytes);
+                var response = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StreamContent(fileStream)
+                };
+
                 response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
                 {
-                    FileName = fileName
+                    // File Name = expense_report_userId.txt
+                    FileName = $"{fileName}.txt" // Set the desired file name
                 };
                 response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
 
-                return Ok(response);
+                // In response file is downloaded
+                return ResponseMessage(response);
             }
             catch (Exception ex)
             {
