@@ -17,7 +17,12 @@ namespace Caching.BL
         public BLRedis()
         {
             // Initialize the ConnectionMultiplexer in the constructor
-            _redis = ConnectionMultiplexer.Connect("localhost");
+            
+            // At port : 6378
+            _redis = ConnectionMultiplexer.Connect("localhost:6378");
+            
+            // Cloud Redis
+            //_redis = ConnectionMultiplexer.Connect("redis-16091.c330.asia-south1-1.gce.cloud.redislabs.com:16091,password=WPtUQqvPD4D3cPVzQyuKUEECVYnGSCPP");
             _db = _redis.GetDatabase();
         }
 
@@ -26,7 +31,6 @@ namespace Caching.BL
         /// </summary>
         /// <param name="key">Key for the cache entry</param>
         /// <param name="value">Value to be stored in the cache</param>
-        /// <param name="expiry">Optional expiry time for the cache entry</param>
         public void AddToCache(string key, string value)
         {
             _db.StringSet(key, value);

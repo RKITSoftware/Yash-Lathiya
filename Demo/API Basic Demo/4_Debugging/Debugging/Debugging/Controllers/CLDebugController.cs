@@ -1,11 +1,5 @@
-﻿//#define Sachin
-#define Maahi
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading;
+﻿#define Sachin
+//#define Maahi
 using System.Web.Http;
 
 namespace Debugging.Controllers
@@ -54,6 +48,10 @@ namespace Debugging.Controllers
             return message;
         }
 
+        /// <summary>
+        /// Conditional compilation, It compiles on the bases of defined condition at above the script
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("conditionalCompilation")]
         public IHttpActionResult ConditionalCompilation() 
