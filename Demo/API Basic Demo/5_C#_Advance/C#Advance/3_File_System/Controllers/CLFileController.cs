@@ -85,12 +85,14 @@ namespace _3_File_System.Controllers
                 // To Download file with response
 
                 // Provide the file for download
+                // in BL
                 var fileStream = new FileStream(filePath, FileMode.Open);
 
                 var response = new HttpResponseMessage(HttpStatusCode.OK)
                 {
                     Content = new StreamContent(fileStream)
                 };
+                //
 
                 response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
                 {
