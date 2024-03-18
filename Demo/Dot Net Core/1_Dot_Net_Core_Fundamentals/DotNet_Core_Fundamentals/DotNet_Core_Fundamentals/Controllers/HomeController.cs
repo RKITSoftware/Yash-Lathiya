@@ -28,5 +28,16 @@ namespace DotNet_Core_Fundamentals.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        /// <summary>
+        /// Test method which returns hello message
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/test")]
+        public IActionResult Hello()
+        {
+            return Ok("Hello from Yash");
+        }
     }
 }

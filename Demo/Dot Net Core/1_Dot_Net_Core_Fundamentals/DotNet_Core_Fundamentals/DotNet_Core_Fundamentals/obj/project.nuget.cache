@@ -1,10 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "69pxAxxtG9iDz3EcfZ9/2V693d84EB1oxi8GhBz4+t5DwoRFdz1AD8PXSRK5zwEgaU6xQkaxu4004Bo5YhlS8g==",
+  "dgSpecHash": "yaXC24NepCSYg3tQxtkkQnaheege5hdirvcHt3D+7Qo/0Pos4kAMsUro/wYQM/YRhuF1G6SVcp53Tf9Km+jAkA==",
   "success": true,
   "projectFilePath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\Dot Net Core\\1_Dot_Net_Core_Fundamentals\\DotNet_Core_Fundamentals\\DotNet_Core_Fundamentals\\DotNet_Core_Fundamentals.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\yash.l\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512"
+    "C:\\Users\\yash.l\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
   ],
   "logs": []
 }

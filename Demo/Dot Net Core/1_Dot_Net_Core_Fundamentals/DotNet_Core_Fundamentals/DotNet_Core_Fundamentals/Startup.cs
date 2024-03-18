@@ -1,4 +1,6 @@
-﻿namespace DotNet_Core_Fundamentals
+﻿using Microsoft.OpenApi.Models;
+
+namespace DotNet_Core_Fundamentals
 {
     public class Startup
     {
@@ -8,6 +10,13 @@
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
+            });
+
+            //add controller with views
             services.AddControllersWithViews();
         }
 
@@ -44,6 +53,16 @@
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Test API V1");
             });
         }
 

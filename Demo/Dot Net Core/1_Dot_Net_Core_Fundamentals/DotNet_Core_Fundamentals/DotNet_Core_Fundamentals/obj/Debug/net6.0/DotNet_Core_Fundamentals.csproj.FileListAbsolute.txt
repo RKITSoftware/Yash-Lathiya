@@ -29,3 +29,9 @@ C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\1_Dot_Net_Core_Funda
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\1_Dot_Net_Core_Fundamentals\DotNet_Core_Fundamentals\DotNet_Core_Fundamentals\obj\Debug\net6.0\DotNet_Core_Fundamentals.pdb
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\1_Dot_Net_Core_Fundamentals\DotNet_Core_Fundamentals\DotNet_Core_Fundamentals\obj\Debug\net6.0\DotNet_Core_Fundamentals.genruntimeconfig.cache
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\1_Dot_Net_Core_Fundamentals\DotNet_Core_Fundamentals\DotNet_Core_Fundamentals\obj\Debug\net6.0\ref\DotNet_Core_Fundamentals.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\1_Dot_Net_Core_Fundamentals\DotNet_Core_Fundamentals\DotNet_Core_Fundamentals\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\1_Dot_Net_Core_Fundamentals\DotNet_Core_Fundamentals\DotNet_Core_Fundamentals\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\1_Dot_Net_Core_Fundamentals\DotNet_Core_Fundamentals\DotNet_Core_Fundamentals\obj\Debug\net6.0\DotNet_Core_Fundamentals.csproj.CopyComplete
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\1_Dot_Net_Core_Fundamentals\DotNet_Core_Fundamentals\DotNet_Core_Fundamentals\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\1_Dot_Net_Core_Fundamentals\DotNet_Core_Fundamentals\DotNet_Core_Fundamentals\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\1_Dot_Net_Core_Fundamentals\DotNet_Core_Fundamentals\DotNet_Core_Fundamentals\obj\Debug\net6.0\DotNet_Core_Fundamentals.MvcApplicationPartsAssemblyInfo.cs
