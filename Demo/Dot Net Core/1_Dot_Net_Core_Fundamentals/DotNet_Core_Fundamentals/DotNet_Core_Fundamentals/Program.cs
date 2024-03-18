@@ -11,7 +11,7 @@ namespace DotNet_Core_Fundamentals
         /// <param name="args"> Command line arguments </param>
         public static void Main(string[] args)
         {
-            Console.WriteLine(args[0] + "**");
+            //Console.WriteLine(args[0] + "**");
             // Build and run the application.
             CreateHostBuilder(args).Build().Run();
         }
