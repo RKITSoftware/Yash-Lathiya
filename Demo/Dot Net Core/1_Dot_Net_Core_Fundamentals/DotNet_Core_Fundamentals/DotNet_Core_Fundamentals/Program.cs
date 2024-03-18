@@ -1,36 +1,32 @@
 namespace DotNet_Core_Fundamentals
 {
+    /// <summary>
+    /// Main entry point for the class
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Main method responsible for starting an application
+        /// </summary>
+        /// <param name="args"> Command line arguments </param>
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            app.Run();
+            Console.WriteLine(args[0] + "**");
+            // Build and run the application.
+            CreateHostBuilder(args).Build().Run();
         }
+
+        /// <summary>
+        /// Creates a host builder to configure and build the application.
+        /// </summary>
+        /// <param name="args"> Command line arguments </param>
+        /// <returns></returns>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    // configures the web host with startup class
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }
