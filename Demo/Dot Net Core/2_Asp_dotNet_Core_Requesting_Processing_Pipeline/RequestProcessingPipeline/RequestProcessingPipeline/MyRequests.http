@@ -1,0 +1,19 @@
+### Get todo list
+
+GET http://localhost:5069/todos/
+
+### Add item in todo
+
+POST http://localhost:5069/todos/
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "write demo",
+  "dueDate": "2023-12-31",
+  "isCompleted": false
+}
+
+### Delete item
+
+DELETE http://localhost:5069/todos/1

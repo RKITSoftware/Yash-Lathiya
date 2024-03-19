@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Gemw9BIKfIaUqPUVSfQDPq0gQBPBfPR2yjKvFO9YYQKZ/WYyuOHKPQXS6JscY1yI5yJhQNgdUWO4JYhBn7ieww==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\Dot Net Core\\2_Asp_dotNet_Core_Requesting_Processing_Pipeline\\RequestProcessingPipeline\\Filter\\Filter.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yash.l\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512"
+  ],
+  "logs": []
+}
