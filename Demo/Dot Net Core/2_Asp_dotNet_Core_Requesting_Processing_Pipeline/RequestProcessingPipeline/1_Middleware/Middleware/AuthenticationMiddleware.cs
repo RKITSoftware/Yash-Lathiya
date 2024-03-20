@@ -77,8 +77,6 @@ namespace _1_Middleware.Middleware
             {
                 await _next(context);
             }
-           
-            
         }
     }
 }

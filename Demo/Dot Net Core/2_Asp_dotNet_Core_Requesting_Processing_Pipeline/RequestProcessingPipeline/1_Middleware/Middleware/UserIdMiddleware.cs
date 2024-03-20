@@ -1,7 +1,4 @@
 ﻿using _1_Middleware.BL;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
-using Newtonsoft.Json.Linq;
-using StackExchange.Redis;
 
 namespace _1_Middleware.Middleware
 {
