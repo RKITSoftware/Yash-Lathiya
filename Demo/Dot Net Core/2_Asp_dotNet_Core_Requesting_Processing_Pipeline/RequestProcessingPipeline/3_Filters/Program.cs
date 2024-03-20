@@ -1,8 +1,5 @@
 using _3_Filters.Filter;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text;
 
 namespace _3_Filters
 {
