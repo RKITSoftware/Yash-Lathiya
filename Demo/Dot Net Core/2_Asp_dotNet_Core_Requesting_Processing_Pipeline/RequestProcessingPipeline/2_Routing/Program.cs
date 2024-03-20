@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Hosting;
-
 namespace _2_Routing
 {
     public class Program

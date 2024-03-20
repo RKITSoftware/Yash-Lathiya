@@ -38,7 +38,7 @@ namespace _3_Filters.Filter
         /// <returns> true -> claim : username = yash 
         ///           false -> otherwise
         /// </returns>
-        private bool IsAuthorized(AuthorizationFilterContext context)
+        private static bool IsAuthorized(AuthorizationFilterContext context)
         {
             var jwtToken = context.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
 

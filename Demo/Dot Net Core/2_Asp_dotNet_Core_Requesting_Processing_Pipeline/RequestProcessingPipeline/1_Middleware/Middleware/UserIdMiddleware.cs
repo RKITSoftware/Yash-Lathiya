@@ -33,7 +33,7 @@ namespace _1_Middleware.Middleware
                 string userId = "Miracle12345";
 
                 //store userid in redis cache
-                BLRedis objBLRedis = new BLRedis();
+                BLRedis objBLRedis = new();
                 objBLRedis.AddToCache("userId", userId);
 
                 Console.WriteLine("** UserId Middleware -> stored userid in cache");

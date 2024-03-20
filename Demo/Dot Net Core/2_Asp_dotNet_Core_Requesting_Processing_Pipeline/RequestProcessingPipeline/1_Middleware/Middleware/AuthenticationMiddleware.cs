@@ -41,7 +41,7 @@ namespace _1_Middleware.Middleware
                 context.Request.EnableBuffering();
 
                 string requestBody;
-                using (StreamReader reader = new StreamReader(context.Request.Body, Encoding.UTF8, true, 1024, true))
+                using (StreamReader reader = new(context.Request.Body, Encoding.UTF8, true, 1024, true))
                 {
                     requestBody = await reader.ReadToEndAsync();
 
@@ -67,7 +67,7 @@ namespace _1_Middleware.Middleware
                 // If user is not authenticated  -> clear cache userId
                 else
                 {
-                    BLRedis objBLRedis = new BLRedis();
+                    BLRedis objBLRedis = new();
                     objBLRedis.RemoveFromCache("userId");
                     await context.Response.WriteAsync("Authentication Failed");
                 }

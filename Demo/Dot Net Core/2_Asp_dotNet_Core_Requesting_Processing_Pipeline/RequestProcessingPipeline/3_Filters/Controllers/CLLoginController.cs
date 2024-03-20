@@ -17,6 +17,8 @@ namespace _3_Filters.Controllers
     {
         /// <summary>
         /// Generates jwt token with username claim
+        /// username : yash
+        /// password : MyPassword
         /// </summary>
         /// <param name="objLoginDTO"> username & password</param>
         /// <returns> jwt token </returns>

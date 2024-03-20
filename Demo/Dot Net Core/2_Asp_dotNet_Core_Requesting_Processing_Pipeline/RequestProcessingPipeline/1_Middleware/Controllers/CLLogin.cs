@@ -19,7 +19,7 @@ namespace _1_Middleware.Controllers
         [Route("GetUserId")]
         public IActionResult GetUserid()
         {
-            BLRedis _objBLRedis = new BLRedis();
+            BLRedis _objBLRedis = new();
             var cachedValue = _objBLRedis.RetrieveFromCache("userId");
 
             if (cachedValue != null)
