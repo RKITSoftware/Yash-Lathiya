@@ -10,6 +10,11 @@ namespace _3_Filters.Controllers
     [ApiController]
     public class CLTestController : ControllerBase
     {
+        // To check when controller is initialized
+        public CLTestController()
+        {
+            Console.WriteLine("Test Controller is initialized");
+        }
         /// <summary>
         /// Executes custom filter here 
         /// </summary>
