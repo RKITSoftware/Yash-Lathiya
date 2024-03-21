@@ -59,7 +59,7 @@ namespace _5_Action_Methods.Controllers
 
             return File(fileBytes, "application/pdf", "C_Sharp_Advance_Doc.pdf");   
         }
-        0
+        
         /// <summary>
         /// We can directly return different status code as result
         /// </summary>
@@ -71,5 +71,15 @@ namespace _5_Action_Methods.Controllers
             return NotFound(); // status code - 404
         }
 
+        /// <summary>
+        /// Demonstrates usecase of ActionResult class
+        /// </summary>
+        /// <returns>  </returns>
+        [HttpGet]
+        [Route("FromActionResultClass")]
+        public ActionResult FromActionResultClass()
+        {
+            return Unauthorized(); 
+        }
     }
 }
