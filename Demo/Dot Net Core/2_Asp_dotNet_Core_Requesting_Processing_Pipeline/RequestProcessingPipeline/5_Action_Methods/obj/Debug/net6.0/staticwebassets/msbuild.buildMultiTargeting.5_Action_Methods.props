@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\5_Action_Methods.props" />
+</Project>
