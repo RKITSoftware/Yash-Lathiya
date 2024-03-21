@@ -3,8 +3,15 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace _3_Filters.Filter
 {
+    /// <summary>
+    /// Exception filter with customized message
+    /// </summary>
     public class ExceptionFilter : IExceptionFilter
     {
+        /// <summary>
+        /// When execption occur, it will throw an exeption according to here customized
+        /// </summary>
+        /// <param name="context"></param>
         public void OnException(ExceptionContext context)
         {
             // Create a custom error response

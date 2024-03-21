@@ -49,13 +49,6 @@ namespace _3_Filters
             // async filter will call as per sequence which is maintained here
             services.AddScoped<AsyncStopwatchFilter>();
             services.AddScoped<AsyncConsoleFilter>();
-            
-            //services.AddControllers(options =>
-            //{
-            //    options.Filters.Add<AsyncStopwatchFilter>();
-            //    options.Filters.Add<AsyncConsoleFilter>();
-            //});
-            
 
         }
 

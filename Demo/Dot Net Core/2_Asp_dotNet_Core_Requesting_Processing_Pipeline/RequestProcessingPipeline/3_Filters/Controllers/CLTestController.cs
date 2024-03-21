@@ -1,6 +1,5 @@
 ﻿using _3_Filters.Filter;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace _3_Filters.Controllers
 {
@@ -64,7 +63,10 @@ namespace _3_Filters.Controllers
             return Ok("Exceeption Filter");
         }
 
-
+        /// <summary>
+        /// Demonstrates implementation of Async Filter
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("AsyncFilter")]
         [ServiceFilter(typeof(AsyncStopwatchFilter))]

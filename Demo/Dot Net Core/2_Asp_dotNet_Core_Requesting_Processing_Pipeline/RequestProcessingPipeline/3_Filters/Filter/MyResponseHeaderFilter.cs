@@ -2,19 +2,29 @@
 
 namespace _3_Filters.Filter
 {
+    /// <summary>
+    /// Adds header in response
+    /// </summary>
     public class MyResponseHeaderFilter : ActionFilterAttribute
     {
         private readonly string _name;
         private readonly string _value;
 
-        // Modify the constructor to accept parameters for header name and value
+        /// <summary>
+        /// to accept parameters for header name and value
+        /// </summary>
+        /// <param name="name"> header name </param>
+        /// <param name="value"> header value </param>
         public MyResponseHeaderFilter(string name, string value)
         {
             _name = name;
             _value = value;
         }
 
-        // Override the OnResultExecuting method to add the header to the response
+        /// <summary>
+        /// Override the OnResultExecuting method to add the header to the response
+        /// </summary>
+        /// <param name="context"> current context </param>
         public override void OnResultExecuting(ResultExecutingContext context)
         {
             // Add the header to the response
