@@ -44,6 +44,7 @@ namespace _3_Filters.Controllers
         [Route("CheckRequestHeader")]
         [MyHeaderResourceFilter("userId")] // Apply the custom resource filter to this action method
         public IActionResult Get()
+
         {
             // If the custom header is present, return a success response
             return Ok("UserID header is present in request header");
@@ -61,6 +62,16 @@ namespace _3_Filters.Controllers
             int i =  0;
             int k = 5 / i;
             return Ok("Exceeption Filter");
+        }
+
+
+        [HttpGet]
+        [Route("AsyncFilter")]
+        [ServiceFilter(typeof(AsyncStopwatchFilter))]
+        [ServiceFilter(typeof(AsyncConsoleFilter))]
+        public IActionResult TestsAsyncFilter()
+        {
+            return Ok("Execution of async filter is printed in console");
         }
     }
 
