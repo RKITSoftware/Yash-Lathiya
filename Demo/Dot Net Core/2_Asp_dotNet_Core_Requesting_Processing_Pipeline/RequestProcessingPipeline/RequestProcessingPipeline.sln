@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestProcessingPipeline",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3_Filters", "3_Filters\3_Filters.csproj", "{C717F9CF-068E-4892-90A1-D407C11B12FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_Middleware", "1_Middleware\1_Middleware.csproj", "{D531EFC5-7665-4615-A74B-C0EA815D4360}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_Middleware", "1_Middleware\1_Middleware.csproj", "{D531EFC5-7665-4615-A74B-C0EA815D4360}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_Routing", "2_Routing\2_Routing.csproj", "{A3899FBC-F5FA-4848-975B-DEAD02673DAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2_Routing", "2_Routing\2_Routing.csproj", "{A3899FBC-F5FA-4848-975B-DEAD02673DAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5_Action_Methods", "5_Action_Methods\5_Action_Methods.csproj", "{173877CB-A324-4BB6-B9DA-7BB82BFD6B08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A3899FBC-F5FA-4848-975B-DEAD02673DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3899FBC-F5FA-4848-975B-DEAD02673DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3899FBC-F5FA-4848-975B-DEAD02673DAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{173877CB-A324-4BB6-B9DA-7BB82BFD6B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{173877CB-A324-4BB6-B9DA-7BB82BFD6B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{173877CB-A324-4BB6-B9DA-7BB82BFD6B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{173877CB-A324-4BB6-B9DA-7BB82BFD6B08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
