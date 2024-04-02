@@ -14,7 +14,6 @@ namespace Dependency_Injection
             //services.AddTransient<IProductService, ProductService>();
             //services.AddScoped<IProductService, ProductService>();
             services.AddSingleton<IProductService, MySqlProductService>();
-
         }
 
         public void Configure(IApplicationBuilder app)

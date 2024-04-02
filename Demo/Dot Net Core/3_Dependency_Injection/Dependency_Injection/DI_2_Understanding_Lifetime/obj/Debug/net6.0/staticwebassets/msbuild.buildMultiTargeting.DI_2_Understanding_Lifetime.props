@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DI_2_Understanding_Lifetime.props" />
+</Project>
