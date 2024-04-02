@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\DI_3_Extension_Methods_For_Registration.props" />
+</Project>
