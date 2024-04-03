@@ -3,7 +3,7 @@
 2024-04-03 12:53:50.6125|ERROR|Logging.Controllers.CLNlog|This is an error message
 2024-04-03 12:56:29.1774|INFO|Logging.Controllers.CLNlog|This is an information message
 2024-04-03 12:56:29.2770|WARN|Logging.Controllers.CLNlog|This is a warning message
-2024-04-03 12:56:29.2770|ERROR|Logging.Controllers.CLNlog|This is an error message
+2024-04-03 12:56:29.2770 | ERROR | Logging.Controllers.CLNlog | This is an error message
 2024-04-03 12:59:50.8625|INFO|Logging.Controllers.CLNlog|This is an information message
 2024-04-03 12:59:50.9342|WARN|Logging.Controllers.CLNlog|This is a warning message
 2024-04-03 12:59:50.9361|ERROR|Logging.Controllers.CLNlog|This is an error message

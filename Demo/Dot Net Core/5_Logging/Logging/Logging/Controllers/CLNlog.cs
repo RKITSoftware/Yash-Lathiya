@@ -9,9 +9,13 @@ namespace Logging.Controllers
     [ApiController]
     public class CLNlog : ControllerBase
     {
-        #region  Private Members 
+        #region Private Members 
+
+        #region Static Members
 
         private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+
+        #endregion
 
         #endregion
 

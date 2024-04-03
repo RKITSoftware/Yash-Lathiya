@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Logging.Controllers
 {
@@ -11,7 +9,7 @@ namespace Logging.Controllers
     [ApiController]
     public class CLILogger : ControllerBase
     {
-        #region  Private Members 
+        #region Private Members 
 
         private readonly ILogger<CLILogger> _logger;
 
