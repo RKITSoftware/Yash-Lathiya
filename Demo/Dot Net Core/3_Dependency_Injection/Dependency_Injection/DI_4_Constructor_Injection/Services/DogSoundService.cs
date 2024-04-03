@@ -5,6 +5,8 @@
     /// </summary>
     public class DogSoundService : IDogSoundService
     {
+        #region Public Methods
+
         /// <summary>
         /// Provides dog sound
         /// </summary>
@@ -13,5 +15,7 @@
         {
             return "Woof";
         }
+
+        #endregion
     }
 }

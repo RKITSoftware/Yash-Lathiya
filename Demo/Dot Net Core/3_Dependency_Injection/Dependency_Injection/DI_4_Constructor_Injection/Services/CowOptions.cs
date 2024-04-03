@@ -5,9 +5,14 @@
     /// </summary>
     public class CowOptions
     {
+        #region Public Members 
+
         /// <summary>
         /// CowSound - Data collects from appSettings.json by options interface
         /// </summary>
         public string CowSound { get; set; }
+
+        #endregion
+
     }
 }

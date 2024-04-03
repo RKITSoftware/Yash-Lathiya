@@ -10,8 +10,14 @@ namespace DI_4_Constructor_Injection.Controllers
     [ApiController]
     public class CLAnimalSound : ControllerBase
     {
+        #region Private Members
+
         // dependency over IAnimalSoundService interface
         private IAnimalSoundService _animalSoundService;
+
+        #endregion
+
+        #region Public Members 
 
         /// <summary>
         /// constructor injection
@@ -32,5 +38,8 @@ namespace DI_4_Constructor_Injection.Controllers
         {
             return Ok(_animalSoundService.PlaySounds());
         }
+
+        #endregion
+
     }
 }

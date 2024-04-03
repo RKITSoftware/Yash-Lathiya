@@ -7,7 +7,13 @@ namespace DI_4_Constructor_Injection.Services
     /// </summary>
     public class AnimalSoundService : IAnimalSoundService
     {
+        #region Private Members
+
         private readonly List<string> lstAnimalSounds;
+
+        #endregion
+
+        #region Public Members 
 
         /// <summary>
         /// Used different constructor injection approaches
@@ -35,5 +41,8 @@ namespace DI_4_Constructor_Injection.Services
         {
             return lstAnimalSounds;
         }
+
+        #endregion
+
     }
 }

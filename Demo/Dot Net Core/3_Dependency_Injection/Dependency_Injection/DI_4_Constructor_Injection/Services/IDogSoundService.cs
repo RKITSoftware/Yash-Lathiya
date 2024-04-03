@@ -5,10 +5,15 @@
     /// </summary>
     public interface IDogSoundService
     {
+        #region Abstract Methods
+
         /// <summary>
         /// Provides Dog Sound
         /// </summary>
         /// <returns> dog sound in string format </returns>
         public string GetSound();
+
+        #endregion
+
     }
 }

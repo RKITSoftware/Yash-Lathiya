@@ -4,8 +4,14 @@ namespace DI_4_Constructor_Injection
 {
     public class Startup
     {
+        #region Private Members 
+
         // configuration interface
         private readonly IConfiguration _config;
+
+        #endregion
+
+        #region Public Members 
 
         /// <summary>
         /// instace is given to configuration 
@@ -47,5 +53,8 @@ namespace DI_4_Constructor_Injection
             });
 
         }
+
+        #endregion
+
     }
 }

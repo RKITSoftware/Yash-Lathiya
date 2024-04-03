@@ -7,8 +7,14 @@ namespace DI_2_Understanding_Lifetime.Middleware
     /// </summary>
     public class DateCustomMiddleware
     {
+        #region Private Members
+
         private readonly RequestDelegate _next;
         private readonly IDateTime _dateTime;
+
+        #endregion
+
+        #region Public Members
 
         /// <summary>
         /// creating instance of request delegate & interface
@@ -40,5 +46,7 @@ namespace DI_2_Understanding_Lifetime.Middleware
             await _next(context);
 
         }
+
+        #endregion
     }
 }

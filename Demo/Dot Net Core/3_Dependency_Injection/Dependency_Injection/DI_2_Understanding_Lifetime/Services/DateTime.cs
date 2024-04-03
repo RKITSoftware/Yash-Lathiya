@@ -5,7 +5,13 @@
     /// </summary>
     public class DateTime : IDateTime
     {
+        #region Private Members
+
         private readonly string _dateTime;
+
+        #endregion
+
+        #region Public Members
 
         /// <summary>
         /// Generates cuurent date time 
@@ -23,5 +29,8 @@
         {
             return _dateTime;
         }
+
+        #endregion
+
     }
 }

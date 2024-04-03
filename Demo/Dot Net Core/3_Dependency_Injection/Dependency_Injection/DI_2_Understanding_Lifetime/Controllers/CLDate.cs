@@ -12,7 +12,13 @@ namespace DI_2_Understanding_Lifetime.Controllers
     [ApiController]
     public class CLDate : ControllerBase
     {
+        #region Private Members
+
         private readonly IDateTime _date;
+
+        #endregion
+
+        #region Public Members
 
         /// <summary>
         /// added dependency of service IDateTime
@@ -36,5 +42,7 @@ namespace DI_2_Understanding_Lifetime.Controllers
 
             return Ok(" ### Check result in terminal ### ");
         }
+
+        #endregion
     }
 }

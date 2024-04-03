@@ -5,10 +5,15 @@
     /// </summary>
     public interface IAnimalSoundService
     {
+        #region Abstract Methods
+
         /// <summary>
         /// Provides list which contains all animal sounds 
         /// </summary>
         /// <returns> list of animal sounds </returns>
-        public List<string> PlaySounds(); 
+        public List<string> PlaySounds();
+
+        #endregion
+
     }
 }
