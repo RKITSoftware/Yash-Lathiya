@@ -32,20 +32,27 @@ namespace ExceptionHandling
                 {
                     options.Run(async (context) =>
                     {
+                        // configuring status code 
                         context.Response.StatusCode = 500;
+
+                        // configuring response type as html
                         context.Response.ContentType = "text/html";
+
+                        // get features from IExceptionHandlerFeature interface 
                         var ex = context.Features.Get<IExceptionHandlerFeature>();
                         if (ex != null)
                         {
-                            string err = "<h1>This is custom error from Exception Handler</h1>" + 
-                                          "<h2>Error Message :" + ex.Error.Message + "</h2>" + 
-                                          "<h5>Error Stack" + ex.Error.StackTrace + "</h5>";
+                            // developing error 
+                            string err = "<h1>This is custom error from Exception Handler</h1>" + // custom message 
+                                          "<h2>Error Message :" + ex.Error.Message + "</h2>" + // error message
+                                          "<h5>Error Stack" + ex.Error.StackTrace + "</h5>"; // stacktrace of error
+
+                            // providing error to response 
                             await context.Response.WriteAsync(err);
                         }
                     });
                 });
             }
-
 
             app.UseHttpsRedirection();
 

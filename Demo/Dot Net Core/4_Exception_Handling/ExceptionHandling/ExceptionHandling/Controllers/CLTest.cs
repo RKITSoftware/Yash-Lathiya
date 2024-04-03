@@ -3,10 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ExceptionHandling.Controllers
 {
+    /// <summary>
+    /// Test controller which shows exception handling
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class CLTest : ControllerBase
     {
+        #region Public Actions
+
+        /// <summary>
+        /// Devide by zero exception 
+        /// </summary>
+        /// <returns> exception </returns>
         [HttpGet]
         [Route("TestException")]
         public IActionResult TestException()
@@ -15,5 +24,8 @@ namespace ExceptionHandling.Controllers
             int b = 0;
             return Ok(a / b);
         }
+
+        #endregion
+
     }
 }
