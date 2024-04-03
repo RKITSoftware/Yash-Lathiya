@@ -20,7 +20,8 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Employee/add")]
         public IHttpActionResult AddEmployee([FromBody] Emp01 objEmp01)
         {
-            EmployeeManager.AddEmployee(objEmp01);
+            EmployeeManager objEmployeeManager = new EmployeeManager();
+            objEmployeeManager.AddEmployee(objEmp01);
             return Ok("Added");
         }
 
@@ -33,7 +34,8 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Employee/Get/{p01f01}")]
         public IHttpActionResult GetEmployee(int p01f01)
         {
-            return Ok(EmployeeManager.GetEmployee(p01f01));
+            EmployeeManager objEmployeeManager = new EmployeeManager();
+            return Ok(objEmployeeManager.GetEmployee(p01f01));
         }
 
         /// <summary>
@@ -45,7 +47,8 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Employee/Update")]
         public IHttpActionResult UpdateEmployee([FromBody] Emp01 objEmp01)
         {
-            EmployeeManager.UpdateEmployee(objEmp01);
+            EmployeeManager objEmployeeManager = new EmployeeManager();
+            objEmployeeManager.UpdateEmployee(objEmp01);
             return Ok("Updated");
         }
 
@@ -58,7 +61,8 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Employee/Delete/{p01f01}")]
         public IHttpActionResult DeleteEmployee(int p01f01)
         {
-            EmployeeManager.DeleteEmployee(p01f01);
+            EmployeeManager objEmployeeManager = new EmployeeManager();
+            objEmployeeManager.DeleteEmployee(p01f01);
             return Ok("Deleted");
         }
 

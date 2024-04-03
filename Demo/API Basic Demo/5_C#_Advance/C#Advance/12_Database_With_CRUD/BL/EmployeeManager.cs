@@ -7,13 +7,13 @@ namespace _12_Database_With_CRUD.BL
     /// <summary>
     /// Consisting buisness logic of all methiods in Employee controller
     /// </summary>
-    public static class EmployeeManager
+    public class EmployeeManager
     {
         #region Connect to Database
 
-        private static MySqlConnection _mySqlConnection;
+        private MySqlConnection _mySqlConnection;
 
-        static EmployeeManager()
+        public EmployeeManager()
         {
             try
             {
@@ -34,7 +34,7 @@ namespace _12_Database_With_CRUD.BL
         /// Adds Employee details in Employee Table in database
         /// </summary>
         /// <returns></returns>
-        public static void AddEmployee(Emp01 objEmp01)
+        public void AddEmployee(Emp01 objEmp01)
         {
             using (MySqlCommand command = new MySqlCommand())
             {
@@ -70,7 +70,7 @@ namespace _12_Database_With_CRUD.BL
         /// </summary>
         /// <param name="p01f01"></param>
         /// <returns> Object of EMp01 class </returns>
-        public static Emp01 GetEmployee(int p01f01)
+        public Emp01 GetEmployee(int p01f01)
         {
             using (MySqlCommand command = new MySqlCommand())
             {
@@ -127,7 +127,7 @@ namespace _12_Database_With_CRUD.BL
         /// To update employee in database
         /// </summary>
         /// <param name="objEmp01"> New details of employee </param>
-        public static void UpdateEmployee(Emp01 objEmp01)
+        public void UpdateEmployee(Emp01 objEmp01)
         {
             using (MySqlCommand command = new MySqlCommand())
             {
@@ -169,7 +169,7 @@ namespace _12_Database_With_CRUD.BL
         /// To delete employee drom the database
         /// </summary>
         /// <param name="p01f01"> EMployee Id </param>
-        public static void DeleteEmployee(int p01f01)
+        public void DeleteEmployee(int p01f01)
         {
             using (MySqlCommand command = new MySqlCommand())
             {
