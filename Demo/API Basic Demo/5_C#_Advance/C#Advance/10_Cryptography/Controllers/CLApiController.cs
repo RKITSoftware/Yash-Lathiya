@@ -19,7 +19,8 @@ namespace _10_Cryptography.Controllers
         [Route("api/Aes/encryption")]
         public IHttpActionResult GetAesCipher(string plainText)
         {
-            return Ok(AesAlgo.Encrypt(plainText));
+            AesAlgo objAesAlgo = new AesAlgo();
+            return Ok(objAesAlgo.Encrypt(plainText));
         }
 
         /// <summary>
@@ -31,7 +32,8 @@ namespace _10_Cryptography.Controllers
         [Route("api/Aes/decryption")]
         public IHttpActionResult GetAesPlain(string cipherText)
         {
-            return Ok(AesAlgo.Decrypt(cipherText));
+            AesAlgo objAesAlgo = new AesAlgo();
+            return Ok(objAesAlgo.Decrypt(cipherText));
         }
 
         /// <summary>
@@ -42,7 +44,8 @@ namespace _10_Cryptography.Controllers
         [Route("api/tripleDes/encryption")]
         public IHttpActionResult GetTripleDesCipher(string plainText)
         {
-            return Ok(TripleDesAlgo.Encrypt(plainText));
+            TripleDesAlgo objTripleDesAlgo = new TripleDesAlgo();
+            return Ok(objTripleDesAlgo.Encrypt(plainText));
         }
 
         /// <summary>
@@ -54,7 +57,8 @@ namespace _10_Cryptography.Controllers
         [Route("api/TripleDes/decryption")]
         public IHttpActionResult GetTripleDesPlain(string cipherText)
         {
-            return Ok(TripleDesAlgo.Decrypt(cipherText));
+            TripleDesAlgo objTripleDesAlgo = new TripleDesAlgo();
+            return Ok(objTripleDesAlgo.Decrypt(cipherText));
         }
 
 
@@ -66,7 +70,8 @@ namespace _10_Cryptography.Controllers
         [Route("api/Rsa/encryption")]
         public IHttpActionResult GetRsaCipher(string plainText)
         {
-            return Ok(RsaAlgo.Encrypt(plainText));
+            RsaAlgo objRsaAlgo = new RsaAlgo();
+            return Ok(objRsaAlgo.Encrypt(plainText));
         }
 
         /// <summary>
@@ -78,7 +83,8 @@ namespace _10_Cryptography.Controllers
         [Route("api/Rsa/decryption")]
         public IHttpActionResult GetRsaPlain(string cipherText)
         {
-            return Ok(RsaAlgo.Decrypt(cipherText));
+            RsaAlgo objRsaAlgo = new RsaAlgo();
+            return Ok(objRsaAlgo.Decrypt(cipherText));
         }
 
         #endregion

@@ -8,31 +8,33 @@ namespace _10_Cryptography.BL
     /// Implementation of AES Algorithm
     /// Plaintext & key -> 128 bits
     /// </summary>
-    public static class AesAlgo
+    public class AesAlgo
     {
-        #region Static Members 
+        #region Private Members 
 
         // AES Crypto Service Provider class implements logic of AES Algorithm
-        private static AesCryptoServiceProvider aes;
-
-        /// <summary>
-        /// Provide Instance to class
-        /// </summary>
-        static AesAlgo()
-        {
-            aes = new AesCryptoServiceProvider();
-        }
+        private AesCryptoServiceProvider aes;
 
         #endregion
 
         #region Public Methods 
 
         /// <summary>
+        /// Provide Instance to class
+        /// </summary>
+        public AesAlgo()
+        {
+            aes = new AesCryptoServiceProvider();
+            aes.IV = Encoding.UTF8.GetBytes("1234567890123456");
+            aes.Key = Encoding.UTF8.GetBytes("1234567890123456");
+        }
+
+        /// <summary>
         /// Encryption of plain text to cipher text
         /// </summary>
         /// <param name="plainText"> Plain text in base64 string </param>
         /// <returns> Cipher Text in base64 string </returns>
-        public static string Encrypt(string plainText)
+        public string Encrypt(string plainText)
         {
             // String to bytes
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
@@ -55,7 +57,7 @@ namespace _10_Cryptography.BL
         /// </summary>
         /// <param name="cipherText"> Cipher text in base64 string </param>
         /// <returns> Plain text in UTF8 string </returns>
-        public static string Decrypt(string cipherText)
+        public string Decrypt(string cipherText)
         {
             // string to bytes
             byte[] cipherBytes = Convert.FromBase64String(cipherText);

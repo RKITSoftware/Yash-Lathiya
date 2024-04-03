@@ -7,28 +7,31 @@ namespace _10_Cryptography.BL
     /// <summary>
     /// Implementation of Triple DES Algorithm
     /// </summary>
-    public static class TripleDesAlgo
+    public class TripleDesAlgo
     {
-        #region Static Members
+        #region Private Members
 
-        private static TripleDESCryptoServiceProvider tripleDes;
-
-        // Triple DES Crypto Service Provider class implements logic of RSA Algorithm
-        static TripleDesAlgo()
-        {
-            tripleDes = new TripleDESCryptoServiceProvider();
-        }
+        private TripleDESCryptoServiceProvider tripleDes;
 
         #endregion
 
         #region Public Members
+
+
+        // Triple DES Crypto Service Provider class implements logic of RSA Algorithm
+        public TripleDesAlgo()
+        {
+            tripleDes = new TripleDESCryptoServiceProvider();
+            tripleDes.IV = new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08 };
+            tripleDes.Key = Encoding.UTF8.GetBytes("1234567890123456"); // 16 bytes (128 bits)
+        }
 
         /// <summary>
         /// Encryption of plain text to cipher text
         /// </summary>
         /// <param name="plainText"> Plain text in base64 string </param>
         /// <returns> Cipher Text in base64 string </returns>
-        public static string Encrypt(string plainText)
+        public string Encrypt(string plainText)
         {
             // String to bytes 
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
@@ -51,7 +54,7 @@ namespace _10_Cryptography.BL
         /// </summary>
         /// <param name="cipherText"> Cipher text in base64 string </param>
         /// <returns> Plain text in UTF8 string </returns>
-        public static string Decrypt(string cipherText)
+        public string Decrypt(string cipherText)
         {
             // string to bytes
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
