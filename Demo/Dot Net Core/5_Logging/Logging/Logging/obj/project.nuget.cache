@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "I4tNrqGisVDd+rFyc7Kg5NHlC1i1vCpe/55wpbVKRyk/X8JMeChvDogn/txzMN1hw7O4YT7q1yauEfNGmV60LA==",
+  "dgSpecHash": "1Dq5irfK/IfNi5wzHSvp3Brh8Ok5O7tIBnX4mA3mPpoT32iDkvOxYOLm7oFqpLKCZEZTYbrzjNU9c8HqlgkJdg==",
   "success": true,
   "projectFilePath": "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\Dot Net Core\\5_Logging\\Logging\\Logging\\Logging.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yash.l\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\yash.l\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\yash.l\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512",
+    "C:\\Users\\yash.l\\.nuget\\packages\\nlog\\5.2.8\\nlog.5.2.8.nupkg.sha512",
     "C:\\Users\\yash.l\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\yash.l\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\yash.l\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

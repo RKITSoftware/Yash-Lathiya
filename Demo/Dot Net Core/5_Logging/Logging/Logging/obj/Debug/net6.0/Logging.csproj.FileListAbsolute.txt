@@ -30,3 +30,4 @@ C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\5_Logging\Logging\Lo
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\5_Logging\Logging\Logging\obj\Debug\net6.0\Logging.pdb
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\5_Logging\Logging\Logging\obj\Debug\net6.0\Logging.genruntimeconfig.cache
 C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\5_Logging\Logging\Logging\obj\Debug\net6.0\ref\Logging.dll
+C:\Users\yash.l\source\repos\Yash-Lathiya\Demo\Dot Net Core\5_Logging\Logging\Logging\bin\Debug\net6.0\NLog.dll

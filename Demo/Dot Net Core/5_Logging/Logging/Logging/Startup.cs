@@ -1,9 +1,16 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace Logging
 {
     public class Startup
     {
+        public Startup()
+        {
+            // providing nlog configuration file 
+            NLog.LogManager.LoadConfiguration("C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\Dot Net Core\\5_Logging\\Logging\\Logging\\Nlog\\Nlog.config");
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -11,6 +18,17 @@ namespace Logging
             services.AddEndpointsApiExplorer();
 
             services.AddSwaggerGen();
+
+            // Configure Logging 
+            services.AddLogging( logging =>
+            {
+                // clear all providers
+                logging.ClearProviders();
+
+                // add console
+                logging.AddConsole();
+
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -35,6 +53,7 @@ namespace Logging
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
