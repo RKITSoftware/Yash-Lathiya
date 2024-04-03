@@ -26,7 +26,7 @@ namespace _8_LINQ.Types
 
             // Print Query
 
-            foreach (var objMob01 in query)
+            foreach (Mob01 objMob01 in query)
             {
                 Console.WriteLine($"Id : {objMob01.b01fo1}, Name : {objMob01.b01fo2}, Company : {objMob01.Company}, Sim-Card-Slots : {objMob01.b01fo4}, Price : {objMob01.Price}");
             }

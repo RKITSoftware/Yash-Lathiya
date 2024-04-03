@@ -7,6 +7,9 @@
     {
         #region Public Methods
 
+        /// <summary>
+        /// Query Expression within LINQ
+        /// </summary>
         public static void QueryExpressionLINQ()
         {
             // Specify the data source.
