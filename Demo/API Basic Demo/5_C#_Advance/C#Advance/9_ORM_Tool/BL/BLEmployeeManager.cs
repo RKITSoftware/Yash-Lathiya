@@ -51,6 +51,15 @@ namespace _9_ORM_Tool.BL
         }
 
         /// <summary>
+        /// To update fields of employee in database
+        /// </summary>
+        /// <param name="objEmp01"> fields of employee </param>
+        public void UpdateEmployeeFields(Emp01 objEmp01)
+        {
+            objEmployeeService.UpdadeOnlyFields(objEmp01);
+        }
+
+        /// <summary>
         /// To delete employee drom the database
         /// </summary>
         /// <param name="p01f01"> EMployee Id </param>

@@ -53,6 +53,20 @@ namespace _9_ORM_Tool.Controllers
         }
 
         /// <summary>
+        /// To update any fields employee details in the database
+        /// </summary>
+        /// <param name="objEmp01"> Details which will be updated </param>
+        /// <returns> Ok </returns>
+        [HttpPut]
+        [Route("api/Employee/UpdateFields")]
+        public IHttpActionResult UpdateEmployeeFields([FromBody] Emp01 objEmp01)
+        {
+            BLEmployeeManager objBLEmployeeManager = new BLEmployeeManager();
+            objBLEmployeeManager.UpdateEmployeeFields(objEmp01);
+            return Ok("Updated");
+        }
+
+        /// <summary>
         /// To delete employee in the database by employee id
         /// </summary>
         /// <param name="p01f01"> employee id </param>

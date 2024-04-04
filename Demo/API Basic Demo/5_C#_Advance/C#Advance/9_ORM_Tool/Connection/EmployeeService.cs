@@ -2,6 +2,7 @@
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
 using System;
+using System.Collections.Generic;
 
 namespace _9_ORM_Tool.Connection
 {
@@ -62,6 +63,52 @@ namespace _9_ORM_Tool.Connection
             using (var db = dbFactory.OpenDbConnection())
             {
                 db.Update(objEmp01);
+            }
+        }
+
+        /// <summary>
+        /// Update fields in database
+        /// </summary>
+        /// <param name="objEmp01"> Object contains fields which should be updated </param>
+        /// <exception cref="InvalidOperationException"> If invalid id is given </exception>
+        public void UpdadeOnlyFields(Emp01 objEmp01)
+        {
+            // collects id from input
+
+            int p01f01 = objEmp01.p01f01;
+
+            //if its invalid id  
+            if(p01f01 < 1)
+            {
+                throw new InvalidOperationException();
+            }
+
+            Dictionary<String, object> dictionary = new Dictionary<string, object>();
+
+            // count to update fields 
+            if (objEmp01.p01f02 != null)
+            {
+                dictionary.Add("p01f02", objEmp01.p01f02);
+            }
+            if(objEmp01.p01f03 != null)
+            {
+                dictionary.Add("p01f03", objEmp01.p01f03);
+            }
+            if (objEmp01.p01f04 > 0)
+            {
+                dictionary.Add("p01f04", objEmp01.p01f04);
+            }
+            
+            using(var db = dbFactory.OpenDbConnection())
+            {
+                int count = db.UpdateOnly<Emp01>(
+                    dictionary,       // Specify the field to update
+                    x => x.p01f01 == p01f01); // Filter condition (assuming Id 1)
+
+                if(count == 0)
+                {
+                    throw new Exception("Not updated as you entered incorrect data");
+                }
             }
         }
 
