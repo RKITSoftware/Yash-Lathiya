@@ -43,6 +43,18 @@ namespace _8_LINQ
             dataTableList.QueryOnList();
 
             #endregion
+
+            #region Queries on LINQ
+
+            Console.WriteLine("*****************************************");
+            Console.WriteLine("Queries on LINQ");
+            Console.WriteLine("*****************************************");
+
+            // Applied LINQ on list
+            LinqQueries linqQueries = new LinqQueries();
+            linqQueries.ExecuteQueries();
+
+            #endregion
         }
 
     }
