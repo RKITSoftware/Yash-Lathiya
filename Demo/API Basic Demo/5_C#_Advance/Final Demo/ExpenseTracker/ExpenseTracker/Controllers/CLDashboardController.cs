@@ -16,7 +16,18 @@ namespace ExpenseTracker.Controllers
     [Authorize]
     public class CLDashboardController : ApiController
     {
-        #region Public Methods 
+        #region Private Members
+
+        private IWallet _dashboard;
+
+        #endregion
+
+        #region Public Members
+        
+        public CLDashboardController()
+        {
+            _dashboard = new BLDashboardManager();
+        }
 
         /// <summary>
         /// To check current balance for specific user
@@ -26,8 +37,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/balance")]
         public IHttpActionResult MyCurrentBalance()
         {
-            BLDashboardManager dashboard = new BLDashboardManager();
-            return Ok(dashboard.CurrentBalance());
+            return Ok(_dashboard.CurrentBalance());
         }
 
         /// <summary>
@@ -38,8 +48,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/credit")]
         public IHttpActionResult GetToatlCredit()
         {
-            BLDashboardManager dashboard = new BLDashboardManager();
-            return Ok(dashboard.TotalCredit());
+            return Ok(_dashboard.TotalCredit());
         }
 
         /// <summary>
@@ -50,8 +59,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/expense")]
         public IHttpActionResult GetTotalExpense()
         {
-            BLDashboardManager dashboard = new BLDashboardManager();
-            return Ok(dashboard.TotalExpense());
+            return Ok(_dashboard.TotalExpense());
         }
 
         #endregion

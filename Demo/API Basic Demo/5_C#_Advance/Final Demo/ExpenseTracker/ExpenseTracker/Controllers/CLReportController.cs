@@ -15,7 +15,21 @@ namespace ExpenseTracker.Controllers
     [Authorize]
     public sealed class CLReportController : ApiController
     {
-        #region Public Methods 
+        #region Private Members
+
+        BLReportManager _objBLReportManager;
+
+        #endregion
+
+        #region Public Members 
+
+        /// <summary>
+        /// create instance of Report controller
+        /// </summary>
+        public CLReportController()
+        {
+            _objBLReportManager = new BLReportManager();
+        }
 
         /// <summary>
         /// Generates Report for USer
@@ -25,8 +39,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/report")]
         public IHttpActionResult GenerateReport() 
         {
-            BLReportManager objBLReportManager = new BLReportManager();
-            string filePath = objBLReportManager.GenerateReport();
+            string filePath = _objBLReportManager.GenerateReport();
 
             // Check if the file exists
             if (File.Exists(filePath))

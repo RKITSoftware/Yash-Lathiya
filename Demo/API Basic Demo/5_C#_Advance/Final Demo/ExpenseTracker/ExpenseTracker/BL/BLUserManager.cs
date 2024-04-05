@@ -1,19 +1,16 @@
 ﻿using ExpenseTracker.Models;
 using ExpenseTracker.Security;
+using ExpenseTracker.Static;
 using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
-using Google.Protobuf.WellKnownTypes;
-using Org.BouncyCastle.Asn1.Cmp;
-using Org.BouncyCastle.Asn1.Crmf;
-using ServiceStack;
 
 namespace ExpenseTracker.BL
 {
@@ -29,6 +26,8 @@ namespace ExpenseTracker.BL
 
         // For Security Purpose
         private string _encryptedPassword;
+
+        private Usr01 _objUsr01;
 
         #endregion
 
@@ -51,59 +50,95 @@ namespace ExpenseTracker.BL
         }
 
         /// <summary>
-        /// To Register user i database
+        /// Converts DTO Model to POCO Model
         /// </summary>
-        /// <param name="objUsr01"> Object of User </param>
-        /// <exception cref="Exception"> If Mobile Number is not Valid ..</exception>
-        public void RegisterUser(Usr01 objUsr01)
+        /// <param name="objDTOUsr01"> DTO Model of User </param>
+        public void Presave(DTOUsr01 objDTOUsr01)
         {
-            // Mobile Number must contain 10 digits
+            _objUsr01 = objDTOUsr01.ConvertModel<Usr01>();
+        }
 
-            if (!IsMobileNumber(objUsr01.r01f04))
+        /// <summary>
+        /// Validate POCO Model
+        /// </summary>
+        /// <returns> true => if data is valid
+        ///           false => otherwise
+        /// </returns>
+        public bool Validate()
+        {
+            // If Mobile Number is not valid
+            if (!IsMobileNumber(_objUsr01.r01f04))
             {
-                throw new Exception(" Mobile Number is invalid ");
+                return false;
             }
 
-            // Encrypt the password by using Aes Algorithm
-            // Encrypted password will be stored in database
-            AesAlgo aes = new AesAlgo();
-            _encryptedPassword = aes.Encrypt(objUsr01.r01f05);
-
-            using (MySqlCommand command = new MySqlCommand())
+            // If EmailId is not valid
+            if (!IsEmailValid(_objUsr01.r01f03))
             {
-                command.Connection = _mySqlConnection;
-                command.CommandText = @"INSERT INTO 
-                                            USR01 
-                                            (r01f01, r01f02, r01f03, r01f04, r01f05) 
-                                        VALUES (@r01f01, @r01f02, @r01f03, @r01f04, @r01f05)";
+                return false;
+            }
 
-                command.Parameters.AddWithValue("@r01f01", objUsr01.r01f01);
-                command.Parameters.AddWithValue("@r01f02", objUsr01.r01f02);
-                command.Parameters.AddWithValue("@r01f03", objUsr01.r01f03);
-                command.Parameters.AddWithValue("@r01f04", objUsr01.r01f04);
-                command.Parameters.AddWithValue("@r01f05", _encryptedPassword);
+            return true;
+        }
 
+        public void Save(Operation op)
+        {
+            if(Operation.Create == op)
+            {
+                // Encrypt the password by using Aes Algorithm
+                // Encrypted password will be stored in database
+                AesAlgo aes = new AesAlgo();
+                _encryptedPassword = aes.Encrypt(_objUsr01.r01f05);
+
+                // Establish Connection 
                 try
                 {
-                    _mySqlConnection.Open();
-                    command.ExecuteNonQuery();
-
-                    // Fetch r01f01 after successful registration
-                    int userId = Convert.ToInt32(FetchUserIdByEmail(objUsr01.r01f03));
-
-                    // Send email with the fetched userId
-                    SendRegistrationEmail(userId, objUsr01.r01f03);
-
+                    _mySqlConnection = Connection.DatabaseConnection.GetMySqlConnection();
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
                 }
-                finally
+
+                // Add user in database
+                using (MySqlCommand command = new MySqlCommand())
                 {
-                    _mySqlConnection.Close();
+                    command.Connection = _mySqlConnection;
+                    command.CommandText = @"INSERT INTO 
+                                            USR01 
+                                            (r01f01, r01f02, r01f03, r01f04, r01f05, r01f06, r01f07) 
+                                        VALUES (@r01f01, @r01f02, @r01f03, @r01f04, @r01f05, @r01f06, @r01f07)";
+
+                    command.Parameters.AddWithValue("@r01f01", _objUsr01.r01f01);
+                    command.Parameters.AddWithValue("@r01f02", _objUsr01.r01f02);
+                    command.Parameters.AddWithValue("@r01f03", _objUsr01.r01f03);
+                    command.Parameters.AddWithValue("@r01f04", _objUsr01.r01f04);
+                    command.Parameters.AddWithValue("@r01f05", _encryptedPassword);
+                    command.Parameters.AddWithValue("@r01f06", DateTime.Now); 
+                    command.Parameters.AddWithValue("@r01f07", DateTime.Now);
+
+                    try
+                    {
+                        _mySqlConnection.Open();
+                        command.ExecuteNonQuery();
+
+                        // Fetch r01f01 after successful registration
+                        int userId = Convert.ToInt32(FetchUserIdByEmail(_objUsr01.r01f03));
+
+                        // Send email with the fetched userId
+                        SendRegistrationEmail(userId, _objUsr01.r01f03);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                    finally
+                    {
+                        _mySqlConnection.Close();
+                    }
                 }
             }
+
         }
 
         /// <summary>
@@ -121,7 +156,7 @@ namespace ExpenseTracker.BL
 
                 MailMessage mail = new MailMessage(senderEmail, recipientEmail);
                 mail.Subject = "Welcome to Expense Tracker !!";
-                mail.Body = $"Thank you for registering! Your user ID is: {userId}";
+                mail.Body = $"Thank you for registering! \r\n Your user ID is: {userId}";
 
                 SmtpClient smtpClient = new SmtpClient("smtp-mail.outlook.com");
                 smtpClient.Port = 587;
@@ -166,10 +201,10 @@ namespace ExpenseTracker.BL
                 {
                     Console.WriteLine($"Error fetching user ID: {ex.Message}");
                 }
-                finally
-                {
-                    _mySqlConnection.Close();
-                }
+                //finally
+                //{
+                //    _mySqlConnection.Close();
+                //}
 
                 return null; // Return null if user ID is not found
             }
@@ -194,9 +229,28 @@ namespace ExpenseTracker.BL
         }
 
         /// <summary>
+        /// Checks email id is valid or not 
+        /// </summary>
+        /// <param name="email"> emailId </param>
+        /// <returns> true => if emailId is valid
+        ///           false => otherwise
+        /// </returns>
+        public bool IsEmailValid(string email)
+        {
+            // Regex pattern to validate email address
+            Regex emailPattern = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+
+            // Match the email against the pattern
+            Match match = emailPattern.Match(email);
+
+            // Return true if the email matches the pattern, otherwise false
+            return match.Success;
+        }
+
+        /// <summary>
         /// To authenticate user 
         /// </summary>
-        /// <param name="r01f02"> Username </param>
+        /// <param name="r01f01"> Username </param>
         /// <param name="r01f05"> Password </param>
         /// <returns> true -> if credential is correct
         ///           false -> if credential is incorrect </returns>
@@ -205,8 +259,18 @@ namespace ExpenseTracker.BL
             AesAlgo aes = new AesAlgo();
             _encryptedPassword = aes.Encrypt(r01f05);
 
+            // Establish Connection 
+            try
+            {
+                _mySqlConnection = Connection.DatabaseConnection.GetMySqlConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
             // Compare encrypted password to encrypted password 
-            using(MySqlCommand command = new MySqlCommand())
+            using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
                 command.CommandText = @"SELECT

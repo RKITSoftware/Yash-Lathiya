@@ -45,4 +45,5 @@ namespace Logging.Controllers
 
         #endregion
     }
+
 }

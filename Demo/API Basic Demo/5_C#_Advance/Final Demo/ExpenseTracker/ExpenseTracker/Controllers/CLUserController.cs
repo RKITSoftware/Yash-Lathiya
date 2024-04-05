@@ -12,7 +12,18 @@ namespace ExpenseTracker.Controllers
     /// </summary>
     public sealed class CLUserController : ApiController
     {
-        #region Public Methods
+        #region Private Members
+
+        private BLUserManager _objBLUserManager;
+
+        #endregion
+
+        #region Public Members
+
+        public CLUserController()
+        {
+             _objBLUserManager = new BLUserManager();
+        }
 
         /// <summary>
         /// To Register User in database 
@@ -21,10 +32,21 @@ namespace ExpenseTracker.Controllers
         /// <returns> Success Message if Registered Successfully </returns>
         [HttpPost]
         [Route("api/User/Register")]
-        public IHttpActionResult RegisterUser([FromBody] Usr01 objUsr01) 
+        public IHttpActionResult RegisterUser([FromBody] DTOUsr01 objDTOUsr01) 
         {
-            BLUserManager objBLUserManager = new BLUserManager();
-            objBLUserManager.RegisterUser(objUsr01);
+            // presave
+            _objBLUserManager.Presave(objDTOUsr01);
+
+            // validate 
+            bool isValid = _objBLUserManager.Validate();
+            if (!isValid)
+            {
+                return BadRequest("Requested data is not valid");
+            }
+
+            // add
+            _objBLUserManager.Save(Static.Operation.Create);
+
             return Ok("User Registered");
         }
 
@@ -34,10 +56,9 @@ namespace ExpenseTracker.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/User/Login")]
-        public IHttpActionResult LoginUser([FromBody] Log01 objLog01) 
+        public IHttpActionResult LoginUser([FromBody] DTOLog01 objDTOLog01) 
         {
-            BLUserManager objBLUserManager = new BLUserManager();
-            bool isAuthenticated = objBLUserManager.LoginUser(objLog01.g01f01, objLog01.g01f02);
+            bool isAuthenticated = _objBLUserManager.LoginUser(objDTOLog01.g01101, objDTOLog01.g01102);
             if(!isAuthenticated)
             {
                 return BadRequest("Login Failed");
@@ -45,7 +66,7 @@ namespace ExpenseTracker.Controllers
             else
             {
                 // Generate Jwt token
-                var token = objBLUserManager.GenerateJwtToken(objLog01.g01f01); 
+                var token = _objBLUserManager.GenerateJwtToken(objDTOLog01.g01101); 
                 return Ok(new { Token = token, Message = "Login Successful" });
             }
         }

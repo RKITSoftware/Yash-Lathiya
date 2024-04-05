@@ -61,9 +61,29 @@ namespace ExpenseTracker.ORM
         /// <param name="objCre01"> Object of new Credit deatils </param>
         public void UpdateCredit(Cre01 objCre01)
         {
+            Dictionary<String, object> dictionary = new Dictionary<string, object>();
+
+            // Loop through properties of objExp01
+            foreach (var prop in typeof(Cre01).GetProperties())
+            {
+                // don't update and creation time
+                if (prop.Name == "e01f05")
+                {
+                    continue;
+                }
+
+                var value = prop.GetValue(objCre01);
+                if (value != null)
+                {
+                    dictionary.Add(prop.Name, value);
+                }
+            }
+
             using (var db = dbFactory.OpenDbConnection())
             {
-                db.Update(objCre01);
+                db.UpdateOnly<Cre01>(
+                    dictionary,       // Specify the field to update
+                    x => x.e01f01 == objCre01.e01f01); // Filter condition to set expense id 
             }
         }
 
@@ -75,17 +95,10 @@ namespace ExpenseTracker.ORM
         {
             using (var db = dbFactory.OpenDbConnection())
             {
-                Cre01 objCre01 = db.SingleById<Cre01>(e01f01);
-                if(objCre01.e01f02 == Static.Static.GetUserIdFromClaims())
-                {
-                    db.DeleteById<Cre01>(e01f01);
-                }
-                else
-                {
-                    throw new Exception("You can delete only yours credit entry");
-                }
+                // Check if the user is authorized to delete the expense
+                int _r01f01 = Static.Static.GetUserIdFromClaims();
+                db.Delete<Cre01>(x => x.e01f01 == e01f01 && x.e01f02 == _r01f01);
             }
-
         }
 
         #endregion

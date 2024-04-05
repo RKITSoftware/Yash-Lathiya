@@ -28,6 +28,8 @@ namespace Logging
                 // add console
                 logging.AddConsole();
 
+                logging.SetMinimumLevel( LogLevel.Critical );
+
             });
         }
 

@@ -10,3 +10,32 @@
 2024-04-03 13:04:11.0308|INFO|Logging.Controllers.CLNlog|This is an information message
 2024-04-03 13:04:11.0855|WARN|Logging.Controllers.CLNlog|This is a warning message
 2024-04-03 13:04:11.0855|ERROR|Logging.Controllers.CLNlog|This is an error message
+2024-04-04 14:54:30.2995|INFO|Logging.Controllers.CLNlog|This is an information message
+2024-04-04 14:54:30.3516|WARN|Logging.Controllers.CLNlog|This is a warning message
+2024-04-04 14:54:30.3516|ERROR|Logging.Controllers.CLNlog|This is an error message
+2024-04-04 14:54:30.3516|DEBUG|Logging.Controllers.CLNlog|This is a debug message
+2024-04-04 14:54:30.3516|FATAL|Logging.Controllers.CLNlog|This is a fatal message
+2024-04-04 15:08:11.6886|INFO|Logging.Controllers.CLNlog|This is an information message
+2024-04-04 15:08:11.7280|WARN|Logging.Controllers.CLNlog|This is a warning message
+2024-04-04 15:08:11.7280|ERROR|Logging.Controllers.CLNlog|This is an error message
+2024-04-04 15:08:11.7280|DEBUG|Logging.Controllers.CLNlog|This is a debug message
+2024-04-04 15:08:11.7280|FATAL|Logging.Controllers.CLNlog|This is a fatal message
+2024-04-04 15:08:11.7280|ERROR|Logging.Controllers.CLNlog|Logged Error Message
+2024-04-04 15:11:10.4241|INFO|Logging.Controllers.CLNlog|This is an information message
+2024-04-04 15:11:10.4488|WARN|Logging.Controllers.CLNlog|This is a warning message
+2024-04-04 15:11:10.4488|ERROR|Logging.Controllers.CLNlog|This is an error message
+2024-04-04 15:11:10.4488|DEBUG|Logging.Controllers.CLNlog|This is a debug message
+2024-04-04 15:11:10.4488|FATAL|Logging.Controllers.CLNlog|This is a fatal message
+2024-04-04 15:11:10.4488|ERROR|Logging.Controllers.CLNlog|Logged Error Message
+2024-04-04 15:12:18.8920|INFO|Logging.Controllers.CLNlog|This is an information message
+2024-04-04 15:12:18.9989|WARN|Logging.Controllers.CLNlog|This is a warning message
+2024-04-04 15:12:18.9989|ERROR|Logging.Controllers.CLNlog|This is an error message
+2024-04-04 15:12:18.9989|DEBUG|Logging.Controllers.CLNlog|This is a debug message
+2024-04-04 15:12:18.9989|FATAL|Logging.Controllers.CLNlog|This is a fatal message
+2024-04-04 15:12:18.9989|ERROR|Logging.Controllers.CLNlog|Logged Error Message
+2024-04-04 15:13:20.9964|INFO|Logging.Controllers.CLNlog|This is an information message
+2024-04-04 15:13:21.0709|WARN|Logging.Controllers.CLNlog|This is a warning message
+2024-04-04 15:13:21.0709|ERROR|Logging.Controllers.CLNlog|This is an error message
+2024-04-04 15:13:21.0709|DEBUG|Logging.Controllers.CLNlog|This is a debug message
+2024-04-04 15:13:21.0709|FATAL|Logging.Controllers.CLNlog|This is a fatal message
+2024-04-04 15:13:21.0709|ERROR|Logging.Controllers.CLNlog|Logged Error Message

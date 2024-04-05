@@ -2,8 +2,6 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.IO;
 using System.Web.Script.Serialization;
 
 namespace ExpenseTracker.BL
@@ -57,7 +55,7 @@ namespace ExpenseTracker.BL
                 command.CommandText = @"SELECT
                                             p01f01,
                                             p01f03,
-                                            p01f04,
+                                            p01f07,
                                             p01f05,
                                             p01f06
                                         FROM 
@@ -76,13 +74,16 @@ namespace ExpenseTracker.BL
                         while (reader.Read())
                         {
                             lstExp01.Add(new Exp01() { p01f01 = Convert.ToInt32(reader["p01f01"]),
-                                                       p01f02 = _r01f01,
                                                        p01f03 = Convert.ToDecimal(reader["p01f03"]),
-                                                       p01f04 = Convert.ToDateTime(reader["p01f04"]),
+                                                       p01f07 = Convert.ToDateTime(reader["p01f07"]),
                                                        p01f05 = Convert.ToString(reader["p01f05"]),
                                                        p01f06 = Convert.ToString(reader["p01f06"])
                             });
-                            reportContent += $"Expense Id : {reader["p01f01"]}, \t Amount : {reader["p01f03"]}, \t Time : {reader["p01f04"]}, \t Category : {reader["p01f05"]}, \t Description : {reader["p01f06"]}  \r\n";
+                            reportContent += $"Expense Id : {reader["p01f01"]}, \t " +
+                                             $"Amount : {reader["p01f03"]}, \t " +
+                                             $"Category : {reader["p01f05"]}, \t " +
+                                             $"Description : {reader["p01f06"]}, \t" +
+                                             $"Time : {reader["p01f07"]}, \r\n ";
                         }
                     }
                 }
@@ -104,7 +105,7 @@ namespace ExpenseTracker.BL
                 command.Connection = _mySqlConnection;
                 command.CommandText = @"SELECT
                                             e01f01,
-                                            e01f02,
+                                            e01f05,
                                             e01f03,
                                             e01f04
                                         FROM 
@@ -125,12 +126,16 @@ namespace ExpenseTracker.BL
                             lstCre01.Add(new Cre01()
                             {
                                 e01f01 = Convert.ToInt32(reader["e01f01"]),
-                                e01f02 = Convert.ToInt32(reader["e01f02"]),
+                                e01f05 = Convert.ToDateTime(reader["e01f05"]),
                                 e01f03 = Convert.ToDecimal(reader["e01f03"]),
                                 e01f04 = Convert.ToString(reader["e01f04"]),
-                                
+
                             });
-                            reportContent += $" Credit Id : {reader["e01f01"]}, \t User Id : {reader["e01f02"]}, \t Credit Amount : {reader["e01f03"]}, \t Description : {reader["e01f04"]}  \r\n";                        }
+                            reportContent += $"Credit Id : {reader["e01f01"]}, \t " +
+                                             $"Credit Amount : {reader["e01f03"]}, \t " +
+                                             $"Description : {reader["e01f04"]},  \t" +
+                                             $"Credit Time : {reader["e01f05"]}\r\n ";
+                        }
                     }
                 }
                 catch (Exception ex)

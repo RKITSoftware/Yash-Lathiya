@@ -1,5 +1,6 @@
 ﻿using ServiceStack.DataAnnotations;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ExpenseTracker.Models
 {
@@ -14,6 +15,7 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// Expense Id 
         /// </summary>
+        [JsonPropertyName("p01101")]
         public int p01f01 { get; set; }
 
         /// <summary>
@@ -24,22 +26,35 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// Expense Amount
         /// </summary>
+        [JsonPropertyName("p01102")]
         public decimal p01f03 { get; set; }
 
         /// <summary>
         /// Date & Time of Expense 
         /// </summary>
-        public DateTime p01f04 { get; set; } = DateTime.Now;
+        public DateTime p01f04 { get; set; }
 
         /// <summary>
         /// Category of Expense 
         /// </summary>
+        [JsonPropertyName("p01103")]
         public string p01f05 { get; set; } = string.Empty;
 
         /// <summary>
         /// Description of Expense 
         /// </summary>
+        [JsonPropertyName("p01104")]
         public string p01f06 { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Expense Creation Time
+        /// </summary>
+        public DateTime p01f07 { get; set; }
+
+        /// <summary>
+        /// Expense Updation Time
+        /// </summary>
+        public DateTime p01f08 { get; set; }
 
         #endregion
     }

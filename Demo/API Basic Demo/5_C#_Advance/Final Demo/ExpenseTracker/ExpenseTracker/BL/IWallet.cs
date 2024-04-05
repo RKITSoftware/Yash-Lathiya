@@ -3,24 +3,24 @@
     /// <summary>
     /// Eallet is abstract class which consists all methods of Wallet
     /// </summary>
-    public abstract class BLWallet
+    public interface IWallet
     {
         /// <summary>
         /// Current Balance = Total Credit - Total Expense
         /// </summary>
         /// <returns> Current Balance</returns>
-        public abstract decimal CurrentBalance();
+        decimal CurrentBalance();
 
         /// <summary>
         /// Total Expense for specific user
         /// </summary>
         /// <returns> Total Expense </returns>
-        public abstract decimal TotalExpense();
+        decimal TotalExpense();
 
         /// <summary>
         /// Total Credit for specific user
         /// </summary>
         /// <returns> Total Credit </returns>
-        public abstract decimal TotalCredit();
+        decimal TotalCredit();
     }
 }

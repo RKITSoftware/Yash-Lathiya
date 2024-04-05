@@ -7,7 +7,7 @@ namespace ExpenseTracker.BL
     /// <summary>
     /// Dashboard Manager inherits abstract class wallet & implements all its methods 
     /// </summary>
-    public class BLDashboardManager : BLWallet
+    public class BLDashboardManager : IWallet
     {
         #region Public Methods
 
@@ -16,7 +16,7 @@ namespace ExpenseTracker.BL
         /// </summary>
         /// <param name="r01f01"> User Id </param>
         /// <returns> Current Balance </returns>
-        public override decimal CurrentBalance()
+        public decimal CurrentBalance()
         {
             return TotalCredit() - TotalExpense();
         }
@@ -25,14 +25,14 @@ namespace ExpenseTracker.BL
         /// To find total expense for specified user
         /// </summary>
         /// <returns> Total Expense </returns>
-        public override decimal TotalExpense()
+        public decimal TotalExpense()
         {
             BLExpenseManager objBLExpenseManager = new BLExpenseManager();
-            List<Exp01> lstExp01 = objBLExpenseManager.GetAllExpense();
+            List<DTOExp01> lstDTOExp01 = objBLExpenseManager.GetAllExpense();
             
             // Calculate by LINQ
-            var totalExpense = (from expense in lstExp01
-                               select expense.p01f03).Sum();
+            var totalExpense = (from expense in lstDTOExp01
+                               select expense.p01102).Sum();
 
             return totalExpense;
         }
@@ -41,14 +41,14 @@ namespace ExpenseTracker.BL
         /// To find total credit for specified user
         /// </summary>
         /// <returns> Total Credit </returns>
-        public override decimal TotalCredit()
+        public decimal TotalCredit()
         {
             BLCreditManager objBLCreditManager = new BLCreditManager();
-            List<Cre01> lstCre01 = objBLCreditManager.GetAllCredit();
+            List<DTOCre01> lstDTOCre01 = objBLCreditManager.GetAllCredit();
 
             // Calculate by LINQ
-            var totalExpense = (from credit in lstCre01
-                                select credit.e01f03).Sum();
+            var totalExpense = (from credit in lstDTOCre01
+                                select credit.e01102).Sum();
 
             return totalExpense;
         }

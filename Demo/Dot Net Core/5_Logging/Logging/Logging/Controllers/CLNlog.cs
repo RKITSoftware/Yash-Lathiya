@@ -35,6 +35,12 @@ namespace Logging.Controllers
 
             _logger.Error("This is an error message");
 
+            _logger.Debug("This is a debug message");
+
+            _logger.Fatal("This is a fatal message");
+
+            _logger.Log(NLog.LogLevel.Error, "Logged Error Message");
+
             return Ok("Information logged successfully .. ");
         }
 

@@ -1,4 +1,4 @@
-﻿using ExpenseTracker.BL;
+﻿    using ExpenseTracker.BL;
 using ExpenseTracker.Models;
 using System;
 using System.Web;
@@ -15,7 +15,21 @@ namespace ExpenseTracker.Controllers
     [Authorize]
     public sealed class CLExpenseController : ApiController
     {
-        #region Public Methods 
+        #region Private Members
+
+        BLExpenseManager _objBLExpenseManager;
+
+        #endregion
+
+        #region Public Members 
+
+        /// <summary>
+        /// Creates instance of BL Expense Manager
+        /// </summary>
+        public CLExpenseController()
+        {
+            _objBLExpenseManager = new BLExpenseManager();
+        }
 
         /// <summary>
         /// To add Expense in Database
@@ -24,11 +38,22 @@ namespace ExpenseTracker.Controllers
         /// <returns> "Expense Added Message "</returns>
         [HttpPost]
         [Route("api/Expense/Add")]
-        public IHttpActionResult AddExpense(Exp01 objExp01) 
+        public IHttpActionResult AddExpense(DTOExp01 objDTOExp01)
         {
-            BLExpenseManager objBLExpenseManager = new BLExpenseManager();
-            objBLExpenseManager.AddExpense(objExp01);
-            return Ok("Added Expense");
+            // presave
+            _objBLExpenseManager.Presave(objDTOExp01);
+            
+            // validate 
+            bool isValid = _objBLExpenseManager.Validate();
+            if (!isValid)
+            {
+                return BadRequest("Requested data is not valid");
+            }
+
+            // add
+            _objBLExpenseManager.Save(Static.Operation.Create);
+            
+            return Ok("Expense Added");
         }
 
         /// <summary>
@@ -42,8 +67,7 @@ namespace ExpenseTracker.Controllers
         {
             DateTime p01f04 = Convert.ToDateTime(HttpContext.Current.Request.Form["p01f04"]);
 
-            BLExpenseManager objBLExpenseManager = new BLExpenseManager();
-            return Ok(objBLExpenseManager.GetExpense(p01f04));
+            return Ok(_objBLExpenseManager.GetExpense(p01f04));
         }
 
         /// <summary>
@@ -54,8 +78,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/Expense/Get")]
         public IHttpActionResult GetExpenses() 
         {
-            BLExpenseManager objBLExpenseManager = new BLExpenseManager();
-            return Ok(objBLExpenseManager.GetAllExpense());
+            return Ok(_objBLExpenseManager.GetAllExpense());
         }
 
         /// <summary>
@@ -65,10 +88,21 @@ namespace ExpenseTracker.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("api/Expense/Update")]
-        public IHttpActionResult UpdateExpense(Exp01 objExp01) 
+        public IHttpActionResult UpdateExpense(DTOExp01 objDTOExp01)
         {
-            BLExpenseManager objBLExpenseManager = new BLExpenseManager();
-            objBLExpenseManager.UpdateExpense(objExp01);
+            // presave
+            _objBLExpenseManager.Presave(objDTOExp01);
+            
+            // validate
+            bool isValid = _objBLExpenseManager.Validate();
+            if (!isValid)
+            {
+                return BadRequest("Requested data is not valid");
+            }
+
+            // update
+            _objBLExpenseManager.Save(Static.Operation.Update);
+
             return Ok("Expense Updated");
         }
 
@@ -79,10 +113,10 @@ namespace ExpenseTracker.Controllers
         /// <returns> " Deleted " if its deleted Successfully </returns>
         [HttpDelete]
         [Route("api/Expense/Delete")]
-        public IHttpActionResult DeleteExpense(int p01f01) 
+        public IHttpActionResult DeleteExpense(int p01101)
         {
             BLExpenseManager objBLExpenseManager = new BLExpenseManager();
-            objBLExpenseManager.DeleteExpense(p01f01);
+            objBLExpenseManager.DeleteExpense(p01101);
             return Ok("Expense Deleted");
         }
 

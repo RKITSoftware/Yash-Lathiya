@@ -78,9 +78,30 @@ namespace ExpenseTracker.ORM
         /// <param name="objExp01"> Object of new details </param>
         public void UpdateExpense(Exp01 objExp01)
         {
-            using(var db = dbFactory.OpenDbConnection())
+            Dictionary<String, object> dictionary = new Dictionary<string, object>();
+
+            // Loop through properties of objExp01
+            foreach (var prop in typeof(Exp01).GetProperties())
             {
-                db.Update(objExp01);
+                // dont update expense time and creation time
+                if(prop.Name == "p01f04" || prop.Name == "p01f07")
+                {
+                    continue;
+                }
+
+                var value = prop.GetValue(objExp01);
+                if (value != null)
+                {
+                    dictionary.Add(prop.Name, value);
+                }
+            }
+
+            using (var db = dbFactory.OpenDbConnection())
+            {
+                db.UpdateOnly<Exp01>(
+                    dictionary,       // Specify the field to update
+                    x => x.p01f01 == objExp01.p01f01); // Filter condition to set expense id 
+
             }
         }
 
@@ -92,18 +113,10 @@ namespace ExpenseTracker.ORM
         {
             using(var db = dbFactory.OpenDbConnection())
             {
-                Exp01 objExp01 = db.SingleById<Exp01>(p01f01);
-                if (objExp01.p01f02 == Static.Static.GetUserIdFromClaims())
-                {
-                    db.DeleteById<Exp01>(p01f01);
-                }
-                else
-                {
-                    throw new Exception("You can delete only yours credit entry");
-                }
-                
+                // Check if the user is authorized to delete the expense
+                int _r01f01 = Static.Static.GetUserIdFromClaims();
+                db.Delete<Exp01>(x => x.p01f01 == p01f01 && x.p01f02 == _r01f01);
             }
-
         }
 
         #endregion
