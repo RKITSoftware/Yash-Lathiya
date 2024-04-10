@@ -18,19 +18,19 @@ namespace _12_Database_With_CRUD.Models
         /// <summary>
         /// Name of Employee
         /// </summary>
-        [JsonPropertyName("p01102")]
+        [JsonPropertyName("p01f02")]
         public string p01102 { get; set; }
 
         /// <summary>
         /// Position of EMployee
         /// </summary>
-        [JsonPropertyName("p01103")]
+        [JsonPropertyName("p01f03")]
         public string p01103 { get; set; }
 
         /// <summary>
         /// Annual Package of Employee
         /// </summary>
-        [JsonPropertyName("p01104")]
+        [JsonPropertyName("p01f04")]
         public int p01104 { get; set; }
 
         #endregion

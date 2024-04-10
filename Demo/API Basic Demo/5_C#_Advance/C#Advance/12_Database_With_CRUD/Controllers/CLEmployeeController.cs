@@ -1,7 +1,6 @@
-﻿using _12_Database_With_CRUD.Services;
+﻿using _12_Database_With_CRUD.BL;
 using _12_Database_With_CRUD.Models;
 using System.Web.Http;
-using _12_Database_With_CRUD.BL;
 
 namespace _12_Database_With_CRUD.Controllers
 {
@@ -73,7 +72,13 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Employee/Update")]
         public IHttpActionResult UpdateEmployee([FromBody] DTOEmp01 objDTOEmp01)
         {
-            _objEmployeeManager.UpdateEmployee(objEmp01);
+            _objEmployeeManager.Presave(objDTOEmp01);
+
+            if (_objEmployeeManager.Validate())
+            {
+                _objEmployeeManager.Save(Static.Static.Operation.Update);
+            }
+
             return Ok("Updated");
         }
 
@@ -86,7 +91,8 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Employee/Delete/{p01f01}")]
         public IHttpActionResult DeleteEmployee(int p01f01)
         {
-            _objEmployeeManager.DeleteEmployee(p01f01);
+            _objEmployeeManager.Save(Static.Static.Operation.Delete);
+
             return Ok("Deleted");
         }
 

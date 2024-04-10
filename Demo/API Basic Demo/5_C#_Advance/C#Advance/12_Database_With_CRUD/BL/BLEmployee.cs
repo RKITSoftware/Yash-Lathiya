@@ -47,6 +47,12 @@ namespace _12_Database_With_CRUD.BL
         /// <returns>true if validated else false </returns>
         public bool Validate()
         {
+            // validate annual package
+            if(_objEmp01.p01f04 < 0)
+            {
+                return false;
+            }
+
             return true;
         }
 

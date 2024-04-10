@@ -9,9 +9,13 @@ namespace _12_Database_With_CRUD.Services
     /// </summary>
     public class EmployeeService
     {
-        #region Connect to Database
+        #region Private Members
 
         private MySqlConnection _mySqlConnection;
+
+        #endregion
+
+        #region Constructor
 
         public EmployeeService()
         {
@@ -38,18 +42,28 @@ namespace _12_Database_With_CRUD.Services
         {
             using (MySqlCommand command = new MySqlCommand())
             {
-                command.Connection = _mySqlConnection;
-                command.CommandText = String.Format(@"INSERT INTO 
-                                            EMP01 
-                                            (p01f01, p01f02, p01f03, p01f04) 
-                                        VALUES ({0}, {1}, {2}, {3}, {4}, {5})",
-                                        objEmp01.p01f01, 
-                                        objEmp01.p01f02,
-                                        objEmp01.p01f03,
-                                        objEmp01.p01f04,
-                                        objEmp01.p01f05,
-                                        objEmp01.p01f06);
-                
+                //command.Connection = _mySqlConnection;
+                //command.CommandText = String.Format(@"INSERT INTO 
+                //                            EMP01 
+                //                            (p01f01, p01f02, p01f03, p01f04, p01f05, p01f06) 
+                //                        VALUES ({0}, {1}, {2}, {3}, {4}, {5})",
+                //                        objEmp01.p01f01,
+                //                        objEmp01.p01f02,
+                //                        objEmp01.p01f03,
+                //                        objEmp01.p01f04,
+                //                        objEmp01.p01f05.ToString("dd-MM-yyyy hh:mm:ss"),
+                //                        objEmp01.p01f06.ToString("dd-MM-yyyy HH:mm:ss"));
+
+                command.CommandText = @"INSERT INTO EMP01 (p01f01, p01f02, p01f03, p01f04, p01f05, p01f06) 
+                        VALUES (@p01f01, @p01f02, @p01f03, @p01f04, @p01f05, @p01f06)";
+
+                command.Parameters.AddWithValue("@p01f01", objEmp01.p01f01);
+                command.Parameters.AddWithValue("@p01f02", objEmp01.p01f02);
+                command.Parameters.AddWithValue("@p01f03", objEmp01.p01f03);
+                command.Parameters.AddWithValue("@p01f04", objEmp01.p01f04);
+                command.Parameters.AddWithValue("@p01f05", objEmp01.p01f05);
+                command.Parameters.AddWithValue("@p01f06", objEmp01.p01f06);
+
                 try
                 {
                     _mySqlConnection.Open();
@@ -86,8 +100,6 @@ namespace _12_Database_With_CRUD.Services
                                             EMP01 
                                         WHERE 
                                             p01f01 = {0}", p01f01);
-
-                //command.Parameters.AddWithValue("@p01f01", p01f01);
 
                 try
                 {
@@ -134,20 +146,20 @@ namespace _12_Database_With_CRUD.Services
             {
                 command.Connection = _mySqlConnection;
 
-                command.CommandText = @"UPDATE 
+                command.CommandText = String.Format(@"UPDATE 
                                             EMP01 
                                         SET 
-                                            p01f02 = @p01f02, 
-                                            p01f03 = @p01f03, 
-                                            p01f04 = @p01f04 
+                                            p01f02 = {0}, 
+                                            p01f03 = {1}, 
+                                            p01f04 = {2},
+                                            p01f06 = {3}
                                         WHERE 
-                                            p01f01 = @p01f01";
-
-                // Assuming the actual column names and values need to be replaced in the query
-                command.Parameters.AddWithValue("@p01f01", objEmp01.p01f01);
-                command.Parameters.AddWithValue("@p01f02", objEmp01.p01f02);
-                command.Parameters.AddWithValue("@p01f03", objEmp01.p01f03);
-                command.Parameters.AddWithValue("@p01f04", objEmp01.p01f04);
+                                            p01f01 = {4}", 
+                                            objEmp01.p01f02,
+                                            objEmp01.p01f03,
+                                            objEmp01.p01f04,
+                                            objEmp01.p01f06,
+                                            objEmp01.p01f01);
 
                 try
                 {
