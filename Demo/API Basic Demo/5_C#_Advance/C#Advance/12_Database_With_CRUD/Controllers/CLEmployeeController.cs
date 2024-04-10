@@ -1,6 +1,7 @@
-﻿using _12_Database_With_CRUD.BL;
+﻿using _12_Database_With_CRUD.Services;
 using _12_Database_With_CRUD.Models;
 using System.Web.Http;
+using _12_Database_With_CRUD.BL;
 
 namespace _12_Database_With_CRUD.Controllers
 {
@@ -9,6 +10,27 @@ namespace _12_Database_With_CRUD.Controllers
     /// </summary>
     public class CLEmployeeController : ApiController
     {
+        #region Private Members
+
+        /// <summary>
+        /// Employee Manager
+        /// </summary>
+        private BLEmployee _objEmployeeManager;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Take reference of Employee Manager
+        /// </summary>
+        public CLEmployeeController()
+        {
+            _objEmployeeManager = new BLEmployee();
+        }
+
+        #endregion
+
         #region Public Methods
 
         /// <summary>
@@ -18,10 +40,14 @@ namespace _12_Database_With_CRUD.Controllers
         /// <returns> Ok </returns>
         [HttpPost]
         [Route("api/Employee/add")]
-        public IHttpActionResult AddEmployee([FromBody] Emp01 objEmp01)
+        public IHttpActionResult AddEmployee([FromBody] DTOEmp01 objDTOEmp01)
         {
-            EmployeeManager objEmployeeManager = new EmployeeManager();
-            objEmployeeManager.AddEmployee(objEmp01);
+            _objEmployeeManager.Presave(objDTOEmp01);
+
+            if (_objEmployeeManager.Validate())
+            {
+                _objEmployeeManager.Save(Static.Static.Operation.Create);
+            }
             return Ok("Added");
         }
 
@@ -34,8 +60,7 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Employee/Get/{p01f01}")]
         public IHttpActionResult GetEmployee(int p01f01)
         {
-            EmployeeManager objEmployeeManager = new EmployeeManager();
-            return Ok(objEmployeeManager.GetEmployee(p01f01));
+            return Ok(_objEmployeeManager.GetEmployee(p01f01));
         }
 
         /// <summary>
@@ -45,10 +70,9 @@ namespace _12_Database_With_CRUD.Controllers
         /// <returns> Ok </returns>
         [HttpPut]
         [Route("api/Employee/Update")]
-        public IHttpActionResult UpdateEmployee([FromBody] Emp01 objEmp01)
+        public IHttpActionResult UpdateEmployee([FromBody] DTOEmp01 objDTOEmp01)
         {
-            EmployeeManager objEmployeeManager = new EmployeeManager();
-            objEmployeeManager.UpdateEmployee(objEmp01);
+            _objEmployeeManager.UpdateEmployee(objEmp01);
             return Ok("Updated");
         }
 
@@ -61,8 +85,7 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Employee/Delete/{p01f01}")]
         public IHttpActionResult DeleteEmployee(int p01f01)
         {
-            EmployeeManager objEmployeeManager = new EmployeeManager();
-            objEmployeeManager.DeleteEmployee(p01f01);
+            _objEmployeeManager.DeleteEmployee(p01f01);
             return Ok("Deleted");
         }
 

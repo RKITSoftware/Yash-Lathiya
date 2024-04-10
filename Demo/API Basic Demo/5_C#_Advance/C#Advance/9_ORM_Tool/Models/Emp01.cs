@@ -13,6 +13,7 @@ namespace _9_ORM_Tool.Models
         /// <summary>
         /// Id of Employee 
         /// </summary>
+        /// add primary key
         public int p01f01 { get; set; }
 
         /// <summary>

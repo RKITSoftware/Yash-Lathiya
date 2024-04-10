@@ -11,6 +11,9 @@ namespace _10_Cryptography.BL
     {
         #region Private Members
 
+        /// <summary>
+        /// crypto service provider
+        /// </summary>
         private static RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
 
         #endregion
