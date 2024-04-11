@@ -15,7 +15,7 @@ namespace _12_Database_With_CRUD.Connection
         /// <summary>
         /// MySql Connection
         /// </summary>
-        private static MySqlConnection _mySqlConnection;
+        private static readonly MySqlConnection _mySqlConnection;
 
         #endregion
 
@@ -44,7 +44,6 @@ namespace _12_Database_With_CRUD.Connection
 
                 // Providing Connection string to mySqlConnection
                 _mySqlConnection = new MySqlConnection(mysqlConnectionString);
-                //_mySqlConnection.Open();
 
             }
             catch (Exception ex)

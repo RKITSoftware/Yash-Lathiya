@@ -4,9 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace _12_Database_With_CRUD.Static
 {
@@ -44,22 +41,19 @@ namespace _12_Database_With_CRUD.Static
             Type targetType = typeof(T);
 
             // Get source properties with JSON property name attributes
-            PropertyInfo[] sourceProps = sourceType.GetProperties()
-                                                   .Where(prop => prop.IsDefined(typeof(JsonPropertyNameAttribute), false))
-                                                   .ToArray();
+            PropertyInfo[] sourceProps = sourceType.GetProperties().ToArray();
 
             // Iterate through source properties
-            foreach (PropertyInfo prop in sourceProps)
+            foreach (PropertyInfo sourceProp in sourceProps)
             {
-                // Get the JSON property name from the attribute
-                JsonPropertyNameAttribute attribute = (JsonPropertyNameAttribute)Attribute.GetCustomAttribute(prop, typeof(JsonPropertyNameAttribute));
-                string targetPropName = attribute.Name;
+                // get field name from source model
+                string sourcePropName = sourceProp.Name;
 
-                // Find corresponding property in target model
-                PropertyInfo targetPropertyInfo = targetType.GetProperty(targetPropName);
+                // fetch that field from target model
+                PropertyInfo targetProp = targetType.GetProperty(sourcePropName);
 
-                // Set the value of the target property from the source property
-                targetPropertyInfo.SetValue(targetModel, prop.GetValue(sourceModel));
+                // If target model consists that field then assign value 
+                targetProp?.SetValue(targetModel, sourceProp.GetValue(sourceModel, null), null);
             }
 
             return targetModel;
@@ -70,18 +64,18 @@ namespace _12_Database_With_CRUD.Static
         /// </summary>
         /// <param name="response"> </param>
         /// <returns></returns>
-        public static async Task<HttpResponseMessage> ToHttpResponseMessageAsync(this Response response)
+        public static HttpResponseMessage ToHttpResponseMessage(this Response response)
         {
-            var responseContent = new { response.message, response.data };
-            var json = JsonSerializer.Serialize(responseContent);
+            var responseContent = new { response.Message, response.Data };
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(responseContent);
 
             var httpResponseMessage = new HttpResponseMessage
             {
-                StatusCode = (HttpStatusCode)response.statusCode,
+                StatusCode = (HttpStatusCode)response.StatusCode,
                 Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json")
             };
 
-            return await Task.FromResult(httpResponseMessage);
+            return httpResponseMessage;
         }
 
         #endregion

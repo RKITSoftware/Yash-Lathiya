@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace _12_Database_With_CRUD.Models
 {
@@ -12,26 +12,26 @@ namespace _12_Database_With_CRUD.Models
         /// <summary>
         /// Id of Employee 
         /// </summary>
-        [JsonPropertyName("p01f01")]
-        public int p01101 { get; set; }
+        [JsonProperty("p01101")]
+        public int P01f01 { get; set; }
 
         /// <summary>
         /// Name of Employee
         /// </summary>
-        [JsonPropertyName("p01f02")]
-        public string p01102 { get; set; }
+        [JsonProperty("p01102")]
+        public string P01f02 { get; set; }
 
         /// <summary>
         /// Position of EMployee
         /// </summary>
-        [JsonPropertyName("p01f03")]
-        public string p01103 { get; set; }
+        [JsonProperty("p01103")]
+        public string P01f03 { get; set; }
 
         /// <summary>
         /// Annual Package of Employee
         /// </summary>
-        [JsonPropertyName("p01f04")]
-        public int p01104 { get; set; }
+        [JsonProperty("p01104")]
+        public int P01f04 { get; set; }
 
         #endregion
     }

@@ -17,7 +17,7 @@ namespace _12_Database_With_CRUD.Controllers
         /// <summary>
         /// Employee Manager
         /// </summary>
-        private BLEmployee _objEmployeeManager;
+        private readonly BLEmployee _objEmployeeManager;
 
         /// <summary>
         /// Response of HTTP Action method 
@@ -35,7 +35,6 @@ namespace _12_Database_With_CRUD.Controllers
         public CLEmployeeController()
         {
             _objEmployeeManager = new BLEmployee();
-            _response = new Response();
         }
 
         #endregion
@@ -49,18 +48,18 @@ namespace _12_Database_With_CRUD.Controllers
         /// <returns> Ok </returns>
         [HttpPost]
         [Route("api/Employee/add")]
-        public async Task<HttpResponseMessage> AddEmployee([FromBody] DTOEmp01 objDTOEmp01)
+        public HttpResponseMessage AddEmployee([FromBody] DTOEmp01 objDTOEmp01)
         {
             _objEmployeeManager.Presave(objDTOEmp01);
 
-            _response = _objEmployeeManager.Validate(_response);
+            _response = _objEmployeeManager.Validate();
 
-            if(_response.isError == false)
+            if(_response.IsError == false)
             {
-                _response = _objEmployeeManager.Save(Static.Static.Operation.Create, _response);
+                _response = _objEmployeeManager.Save(Static.Static.Operation.Create);
             }
 
-            return await _response.ToHttpResponseMessageAsync();
+            return _response.ToHttpResponseMessage();
         }
 
         /// <summary>
@@ -70,11 +69,11 @@ namespace _12_Database_With_CRUD.Controllers
         /// <returns> Object of Emp01 class </returns>
         [HttpGet]
         [Route("api/Employee/Get/{p01f01}")]
-        public async Task<HttpResponseMessage> GetEmployee(int p01f01)
+        public HttpResponseMessage GetEmployee(int p01f01)
         {
-            _response = _objEmployeeManager.GetEmployee(p01f01, _response);
+            _response = _objEmployeeManager.GetEmployee(p01f01);
 
-            return await _response.ToHttpResponseMessageAsync();
+            return _response.ToHttpResponseMessage();
         }
 
         /// <summary>
@@ -84,18 +83,18 @@ namespace _12_Database_With_CRUD.Controllers
         /// <returns> Response </returns>
         [HttpPut]
         [Route("api/Employee/Update")]
-        public async Task<HttpResponseMessage> UpdateEmployee([FromBody] DTOEmp01 objDTOEmp01)
+        public HttpResponseMessage UpdateEmployee([FromBody] DTOEmp01 objDTOEmp01)
         {
             _objEmployeeManager.Presave(objDTOEmp01);
 
-            _response = _objEmployeeManager.Validate(_response);
+            _response = _objEmployeeManager.Validate();
 
-            if (_response.isError == false)
+            if (_response.IsError == false)
             {
-                _response = _objEmployeeManager.Save(Static.Static.Operation.Update, _response);
+                _response = _objEmployeeManager.Save(Static.Static.Operation.Update);
             }
 
-            return await _response.ToHttpResponseMessageAsync();
+            return _response.ToHttpResponseMessage();
 
         }
 
@@ -106,16 +105,16 @@ namespace _12_Database_With_CRUD.Controllers
         /// <returns> Ok </returns>
         [HttpDelete]
         [Route("api/Employee/Delete")]
-        public async Task<HttpResponseMessage> DeleteEmployee([FromBody] DTOEmp01 objDTOEmp01)
+        public HttpResponseMessage DeleteEmployee([FromBody] DTOEmp01 objDTOEmp01)
         {
             _objEmployeeManager.Presave(objDTOEmp01);
 
-            if (_response.isError == false)
+            if (_response.IsError == false)
             {
-                _response = _objEmployeeManager.Save(Static.Static.Operation.Delete, _response);
+                _response = _objEmployeeManager.Save(Static.Static.Operation.Delete);
             }
 
-            return await _response.ToHttpResponseMessageAsync();
+            return _response.ToHttpResponseMessage();
 
         }
 
