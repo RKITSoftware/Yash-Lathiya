@@ -1,9 +1,5 @@
 ﻿using ExpenseTracker.BL;
-using System.Security.Claims;
-using System;
 using System.Web.Http;
-using System.Linq;
-using ExpenseTracker.Static;
 
 namespace ExpenseTracker.Controllers
 {
@@ -17,17 +13,27 @@ namespace ExpenseTracker.Controllers
     public class CLDashboardController : ApiController
     {
         #region Private Members
-
+        
+        /// <summary>
+        /// reference of Iwallet interface  
+        /// </summary>
         private IWallet _dashboard;
 
         #endregion
 
-        #region Public Members
+        #region Constructor
         
+        /// <summary>
+        /// Teke reference of IWallet interface 
+        /// </summary>
         public CLDashboardController()
         {
             _dashboard = new BLDashboardManager();
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// To check current balance for specific user

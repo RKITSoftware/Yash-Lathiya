@@ -13,17 +13,27 @@ namespace ExpenseTracker.Controllers
     public sealed class CLUserController : ApiController
     {
         #region Private Members
-
+        
+        /// <summary>
+        /// BL logic for User Manager 
+        /// </summary>
         private BLUserManager _objBLUserManager;
 
         #endregion
 
-        #region Public Members
+        #region Constructor
 
+        /// <summary>
+        /// consists BL logic for User Manager
+        /// </summary>
         public CLUserController()
         {
              _objBLUserManager = new BLUserManager();
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// To Register User in database 

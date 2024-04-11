@@ -14,12 +14,15 @@ namespace ExpenseTracker.Controllers
     public sealed class CLCreditController : ApiController
     {
         #region Private Members
-
+        
+        /// <summary>
+        /// Reference of credit manager
+        /// </summary>
         BLCreditManager _objBLCreditManager;
 
         #endregion
 
-        #region Public Members
+        #region Constructor
 
         /// <summary>
         /// Creates instance of BL Credit Manager
@@ -28,6 +31,10 @@ namespace ExpenseTracker.Controllers
         {
             _objBLCreditManager = new BLCreditManager();
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// To add Credit in Database
@@ -106,3 +113,4 @@ namespace ExpenseTracker.Controllers
         #endregion
     }
 }
+ 

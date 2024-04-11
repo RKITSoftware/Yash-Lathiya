@@ -16,12 +16,15 @@ namespace ExpenseTracker.Controllers
     public sealed class CLReportController : ApiController
     {
         #region Private Members
-
+        
+        /// <summary>
+        /// Consists BL logic of Report Manager
+        /// </summary>
         BLReportManager _objBLReportManager;
 
         #endregion
 
-        #region Public Members 
+        #region Constructor 
 
         /// <summary>
         /// create instance of Report controller
@@ -30,6 +33,10 @@ namespace ExpenseTracker.Controllers
         {
             _objBLReportManager = new BLReportManager();
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Generates Report for USer
@@ -66,10 +73,8 @@ namespace ExpenseTracker.Controllers
             {
                 return NotFound(); // File not found
             }
-
         }
 
         #endregion
-
     }
 }

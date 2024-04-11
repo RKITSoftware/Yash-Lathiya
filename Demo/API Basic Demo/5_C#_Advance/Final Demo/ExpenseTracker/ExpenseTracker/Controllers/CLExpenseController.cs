@@ -16,12 +16,15 @@ namespace ExpenseTracker.Controllers
     public sealed class CLExpenseController : ApiController
     {
         #region Private Members
-
+        
+        /// <summary>
+        /// consists BL logic of Expense Manager
+        /// </summary>
         BLExpenseManager _objBLExpenseManager;
 
         #endregion
 
-        #region Public Members 
+        #region Constructor
 
         /// <summary>
         /// Creates instance of BL Expense Manager
@@ -30,6 +33,10 @@ namespace ExpenseTracker.Controllers
         {
             _objBLExpenseManager = new BLExpenseManager();
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// To add Expense in Database

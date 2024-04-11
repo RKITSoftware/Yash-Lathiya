@@ -14,18 +14,24 @@ namespace ExpenseTracker.BL
     {
         #region Private Members
 
-        // To use Credit Service 
+        /// <summary>
+        /// To use Credit Service 
+        /// </summary>
         private CreditService _objCreditService;
 
-        // user id retrieved from current user context
+        /// <summary>
+        /// user id retrieved from current user context
+        /// </summary>
         private int _r01f01 = Static.Static.GetUserIdFromClaims();
 
-        // POCO Moodel
+        /// <summary>
+        /// POCO Moodel
+        /// </summary>
         private Cre01 _objCre01;
 
         #endregion
 
-        #region Public Members
+        #region Public Methods
 
         /// <summary>
         /// Convert DTO model to POCO Model 

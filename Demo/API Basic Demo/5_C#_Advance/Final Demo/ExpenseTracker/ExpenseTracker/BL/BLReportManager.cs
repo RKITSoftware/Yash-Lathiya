@@ -13,15 +13,24 @@ namespace ExpenseTracker.BL
     {
         #region Private Members
 
+        /// <summary>
+        /// MySql Connection
+        /// </summary>
         private MySqlConnection _mySqlConnection;
 
-        // user id retrieved from current user context
+        /// <summary>
+        /// user id retrieved from current user context
+        /// </summary>
         private int _r01f01 = Static.Static.GetUserIdFromClaims();
 
         #endregion
 
-        #region Public Methods
+        #region Constructor
 
+        /// <summary>
+        /// Default constructor assigning connection
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public BLReportManager()
         {
             try
@@ -34,6 +43,10 @@ namespace ExpenseTracker.BL
                 throw new Exception(ex.Message);
             }
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Generates report which includes credit & Expense

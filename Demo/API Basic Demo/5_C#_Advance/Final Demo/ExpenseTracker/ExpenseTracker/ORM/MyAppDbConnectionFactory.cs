@@ -2,13 +2,18 @@
 
 namespace ExpenseTracker.ORM
 {
-
     /// <summary>
     /// Set up for database connection
     /// </summary>
     public static class MyAppDbConnectionFactory
     {
-        // Instance of DbFactory
+        #region Public Members
+
+        /// <summary>
+        /// Instance of DbFactory
+        /// </summary>
         public static IDbConnectionFactory Instance { get; set; }
+
+        #endregion
     }
 }

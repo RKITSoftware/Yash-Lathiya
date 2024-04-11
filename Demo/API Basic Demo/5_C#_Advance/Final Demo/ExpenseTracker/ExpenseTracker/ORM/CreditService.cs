@@ -11,9 +11,16 @@ namespace ExpenseTracker.ORM
     /// </summary>
     public class CreditService
     {
-        #region dbFactory Configuration 
+        #region Private Members 
 
+        /// <summary>
+        /// ORM lite database connection factory 
+        /// </summary>
         private readonly IDbConnectionFactory dbFactory;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Constructor which allows to set current instance of database to select

@@ -10,9 +10,17 @@ namespace ExpenseTracker.Connection
     /// </summary>
     public static class DatabaseConnection
     {
-        #region Static Members
+        #region Private Members
+        
+        /// <summary>
+        /// MySql database connection
+        /// </summary>
+        private static MySqlConnection _mySqlConnection;
 
-        static MySqlConnection _mySqlConnection;
+        #endregion
+
+        #region Constructor
+
         /// <summary>
         /// Connect to database by MySql String 
         /// </summary>

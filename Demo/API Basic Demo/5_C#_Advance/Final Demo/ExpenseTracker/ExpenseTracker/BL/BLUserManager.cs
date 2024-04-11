@@ -21,17 +21,24 @@ namespace ExpenseTracker.BL
     {
         #region Private Members
 
-        // Sql Connection
+        /// <summary>
+        /// Sql Connection
+        /// </summary>
         private MySqlConnection _mySqlConnection;
 
-        // For Security Purpose
+        /// <summary>
+        /// For Security Purpose
+        /// </summary>
         private string _encryptedPassword;
 
+        /// <summary>
+        /// POCO model of User
+        /// </summary>
         private Usr01 _objUsr01;
 
         #endregion
 
-        #region Public Methods
+        #region Constructor
 
         /// <summary>
         /// Get the MySqlConnection instance from the Connection class
@@ -48,6 +55,10 @@ namespace ExpenseTracker.BL
                 throw new Exception(ex.Message);
             }
         }
+
+        #endregion
+
+        #region  Public Methods
 
         /// <summary>
         /// Converts DTO Model to POCO Model

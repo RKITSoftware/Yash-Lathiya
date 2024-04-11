@@ -17,6 +17,8 @@ namespace ExpenseTracker.Security
     /// </remarks>
     public class JwtTokenValidationHandler : DelegatingHandler
     {
+        #region Protected Methods
+
         /// <summary>
         /// Handles the asynchronous processing of HTTP requests to validate JWT tokens.
         /// </summary>
@@ -49,6 +51,10 @@ namespace ExpenseTracker.Security
 
             return base.SendAsync(request, cancellationToken);
         }
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// Extracts the JWT token from the incoming HTTP request.
@@ -86,5 +92,8 @@ namespace ExpenseTracker.Security
 
             return null;
         }
+
+        #endregion
+
     }
 }

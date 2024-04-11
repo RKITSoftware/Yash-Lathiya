@@ -5,6 +5,8 @@
     /// </summary>
     public interface IWallet
     {
+        #region Public Members
+
         /// <summary>
         /// Current Balance = Total Credit - Total Expense
         /// </summary>
@@ -22,5 +24,7 @@
         /// </summary>
         /// <returns> Total Credit </returns>
         decimal TotalCredit();
+
+        #endregion
     }
 }

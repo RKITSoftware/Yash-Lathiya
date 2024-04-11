@@ -8,11 +8,26 @@ using System.Web;
 
 namespace ExpenseTracker.Static
 {
+
+    #region Enum
+
+    /// <summary>
+    /// Opeartions for databse
+    /// </summary>
+    public enum Operation : byte
+    {
+        Create,
+        Update
+    }
+
+    #endregion
+
     /// <summary>
     /// consists all methods & variable which are frequently used in this project 
     /// </summary>
     public static class Static
     {
+        #region Public Methods
 
         /// <summary>
         /// Get userid from jwt token claim
@@ -69,15 +84,8 @@ namespace ExpenseTracker.Static
 
             return targetModel;
         }
+
+        #endregion
     }
 
-    /// <summary>
-    /// Opeartions for databse
-    /// </summary>
-    public enum Operation : byte
-    {
-        Create , 
-        Update 
-    }
-        
 }

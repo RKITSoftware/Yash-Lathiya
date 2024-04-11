@@ -12,10 +12,22 @@ namespace ExpenseTracker.Security
     {
         #region Private Members 
 
-        // AES Crypto Service Provider class implements logic of AES Algorithm
+        /// <summary>
+        /// AES Crypto Service Provider class implements logic of AES Algorithm
+        /// </summary>
         private AesCryptoServiceProvider _aes;
+        
+        /// <summary>
+        /// key for AES algorithm
+        /// </summary>
         private byte[] key = Encoding.UTF8.GetBytes("IamPrivateKeyofExpenseTracker123");
+        
+        /// <summary>
+        /// initial vector for AES algorithm
+        /// </summary>
         private byte[] iv = Encoding.UTF8.GetBytes("IamInitialVector");
+
+        #region Constructor
 
         /// <summary>
         /// Provide Instance to class
