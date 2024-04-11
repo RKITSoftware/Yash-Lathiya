@@ -42,27 +42,17 @@ namespace _12_Database_With_CRUD.Services
         {
             using (MySqlCommand command = new MySqlCommand())
             {
-                //command.Connection = _mySqlConnection;
-                //command.CommandText = String.Format(@"INSERT INTO 
-                //                            EMP01 
-                //                            (p01f01, p01f02, p01f03, p01f04, p01f05, p01f06) 
-                //                        VALUES ({0}, {1}, {2}, {3}, {4}, {5})",
-                //                        objEmp01.p01f01,
-                //                        objEmp01.p01f02,
-                //                        objEmp01.p01f03,
-                //                        objEmp01.p01f04,
-                //                        objEmp01.p01f05.ToString("dd-MM-yyyy hh:mm:ss"),
-                //                        objEmp01.p01f06.ToString("dd-MM-yyyy HH:mm:ss"));
-
-                command.CommandText = @"INSERT INTO EMP01 (p01f01, p01f02, p01f03, p01f04, p01f05, p01f06) 
-                        VALUES (@p01f01, @p01f02, @p01f03, @p01f04, @p01f05, @p01f06)";
-
-                command.Parameters.AddWithValue("@p01f01", objEmp01.p01f01);
-                command.Parameters.AddWithValue("@p01f02", objEmp01.p01f02);
-                command.Parameters.AddWithValue("@p01f03", objEmp01.p01f03);
-                command.Parameters.AddWithValue("@p01f04", objEmp01.p01f04);
-                command.Parameters.AddWithValue("@p01f05", objEmp01.p01f05);
-                command.Parameters.AddWithValue("@p01f06", objEmp01.p01f06);
+                command.Connection = _mySqlConnection;
+                command.CommandText = String.Format(@"INSERT INTO 
+                                            EMP01 
+                                            (p01f01, p01f02, p01f03, p01f04, p01f05, p01f06) 
+                                        VALUES ({0}, '{1}', '{2}', {3}, '{4}', '{5}')",
+                                        objEmp01.p01f01,
+                                        objEmp01.p01f02,
+                                        objEmp01.p01f03,
+                                        objEmp01.p01f04,
+                                        objEmp01.p01f05.ToString("yyyy-MM-dd hh-mm-ss"),
+                                        objEmp01.p01f06.ToString("yyyy-MM-dd hh-mm-ss"));
 
                 try
                 {
@@ -110,7 +100,7 @@ namespace _12_Database_With_CRUD.Services
                         if (reader.Read())
                         {
                             // Create and return an Emp01 object based on the data from the database
-                            Emp01 employee = new Emp01
+                            Emp01 objEmp01 = new Emp01
                             {
                                 // Map database columns to Emp01 properties
                                 p01f01 = Convert.ToInt32(reader["p01f01"]),
@@ -119,7 +109,7 @@ namespace _12_Database_With_CRUD.Services
                                 p01f04 = Convert.ToInt32(reader["p01f04"]),
                             };
 
-                            return employee;
+                            return objEmp01;
                         }
                     }
                 }
@@ -149,16 +139,16 @@ namespace _12_Database_With_CRUD.Services
                 command.CommandText = String.Format(@"UPDATE 
                                             EMP01 
                                         SET 
-                                            p01f02 = {0}, 
-                                            p01f03 = {1}, 
+                                            p01f02 = '{0}', 
+                                            p01f03 = '{1}', 
                                             p01f04 = {2},
-                                            p01f06 = {3}
+                                            p01f06 = '{3}'
                                         WHERE 
                                             p01f01 = {4}", 
                                             objEmp01.p01f02,
                                             objEmp01.p01f03,
                                             objEmp01.p01f04,
-                                            objEmp01.p01f06,
+                                            objEmp01.p01f06.ToString("yyyy-MM-dd hh-mm-ss"),
                                             objEmp01.p01f01);
 
                 try

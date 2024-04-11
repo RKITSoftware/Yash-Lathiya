@@ -10,10 +10,14 @@ namespace _12_Database_With_CRUD.BL
     {
         #region Private Members
 
-        // To use Credit Service 
+        /// <summary>
+        /// To use Credit Service
+        /// </summary>
         private EmployeeService _objEmployeeService;
 
-        // POCO Moodel
+        /// <summary>
+        /// POCO Moodel
+        /// </summary>
         private Emp01 _objEmp01;
 
         #endregion
@@ -30,7 +34,7 @@ namespace _12_Database_With_CRUD.BL
 
         #endregion
 
-        #region Public Members
+        #region Public Methods 
 
         /// <summary>
         /// Convert DTO model to POCO Model 
@@ -45,15 +49,19 @@ namespace _12_Database_With_CRUD.BL
         /// Validate POCO Model 
         /// </summary>
         /// <returns>true if validated else false </returns>
-        public bool Validate()
+        public Response Validate(Response response)
         {
             // validate annual package
             if(_objEmp01.p01f04 < 0)
             {
-                return false;
+                response.isError = true;
+                response.message = "Annual package is not valid";
+                response.statusCode = System.Net.HttpStatusCode.BadRequest;
+
+                return response;
             }
 
-            return true;
+            return response;
         }
 
         /// <summary>
@@ -62,7 +70,7 @@ namespace _12_Database_With_CRUD.BL
         /// <param name="opeartion"> Create => Create database record
         ///                          Update  => Update database record
         /// </param>
-        public void Save(Operation op)
+        public Response Save(Operation op, Response response)
         {
             // Create Database Record
             if (Operation.Create == op)
@@ -74,6 +82,12 @@ namespace _12_Database_With_CRUD.BL
 
                 _objEmployeeService = new EmployeeService();
                 _objEmployeeService.AddEmployee(_objEmp01);
+
+                // configuring response message 
+                response.statusCode = System.Net.HttpStatusCode.Created;
+                response.message = "Details of employee added in database";
+
+                return response;
             }
             // Update Database Record
             else if (Operation.Update == op)
@@ -82,12 +96,28 @@ namespace _12_Database_With_CRUD.BL
                 _objEmp01.p01f06 = DateTime.Now;
 
                 _objEmployeeService.UpdateEmployee(_objEmp01);
+
+
+                // configuring response message 
+                response.statusCode = System.Net.HttpStatusCode.Accepted;
+                response.message = "Details of employee updated in database";
+
+                return response;
             }
             // Delete Database Record
             else if(Operation.Delete == op)
             {
                 _objEmployeeService.DeleteEmployee(_objEmp01.p01f01);
+
+
+                // configuring response message 
+                response.statusCode = System.Net.HttpStatusCode.Accepted;
+                response.message = "Details of employee deleted in database";
+
+                return response;
             }
+
+            return response;
         }
 
         /// <summary>
@@ -95,13 +125,18 @@ namespace _12_Database_With_CRUD.BL
         /// </summary>
         /// <param name="p01f01"></param>
         /// <returns></returns>
-        public DTOEmp01 GetEmployee(int p01f01)
+        public Response GetEmployee(int p01f01, Response response)
         {
             _objEmp01 = _objEmployeeService.GetEmployee(p01f01);
 
             DTOEmp01 objDTOEmp01 = _objEmp01.ConvertModel<DTOEmp01>();
 
-            return objDTOEmp01;
+            // configuring response message 
+
+            response.statusCode = System.Net.HttpStatusCode.OK; 
+            response.message = "Fetched Employee Details";
+            response.data = objDTOEmp01;
+            return response;
         }
 
         #endregion

@@ -1,5 +1,8 @@
 ﻿using _12_Database_With_CRUD.BL;
 using _12_Database_With_CRUD.Models;
+using _12_Database_With_CRUD.Static;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace _12_Database_With_CRUD.Controllers
@@ -16,16 +19,23 @@ namespace _12_Database_With_CRUD.Controllers
         /// </summary>
         private BLEmployee _objEmployeeManager;
 
+        /// <summary>
+        /// Response of HTTP Action method 
+        /// </summary>
+        private Response _response;
+
         #endregion
 
         #region Constructor
 
         /// <summary>
         /// Take reference of Employee Manager
+        /// And initializes response 
         /// </summary>
         public CLEmployeeController()
         {
             _objEmployeeManager = new BLEmployee();
+            _response = new Response();
         }
 
         #endregion
@@ -39,16 +49,18 @@ namespace _12_Database_With_CRUD.Controllers
         /// <returns> Ok </returns>
         [HttpPost]
         [Route("api/Employee/add")]
-        public IHttpActionResult AddEmployee([FromBody] DTOEmp01 objDTOEmp01)
+        public async Task<HttpResponseMessage> AddEmployee([FromBody] DTOEmp01 objDTOEmp01)
         {
             _objEmployeeManager.Presave(objDTOEmp01);
 
-            if (_objEmployeeManager.Validate())
+            _response = _objEmployeeManager.Validate(_response);
+
+            if(_response.isError == false)
             {
-                _objEmployeeManager.Save(Static.Static.Operation.Create);
+                _response = _objEmployeeManager.Save(Static.Static.Operation.Create, _response);
             }
 
-            return Ok("Added");
+            return await _response.ToHttpResponseMessageAsync();
         }
 
         /// <summary>
@@ -58,28 +70,33 @@ namespace _12_Database_With_CRUD.Controllers
         /// <returns> Object of Emp01 class </returns>
         [HttpGet]
         [Route("api/Employee/Get/{p01f01}")]
-        public IHttpActionResult GetEmployee(int p01f01)
+        public async Task<HttpResponseMessage> GetEmployee(int p01f01)
         {
-            return Ok(_objEmployeeManager.GetEmployee(p01f01));
+            _response = _objEmployeeManager.GetEmployee(p01f01, _response);
+
+            return await _response.ToHttpResponseMessageAsync();
         }
 
         /// <summary>
         /// To update employee details in the database
         /// </summary>
         /// <param name="objEmp01"> Details which will be saved </param>
-        /// <returns> Ok </returns>
+        /// <returns> Response </returns>
         [HttpPut]
         [Route("api/Employee/Update")]
-        public IHttpActionResult UpdateEmployee([FromBody] DTOEmp01 objDTOEmp01)
+        public async Task<HttpResponseMessage> UpdateEmployee([FromBody] DTOEmp01 objDTOEmp01)
         {
             _objEmployeeManager.Presave(objDTOEmp01);
 
-            if (_objEmployeeManager.Validate())
+            _response = _objEmployeeManager.Validate(_response);
+
+            if (_response.isError == false)
             {
-                _objEmployeeManager.Save(Static.Static.Operation.Update);
+                _response = _objEmployeeManager.Save(Static.Static.Operation.Update, _response);
             }
 
-            return Ok("Updated");
+            return await _response.ToHttpResponseMessageAsync();
+
         }
 
         /// <summary>
@@ -88,12 +105,18 @@ namespace _12_Database_With_CRUD.Controllers
         /// <param name="p01f01"> employee id </param>
         /// <returns> Ok </returns>
         [HttpDelete]
-        [Route("api/Employee/Delete/{p01f01}")]
-        public IHttpActionResult DeleteEmployee(int p01f01)
+        [Route("api/Employee/Delete")]
+        public async Task<HttpResponseMessage> DeleteEmployee([FromBody] DTOEmp01 objDTOEmp01)
         {
-            _objEmployeeManager.Save(Static.Static.Operation.Delete);
+            _objEmployeeManager.Presave(objDTOEmp01);
 
-            return Ok("Deleted");
+            if (_response.isError == false)
+            {
+                _response = _objEmployeeManager.Save(Static.Static.Operation.Delete, _response);
+            }
+
+            return await _response.ToHttpResponseMessageAsync();
+
         }
 
         #endregion

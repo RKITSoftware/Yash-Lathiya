@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 
-
 namespace _12_Database_With_CRUD.Connection
 {
     /// <summary>
@@ -11,7 +10,17 @@ namespace _12_Database_With_CRUD.Connection
     /// </summary>
     public static class Connection
     {
-        static MySqlConnection _mySqlConnection;
+        #region Private Members
+
+        /// <summary>
+        /// MySql Connection
+        /// </summary>
+        private static MySqlConnection _mySqlConnection;
+
+        #endregion
+
+        #region Constructor
+
         /// <summary>
         /// Connect to database by MySql String 
         /// </summary>
@@ -45,6 +54,10 @@ namespace _12_Database_With_CRUD.Connection
 
         }
 
+        #endregion
+
+        #region Public Methods
+
         /// <summary>
         /// Get the MySQL connection instance
         /// </summary>
@@ -53,5 +66,6 @@ namespace _12_Database_With_CRUD.Connection
             return _mySqlConnection;
         }
 
+        #endregion
     }
 }

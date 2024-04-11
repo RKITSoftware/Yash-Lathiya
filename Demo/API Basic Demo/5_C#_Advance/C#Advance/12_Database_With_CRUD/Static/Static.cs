@@ -1,12 +1,33 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Http;
+using System.Net;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+using _12_Database_With_CRUD.Models;
+using System.Text.Json;
 
 namespace _12_Database_With_CRUD.Static
 { 
     public static class Static
     {
+        #region Enum 
+
+        /// <summary>
+        /// Opeartions for databse
+        /// </summary>
+        public enum Operation : byte
+        {
+            Create,
+            Update,
+            Delete,
+        }
+
+        #endregion
+
+        #region Public Methods
+
         /// <summary>
         /// Converts properties of a source model to properties of a target model based on JSON property names.
         /// </summary>
@@ -45,13 +66,24 @@ namespace _12_Database_With_CRUD.Static
         }
 
         /// <summary>
-        /// Opeartions for databse
+        /// Converts Response to HttpResponse
         /// </summary>
-        public enum Operation : byte
+        /// <param name="response"> </param>
+        /// <returns></returns>
+        public static async Task<HttpResponseMessage> ToHttpResponseMessageAsync(this Response response)
         {
-            Create,
-            Update, 
-            Delete,
+            var responseContent = new { response.message, response.data };
+            var json = JsonSerializer.Serialize(responseContent);
+
+            var httpResponseMessage = new HttpResponseMessage
+            {
+                StatusCode = (HttpStatusCode)response.statusCode,
+                Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json")
+            };
+
+            return await Task.FromResult(httpResponseMessage);
         }
+
+        #endregion
     }
 }
