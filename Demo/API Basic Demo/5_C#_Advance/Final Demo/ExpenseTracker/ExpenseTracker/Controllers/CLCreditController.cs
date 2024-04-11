@@ -1,5 +1,7 @@
 ﻿using ExpenseTracker.BL;
 using ExpenseTracker.Models;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace ExpenseTracker.Controllers
@@ -20,17 +22,10 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         BLCreditManager _objBLCreditManager;
 
-        #endregion
-
-        #region Constructor
-
         /// <summary>
-        /// Creates instance of BL Credit Manager
+        /// Response object of action method
         /// </summary>
-        public CLCreditController()
-        {
-            _objBLCreditManager = new BLCreditManager();
-        }
+        private Response _response;
 
         #endregion
 
@@ -43,8 +38,21 @@ namespace ExpenseTracker.Controllers
         /// <returns> "Credit Added Message "</returns>
         [HttpPost]
         [Route("api/Credit/Add")]
-        public IHttpActionResult AddCredit(DTOCre01 objDTOCre01)
+        public async Task<HttpResponseMessage> AddCredit(DTOCre01 objDTOCre01)
         {
+            //_objEmployeeManager.Presave(objDTOEmp01);
+
+            //_response = _objEmployeeManager.Validate(_response);
+
+            //if (_response.isError == false)
+            //{
+            //    _response = _objEmployeeManager.Save(Static.Static.Operation.Create, _response);
+            //}
+
+            //return await _response.ToHttpResponseMessageAsync();
+
+            _objBLCreditManager = new BLCreditManager(Static.Operation.Create);
+
             // presave
             _objBLCreditManager.Presave(objDTOCre01);
 
@@ -56,7 +64,7 @@ namespace ExpenseTracker.Controllers
             }
 
             // add
-            _objBLCreditManager.Save(Static.Operation.Create);
+            _objBLCreditManager.Save();
 
             return Ok("Credit Added");
         }
@@ -69,6 +77,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/Credit/Get")]
         public IHttpActionResult GetCredits()
         {
+            _objBLCreditManager = new BLCreditManager(Static.Operation.Retrieve);
             return Ok(_objBLCreditManager.GetAllCredit());
         }
 
@@ -81,6 +90,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/credit/Update")]
         public IHttpActionResult UpdateCredit(DTOCre01 objDTOCre01)
         {
+            _objBLCreditManager = new BLCreditManager(Static.Operation.Update);
+
             // presave
             _objBLCreditManager.Presave(objDTOCre01);
 
@@ -92,7 +103,7 @@ namespace ExpenseTracker.Controllers
             }
 
             // update
-            _objBLCreditManager.Save(Static.Operation.Update);
+            _objBLCreditManager.Save();
 
             return Ok("Credit Updated");
         }
@@ -104,9 +115,13 @@ namespace ExpenseTracker.Controllers
         /// <returns> " Deleted " if its deleted Successfully </returns>
         [HttpDelete]
         [Route("api/Credit/Delete")]
-        public IHttpActionResult DeleteCredit(int e01101)
+        public IHttpActionResult DeleteCredit(DTOCre01 objDTOCre01)
         {
-            _objBLCreditManager.DeleteCredit(e01101);
+            _objBLCreditManager = new BLCreditManager(Static.Operation.Delete);
+
+            _objBLCreditManager.Presave(objDTOCre01);
+
+            _objBLCreditManager.Save();
             return Ok("Credit Deleted");
         }
 

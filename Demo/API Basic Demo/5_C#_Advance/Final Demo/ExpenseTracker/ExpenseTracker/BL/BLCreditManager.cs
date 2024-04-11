@@ -29,6 +29,24 @@ namespace ExpenseTracker.BL
         /// </summary>
         private Cre01 _objCre01;
 
+        /// <summary>
+        /// Which type of operation is performing on database 
+        /// </summary>
+        private Operation _operation;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Initializes necessary references to perform operations
+        /// </summary>
+        public BLCreditManager(Operation operation)
+        {
+            _objCreditService = new CreditService(MyAppDbConnectionFactory.Instance);
+            _operation = operation;
+        }
+
         #endregion
 
         #region Public Methods
@@ -72,27 +90,30 @@ namespace ExpenseTracker.BL
         /// <param name="opeartion"> Create => Create database record
         ///                          Update  => Update database record
         /// </param>
-        public void Save(Operation op)
+        public void Save()
         {
             // Create Database Record
-            if (Operation.Create == op)
+            if (Operation.Create == _operation)
             {
                 // set creation time
                 _objCre01.e01f05 = DateTime.Now;
                 // set updation time
                 _objCre01.e01f06 = DateTime.Now;
 
-                _objCreditService = new CreditService(MyAppDbConnectionFactory.Instance);
                 _objCreditService.AddCredit(_objCre01);
             }
             // Update Database Record
-            else if (Operation.Update == op)
+            else if (Operation.Update == _operation)
             {
                 // set updation time
                 _objCre01.e01f06 = DateTime.Now;
 
-                _objCreditService = new CreditService(MyAppDbConnectionFactory.Instance);
                 _objCreditService.UpdateCredit(_objCre01);
+            }
+            // Delete Database Record
+            else if(Operation.Delete == _operation)
+            {
+                _objCreditService.DeleteCredit(_objCre01.e01f01);
             }
         }
 
@@ -102,7 +123,6 @@ namespace ExpenseTracker.BL
         /// <returns> List of Credit detail for that userId</returns>
         public List<DTOCre01> GetAllCredit()
         {
-            _objCreditService = new CreditService(MyAppDbConnectionFactory.Instance);
             List<Cre01> lstCre01 = _objCreditService.GetAllCredits(_r01f01);
 
             // POCO to DTO
@@ -114,16 +134,6 @@ namespace ExpenseTracker.BL
             }
 
             return lstDTOCre01;
-        }
-
-        /// <summary>
-        /// Delete credit detail from the database
-        /// </summary>
-        /// <param name="e01101"> Credit Id </param>
-        public void DeleteCredit(int e01101)
-        {
-            _objCreditService = new CreditService(MyAppDbConnectionFactory.Instance);
-            _objCreditService.DeleteCredit(e01101);
         }
 
         #endregion

@@ -1,6 +1,9 @@
-﻿using ServiceStack;
+﻿
+using ExpenseTracker.Models;
+using ServiceStack;
 using System;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text.Json.Serialization;
@@ -14,10 +17,12 @@ namespace ExpenseTracker.Static
     /// <summary>
     /// Opeartions for databse
     /// </summary>
-    public enum Operation : byte
+    public enum Operation 
     {
         Create,
-        Update
+        Retrieve,
+        Update,
+        Delete
     }
 
     #endregion
@@ -83,6 +88,36 @@ namespace ExpenseTracker.Static
             }
 
             return targetModel;
+        }
+
+        /// <summary>
+        /// Set Response message 
+        /// </summary>
+        /// <param name="response"> response object</param>
+        /// <param name="isErrorFlag"> error flag </param>
+        /// <param name="statusCode"> status code </param>
+        /// <param name="message"> message </param>
+        /// <param name="data"> data </param>
+        public static void SetResponse(this Response response, bool isErrorFlag, HttpStatusCode statusCode, string message, object data)
+        {
+            response.isError = isErrorFlag;
+            response.statusCode = statusCode;
+            response.message = message;
+            response.data = data;
+        }
+
+        /// <summary>
+        /// Set Response message 
+        /// </summary>
+        /// <param name="response"> response object</param>
+        /// <param name="statusCode"> status code </param>
+        /// <param name="message"> message </param>
+        /// <param name="data"> data </param>
+        public static void SetResponse(this Response response, HttpStatusCode statusCode, string message, object data)
+        {
+            response.statusCode = statusCode;
+            response.message = message;
+            response.data = data;
         }
 
         #endregion
