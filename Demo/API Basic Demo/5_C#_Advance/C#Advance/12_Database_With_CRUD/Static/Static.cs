@@ -17,7 +17,7 @@ namespace _12_Database_With_CRUD.Static
         /// <summary>
         /// Opeartions for databse
         /// </summary>
-        public enum Operation : byte
+        public enum Operation 
         {
             Create,
             Update,
