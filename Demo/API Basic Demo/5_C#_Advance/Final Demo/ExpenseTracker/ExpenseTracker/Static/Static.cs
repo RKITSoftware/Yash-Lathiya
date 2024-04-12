@@ -2,8 +2,10 @@
 using ExpenseTracker.Models;
 using ServiceStack;
 using System;
+using System.Data;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text.Json.Serialization;
@@ -69,25 +71,41 @@ namespace ExpenseTracker.Static
             Type targetType = typeof(T);
 
             // Get source properties with JSON property name attributes
-            PropertyInfo[] sourceProps = sourceType.GetProperties()
-                                                   .Where(prop => prop.IsDefined(typeof(JsonPropertyNameAttribute), false))
-                                                   .ToArray();
+            PropertyInfo[] sourceProps = sourceType.GetProperties().ToArray();
 
             // Iterate through source properties
-            foreach (PropertyInfo prop in sourceProps)
+            foreach (PropertyInfo sourceProp in sourceProps)
             {
-                // Get the JSON property name from the attribute
-                JsonPropertyNameAttribute attribute = (JsonPropertyNameAttribute)Attribute.GetCustomAttribute(prop, typeof(JsonPropertyNameAttribute));
-                string targetPropName = attribute.Name;
+                // get field name from source model
+                string sourcePropName = sourceProp.Name;
 
-                // Find corresponding property in target model
-                PropertyInfo targetPropertyInfo = targetType.GetProperty(targetPropName);
+                // fetch that field from target model
+                PropertyInfo targetProp = targetType.GetProperty(sourcePropName);
 
-                // Set the value of the target property from the source property
-                targetPropertyInfo.SetValue(targetModel, prop.GetValue(sourceModel));
+                // If target model consists that field then assign value 
+                targetProp?.SetValue(targetModel, sourceProp.GetValue(sourceModel, null), null);
             }
 
             return targetModel;
+        }
+
+        /// <summary>
+        /// Converts Response to HttpResponse
+        /// </summary>
+        /// <param name="response"> </param>
+        /// <returns></returns>
+        public static HttpResponseMessage ToHttpResponseMessage(this Response response)
+        {
+            var responseContent = new { response.Message, response.Data };
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(responseContent);
+
+            var httpResponseMessage = new HttpResponseMessage
+            {
+                StatusCode = (HttpStatusCode)response.StatusCode,
+                Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json")
+            };
+
+            return httpResponseMessage;
         }
 
         /// <summary>
@@ -97,29 +115,40 @@ namespace ExpenseTracker.Static
         /// <param name="isErrorFlag"> error flag </param>
         /// <param name="statusCode"> status code </param>
         /// <param name="message"> message </param>
-        /// <param name="data"> data </param>
-        public static void SetResponse(this Response response, bool isErrorFlag, HttpStatusCode statusCode, string message, object data)
+        /// <param name="dt"> data </param>
+        public static void SetResponse(this Response response, bool isErrorFlag, HttpStatusCode statusCode, string message, DataTable dt)
         {
-            response.isError = isErrorFlag;
-            response.statusCode = statusCode;
-            response.message = message;
-            response.data = data;
+            response.IsError = isErrorFlag;
+            response.StatusCode = statusCode;
+            response.Message = message;
+            response.Data = dt;
         }
 
         /// <summary>
-        /// Set Response message 
+        /// Set Response message which does not consist error 
         /// </summary>
         /// <param name="response"> response object</param>
         /// <param name="statusCode"> status code </param>
         /// <param name="message"> message </param>
-        /// <param name="data"> data </param>
-        public static void SetResponse(this Response response, HttpStatusCode statusCode, string message, object data)
+        /// <param name="dt"> data </param>
+        public static void SetResponse(this Response response, HttpStatusCode statusCode, string message, DataTable dt)
         {
-            response.statusCode = statusCode;
-            response.message = message;
-            response.data = data;
+            response.StatusCode = statusCode;
+            response.Message = message;
+            response.Data = dt;
         }
 
+        /// <summary>
+        /// Set response message with default status code
+        /// </summary>
+        /// <param name="response"> response object </param>
+        /// <param name="message"> message </param>
+        /// <param name="dt"> data </param>
+        public static void SetResponse(this Response response,string message, DataTable dt)
+        {
+            response.Message = message;
+            response.Data = dt;
+        }
         #endregion
     }
 
