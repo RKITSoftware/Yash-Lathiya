@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Data;
+using System.Net;
 
 namespace ExpenseTracker.Models
 {
@@ -12,22 +13,22 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// Is there error in response or not
         /// </summary>
-        public bool isError { get; set; } = false;
+        public bool IsError { get; set; } = false;
 
         /// <summary>
         /// Status Code
         /// </summary>
-        public HttpStatusCode statusCode { get; set; }
+        public HttpStatusCode StatusCode { get; set; } = HttpStatusCode.OK;
 
         /// <summary>
         /// Messege
         /// </summary>
-        public string message { get; set; }
+        public string Message { get; set; }
 
         /// <summary>
         /// Data in response 
         /// </summary>
-        public object data { get; set; }
+        public DataTable Data { get; set; }
 
         #endregion
 

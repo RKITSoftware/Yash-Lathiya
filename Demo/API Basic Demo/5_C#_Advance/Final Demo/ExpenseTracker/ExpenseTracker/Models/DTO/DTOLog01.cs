@@ -1,4 +1,6 @@
-﻿namespace ExpenseTracker.Models
+﻿using Newtonsoft.Json;
+
+namespace ExpenseTracker.Models
 {
     /// <summary>
     /// Login Model consists username & password, which will user pass in login method of user controller
@@ -8,11 +10,13 @@
         /// <summary>
         /// userid
         /// </summary>
-        public int g01101 { get; set; }
+        [JsonProperty("g01101")]
+        public int g01f01 { get; set; }
 
         /// <summary>
         /// password
         /// </summary>
-        public string g01102 { get; set; }
+        [JsonProperty("g01102")]
+        public string g01f02 { get; set; }
     }
 }

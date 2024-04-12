@@ -15,7 +15,6 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// Expense Id 
         /// </summary>
-        [JsonPropertyName("p01101")]
         public int p01f01 { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// Expense Amount
         /// </summary>
-        [JsonPropertyName("p01102")]
         public decimal p01f03 { get; set; }
 
         /// <summary>
@@ -37,13 +35,11 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// Category of Expense 
         /// </summary>
-        [JsonPropertyName("p01103")]
         public string p01f05 { get; set; } = string.Empty;
 
         /// <summary>
         /// Description of Expense 
         /// </summary>
-        [JsonPropertyName("p01104")]
         public string p01f06 { get; set; } = string.Empty;
 
         /// <summary>

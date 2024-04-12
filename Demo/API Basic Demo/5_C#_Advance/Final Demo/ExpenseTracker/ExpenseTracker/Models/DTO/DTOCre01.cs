@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ExpenseTracker.Models
 {
@@ -12,20 +13,20 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// Credit Id
         /// </summary>
-        [JsonPropertyName("e01f01")]
-        public int e01101 { get; set; }
+        [JsonProperty("e01101")]
+        public int e01f01 { get; set; }
 
         /// <summary>
         /// Credit Amount
         /// </summary>
-        [JsonPropertyName("e01f03")]
-        public decimal e01102 { get;set; }
+        [JsonProperty("e01102")]
+        public decimal e01f03 { get;set; }
 
         /// <summary>
         /// Description about Credit Amount 
         /// </summary>
-        [JsonPropertyName("e01f04")]
-        public string e01103 { get; set; } = string.Empty;
+        [JsonProperty("e01103")]
+        public string e01f04 { get; set; } = string.Empty;
 
         #endregion
 

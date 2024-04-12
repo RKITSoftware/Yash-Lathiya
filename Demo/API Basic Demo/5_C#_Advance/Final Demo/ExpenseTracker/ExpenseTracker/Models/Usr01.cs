@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.Json.Serialization;
 
 namespace ExpenseTracker.Models
 {
@@ -18,25 +17,21 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// UserName
         /// </summary>
-        [JsonPropertyName("r01101")]
         public string r01f02 { get; set; }
 
         /// <summary>
         /// User Email Id
         /// </summary>
-        [JsonPropertyName("r01102")]
         public string r01f03 { get; set; }
 
         /// <summary>
         /// Mobile Number
         /// </summary>
-        [JsonPropertyName("r01103")]
         public long r01f04 { get; set; }
 
         /// <summary>
         /// Password
         /// </summary>
-        [JsonPropertyName("r01104")]
         public string r01f05 { get; set; }
 
         /// <summary>

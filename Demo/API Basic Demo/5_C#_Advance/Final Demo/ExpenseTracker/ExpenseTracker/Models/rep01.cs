@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.Json.Serialization;
 
 namespace ExpenseTracker.Models
 {
@@ -13,13 +12,11 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// ReportId
         /// </summary>
-        [JsonPropertyName("p01101")]
         public int p01f01 { get; set; }
 
         /// <summary>
         /// Report
         /// </summary>
-        [JsonPropertyName("p01102")]
         public string p01f02 { get; set; }
 
         /// <summary>

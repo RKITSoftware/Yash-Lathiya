@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace ExpenseTracker.Models
 {
@@ -12,26 +12,26 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// UserName
         /// </summary>
-        [JsonPropertyName("r01f02")]
-        public string r01101 { get; set; }
+        [JsonProperty("r01101")]
+        public string r01f02 { get; set; }
 
         /// <summary>
         /// User Email Id
         /// </summary>
-        [JsonPropertyName("r01f03")]
-        public string r01102 { get; set; }
+        [JsonProperty("r01102")]
+        public string r01f03 { get; set; }
 
         /// <summary>
         /// Mobile Number
         /// </summary>
-        [JsonPropertyName("r01f04")]
-        public long r01103 { get; set; }
+        [JsonProperty("r01103")]
+        public long r01f04 { get; set; }
 
         /// <summary>
         /// Password
         /// </summary>
-        [JsonPropertyName("r01f05")]
-        public string r01104 { get; set; }
+        [JsonProperty("r0104")]
+        public string r01f05 { get; set; }
 
         #endregion
     }
