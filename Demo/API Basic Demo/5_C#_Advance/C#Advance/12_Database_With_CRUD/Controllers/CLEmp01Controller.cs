@@ -2,6 +2,7 @@
 using _12_Database_With_CRUD.Models;
 using _12_Database_With_CRUD.Static;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace _12_Database_With_CRUD.Controllers
@@ -16,12 +17,24 @@ namespace _12_Database_With_CRUD.Controllers
         /// <summary>
         /// Emp01 Manager
         /// </summary>
-        private BLEmp01 _objBLEmp01;
+        private readonly BLEmp01 _objBLEmp01;
 
         /// <summary>
         /// Response of HTTP Action method 
         /// </summary>
-        private Response _response;
+        private Response _objResponse;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Create Instance of BLEmp01 
+        /// </summary>
+        public CLEmp01Controller()
+        {
+            _objBLEmp01 = new BLEmp01();
+        }
 
         #endregion
 
@@ -36,21 +49,22 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Emp01/add")]
         public HttpResponseMessage AddEmp01([FromBody] DTOEmp01 objDTOEmp01)
         {
-            _objBLEmp01 = new BLEmp01(Static.Static.Operation.Create);
+            // set operation enum 
+            _objBLEmp01.operation = Static.Static.Operation.Create;
 
             // presave
             _objBLEmp01.Presave(objDTOEmp01);
 
             // validate
-            _response = _objBLEmp01.Validate();
+            _objResponse = _objBLEmp01.Validate();
 
-            if(_response.IsError == false)
+            if(_objResponse.IsError == false)
             {
                 // save
-                _response = _objBLEmp01.Save();
+                _objResponse = _objBLEmp01.Save();
             }
 
-            return _response.ToHttpResponseMessage();
+            return _objResponse.ToHttpResponseMessage();
         }
 
         /// <summary>
@@ -62,11 +76,12 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Emp01/Get/{p01f01}")]
         public HttpResponseMessage GetEmp01(int p01f01)
         {
-            _objBLEmp01 = new BLEmp01(Static.Static.Operation.Retrieve);
+            // set operation enum 
+            _objBLEmp01.operation = Static.Static.Operation.Retrieve;
 
-            _response = _objBLEmp01.GetEmp01(p01f01);
+            _objResponse = _objBLEmp01.GetEmp01(p01f01);
 
-            return _response.ToHttpResponseMessage();
+            return _objResponse.ToHttpResponseMessage();
         }
 
         /// <summary>
@@ -78,21 +93,22 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Emp01/Update")]
         public HttpResponseMessage UpdateEmp01([FromBody] DTOEmp01 objDTOEmp01)
         {
-            _objBLEmp01 = new BLEmp01(Static.Static.Operation.Update);
+            // set operation enum 
+            _objBLEmp01.operation = Static.Static.Operation.Update;
 
             // presave 
             _objBLEmp01.Presave(objDTOEmp01);
 
             // validate
-            _response = _objBLEmp01.Validate();
+            _objResponse = _objBLEmp01.Validate();
 
-            if (_response.IsError == false)
+            if (_objResponse.IsError == false)
             {
                 // save 
-                _response = _objBLEmp01.Save();
+                _objResponse = _objBLEmp01.Save();
             }
 
-            return _response.ToHttpResponseMessage();
+            return _objResponse.ToHttpResponseMessage();
 
         }
 
@@ -105,16 +121,19 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Emp01/Delete")]
         public HttpResponseMessage DeleteEmp01(int p01f01)
         {
-            // pre delete validate 
-            _response = _objBLEmp01.IsIdExists(p01f01);
+            // set operation enum 
+            _objBLEmp01.operation = Static.Static.Operation.Delete;
 
-            if (_response.IsError == false)
+            // pre delete validate 
+            _objResponse = _objBLEmp01.IsIdExists(p01f01);
+
+            if (_objResponse.IsError == false)
             {
                 // delete
-                _response = _objBLEmp01.DeleteEmp01(p01f01);
+                _objResponse = _objBLEmp01.DeleteEmp01(p01f01);
             }
 
-            return _response.ToHttpResponseMessage();
+            return _objResponse.ToHttpResponseMessage();
         }
 
         #endregion
