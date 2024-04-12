@@ -1,8 +1,7 @@
 ﻿using ServiceStack.DataAnnotations;
 using System;
-using System.Text.Json.Serialization;
 
-namespace ExpenseTracker.Models
+namespace ExpenseTracker.Models.POCO
 {
     /// <summary>
     /// Model of Expense
@@ -15,42 +14,42 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// Expense Id 
         /// </summary>
-        public int p01f01 { get; set; }
+        public int P01f01 { get; set; }
 
         /// <summary>
         /// UserID
         /// </summary>
-        public int p01f02 { get; set; }
+        public int P01f02 { get; set; }
 
         /// <summary>
         /// Expense Amount
         /// </summary>
-        public decimal p01f03 { get; set; }
+        public decimal P01f03 { get; set; }
 
         /// <summary>
         /// Date & Time of Expense 
         /// </summary>
-        public DateTime p01f04 { get; set; }
+        public DateTime P01f04 { get; set; }
 
         /// <summary>
         /// Category of Expense 
         /// </summary>
-        public string p01f05 { get; set; } = string.Empty;
+        public string P01f05 { get; set; } = string.Empty;
 
         /// <summary>
         /// Description of Expense 
         /// </summary>
-        public string p01f06 { get; set; } = string.Empty;
+        public string P01f06 { get; set; } = string.Empty;
 
         /// <summary>
         /// Expense Creation Time
         /// </summary>
-        public DateTime p01f07 { get; set; }
+        public DateTime P01f07 { get; set; }
 
         /// <summary>
         /// Expense Updation Time
         /// </summary>
-        public DateTime p01f08 { get; set; }
+        public DateTime P01f08 { get; set; }
 
         #endregion
     }

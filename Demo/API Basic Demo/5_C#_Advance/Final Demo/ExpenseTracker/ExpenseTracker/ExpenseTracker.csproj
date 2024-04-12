@@ -272,9 +272,9 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BL\BLCreditManager.cs" />
+    <Compile Include="BL\BLCre01.cs" />
     <Compile Include="BL\BLDashboardManager.cs" />
-    <Compile Include="BL\BLExpenseManager.cs" />
+    <Compile Include="BL\BLExp01.cs" />
     <Compile Include="BL\BLReportManager.cs" />
     <Compile Include="BL\BLUserManager.cs" />
     <Compile Include="BL\IWallet.cs" />
@@ -285,6 +285,7 @@
     <Compile Include="Controllers\CLReportController.cs" />
     <Compile Include="Controllers\CLUserController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="DL\DbUsr01Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -292,11 +293,11 @@
     <Compile Include="Models\DTO\DTOExp01.cs" />
     <Compile Include="Models\DTO\DTOLog01.cs" />
     <Compile Include="Models\DTO\DTOUsr01.cs" />
-    <Compile Include="Models\Cre01.cs" />
-    <Compile Include="Models\Exp01.cs" />
-    <Compile Include="Models\Rep01.cs" />
+    <Compile Include="Models\POCO\Cre01.cs" />
+    <Compile Include="Models\POCO\Exp01.cs" />
+    <Compile Include="Models\POCO\Rep02.cs" />
     <Compile Include="Models\Response.cs" />
-    <Compile Include="Models\Usr01.cs" />
+    <Compile Include="Models\POCO\Usr01.cs" />
     <Compile Include="ORM\CreditService.cs" />
     <Compile Include="ORM\ExpenseService.cs" />
     <Compile Include="ORM\MyAppDbConnectionFactory.cs" />

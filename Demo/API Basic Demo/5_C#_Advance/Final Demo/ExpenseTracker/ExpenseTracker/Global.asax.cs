@@ -44,7 +44,7 @@ namespace ExpenseTracker
             var dbFactory = new OrmLiteConnectionFactory(mysqlConnectionString, MySqlDialect.Provider);
 
             // Store the IDbConnectionFactory instance in a static variable for application-wide usage
-            MyAppDbConnectionFactory.Instance = dbFactory;
+            Static.Static.OrmContext = dbFactory;
 
         }
     }

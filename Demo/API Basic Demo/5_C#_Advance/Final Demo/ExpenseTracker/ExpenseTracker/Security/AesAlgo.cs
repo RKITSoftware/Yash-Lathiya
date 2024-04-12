@@ -27,6 +27,8 @@ namespace ExpenseTracker.Security
         /// </summary>
         private byte[] iv = Encoding.UTF8.GetBytes("IamInitialVector");
 
+        #endregion
+
         #region Constructor
 
         /// <summary>

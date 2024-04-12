@@ -1,7 +1,8 @@
 ﻿using ExpenseTracker.BL;
 using ExpenseTracker.Models;
+using ExpenseTracker.Models.DTO;
+using ExpenseTracker.Static;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace ExpenseTracker.Controllers
@@ -20,12 +21,24 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// Reference of credit manager
         /// </summary>
-        BLCreditManager _objBLCreditManager;
+        private readonly BLCre01 _objBLCre01;
 
         /// <summary>
         /// Response object of action method
         /// </summary>
-        private Response _response;
+        private Response _objResponse;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Initializes object of BLCre01 
+        /// </summary>
+        public CLCreditController()
+        {
+            _objBLCre01 = new BLCre01();
+        }
 
         #endregion
 
@@ -35,38 +48,27 @@ namespace ExpenseTracker.Controllers
         /// To add Credit in Database
         /// </summary>
         /// <param name="objExp01"> Object of Credit </param>
-        /// <returns> "Credit Added Message "</returns>
+        /// <returns> object of response </returns>
         [HttpPost]
         [Route("api/Credit/Add")]
-        public async Task<HttpResponseMessage> AddCredit(DTOCre01 objDTOCre01)
+        public HttpResponseMessage AddCredit(DTOCre01 objDTOCre01)
         {
-            //_objEmployeeManager.Presave(objDTOEmp01);
-
-            //_response = _objEmployeeManager.Validate(_response);
-
-            //if (_response.isError == false)
-            //{
-            //    _response = _objEmployeeManager.Save(Static.Static.Operation.Create, _response);
-            //}
-
-            //return await _response.ToHttpResponseMessageAsync();
-
-            _objBLCreditManager = new BLCreditManager(Static.Operation.Create);
+            // set operation type
+            _objBLCre01.operation = Operation.Create;
 
             // presave
-            _objBLCreditManager.Presave(objDTOCre01);
+            _objBLCre01.Presave(objDTOCre01);
 
             // validate 
-            bool isValid = _objBLCreditManager.Validate();
-            if (!isValid)
+            _objResponse = _objBLCre01.Validate();
+
+            if (_objResponse.IsError == false)
             {
-                return BadRequest("Requested data is not valid");
+                // add
+                _objBLCre01.Save();
             }
 
-            // add
-            _objBLCreditManager.Save();
-
-            return Ok("Credit Added");
+            return _objResponse.ToHttpResponseMessage();
         }
 
         /// <summary>
@@ -77,8 +79,8 @@ namespace ExpenseTracker.Controllers
         [Route("api/Credit/Get")]
         public IHttpActionResult GetCredits()
         {
-            _objBLCreditManager = new BLCreditManager(Static.Operation.Retrieve);
-            return Ok(_objBLCreditManager.GetAllCredit());
+            _objBLCre01.operation = Operation.Retrieve;
+            return Ok(_objBLCre01.GetAllCredit());
         }
 
         /// <summary>
@@ -88,41 +90,49 @@ namespace ExpenseTracker.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("api/credit/Update")]
-        public IHttpActionResult UpdateCredit(DTOCre01 objDTOCre01)
+        public HttpResponseMessage UpdateCredit(DTOCre01 objDTOCre01)
         {
-            _objBLCreditManager = new BLCreditManager(Static.Operation.Update);
+            // set operation type
+            _objBLCre01.operation = Operation.Update;
 
             // presave
-            _objBLCreditManager.Presave(objDTOCre01);
+            _objBLCre01.Presave(objDTOCre01);
 
-            // validate
-            bool isValid = _objBLCreditManager.Validate();
-            if (!isValid)
+            // validate 
+            _objResponse = _objBLCre01.Validate();
+
+            if (_objResponse.IsError == false)
             {
-                return BadRequest("Requested data is not valid");
+                // update 
+                _objBLCre01.Save();
             }
 
-            // update
-            _objBLCreditManager.Save();
-
-            return Ok("Credit Updated");
+            return _objResponse.ToHttpResponseMessage();
         }
 
         /// <summary>
         /// To delete Credit 
         /// </summary>
-        /// <param name="e01f01"> Credit Id </param>
-        /// <returns> " Deleted " if its deleted Successfully </returns>
+        /// <param name="e01101"> Credit Id </param>
+        /// <returns> object of response </returns>
         [HttpDelete]
         [Route("api/Credit/Delete")]
-        public IHttpActionResult DeleteCredit(DTOCre01 objDTOCre01)
+        public HttpResponseMessage DeleteCredit(int e01101)
         {
-            _objBLCreditManager = new BLCreditManager(Static.Operation.Delete);
+            // set operation enum 
+            _objBLCre01.operation = Operation.Delete;
 
-            _objBLCreditManager.Presave(objDTOCre01);
+            // pre delete validate 
+            _objResponse = _objBLCre01.IsIdExists(e01101);
 
-            _objBLCreditManager.Save();
-            return Ok("Credit Deleted");
+            if (_objResponse.IsError == false)
+            {
+                // delete
+                _objResponse = _objBLCre01.DeleteCre01(e01101);
+            }
+
+            return _objResponse.ToHttpResponseMessage();
+
         }
 
         #endregion

@@ -1,7 +1,9 @@
 ﻿
 using ExpenseTracker.Models;
 using ServiceStack;
+using ServiceStack.Data;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
@@ -34,6 +36,15 @@ namespace ExpenseTracker.Static
     /// </summary>
     public static class Static
     {
+        #region Public Members
+
+        /// <summary>
+        /// Instance of DbFactory ( ORM )
+        /// </summary>
+        public static IDbConnectionFactory OrmContext { get; set; }
+
+        #endregion
+
         #region Public Methods
 
         /// <summary>
@@ -148,6 +159,42 @@ namespace ExpenseTracker.Static
         {
             response.Message = message;
             response.Data = dt;
+        }
+
+        /// <summary>
+        /// Converts List to DataTable
+        /// </summary>
+        /// <typeparam name="T"> models</typeparam>
+        /// <param name="list"> list </param>
+        /// <returns> data table </returns>
+        public static DataTable ToDataTable<T>(this List<T> list)
+        {
+            DataTable dataTable = new DataTable();
+
+            if (list != null && list.Count > 0)
+            {
+                // Get all public properties of T
+                var properties = typeof(T).GetProperties();
+
+                // Create columns in DataTable for each property
+                foreach (var prop in properties)
+                {
+                    dataTable.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+                }
+
+                // Populate DataTable with data from the list
+                foreach (var item in list)
+                {
+                    DataRow row = dataTable.NewRow();
+                    foreach (var prop in properties)
+                    {
+                        row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                    }
+                    dataTable.Rows.Add(row);
+                }
+            }
+
+            return dataTable;
         }
         #endregion
     }

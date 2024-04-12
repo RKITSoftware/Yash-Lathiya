@@ -1,5 +1,6 @@
 ﻿using ExpenseTracker.BL;
 using ExpenseTracker.Models;
+using ExpenseTracker.Models.DTO;
 using System.Web;
 using System.Web.Http;
 
@@ -17,7 +18,7 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// BL logic for User Manager 
         /// </summary>
-        private BLUserManager _objBLUserManager;
+        private readonly BLUserManager _objBLUserManager;
 
         #endregion
 
@@ -68,7 +69,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/User/Login")]
         public IHttpActionResult LoginUser([FromBody] DTOLog01 objDTOLog01) 
         {
-            bool isAuthenticated = _objBLUserManager.LoginUser(objDTOLog01.g01101, objDTOLog01.g01102);
+            bool isAuthenticated = _objBLUserManager.LoginUser(objDTOLog01.G01f01, objDTOLog01.G01f02);
             if(!isAuthenticated)
             {
                 return BadRequest("Login Failed");
@@ -76,7 +77,7 @@ namespace ExpenseTracker.Controllers
             else
             {
                 // Generate Jwt token
-                var token = _objBLUserManager.GenerateJwtToken(objDTOLog01.g01101); 
+                var token = _objBLUserManager.GenerateJwtToken(objDTOLog01.G01f01); 
                 return Ok(new { Token = token, Message = "Login Successful" });
             }
         }

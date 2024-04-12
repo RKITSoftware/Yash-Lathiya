@@ -1,4 +1,6 @@
 ﻿using ExpenseTracker.Models;
+using ExpenseTracker.Models.DTO;
+using ExpenseTracker.Models.POCO;
 using ExpenseTracker.Security;
 using ExpenseTracker.Static;
 using Microsoft.IdentityModel.Tokens;
@@ -78,13 +80,13 @@ namespace ExpenseTracker.BL
         public bool Validate()
         {
             // If Mobile Number is not valid
-            if (!IsMobileNumber(_objUsr01.r01f04))
+            if (!IsMobileNumber(_objUsr01.R01f04))
             {
                 return false;
             }
 
             // If EmailId is not valid
-            if (!IsEmailValid(_objUsr01.r01f03))
+            if (!IsEmailValid(_objUsr01.R01f03))
             {
                 return false;
             }
@@ -99,7 +101,7 @@ namespace ExpenseTracker.BL
                 // Encrypt the password by using Aes Algorithm
                 // Encrypted password will be stored in database
                 AesAlgo aes = new AesAlgo();
-                _encryptedPassword = aes.Encrypt(_objUsr01.r01f05);
+                _encryptedPassword = aes.Encrypt(_objUsr01.R01f05);
 
                 // Establish Connection 
                 try
@@ -120,10 +122,10 @@ namespace ExpenseTracker.BL
                                             (r01f01, r01f02, r01f03, r01f04, r01f05, r01f06, r01f07) 
                                         VALUES (@r01f01, @r01f02, @r01f03, @r01f04, @r01f05, @r01f06, @r01f07)";
 
-                    command.Parameters.AddWithValue("@r01f01", _objUsr01.r01f01);
-                    command.Parameters.AddWithValue("@r01f02", _objUsr01.r01f02);
-                    command.Parameters.AddWithValue("@r01f03", _objUsr01.r01f03);
-                    command.Parameters.AddWithValue("@r01f04", _objUsr01.r01f04);
+                    command.Parameters.AddWithValue("@r01f01", _objUsr01.R01f01);
+                    command.Parameters.AddWithValue("@r01f02", _objUsr01.R01f02);
+                    command.Parameters.AddWithValue("@r01f03", _objUsr01.R01f03);
+                    command.Parameters.AddWithValue("@r01f04", _objUsr01.R01f04);
                     command.Parameters.AddWithValue("@r01f05", _encryptedPassword);
                     command.Parameters.AddWithValue("@r01f06", DateTime.Now); 
                     command.Parameters.AddWithValue("@r01f07", DateTime.Now);
@@ -134,10 +136,10 @@ namespace ExpenseTracker.BL
                         command.ExecuteNonQuery();
 
                         // Fetch r01f01 after successful registration
-                        int userId = Convert.ToInt32(FetchUserIdByEmail(_objUsr01.r01f03));
+                        int userId = Convert.ToInt32(FetchUserIdByEmail(_objUsr01.R01f03));
 
                         // Send email with the fetched userId
-                        SendRegistrationEmail(userId, _objUsr01.r01f03);
+                        SendRegistrationEmail(userId, _objUsr01.R01f03);
                     }
                     catch (Exception ex)
                     {
@@ -165,14 +167,18 @@ namespace ExpenseTracker.BL
                 string senderPassword = "Expense@Tracker";
                 string recipientEmail = userEmail;
 
-                MailMessage mail = new MailMessage(senderEmail, recipientEmail);
-                mail.Subject = "Welcome to Expense Tracker !!";
-                mail.Body = $"Thank you for registering! \r\n Your user ID is: {userId}";
+                MailMessage mail = new MailMessage(senderEmail, recipientEmail)
+                {
+                    Subject = "Welcome to Expense Tracker !!",
+                    Body = $"Thank you for registering! \r\n Your user ID is: {userId}"
+                };
 
-                SmtpClient smtpClient = new SmtpClient("smtp-mail.outlook.com");
-                smtpClient.Port = 587;
-                smtpClient.Credentials = new NetworkCredential(senderEmail, senderPassword);
-                smtpClient.EnableSsl = true;
+                SmtpClient smtpClient = new SmtpClient("smtp-mail.outlook.com")
+                {
+                    Port = 587,
+                    Credentials = new NetworkCredential(senderEmail, senderPassword),
+                    EnableSsl = true
+                };
 
                 smtpClient.Send(mail);
 

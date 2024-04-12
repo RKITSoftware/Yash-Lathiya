@@ -1,4 +1,4 @@
-﻿using ExpenseTracker.Models;
+﻿using ExpenseTracker.Models.POCO;
 using ExpenseTracker.ORM;
 using ExpenseTracker.Static;
 using Microsoft.IdentityModel.Tokens;
@@ -10,7 +10,7 @@ namespace ExpenseTracker.BL
     /// <summary>
     /// Consist Buisness Logic of all methods related to Expense
     /// </summary>
-    public class BLExpenseManager
+    public class BLExp01
     {
         #region Private Members
 

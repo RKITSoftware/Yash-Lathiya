@@ -15,7 +15,7 @@ namespace ExpenseTracker.Connection
         /// <summary>
         /// MySql database connection
         /// </summary>
-        private static MySqlConnection _mySqlConnection;
+        private static readonly MySqlConnection _mySqlConnection;
 
         #endregion
 
@@ -44,7 +44,6 @@ namespace ExpenseTracker.Connection
 
                 // Providing Connection string to mySqlConnection
                 _mySqlConnection = new MySqlConnection(mysqlConnectionString);
-                //_mySqlConnection.Open();
 
             }
             catch (Exception ex)

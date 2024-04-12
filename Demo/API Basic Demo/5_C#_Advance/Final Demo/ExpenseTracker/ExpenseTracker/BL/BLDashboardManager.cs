@@ -1,4 +1,4 @@
-﻿using ExpenseTracker.Models;
+﻿using ExpenseTracker.Models.DTO;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,7 +27,7 @@ namespace ExpenseTracker.BL
         /// <returns> Total Expense </returns>
         public decimal TotalExpense()
         {
-            BLExpenseManager objBLExpenseManager = new BLExpenseManager();
+            BLExp01 objBLExpenseManager = new BLExp01();
             List<DTOExp01> lstDTOExp01 = objBLExpenseManager.GetAllExpense();
             
             // Calculate by LINQ
@@ -43,7 +43,7 @@ namespace ExpenseTracker.BL
         /// <returns> Total Credit </returns>
         public decimal TotalCredit()
         {
-            BLCreditManager objBLCreditManager = new BLCreditManager();
+            BLCre01 objBLCreditManager = new BLCre01();
             List<DTOCre01> lstDTOCre01 = objBLCreditManager.GetAllCredit();
 
             // Calculate by LINQ

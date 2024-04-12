@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExpenseTracker.Models
+namespace ExpenseTracker.Models.POCO
 {
     /// <summary>
     /// Model of User 
@@ -12,37 +12,37 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// User Id
         /// </summary>
-        public int r01f01 { get; set; }
+        public int R01f01 { get; set; }
 
         /// <summary>
         /// UserName
         /// </summary>
-        public string r01f02 { get; set; }
+        public string R01f02 { get; set; }
 
         /// <summary>
         /// User Email Id
         /// </summary>
-        public string r01f03 { get; set; }
+        public string R01f03 { get; set; }
 
         /// <summary>
         /// Mobile Number
         /// </summary>
-        public long r01f04 { get; set; }
+        public long R01f04 { get; set; }
 
         /// <summary>
         /// Password
         /// </summary>
-        public string r01f05 { get; set; }
+        public string R01f05 { get; set; }
 
         /// <summary>
         /// User Creation Time
         /// </summary>
-        public DateTime r01f06 { get; set; }
+        public DateTime R01f06 { get; set; }
 
         /// <summary>
         /// User Updation Time
         /// </summary>
-        public DateTime r01f07 { get; set; }
+        public DateTime R01f07 { get; set; }
 
         #endregion
     }

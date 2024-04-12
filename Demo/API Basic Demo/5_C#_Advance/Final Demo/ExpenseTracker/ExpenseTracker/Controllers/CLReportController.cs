@@ -16,11 +16,11 @@ namespace ExpenseTracker.Controllers
     public sealed class CLReportController : ApiController
     {
         #region Private Members
-        
+
         /// <summary>
         /// Consists BL logic of Report Manager
         /// </summary>
-        BLReportManager _objBLReportManager;
+        private readonly BLReportManager _objBLReportManager;
 
         #endregion
 

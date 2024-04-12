@@ -20,7 +20,7 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// consists BL logic of Expense Manager
         /// </summary>
-        BLExpenseManager _objBLExpenseManager;
+        BLExp01 _objBLExpenseManager;
 
         #endregion
 
@@ -31,7 +31,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         public CLExpenseController()
         {
-            _objBLExpenseManager = new BLExpenseManager();
+            _objBLExpenseManager = new BLExp01();
         }
 
         #endregion
@@ -122,7 +122,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/Expense/Delete")]
         public IHttpActionResult DeleteExpense(int p01101)
         {
-            BLExpenseManager objBLExpenseManager = new BLExpenseManager();
+            BLExp01 objBLExpenseManager = new BLExp01();
             objBLExpenseManager.DeleteExpense(p01101);
             return Ok("Expense Deleted");
         }

@@ -1,8 +1,7 @@
 ﻿using ServiceStack.DataAnnotations;
 using System;
-using System.Text.Json.Serialization;
 
-namespace ExpenseTracker.Models
+namespace ExpenseTracker.Models.POCO
 {
     /// <summary>
     /// Class of Model - Credit 
@@ -15,32 +14,32 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// Credit Id
         /// </summary>
-        public int e01f01 { get; set; }
+        public int E01f01 { get; set; }
 
         /// <summary>
         /// User Id
         /// </summary>
-        public int e01f02 { get; set; }
+        public int E01f02 { get; set; }
 
         /// <summary>
         /// Credit Amount
         /// </summary>
-        public decimal e01f03 { get;set; }
+        public decimal E01f03 { get;set; }
 
         /// <summary>
         /// Description about Credit Amount 
         /// </summary>
-        public string e01f04 { get; set; } = string.Empty;
+        public string E01f04 { get; set; } = string.Empty;
 
         /// <summary>
         /// Credit Creation Time
         /// </summary>
-        public DateTime e01f05 { get; set; }
+        public DateTime E01f05 { get; set; }
 
         /// <summary>
         /// Credit Updation Time
         /// </summary>
-        public DateTime e01f06 { get; set; }
+        public DateTime E01f06 { get; set; }
 
         #endregion
     }

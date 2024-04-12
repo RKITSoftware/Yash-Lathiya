@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.Models;
+using ExpenseTracker.Models.POCO;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
 using System;
@@ -56,10 +57,10 @@ namespace ExpenseTracker.ORM
         /// <returns> List of Expense</returns>
         public List<Exp01> GetExpense(int p01f02, DateTime p01f04)
         {
-          
+
             using (var db = dbFactory.OpenDbConnection())
             {
-                var lstExp01 = db.Select<Exp01>(expense => expense.p01f02 == p01f02 && expense.p01f04.Equals(p01f04));
+                var lstExp01 = db.Select<Exp01>(expense => expense.P01f02 == p01f02 && expense.P01f04.Equals(p01f04));
                 return lstExp01;
             }
    
@@ -107,8 +108,7 @@ namespace ExpenseTracker.ORM
             {
                 db.UpdateOnly<Exp01>(
                     dictionary,       // Specify the field to update
-                    x => x.p01f01 == objExp01.p01f01); // Filter condition to set expense id 
-
+                    x => x.P01f01 == objExp01.P01f01); // Filter condition to set expense id 
             }
         }
 
@@ -122,7 +122,7 @@ namespace ExpenseTracker.ORM
             {
                 // Check if the user is authorized to delete the expense
                 int _r01f01 = Static.Static.GetUserIdFromClaims();
-                db.Delete<Exp01>(x => x.p01f01 == p01f01 && x.p01f02 == _r01f01);
+                db.Delete<Exp01>(x => x.P01f01 == p01f01 && x.P01f02 == _r01f01);
             }
         }
 

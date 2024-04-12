@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace ExpenseTracker.Models
+namespace ExpenseTracker.Models.DTO
 {
     /// <summary>
     /// Login Model consists username & password, which will user pass in login method of user controller
@@ -10,13 +10,13 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// userid
         /// </summary>
-        [JsonProperty("g01101")]
-        public int g01f01 { get; set; }
+        [JsonProperty("G01101")]
+        public int G01f01 { get; set; }
 
         /// <summary>
         /// password
         /// </summary>
-        [JsonProperty("g01102")]
-        public string g01f02 { get; set; }
+        [JsonProperty("G01102")]
+        public string G01f02 { get; set; }
     }
 }
