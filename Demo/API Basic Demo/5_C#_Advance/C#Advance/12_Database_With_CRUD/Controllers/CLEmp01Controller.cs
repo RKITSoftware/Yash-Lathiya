@@ -118,18 +118,18 @@ namespace _12_Database_With_CRUD.Controllers
         /// <returns> Ok </returns>
         [HttpDelete]
         [Route("api/Emp01/Delete")]
-        public HttpResponseMessage DeleteEmp01(int p01f01)
+        public HttpResponseMessage DeleteEmp01(int p01101)
         {
             // set operation enum 
             _objBLEmp01.operation = Static.Static.Operation.Delete;
 
             // pre delete validate 
-            _objResponse = _objBLEmp01.IsIdExists(p01f01);
+            _objResponse = _objBLEmp01.IsIdExists(p01101);
 
             if (_objResponse.IsError == false)
             {
                 // delete
-                _objResponse = _objBLEmp01.DeleteEmp01(p01f01);
+                _objResponse = _objBLEmp01.DeleteEmp01(p01101);
             }
 
             return _objResponse.ToHttpResponseMessage();
