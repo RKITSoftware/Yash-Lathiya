@@ -2,7 +2,6 @@
 using _12_Database_With_CRUD.Models;
 using _12_Database_With_CRUD.Static;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 
 namespace _12_Database_With_CRUD.Controllers
