@@ -6,7 +6,7 @@ using System.Data;
 namespace _12_Database_With_CRUD.Services
 {
     /// <summary>
-    /// Consisting buisness logic of all methiods in Employee controller
+    /// Consisting buisness logic of all methiods in Emp01 controller
     /// </summary>
     public class DbEmp01Context
     {
@@ -50,10 +50,10 @@ namespace _12_Database_With_CRUD.Services
         #region Public Methods
 
         /// <summary>
-        /// Adds Employee details in Employee Table in database
+        /// Adds Emp01 details in Emp01 Table in database
         /// </summary>
         /// <returns></returns>
-        public Response AddEmployee(Emp01 objEmp01)
+        public Response AddEmp01(Emp01 objEmp01)
         {
             using (MySqlCommand command = new MySqlCommand())
             {
@@ -76,7 +76,7 @@ namespace _12_Database_With_CRUD.Services
 
                     // configuring response
                     _response.StatusCode = System.Net.HttpStatusCode.Created;
-                    _response.Message = "Employee model added in database";
+                    _response.Message = "Emp01 model added in database";
                     _response.Data = null;
                 }
                 catch(Exception ex)
@@ -96,11 +96,11 @@ namespace _12_Database_With_CRUD.Services
         }
 
         /// <summary>
-        /// To get employee details by employee id 
+        /// To get Emp01 details by Emp01 id 
         /// </summary>
         /// <param name="p01f01"></param>
         /// <returns> Object of EMp01 class </returns>
-        public Response GetEmployee(int p01f01)
+        public Response GetEmp01(int p01f01)
         {
             // convert objEmp01 in data table
             DataTable dtEmp01 = new DataTable();
@@ -129,7 +129,7 @@ namespace _12_Database_With_CRUD.Services
 
                     // configuring response
                     _response.StatusCode = System.Net.HttpStatusCode.OK;
-                    _response.Message = "Employee Details";
+                    _response.Message = "Emp01 Details";
                     _response.Data = dtEmp01;
 
                 }
@@ -150,10 +150,10 @@ namespace _12_Database_With_CRUD.Services
         }
 
         /// <summary>
-        /// To update employee in database
+        /// To update Emp01 in database
         /// </summary>
-        /// <param name="objEmp01"> New details of employee </param>
-        public Response UpdateEmployee(Emp01 objEmp01)
+        /// <param name="objEmp01"> New details of Emp01 </param>
+        public Response UpdateEmp01(Emp01 objEmp01)
         {
             using (MySqlCommand command = new MySqlCommand())
             {
@@ -181,7 +181,7 @@ namespace _12_Database_With_CRUD.Services
 
                     // configuring response
                     _response.StatusCode = System.Net.HttpStatusCode.Accepted;
-                    _response.Message = "Employee details updated successfully";
+                    _response.Message = "Emp01 details updated successfully";
                     _response.Data = null;
                 }
                 catch (Exception ex)
@@ -201,10 +201,10 @@ namespace _12_Database_With_CRUD.Services
         }
 
         /// <summary>
-        /// To delete employee drom the database
+        /// To delete Emp01 drom the database
         /// </summary>
-        /// <param name="p01f01"> EMployee Id </param>
-        public Response DeleteEmployee(int p01f01)
+        /// <param name="p01f01"> Emp01 Id </param>
+        public Response DeleteEmp01(int p01f01)
         {
             using (MySqlCommand command = new MySqlCommand())
             {
@@ -224,7 +224,7 @@ namespace _12_Database_With_CRUD.Services
 
                     // configuring response
                     _response.StatusCode = System.Net.HttpStatusCode.Accepted;
-                    _response.Message = "Employee details deleted successfully";
+                    _response.Message = "Emp01 details deleted successfully";
                     _response.Data = null;
                 }
                 catch (Exception ex)
@@ -243,6 +243,60 @@ namespace _12_Database_With_CRUD.Services
             }
         }
 
+        /// <summary>
+        /// To check Emp01 id is available or not 
+        /// </summary>
+        /// <param name="p01f01"> Emp01 Id </param>
+        public Response IsIdExists(int p01f01)
+        {
+            using (MySqlCommand command = new MySqlCommand())
+            {
+                command.Connection = _mySqlConnection;
+
+                command.CommandText = String.Format(@"SELECT 
+                                                          COUNT(*) 
+                                                      FROM 
+                                                          EMP01 
+                                                      WHERE 
+                                                           p01f01 = {0}", p01f01);
+
+                try
+                {
+                    _mySqlConnection.Open();
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+
+                    // configuring response based on count
+                    if (count == 0)
+                    {
+                        // configuring response for exception
+                        _response.StatusCode = System.Net.HttpStatusCode.OK;
+                        _response.Message = "Emp01 ID exists";
+                        _response.Data = null;
+                    }
+                    else
+                    {
+                        // configuring response for exception
+                        _response.IsError = true;
+                        _response.StatusCode = System.Net.HttpStatusCode.NotFound;
+                        _response.Message = "Emp01 ID does not exist";
+                        _response.Data = null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // configuring response for exception
+                    _response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+                    _response.Message = ex.Message;
+                    _response.Data = null;
+                }
+                finally
+                {
+                    _mySqlConnection.Close();
+                }
+
+                return _response;
+            }
+        }
         #endregion
 
     }

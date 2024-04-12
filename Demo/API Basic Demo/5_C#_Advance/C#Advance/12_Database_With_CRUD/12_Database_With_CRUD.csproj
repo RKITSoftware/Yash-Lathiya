@@ -155,11 +155,11 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BL\BLEmployee.cs" />
+    <Compile Include="BL\BLEmp01.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="DL\DbEmp01Context.cs" />
     <Compile Include="Connection\Connection.cs" />
-    <Compile Include="Controllers\CLEmployeeController.cs" />
+    <Compile Include="Controllers\CLEmp01Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

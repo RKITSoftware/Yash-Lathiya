@@ -17,6 +17,7 @@ namespace _12_Database_With_CRUD.Static
         public enum Operation 
         {
             Create,
+            Retrieve,
             Update,
             Delete,
         }

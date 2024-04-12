@@ -3,29 +3,29 @@
 namespace _12_Database_With_CRUD.Models
 {
     /// <summary>
-    /// Class of Model - Employee
+    /// Class of Model - Emp01
     /// </summary>
     public class Emp01
     {
         #region Public Members
 
         /// <summary>
-        /// Id of Employee 
+        /// Id of Emp01 
         /// </summary
         public int P01f01 { get; set; }
 
         /// <summary>
-        /// Name of Employee
+        /// Name of Emp01
         /// </summary
         public string P01f02 { get; set; }
 
         /// <summary>
-        /// Position of EMployee
+        /// Position of Emp01
         /// </summary
         public string P01f03 { get; set; }
 
         /// <summary>
-        /// Annual Package of Employee
+        /// Annual Package of Emp01
         /// </summary
         public int P01f04 { get; set; }
 
