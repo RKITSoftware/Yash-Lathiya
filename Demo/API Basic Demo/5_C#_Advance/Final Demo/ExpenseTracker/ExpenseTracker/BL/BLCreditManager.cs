@@ -29,10 +29,14 @@ namespace ExpenseTracker.BL
         /// </summary>
         private Cre01 _objCre01;
 
+        #endregion
+
+        #region Public Members
+
         /// <summary>
         /// Which type of operation is performing on database 
         /// </summary>
-        private Operation _operation;
+        public Operation operation;
 
         #endregion
 
@@ -44,7 +48,6 @@ namespace ExpenseTracker.BL
         public BLCreditManager(Operation operation)
         {
             _objCreditService = new CreditService(MyAppDbConnectionFactory.Instance);
-            _operation = operation;
         }
 
         #endregion
@@ -93,7 +96,7 @@ namespace ExpenseTracker.BL
         public void Save()
         {
             // Create Database Record
-            if (Operation.Create == _operation)
+            if (Operation.Create == operation)
             {
                 // set creation time
                 _objCre01.e01f05 = DateTime.Now;
@@ -103,7 +106,7 @@ namespace ExpenseTracker.BL
                 _objCreditService.AddCredit(_objCre01);
             }
             // Update Database Record
-            else if (Operation.Update == _operation)
+            else if (Operation.Update == operation)
             {
                 // set updation time
                 _objCre01.e01f06 = DateTime.Now;
@@ -111,7 +114,7 @@ namespace ExpenseTracker.BL
                 _objCreditService.UpdateCredit(_objCre01);
             }
             // Delete Database Record
-            else if(Operation.Delete == _operation)
+            else if(Operation.Delete == operation)
             {
                 _objCreditService.DeleteCredit(_objCre01.e01f01);
             }
@@ -135,6 +138,16 @@ namespace ExpenseTracker.BL
 
             return lstDTOCre01;
         }
+
+        #region Public Members
+
+        /// <summary>
+        /// Type of operation 
+        /// </summary>
+        public Operation _operation;
+
+        #endregion
+
 
         #endregion
     }

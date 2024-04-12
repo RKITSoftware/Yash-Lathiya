@@ -292,7 +292,6 @@
     <Compile Include="Models\DTO\DTOExp01.cs" />
     <Compile Include="Models\DTO\DTOLog01.cs" />
     <Compile Include="Models\DTO\DTOUsr01.cs" />
-    <Compile Include="Models\Log01.cs" />
     <Compile Include="Models\Cre01.cs" />
     <Compile Include="Models\Exp01.cs" />
     <Compile Include="Models\Rep01.cs" />
