@@ -43,6 +43,7 @@ namespace _12_Database_With_CRUD.Models
         /// <summary>
         /// Updated on
         /// </summary>
+        [IgnoreOnInsert]
         public DateTime P01f06 { get; set; }
 
         #endregion
