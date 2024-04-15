@@ -1,10 +1,14 @@
-﻿using System;
+﻿using ServiceStack.DataAnnotations;
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace _12_Database_With_CRUD.Models
 {
     /// <summary>
     /// Class of Model - Emp01
     /// </summary>
+    [Alias("EMP01")]
     public class Emp01
     {
         #region Public Members
@@ -12,6 +16,7 @@ namespace _12_Database_With_CRUD.Models
         /// <summary>
         /// Id of Emp01 
         /// </summary
+        [PrimaryKey]
         public int P01f01 { get; set; }
 
         /// <summary>
@@ -32,6 +37,7 @@ namespace _12_Database_With_CRUD.Models
         /// <summary>
         /// Created on
         /// </summary>
+        [IgnoreOnUpdate]
         public DateTime P01f05 { get; set; }
 
         /// <summary>

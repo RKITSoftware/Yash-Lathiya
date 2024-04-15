@@ -22,7 +22,7 @@ namespace _12_Database_With_CRUD.BL
         /// <summary>
         /// To use Credit Service
         /// </summary>
-        private DbEmp01Context _objDbEmp01Context;
+        private readonly DbEmp01Context _objDbEmp01Context;
 
         /// <summary>
         /// POCO Moodel
@@ -79,12 +79,10 @@ namespace _12_Database_With_CRUD.BL
             return _objResponse;
         }
 
-        /// <summary>
-        /// Add or update credit in database as per operation 
-        /// </summary>
-        /// <param name="opeartion"> Create => Create database record
-        ///                          Update  => Update database record
-        /// </param>
+       /// <summary>
+       /// Add or update employee
+       /// </summary>
+       /// <returns> object of response </returns>
         public Response Save()
         {
             // Create Database Record

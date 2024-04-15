@@ -57,13 +57,11 @@ namespace ExpenseTracker.ORM
         /// <returns> List of Expense</returns>
         public List<Exp01> GetExpense(int p01f02, DateTime p01f04)
         {
-
             using (var db = dbFactory.OpenDbConnection())
             {
                 var lstExp01 = db.Select<Exp01>(expense => expense.P01f02 == p01f02 && expense.P01f04.Equals(p01f04));
                 return lstExp01;
             }
-   
         }
 
         /// <summary>

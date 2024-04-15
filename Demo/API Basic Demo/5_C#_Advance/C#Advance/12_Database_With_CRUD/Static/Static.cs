@@ -1,4 +1,5 @@
 ﻿using _12_Database_With_CRUD.Models;
+using ServiceStack.Data;
 using System;
 using System.Linq;
 using System.Net;
@@ -21,6 +22,15 @@ namespace _12_Database_With_CRUD.Static
             Update,
             Delete,
         }
+
+        #endregion
+
+        #region Public Members
+
+        /// <summary>
+        /// Instance of DbFactory ( ORM )
+        /// </summary>
+        public static IDbConnectionFactory OrmContext { get; set; }
 
         #endregion
 
