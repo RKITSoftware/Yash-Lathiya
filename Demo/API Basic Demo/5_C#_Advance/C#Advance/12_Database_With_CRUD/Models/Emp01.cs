@@ -1,7 +1,5 @@
 ﻿using ServiceStack.DataAnnotations;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace _12_Database_With_CRUD.Models
 {

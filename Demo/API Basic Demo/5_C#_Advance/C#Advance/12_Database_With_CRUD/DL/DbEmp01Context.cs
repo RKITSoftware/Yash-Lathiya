@@ -79,13 +79,6 @@ namespace _12_Database_With_CRUD.Services
                     _objResponse.Message = "Emp01 model added in database";
                     _objResponse.Data = null;
                 }
-                catch(Exception ex)
-                {
-                    // configuring response
-                    _objResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
-                    _objResponse.Message = ex.Message;
-                    _objResponse.Data = null;
-                }
                 finally
                 {
                     _mySqlConnection.Close();
@@ -100,7 +93,7 @@ namespace _12_Database_With_CRUD.Services
         /// </summary>
         /// <param name="p01f01"></param>
         /// <returns> Object of EMp01 class </returns>
-        public Response GetEmp01(int p01f01)
+        public DataTable GetEmp01(int p01f01)
         {
             // convert objEmp01 in data table
             DataTable dtEmp01 = new DataTable();
@@ -126,26 +119,13 @@ namespace _12_Database_With_CRUD.Services
 
                     // Load Data table
                     dtEmp01.Load(reader);
-
-                    // configuring response
-                    _objResponse.StatusCode = System.Net.HttpStatusCode.OK;
-                    _objResponse.Message = "Emp01 Details";
-                    _objResponse.Data = dtEmp01;
-
-                }
-                catch(Exception ex)
-                {
-                    // configuring response
-                    _objResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
-                    _objResponse.Message = ex.Message;
-                    _objResponse.Data = null;
                 }
                 finally
                 {
                     _mySqlConnection.Close();
                 }
                 
-                return _objResponse;
+                return dtEmp01;
             }
         }
 
@@ -184,13 +164,6 @@ namespace _12_Database_With_CRUD.Services
                     _objResponse.Message = "Emp01 details updated successfully";
                     _objResponse.Data = null;
                 }
-                catch (Exception ex)
-                {
-                    // configuring response
-                    _objResponse.StatusCode = System.Net.HttpStatusCode.OK;
-                    _objResponse.Message = ex.Message;
-                    _objResponse.Data = null;
-                }
                 finally
                 {
                     _mySqlConnection.Close();
@@ -227,13 +200,6 @@ namespace _12_Database_With_CRUD.Services
                     _objResponse.Message = "Emp01 details deleted successfully";
                     _objResponse.Data = null;
                 }
-                catch (Exception ex)
-                {
-                    // configuring response
-                    _objResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
-                    _objResponse.Message = ex.Message;
-                    _objResponse.Data = null;
-                }
                 finally
                 {
                     _mySqlConnection.Close();
@@ -247,8 +213,10 @@ namespace _12_Database_With_CRUD.Services
         /// To check Emp01 id is available or not 
         /// </summary>
         /// <param name="p01f01"> Emp01 Id </param>
-        public Response IsIdExists(int p01f01)
+        public bool IsIdExists(int p01f01)
         {
+            bool isIdExists;
+
             using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
@@ -268,35 +236,22 @@ namespace _12_Database_With_CRUD.Services
                     // configuring response based on count
                     if (count == 1)
                     {
-                        // configuring response for exception
-                        _objResponse.StatusCode = System.Net.HttpStatusCode.OK;
-                        _objResponse.Message = "Emp01 ID exists";
-                        _objResponse.Data = null;
+                        isIdExists = true;
                     }
                     else
                     {
-                        // configuring response for exception
-                        _objResponse.IsError = true;
-                        _objResponse.StatusCode = System.Net.HttpStatusCode.NotFound;
-                        _objResponse.Message = "Emp01 ID does not exist";
-                        _objResponse.Data = null;
+                        isIdExists = false;
                     }
-                }
-                catch (Exception ex)
-                {
-                    // configuring response for exception
-                    _objResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
-                    _objResponse.Message = ex.Message;
-                    _objResponse.Data = null;
                 }
                 finally
                 {
                     _mySqlConnection.Close();
                 }
 
-                return _objResponse;
+                return isIdExists;
             }
         }
+
         #endregion
 
     }

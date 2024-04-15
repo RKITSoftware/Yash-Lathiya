@@ -1,6 +1,7 @@
 ﻿using _12_Database_With_CRUD.BL;
 using _12_Database_With_CRUD.Models;
 using System.Web.Http;
+using static _12_Database_With_CRUD.BL.Common;
 
 namespace _12_Database_With_CRUD.Controllers
 {
@@ -43,8 +44,8 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Emp01ORM/add")]
         public IHttpActionResult AddEmp01([FromBody] DTOEmp01 objDTOEmp01)
         {
-            // set operation enum 
-            _objBLEmp01ORM.operation = Static.Static.Operation.Create;
+            // change Static namespace
+            _objBLEmp01ORM.operation = Operation.Create;
 
             // presave
             _objBLEmp01ORM.Presave(objDTOEmp01);
@@ -52,7 +53,7 @@ namespace _12_Database_With_CRUD.Controllers
             // validate
             _objResponse = _objBLEmp01ORM.Validate();
 
-            if (_objResponse.IsError == false)
+            if (!_objResponse.IsError)
             {
                 // save
                 _objResponse = _objBLEmp01ORM.Save();
@@ -70,9 +71,6 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Emp01ORM/Get/{p01f01}")]
         public IHttpActionResult GetEmp01(int p01f01)
         {
-            // set operation enum 
-            _objBLEmp01ORM.operation = Static.Static.Operation.Retrieve;
-
             _objResponse = _objBLEmp01ORM.GetEmp01(p01f01);
 
             return Ok(_objResponse);
@@ -88,7 +86,7 @@ namespace _12_Database_With_CRUD.Controllers
         public IHttpActionResult UpdateEmp01([FromBody] DTOEmp01 objDTOEmp01)
         {
             // set operation enum 
-            _objBLEmp01ORM.operation = Static.Static.Operation.Update;
+            _objBLEmp01ORM.operation = Operation.Update;
 
             // presave 
             _objBLEmp01ORM.Presave(objDTOEmp01);
@@ -96,7 +94,7 @@ namespace _12_Database_With_CRUD.Controllers
             // validate
             _objResponse = _objBLEmp01ORM.Validate();
 
-            if (_objResponse.IsError == false)
+            if (!_objResponse.IsError)
             {
                 // save 
                 _objResponse = _objBLEmp01ORM.Save();
@@ -115,13 +113,10 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Emp01ORM/Delete")]
         public IHttpActionResult DeleteEmp01(int p01101)
         {
-            // set operation enum 
-            _objBLEmp01ORM.operation = Static.Static.Operation.Delete;
-
             // pre delete validate 
-            _objResponse = _objBLEmp01ORM.IsIdExists(p01101);
+            _objResponse = _objBLEmp01ORM.ValidateDelete(p01101);
 
-            if (_objResponse.IsError == false)
+            if (_objResponse.IsError)
             {
                 // delete
                 _objResponse = _objBLEmp01ORM.DeleteEmp01(p01101);

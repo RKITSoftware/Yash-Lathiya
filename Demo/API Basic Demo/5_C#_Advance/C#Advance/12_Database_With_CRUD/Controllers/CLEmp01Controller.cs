@@ -1,8 +1,8 @@
 ﻿using _12_Database_With_CRUD.BL;
 using _12_Database_With_CRUD.Models;
-using _12_Database_With_CRUD.Static;
 using System.Net.Http;
 using System.Web.Http;
+using static _12_Database_With_CRUD.BL.Common;
 
 namespace _12_Database_With_CRUD.Controllers
 {
@@ -49,7 +49,7 @@ namespace _12_Database_With_CRUD.Controllers
         public HttpResponseMessage AddEmp01([FromBody] DTOEmp01 objDTOEmp01)
         {
             // set operation enum 
-            _objBLEmp01.operation = Static.Static.Operation.Create;
+            _objBLEmp01.operation = Operation.Create;
 
             // presave
             _objBLEmp01.Presave(objDTOEmp01);
@@ -75,9 +75,6 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Emp01/Get/{p01f01}")]
         public HttpResponseMessage GetEmp01(int p01f01)
         {
-            // set operation enum 
-            _objBLEmp01.operation = Static.Static.Operation.Retrieve;
-
             _objResponse = _objBLEmp01.GetEmp01(p01f01);
 
             return _objResponse.ToHttpResponseMessage();
@@ -93,7 +90,7 @@ namespace _12_Database_With_CRUD.Controllers
         public HttpResponseMessage UpdateEmp01([FromBody] DTOEmp01 objDTOEmp01)
         {
             // set operation enum 
-            _objBLEmp01.operation = Static.Static.Operation.Update;
+            _objBLEmp01.operation = Operation.Update;
 
             // presave 
             _objBLEmp01.Presave(objDTOEmp01);
@@ -120,16 +117,20 @@ namespace _12_Database_With_CRUD.Controllers
         [Route("api/Emp01/Delete")]
         public HttpResponseMessage DeleteEmp01(int p01101)
         {
-            // set operation enum 
-            _objBLEmp01.operation = Static.Static.Operation.Delete;
-
-            // pre delete validate 
-            _objResponse = _objBLEmp01.IsIdExists(p01101);
-
-            if (_objResponse.IsError == false)
+            // pre validate delete
+            if (_objBLEmp01.IsIdExists(p01101))
             {
                 // delete
                 _objResponse = _objBLEmp01.DeleteEmp01(p01101);
+            }
+            else
+            {
+                _objResponse = new Response
+                {
+                    IsError = true,
+                    StatusCode = System.Net.HttpStatusCode.NotFound,
+                    Message = "ID does not exists"
+                };
             }
 
             return _objResponse.ToHttpResponseMessage();

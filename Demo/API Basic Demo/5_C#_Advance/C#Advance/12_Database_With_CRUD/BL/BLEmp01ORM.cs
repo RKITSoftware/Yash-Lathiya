@@ -2,7 +2,8 @@
 using _12_Database_With_CRUD.Services;
 using ServiceStack.OrmLite;
 using System;
-using static _12_Database_With_CRUD.Static.Static;
+using System.Data;
+using static _12_Database_With_CRUD.BL.Common;
 
 namespace _12_Database_With_CRUD.BL
 {
@@ -40,6 +41,8 @@ namespace _12_Database_With_CRUD.BL
         public void Presave(DTOEmp01 objDTOEmp01)
         {
             _objEmp01 = objDTOEmp01.ConvertModel<Emp01>();
+
+            // set create /edit time
         }
 
         /// <summary>
@@ -80,7 +83,7 @@ namespace _12_Database_With_CRUD.BL
                 _objEmp01.P01f06 = DateTime.Now;
 
 
-                using (var db = Static.Static.OrmContext.OpenDbConnection())
+                using (var db = OrmContext.OpenDbConnection())
                 {
                     db.Insert<Emp01>(_objEmp01);
 
@@ -98,7 +101,7 @@ namespace _12_Database_With_CRUD.BL
                 _objEmp01.P01f06 = DateTime.Now;
 
                 // update in database
-                using (var db = Static.Static.OrmContext.OpenDbConnection())
+                using (var db = OrmContext.OpenDbConnection())
                 {
                     db.Update<Emp01>(_objEmp01);
 
@@ -124,7 +127,11 @@ namespace _12_Database_With_CRUD.BL
 
             DbEmp01Context objDbEmp01Context = new DbEmp01Context();
             
-            return objDbEmp01Context.GetEmp01(p01f01);
+            DataTable dtEmp01 = objDbEmp01Context.GetEmp01(p01f01);
+
+            _objResponse.Data = dtEmp01;
+
+            return _objResponse;
         }
 
         /// <summary>
@@ -137,7 +144,7 @@ namespace _12_Database_With_CRUD.BL
             _objResponse = new Response();
 
             // delete in database
-            using (var db = Static.Static.OrmContext.OpenDbConnection())
+            using (var db = OrmContext.OpenDbConnection())
             {
                 db.DeleteById<Emp01>(p01f01);
             }
@@ -154,18 +161,18 @@ namespace _12_Database_With_CRUD.BL
         /// </summary>
         /// <param name="p01f01"> employee id </param>
         /// <returns> object of response </returns>
-        public Response IsIdExists(int p01f01)
+        public Response ValidateDelete(int p01f01)
         {
             bool isExists;
             _objResponse = new Response();
 
-            using (var db = Static.Static.OrmContext.OpenDbConnection())
+            using (var db = OrmContext.OpenDbConnection())
             {
-                    isExists = db.Exists<Emp01>(x => x.P01f01 == p01f01);
+                isExists = db.Exists<Emp01>(x => x.P01f01 == p01f01);
             }
 
             _objResponse.IsError = !isExists;
-            _objResponse.Message = !isExists ? "Id exists in database" : "id does not exists in database ";
+            _objResponse.Message = !isExists ? "Id does not exists in database" : "id exists in database ";
             _objResponse.StatusCode = !isExists ? System.Net.HttpStatusCode.BadRequest : System.Net.HttpStatusCode.OK;
             _objResponse.Data = null;
 

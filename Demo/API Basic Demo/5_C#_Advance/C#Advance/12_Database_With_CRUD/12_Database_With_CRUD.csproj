@@ -184,7 +184,7 @@
     <Compile Include="Models\DTOEmp01.cs" />
     <Compile Include="Models\Emp01.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Static\Static.cs" />
+    <Compile Include="BL\Common.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Connection\ConnectionString.json" />

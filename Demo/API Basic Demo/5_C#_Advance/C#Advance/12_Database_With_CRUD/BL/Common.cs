@@ -6,9 +6,9 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 
-namespace _12_Database_With_CRUD.Static
+namespace _12_Database_With_CRUD.BL
 {
-    public static class Static
+    public static class Common
     {
         #region Enum 
 
@@ -18,9 +18,7 @@ namespace _12_Database_With_CRUD.Static
         public enum Operation 
         {
             Create,
-            Retrieve,
-            Update,
-            Delete,
+            Update
         }
 
         #endregion

@@ -18,7 +18,7 @@ namespace _12_Database_With_CRUD.Models
         /// <summary>
         /// Status Code
         /// </summary>
-        public HttpStatusCode StatusCode { get; set; }
+        public HttpStatusCode StatusCode { get; set; } = HttpStatusCode.OK;
 
         /// <summary>
         /// Messege

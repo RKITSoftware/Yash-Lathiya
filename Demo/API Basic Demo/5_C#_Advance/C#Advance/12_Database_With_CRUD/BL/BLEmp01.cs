@@ -1,8 +1,8 @@
 ﻿using _12_Database_With_CRUD.Models;
 using _12_Database_With_CRUD.Services;
-using _12_Database_With_CRUD.Static;
 using System;
-using static _12_Database_With_CRUD.Static.Static;
+using System.Data;
+using static _12_Database_With_CRUD.BL.Common;
 
 namespace _12_Database_With_CRUD.BL
 {
@@ -58,22 +58,33 @@ namespace _12_Database_With_CRUD.BL
         public void Presave(DTOEmp01 objDTOEmp01)
         {
             _objEmp01 = objDTOEmp01.ConvertModel<Emp01>();
+
+            if(operation == Operation.Create)
+            {
+                _objEmp01.P01f05 = DateTime.Now;
+            }
+            else if(operation == Operation.Update)
+            {
+                _objEmp01.P01f06 = DateTime.Now;
+            }
         }
 
         /// <summary>
         /// Validate POCO Model 
         /// </summary>
-        /// <returns>true if validated else false </returns>
+        /// <returns> object of response </returns>
         public Response Validate()
         {
-            // validate annual package
-            if(_objEmp01.P01f04 <= 0)
+            if (operation == Operation.Update)
             {
-                _objResponse.IsError = true;
-                _objResponse.Message = "Annual package is not valid";
-                _objResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                if (!IsIdExists(_objEmp01.P01f01))
+                {
+                    _objResponse.IsError = true;
+                    _objResponse.Message = "Id does not exists !!";
+                    _objResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
 
-                return _objResponse;
+                    return _objResponse;
+                }
             }
 
             return _objResponse;
@@ -88,11 +99,6 @@ namespace _12_Database_With_CRUD.BL
             // Create Database Record
             if (Operation.Create == operation)
             {
-                // set creation time
-                _objEmp01.P01f05 = DateTime.Now;
-                // set updation time
-                _objEmp01.P01f06 = DateTime.Now;
-
                 _objDbEmp01Context.AddEmp01(_objEmp01);
 
                 // configuring response message 
@@ -104,9 +110,6 @@ namespace _12_Database_With_CRUD.BL
             // Update Database Record
             else if (Operation.Update == operation)
             {
-                // set updation time
-                _objEmp01.P01f06 = DateTime.Now;
-
                 _objDbEmp01Context.UpdateEmp01(_objEmp01);
 
                 // configuring response message 
@@ -126,7 +129,10 @@ namespace _12_Database_With_CRUD.BL
         /// <returns> Response </returns>
         public Response GetEmp01(int p01f01)
         {
-            _objResponse = _objDbEmp01Context.GetEmp01(p01f01);
+            DataTable dtEmp = _objDbEmp01Context.GetEmp01(p01f01);
+
+            _objResponse.Data = dtEmp;
+            _objResponse.Message = "Employee Details";
 
             return _objResponse;
         }
@@ -150,11 +156,9 @@ namespace _12_Database_With_CRUD.BL
         /// <returns> true => if exists
         ///           false => otherwise
         /// </returns>
-        public Response IsIdExists(int p01f01)
+        public bool IsIdExists(int p01f01)
         {
-            _objResponse = _objDbEmp01Context.IsIdExists(p01f01);
-
-            return _objResponse;
+            return _objDbEmp01Context.IsIdExists(p01f01);
         }
 
         #endregion
