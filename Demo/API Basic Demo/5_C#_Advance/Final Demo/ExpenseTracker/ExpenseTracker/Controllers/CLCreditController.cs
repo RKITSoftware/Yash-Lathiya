@@ -1,8 +1,7 @@
 ﻿using ExpenseTracker.BL;
+using ExpenseTracker.Filters;
 using ExpenseTracker.Models;
 using ExpenseTracker.Models.DTO;
-using ExpenseTracker.Static;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ExpenseTracker.Controllers
@@ -50,8 +49,9 @@ namespace ExpenseTracker.Controllers
         /// <param name="objExp01"> Object of Credit </param>
         /// <returns> object of response </returns>
         [HttpPost]
+        [ValidateModel]
         [Route("api/Credit/Add")]
-        public HttpResponseMessage AddCredit(DTOCre01 objDTOCre01)
+        public IHttpActionResult AddCredit(DTOCre01 objDTOCre01)
         {
             // set operation type
             _objBLCre01.operation = Operation.Create;
@@ -62,13 +62,13 @@ namespace ExpenseTracker.Controllers
             // validate 
             _objResponse = _objBLCre01.Validate();
 
-            if (_objResponse.IsError == false)
+            if (!_objResponse.IsError)
             {
                 // add
                 _objBLCre01.Save();
             }
 
-            return _objResponse.ToHttpResponseMessage();
+            return Ok(_objResponse);
         }
 
         /// <summary>
@@ -79,7 +79,6 @@ namespace ExpenseTracker.Controllers
         [Route("api/Credit/Get")]
         public IHttpActionResult GetCredits()
         {
-            _objBLCre01.operation = Operation.Retrieve;
             return Ok(_objBLCre01.GetAllCredit());
         }
 
@@ -89,8 +88,9 @@ namespace ExpenseTracker.Controllers
         /// <param name="objCre01"> object of Credit which will be stored in place of previous object </param>
         /// <returns></returns>
         [HttpPut]
+        [ValidateModel]
         [Route("api/credit/Update")]
-        public HttpResponseMessage UpdateCredit(DTOCre01 objDTOCre01)
+        public IHttpActionResult UpdateCredit(DTOCre01 objDTOCre01)
         {
             // set operation type
             _objBLCre01.operation = Operation.Update;
@@ -101,13 +101,13 @@ namespace ExpenseTracker.Controllers
             // validate 
             _objResponse = _objBLCre01.Validate();
 
-            if (_objResponse.IsError == false)
+            if (!_objResponse.IsError)
             {
                 // update 
                 _objBLCre01.Save();
             }
 
-            return _objResponse.ToHttpResponseMessage();
+            return Ok(_objResponse);
         }
 
         /// <summary>
@@ -117,22 +117,18 @@ namespace ExpenseTracker.Controllers
         /// <returns> object of response </returns>
         [HttpDelete]
         [Route("api/Credit/Delete")]
-        public HttpResponseMessage DeleteCredit(int e01101)
+        public IHttpActionResult DeleteCredit(int e01101)
         {
-            // set operation enum 
-            _objBLCre01.operation = Operation.Delete;
-
             // pre delete validate 
-            _objResponse = _objBLCre01.IsIdExists(e01101);
+            _objResponse = _objBLCre01.PreDeleteValidate(e01101);
 
-            if (_objResponse.IsError == false)
+            if (!_objResponse.IsError)
             {
                 // delete
                 _objResponse = _objBLCre01.DeleteCre01(e01101);
             }
 
-            return _objResponse.ToHttpResponseMessage();
-
+            return Ok(_objResponse);
         }
 
         #endregion

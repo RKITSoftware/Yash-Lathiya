@@ -17,7 +17,7 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// reference of Iwallet interface  
         /// </summary>
-        private IWallet _dashboard;
+        private IWallet _objBLDashboard;
 
         #endregion
 
@@ -28,7 +28,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         public CLDashboardController()
         {
-            _dashboard = new BLDashboardManager();
+            _objBLDashboard = new BLDashboard();
         }
 
         #endregion
@@ -43,7 +43,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/balance")]
         public IHttpActionResult MyCurrentBalance()
         {
-            return Ok(_dashboard.CurrentBalance());
+            return Ok(_objBLDashboard.CurrentBalance());
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/credit")]
         public IHttpActionResult GetToatlCredit()
         {
-            return Ok(_dashboard.TotalCredit());
+            return Ok(_objBLDashboard.TotalCredit());
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/dashboard/expense")]
         public IHttpActionResult GetTotalExpense()
         {
-            return Ok(_dashboard.TotalExpense());
+            return Ok(_objBLDashboard.TotalExpense());
         }
 
         #endregion

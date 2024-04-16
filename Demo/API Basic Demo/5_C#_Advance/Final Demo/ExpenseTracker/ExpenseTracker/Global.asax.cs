@@ -1,4 +1,4 @@
-using ExpenseTracker.ORM;
+using ExpenseTracker.BL;
 using Newtonsoft.Json;
 using ServiceStack.OrmLite;
 using System;
@@ -44,7 +44,7 @@ namespace ExpenseTracker
             var dbFactory = new OrmLiteConnectionFactory(mysqlConnectionString, MySqlDialect.Provider);
 
             // Store the IDbConnectionFactory instance in a static variable for application-wide usage
-            Static.Static.OrmContext = dbFactory;
+            Common.OrmContext = dbFactory;
 
         }
     }

@@ -136,6 +136,16 @@ namespace ExpenseTracker.BL
         }
 
         /// <summary>
+        /// Set response message with default status code
+        /// </summary>
+        /// <param name="response"> response object </param>
+        /// <param name="message"> message </param>
+        public static void SetResponse(this Response response, string message)
+        {
+            response.Message = message;
+        }
+
+        /// <summary>
         /// Converts List to DataTable
         /// </summary>
         /// <typeparam name="T"> models</typeparam>

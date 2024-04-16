@@ -1,11 +1,10 @@
 ﻿using ExpenseTracker.Models;
 using ExpenseTracker.Models.DTO;
 using ExpenseTracker.Models.POCO;
-using ExpenseTracker.Static;
-using Microsoft.IdentityModel.Tokens;
 using ServiceStack.OrmLite;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace ExpenseTracker.BL
 {
@@ -19,7 +18,7 @@ namespace ExpenseTracker.BL
         /// <summary>
         /// user id retrieved from current user context
         /// </summary>
-        private readonly int _r01f01 = Static.Static.GetUserIdFromClaims();
+        private readonly int _r01f01 = Common.GetUserIdFromClaims();
 
         /// <summary>
         /// POCO Moodel
@@ -51,9 +50,26 @@ namespace ExpenseTracker.BL
         {
             _objResponse = new Response();
         }
+
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Pre Delete Validation method 
+        /// </summary>
+        /// <param name="e01f01"></param>
+        /// <returns> object of response </returns>
+        public Response PreDeleteValidate(int e01f01)
+        {
+            if (!IsIdExists(e01f01))
+            {
+                _objResponse.SetResponse(true, HttpStatusCode.BadRequest, "credit id does not exists", null);
+                return _objResponse;
+            }
+
+            return _objResponse;
+        }
 
         /// <summary>
         /// Convert DTO model to POCO Model 
@@ -65,6 +81,17 @@ namespace ExpenseTracker.BL
 
             // set userid 
             _objCre01.E01f02 = _r01f01;
+
+            if(operation == Operation.Create)
+            {
+                // set creation time
+                _objCre01.E01f05 = DateTime.Now;
+            }
+            else if (operation == Operation.Update)
+            {
+                // set updation time
+                _objCre01.E01f06 = DateTime.Now;
+            }
         }
 
         /// <summary>
@@ -73,22 +100,17 @@ namespace ExpenseTracker.BL
         /// <returns> object of response </returns>
         public Response Validate()
         {
-            // credit amount should be graeter then zero
-            if (_objCre01.E01f03 <= 0)
+            if(operation == Operation.Update)
             {
-                _objResponse.SetResponse(System.Net.HttpStatusCode.BadRequest, "Invalid Credit Amount", null);
-                return _objResponse;
-            }
-
-            // category of credit can't be null
-            if (_objCre01.E01f04.IsNullOrEmpty())
-            {
-                _objResponse.SetResponse(System.Net.HttpStatusCode.BadRequest, "Credit category is null or empty", null);
-                return _objResponse;
+                if (!IsIdExists(_objCre01.E01f01))
+                {
+                    _objResponse.SetResponse(true, HttpStatusCode.BadRequest, "credit id does not exists", null);
+                    return _objResponse;
+                }
             }
 
             return _objResponse;
-        }
+        }       
 
         /// <summary>
         /// Save credit details in database
@@ -97,72 +119,26 @@ namespace ExpenseTracker.BL
         /// <returns> object of response </returns>
         public Response Save()
         {
-            // Create Database Record
             if (Operation.Create == operation)
             {
-                // set creation time
-                _objCre01.E01f05 = DateTime.Now;
-                // set updation time
-                _objCre01.E01f06 = DateTime.Now;
-
-                try
+                // add credit in databse
+                using (var db = Common.OrmContext.OpenDbConnection())
                 {
-                    // add credit in databse
-                    using (var db = Static.Static.OrmContext.OpenDbConnection())
-                    {
-                        db.Insert(_objCre01);
-                    }
-
-                    _objResponse.SetResponse("Credit added", null);
-                }
-                catch(Exception ex)
-                {
-                    _objResponse.SetResponse(true, System.Net.HttpStatusCode.InternalServerError, ex.Message, null);
+                    db.Insert<Cre01>(_objCre01);
                 }
 
+                _objResponse.SetResponse("Credit added", null);
                 return _objResponse;               
             }
-            // Update Database Record
-            else if (Operation.Update == operation)
+            else if(Operation.Update == operation)
             {
-                // set updation time
-                _objCre01.E01f06 = DateTime.Now;
-
                 // update in database
-                try
+                using (var db = Common.OrmContext.OpenDbConnection())
                 {
-                    Dictionary<String, object> dictionary = new Dictionary<string, object>();
-
-                    // Loop through properties of objExp01
-                    foreach (var prop in typeof(Cre01).GetProperties())
-                    {
-                        // don't update and creation time
-                        if (prop.Name == "e01f05")
-                        {
-                            continue;
-                        }
-
-                        var value = prop.GetValue(_objCre01);
-                        if (value != null)
-                        {
-                            dictionary.Add(prop.Name, value);
-                        }
-                    }
-
-                    using (var db = Static.Static.OrmContext.OpenDbConnection())
-                    {
-                        db.UpdateOnly<Cre01>(
-                            dictionary,                         // Specify the field to update
-                            x => x.E01f01 == _objCre01.E01f01); // Filter condition to set expense id 
-                    }
-
-                    _objResponse.SetResponse("credit updated", null);
-
+                    db.Update<Cre01>(_objCre01);
                 }
-                catch(Exception ex)
-                {
-                    _objResponse.SetResponse(true, System.Net.HttpStatusCode.InternalServerError, ex.Message, null);
-                }
+
+                _objResponse.SetResponse("credit updated", null);
 
                 return _objResponse;
             }
@@ -176,28 +152,21 @@ namespace ExpenseTracker.BL
         /// <returns> List of Credit detail for that userId</returns>
         public Response GetAllCredit()
         {
-            try
+            List<DTOCre01> lstDTOCre01 = new List<DTOCre01>();
+            List<Cre01> lstCre01;
+
+            using (var db = Common.OrmContext.OpenDbConnection())
             {
-                List<DTOCre01> lstDTOCre01 = new List<DTOCre01>();
-                List<Cre01> lstCre01;
-
-                using (var db = Static.Static.OrmContext.OpenDbConnection())
-                {
-                    lstCre01 = db.Select<Cre01>(credit => credit.E01f02.Equals(_r01f01));
-                }
-
-                foreach(Cre01 objCre01 in lstCre01)
-                {
-                    lstDTOCre01.Add(objCre01.ConvertModel<DTOCre01>());
-                }
-
-                _objResponse.SetResponse("All Credits", lstDTOCre01.ToDataTable<DTOCre01>());
+                lstCre01 = db.Select<Cre01>(credit => credit.E01f02.Equals(_r01f01));
             }
-            catch(Exception ex)
+
+            foreach (Cre01 objCre01 in lstCre01)
             {
-                _objResponse.SetResponse(true, System.Net.HttpStatusCode.InternalServerError, ex.Message, null);
+                lstDTOCre01.Add(objCre01.ConvertModel<DTOCre01>());
             }
-            
+
+            _objResponse.SetResponse("All Credits", lstDTOCre01.ToDataTable<DTOCre01>());
+
             return _objResponse;
         }
 
@@ -209,52 +178,33 @@ namespace ExpenseTracker.BL
         public Response DeleteCre01(int e01f01)
         {
             // delete in database
-            try
+            
+            using (var db = Common.OrmContext.OpenDbConnection())
             {
-                using (var db = Static.Static.OrmContext.OpenDbConnection())
-                {
-                    // Check if the user is authorized to delete the expense
-                    int _r01f01 = Static.Static.GetUserIdFromClaims();
-                    db.Delete<Cre01>(x => x.E01f01 == e01f01 && x.E01f02 == _r01f01);
-                }
-
-                _objResponse.SetResponse(System.Net.HttpStatusCode.OK, "Credit deleted", null);
-            }
-            catch (Exception ex)
-            {
-                _objResponse.SetResponse(true, System.Net.HttpStatusCode.InternalServerError, ex.Message, null);
+                // Check if the user is authorized to delete the credit
+                db.Delete<Cre01>(x => x.E01f01 == e01f01);
             }
 
+            _objResponse.SetResponse(System.Net.HttpStatusCode.OK, "Credit deleted", null);
+                
             return _objResponse;
         }
 
+        #endregion
+
+        #region Private Methods
+
         /// <summary>
-        /// Id exists in database or not
+        /// Id exists in database or not also check access upon that id in context of user id 
         /// </summary>
         /// <param name="e01f01"> credit id </param>
         /// <returns> object of response </returns>
-        public Response IsIdExists(int e01f01)
+        private bool IsIdExists(int e01f01)
         {
-            try
+            using (var db = Common.OrmContext.OpenDbConnection())
             {
-                bool isExists;
-
-                using (var db = Static.Static.OrmContext.OpenDbConnection())
-                {
-                    isExists = db.Exists<Cre01>(x => x.E01f01 == e01f01);
-                }
-
-                _objResponse.SetResponse(isExists, 
-                                         System.Net.HttpStatusCode.OK, 
-                                         isExists ? "user id exists" : "user id does not exists", 
-                                         null);
+                return db.Exists<Cre01>(x => x.E01f01 == e01f01 && x.E01f02 == _r01f01);
             }
-            catch (Exception ex)
-            {
-                _objResponse.SetResponse(true, System.Net.HttpStatusCode.InternalServerError, ex.Message, null);
-            }
-
-            return _objResponse;
         }
 
         #endregion

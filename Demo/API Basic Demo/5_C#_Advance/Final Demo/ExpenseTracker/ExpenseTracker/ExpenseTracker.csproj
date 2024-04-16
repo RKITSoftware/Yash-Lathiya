@@ -273,10 +273,10 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\BLCre01.cs" />
-    <Compile Include="BL\BLDashboardManager.cs" />
+    <Compile Include="BL\BLDashboard.cs" />
     <Compile Include="BL\BLExp01.cs" />
-    <Compile Include="BL\BLReportManager.cs" />
-    <Compile Include="BL\BLUserManager.cs" />
+    <Compile Include="BL\BLRep02.cs" />
+    <Compile Include="BL\BLUsr01.cs" />
     <Compile Include="BL\Common.cs" />
     <Compile Include="BL\IWallet.cs" />
     <Compile Include="Connection\DatabaseConnection.cs" />
@@ -287,6 +287,7 @@
     <Compile Include="Controllers\CLUserController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DL\DbUsr01Context.cs" />
+    <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

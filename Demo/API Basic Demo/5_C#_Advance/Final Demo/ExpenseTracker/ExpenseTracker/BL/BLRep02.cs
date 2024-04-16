@@ -1,4 +1,4 @@
-﻿using ExpenseTracker.Models;
+﻿using ExpenseTracker.Models.POCO;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ namespace ExpenseTracker.BL
     /// <summary>
     /// Consist Buisness Logic of all methods related to Report
     /// </summary>
-    public class BLReportManager
+    public class BLRep02
     {
         #region Private Members
 
@@ -21,7 +21,7 @@ namespace ExpenseTracker.BL
         /// <summary>
         /// user id retrieved from current user context
         /// </summary>
-        private int _r01f01 = Static.Static.GetUserIdFromClaims();
+        private int _r01f01 = Common.GetUserIdFromClaims();
 
         #endregion
 
@@ -31,7 +31,7 @@ namespace ExpenseTracker.BL
         /// Default constructor assigning connection
         /// </summary>
         /// <exception cref="Exception"></exception>
-        public BLReportManager()
+        public BLRep02()
         {
             try
             {

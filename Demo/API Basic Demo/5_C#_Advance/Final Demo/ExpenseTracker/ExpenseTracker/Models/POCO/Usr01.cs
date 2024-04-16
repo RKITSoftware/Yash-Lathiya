@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceStack.DataAnnotations;
+using System;
 
 namespace ExpenseTracker.Models.POCO
 {
@@ -37,11 +38,13 @@ namespace ExpenseTracker.Models.POCO
         /// <summary>
         /// User Creation Time
         /// </summary>
+        [IgnoreOnUpdate]
         public DateTime R01f06 { get; set; }
 
         /// <summary>
         /// User Updation Time
         /// </summary>
+        [IgnoreOnInsert]
         public DateTime R01f07 { get; set; }
 
         #endregion

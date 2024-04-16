@@ -1,7 +1,7 @@
-﻿    using ExpenseTracker.BL;
+﻿using ExpenseTracker.BL;
+using ExpenseTracker.Filters;
 using ExpenseTracker.Models;
-using System;
-using System.Web;
+using ExpenseTracker.Models.DTO;
 using System.Web.Http;
 
 namespace ExpenseTracker.Controllers
@@ -20,7 +20,12 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// consists BL logic of Expense Manager
         /// </summary>
-        BLExp01 _objBLExpenseManager;
+        private BLExp01 _objBLExp01;
+
+        /// <summary>
+        /// Response of HTTP action method
+        /// </summary>
+        private Response _objResponse;
 
         #endregion
 
@@ -31,7 +36,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         public CLExpenseController()
         {
-            _objBLExpenseManager = new BLExp01();
+            _objBLExp01 = new BLExp01();
         }
 
         #endregion
@@ -42,75 +47,68 @@ namespace ExpenseTracker.Controllers
         /// To add Expense in Database
         /// </summary>
         /// <param name="objExp01"> Object of Expense </param>
-        /// <returns> "Expense Added Message "</returns>
+        /// <returns> object of response </returns>
         [HttpPost]
+        [ValidateModel]
         [Route("api/Expense/Add")]
         public IHttpActionResult AddExpense(DTOExp01 objDTOExp01)
         {
+            _objBLExp01.operation = Operation.Create;
+
             // presave
-            _objBLExpenseManager.Presave(objDTOExp01);
+            _objBLExp01.Presave(objDTOExp01);
             
             // validate 
-            bool isValid = _objBLExpenseManager.Validate();
-            if (!isValid)
+            _objResponse = _objBLExp01.Validate();
+
+
+            if (!_objResponse.IsError)
             {
-                return BadRequest("Requested data is not valid");
+                // add
+                _objBLExp01.Save();
             }
 
-            // add
-            _objBLExpenseManager.Save(Static.Operation.Create);
-            
-            return Ok("Expense Added");
-        }
-
-        /// <summary>
-        /// To get expense detail by Date
-        /// </summary>
-        /// <param name="p01f04"> Date of Expense </param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("api/Expense/GetByUserIdAndDateOfExpense")]
-        public IHttpActionResult GetExpense()
-        {
-            DateTime p01f04 = Convert.ToDateTime(HttpContext.Current.Request.Form["p01f04"]);
-
-            return Ok(_objBLExpenseManager.GetExpense(p01f04));
+            return Ok(_objResponse);
         }
 
         /// <summary>
         /// To get all expenses 
         /// </summary>
-        /// <returns> Details of all Expense </returns>
+        /// <returns> object of response consisting all expenses </returns>
         [HttpGet]
         [Route("api/Expense/Get")]
         public IHttpActionResult GetExpenses() 
         {
-            return Ok(_objBLExpenseManager.GetAllExpense());
+            return Ok(_objBLExp01.GetAllExpense());
         }
 
         /// <summary>
         /// To update expense 
         /// </summary>
-        /// <param name="objExp01"> object of Expense which will be stored in place of previous object </param>
-        /// <returns></returns>
+        /// <param name="objDTOExp01"> object of Expense which will be stored in place of previous object </param>
+        /// <returns> object of response </returns>
         [HttpPut]
+        [ValidateModel]
         [Route("api/Expense/Update")]
         public IHttpActionResult UpdateExpense(DTOExp01 objDTOExp01)
         {
+            // set operation type
+            _objBLExp01.operation = Operation.Update;
+
             // presave
-            _objBLExpenseManager.Presave(objDTOExp01);
-            
-            // validate
-            bool isValid = _objBLExpenseManager.Validate();
-            if (!isValid)
+            _objBLExp01.Presave(objDTOExp01);
+
+            // validate 
+            _objResponse = _objBLExp01.Validate();
+
+            if (!_objResponse.IsError)
             {
-                return BadRequest("Requested data is not valid");
+                // update 
+                _objBLExp01.Save();
             }
 
-            // update
-            _objBLExpenseManager.Save(Static.Operation.Update);
+            return Ok(_objResponse);
 
-            return Ok("Expense Updated");
         }
 
         /// <summary>
@@ -122,9 +120,17 @@ namespace ExpenseTracker.Controllers
         [Route("api/Expense/Delete")]
         public IHttpActionResult DeleteExpense(int p01101)
         {
-            BLExp01 objBLExpenseManager = new BLExp01();
-            objBLExpenseManager.DeleteExpense(p01101);
-            return Ok("Expense Deleted");
+            // pre delete validate 
+            _objResponse = _objBLExp01.PreDeleteValidate(p01101);
+
+            if (!_objResponse.IsError)
+            {
+                // delete
+                _objResponse = _objBLExp01.DeleteExp01(p01101);
+            }
+
+            return Ok(_objResponse);
+
         }
 
         #endregion

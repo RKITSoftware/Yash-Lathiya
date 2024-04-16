@@ -1,9 +1,10 @@
-﻿using ExpenseTracker.Models.POCO;
-using ExpenseTracker.ORM;
-using ExpenseTracker.Static;
-using Microsoft.IdentityModel.Tokens;
+﻿using ExpenseTracker.Models;
+using ExpenseTracker.Models.DTO;
+using ExpenseTracker.Models.POCO;
+using ServiceStack.OrmLite;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace ExpenseTracker.BL
 {
@@ -13,149 +14,188 @@ namespace ExpenseTracker.BL
     public class BLExp01
     {
         #region Private Members
-
-        /// <summary>
-        /// To use Expense Service 
-        /// </summary>
-        private ExpenseService _objExpenseService;
-
+    
         /// <summary>
         /// user id retrieved from current user context
         /// </summary>
-        private int _r01f01 = Static.Static.GetUserIdFromClaims();
+        private int _r01f01 = Common.GetUserIdFromClaims();
 
         /// <summary>
         /// POCO Moodel
         /// </summary>
         private Exp01 _objExp01;
 
+        /// <summary>
+        /// object of response to HTTP Action Result 
+        /// </summary>
+        private Response _objResponse;
+
+        #endregion
+
+        #region Public Members
+
+        /// <summary>
+        /// Type of operation
+        /// </summary>
+        public Operation operation;
+
         #endregion
 
         #region Public Methods 
 
         /// <summary>
+        /// Pre Delete Validation method 
+        /// </summary>
+        /// <param name="p01f01"></param>
+        /// <returns> object of response </returns>
+        public Response PreDeleteValidate(int p01f01)
+        {
+            if (!IsIdExists(p01f01))
+            {
+                _objResponse.SetResponse(true, HttpStatusCode.BadRequest, "expense id does not exists", null);
+                return _objResponse;
+            }
+
+            return _objResponse;
+        }
+
+        /// <summary>
         /// Convert DTO model to POCO Model 
         /// </summary>
-        /// <param name="objDTOExp01"></param>
+        /// <param name="objDTOExp01"> dto model of expense </param>
         public void Presave(DTOExp01 objDTOExp01)
         {
             _objExp01 = objDTOExp01.ConvertModel<Exp01>();
 
             // set userid 
-            _objExp01.p01f02 = _r01f01;
+            _objExp01.P01f02 = _r01f01;
+
+            if(operation == Operation.Create)
+            {
+                // set creation time
+                _objExp01.P01f07 = DateTime.Now; 
+            }
+            else if (operation == Operation.Update)
+            {
+                // set updation time 
+                _objExp01.P01f08 = DateTime.Now;
+            }
         }
+
 
         /// <summary>
         /// Validate POCO Model 
         /// </summary>
-        /// <returns>true if validated else false </returns>
-        public bool Validate()
+        /// <returns> object of response </returns>
+        public Response Validate()
         {
-            // expense amount should be graeter then zero
-            if(_objExp01.p01f03 <= 0)
+            if (operation == Operation.Update)
             {
-                return false;
+                if (!IsIdExists(_objExp01.P01f01))
+                {
+                    _objResponse.SetResponse(true, HttpStatusCode.BadRequest, "expense id does not exists", null);
+                    return _objResponse;
+                }
             }
 
-            // date should not be of future 
-            if (_objExp01.p01f04 >= DateTime.Now)
-            {
-                return false;
-            }
-
-            //category of expense can't be null
-            if (_objExp01.p01f05.IsNullOrEmpty())
-            {
-                return false;
-            }
-
-            return true;
+            return _objResponse;
         }
 
         /// <summary>
-        /// Add or update expense in database as per operation 
+        /// Save expense details in database
+        /// Can be update or add
         /// </summary>
-        /// <param name="opeartion"> Create => Create database record
-        ///                          Update  => Update database record
-        /// </param>
-        public void Save(Operation op)
+        /// <returns> object of response </returns>
+        public Response Save()
         {
-            // Create Database Record
-            if (Operation.Create == op)
+            if (Operation.Create == operation)
             {
-                // set expense time
-                _objExp01.p01f04 = DateTime.Now;
-                // set creation time
-                _objExp01.p01f07 = DateTime.Now;
-                // set updation time
-                _objExp01.p01f08 = DateTime.Now;
+                // add expense in databse
+                using (var db = Common.OrmContext.OpenDbConnection())
+                {
+                    db.Insert<Exp01>(_objExp01);
+                }
 
-                _objExpenseService = new ExpenseService(MyAppDbConnectionFactory.Instance);
-                _objExpenseService.AddExpense(_objExp01);
+                _objResponse.SetResponse("expense added", null);
+                return _objResponse;
             }
-            // Update Database Record
-            else if(Operation.Update == op)
+            else if (Operation.Update == operation)
             {
-                // set updation time
-                _objExp01.p01f08 = DateTime.Now;
+                // update in database
+                using (var db = Common.OrmContext.OpenDbConnection())
+                {
+                    db.Update<Exp01>(_objExp01);
+                }
 
-                _objExpenseService = new ExpenseService(MyAppDbConnectionFactory.Instance);
-                _objExpenseService.UpdateExpense(_objExp01);
+                _objResponse.SetResponse("expnse updated", null);
+
+                return _objResponse;
             }
+
+            return _objResponse;
         }
 
         /// <summary>
-        /// Get expenses performed at specific UserId & DateTime
+        /// Get all expense details for specific user
         /// </summary>
-        /// <param name="p01f04"> Expense Date </param>
-        /// <returns> List of all expenses satisfies condition </returns>
-        public List<DTOExp01> GetExpense(DateTime p01f04)
+        /// <returns> List of expense detail for that userId</returns>
+        public Response GetAllExpense()
         {
-            _objExpenseService = new ExpenseService(MyAppDbConnectionFactory.Instance);
-            List<Exp01> lstExp01 = _objExpenseService.GetExpense(_r01f01, p01f04);
-
-            // POCO to DTO
             List<DTOExp01> lstDTOExp01 = new List<DTOExp01>();
+            List<Exp01> lstExp01;
+
+            using (var db = Common.OrmContext.OpenDbConnection())
+            {
+                lstExp01 = db.Select<Exp01>(exp => exp.P01f02.Equals(_r01f01));
+            }
+
             foreach (Exp01 objExp01 in lstExp01)
             {
-                DTOExp01 objDTOExp01 = objExp01.ConvertModel<DTOExp01>();
-                lstDTOExp01.Add(objDTOExp01);
+                lstDTOExp01.Add(objExp01.ConvertModel<DTOExp01>());
             }
 
-            return lstDTOExp01;
+            _objResponse.SetResponse("All expenses", lstDTOExp01.ToDataTable<DTOExp01>());
+
+            return _objResponse;
         }
 
         /// <summary>
-        /// Get all expenses for specific User
+        /// Delete expense from database
         /// </summary>
-        /// <returns>List of all expenses for specific user </returns>
-        public List<DTOExp01> GetAllExpense()
+        /// <param name="p01f01"> expense id </param>
+        /// <returns></returns>
+        public Response DeleteExp01(int p01f01)
         {
-            _objExpenseService = new ExpenseService(MyAppDbConnectionFactory.Instance);
-            List<Exp01> lstExp01 = _objExpenseService.GetAllExpense(_r01f01);
+            // delete in database
 
-            // POCO to DTO
-            List<DTOExp01> lstDTOExp01 = new List<DTOExp01>();
-            foreach(Exp01 objExp01 in lstExp01)
+            using (var db = Common.OrmContext.OpenDbConnection())
             {
-                DTOExp01 objDTOExp01 = objExp01.ConvertModel<DTOExp01>();
-                lstDTOExp01.Add(objDTOExp01);
+                // Check if the user is authorized to delete the expense
+                db.Delete<Cre01>(x => x.E01f01 == p01f01);
             }
 
-            return lstDTOExp01;
-        }
+            _objResponse.SetResponse(System.Net.HttpStatusCode.OK, "expense deleted", null);
 
-        /// <summary>
-        /// To delete expense from the database 
-        /// </summary>
-        /// <param name="p01f01"> Expense Id </param>
-        public void DeleteExpense(int p01f01)
-        {
-            _objExpenseService = new ExpenseService(MyAppDbConnectionFactory.Instance);
-            _objExpenseService.DeleteExpense(p01f01);
+            return _objResponse;
         }
 
         #endregion
 
+        #region Private Methods
+
+        /// <summary>
+        /// Id exists in database or not also check access upon that id in context of user id 
+        /// </summary>
+        /// <param name="p01f01"> expense id </param>
+        /// <returns> object of response </returns>
+        private bool IsIdExists(int p01f01)
+        {
+            using (var db = Common.OrmContext.OpenDbConnection())
+            {
+                return db.Exists<Exp01>(x => x.P01f01 == p01f01 && x.P01f02 == _r01f01);
+            }
+        }
+
+        #endregion
     }
 }

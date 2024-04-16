@@ -34,11 +34,13 @@ namespace ExpenseTracker.Models.POCO
         /// <summary>
         /// Credit Creation Time
         /// </summary>
+        [IgnoreOnUpdate]
         public DateTime E01f05 { get; set; }
 
         /// <summary>
         /// Credit Updation Time
         /// </summary>
+        [IgnoreOnInsert]
         public DateTime E01f06 { get; set; }
 
         #endregion

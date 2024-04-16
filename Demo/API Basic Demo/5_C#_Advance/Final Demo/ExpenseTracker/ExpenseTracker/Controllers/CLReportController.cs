@@ -20,7 +20,7 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// Consists BL logic of Report Manager
         /// </summary>
-        private readonly BLReportManager _objBLReportManager;
+        private readonly BLRep02 _objBLReportManager;
 
         #endregion
 
@@ -31,7 +31,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         public CLReportController()
         {
-            _objBLReportManager = new BLReportManager();
+            _objBLReportManager = new BLRep02();
         }
 
         #endregion

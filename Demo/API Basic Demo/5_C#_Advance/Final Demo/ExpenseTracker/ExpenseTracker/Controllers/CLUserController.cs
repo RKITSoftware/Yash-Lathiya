@@ -1,7 +1,6 @@
 ﻿using ExpenseTracker.BL;
 using ExpenseTracker.Models;
 using ExpenseTracker.Models.DTO;
-using System.Web;
 using System.Web.Http;
 
 namespace ExpenseTracker.Controllers
@@ -18,8 +17,12 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// BL logic for User Manager 
         /// </summary>
-        private readonly BLUserManager _objBLUserManager;
+        private readonly BLUsr01 _objBLUsr01;
 
+        /// <summary>
+        /// object of response
+        /// </summary>
+        private Response _objResponse;
         #endregion
 
         #region Constructor
@@ -29,7 +32,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         public CLUserController()
         {
-             _objBLUserManager = new BLUserManager();
+             _objBLUsr01 = new BLUsr01();
         }
 
         #endregion
@@ -39,26 +42,51 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// To Register User in database 
         /// </summary>
-        /// <param name="objUsr01"> Object of User </param>
-        /// <returns> Success Message if Registered Successfully </returns>
+        /// <param name="objDTOUsr01"> DTO Object of User </param>
+        /// <returns> object of response </returns>
         [HttpPost]
         [Route("api/User/Register")]
         public IHttpActionResult RegisterUser([FromBody] DTOUsr01 objDTOUsr01) 
         {
+            _objBLUsr01.operation = Operation.Create;
+
             // presave
-            _objBLUserManager.Presave(objDTOUsr01);
+            _objBLUsr01.Presave(objDTOUsr01);
 
             // validate 
-            bool isValid = _objBLUserManager.Validate();
-            if (!isValid)
+            _objResponse = _objBLUsr01.Validate();
+            if (!_objResponse.HasError)
             {
-                return BadRequest("Requested data is not valid");
+                // update
+                _objResponse = _objBLUsr01.Save();
             }
 
-            // add
-            _objBLUserManager.Save(Static.Operation.Create);
+            return Ok(_objResponse);
+        }
 
-            return Ok("User Registered");
+        /// <summary>
+        /// To update User in database 
+        /// </summary>
+        /// <param name="objDTOUsr01"> DTO Object of User </param>
+        /// <returns> object of response </returns>
+        [HttpPost]
+        [Route("api/User/Update")]
+        public IHttpActionResult UpdateUser([FromBody] DTOUsr01 objDTOUsr01)
+        {
+            _objBLUsr01.operation = Operation.Update;
+
+            // presave
+            _objBLUsr01.Presave(objDTOUsr01);
+
+            // validate 
+            _objResponse = _objBLUsr01.Validate();
+            if(!_objResponse.HasError)
+            {
+                // update
+                _objResponse = _objBLUsr01.Save();
+            }
+
+            return Ok(_objResponse);
         }
 
         /// <summary>
@@ -69,17 +97,18 @@ namespace ExpenseTracker.Controllers
         [Route("api/User/Login")]
         public IHttpActionResult LoginUser([FromBody] DTOLog01 objDTOLog01) 
         {
-            bool isAuthenticated = _objBLUserManager.LoginUser(objDTOLog01.G01f01, objDTOLog01.G01f02);
-            if(!isAuthenticated)
-            {
-                return BadRequest("Login Failed");
-            }
-            else
+            _objResponse = _objBLUsr01.LoginUser(objDTOLog01.G01f01, objDTOLog01.G01f02);
+            
+            // valid credential
+            if(!_objResponse.HasError)
             {
                 // Generate Jwt token
-                var token = _objBLUserManager.GenerateJwtToken(objDTOLog01.G01f01); 
-                return Ok(new { Token = token, Message = "Login Successful" });
+                _objResponse = _objBLUsr01.GenerateJwtToken(objDTOLog01.G01f01);
+                return Ok(_objResponse);
             }
+
+            // invalid credential
+            return Ok(_objResponse);
         }
 
         #endregion

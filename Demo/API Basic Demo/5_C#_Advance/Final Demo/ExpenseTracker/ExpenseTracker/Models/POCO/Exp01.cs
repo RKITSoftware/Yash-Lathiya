@@ -44,11 +44,13 @@ namespace ExpenseTracker.Models.POCO
         /// <summary>
         /// Expense Creation Time
         /// </summary>
+        [IgnoreOnUpdate]
         public DateTime P01f07 { get; set; }
 
         /// <summary>
         /// Expense Updation Time
         /// </summary>
+        [IgnoreOnInsert]
         public DateTime P01f08 { get; set; }
 
         #endregion

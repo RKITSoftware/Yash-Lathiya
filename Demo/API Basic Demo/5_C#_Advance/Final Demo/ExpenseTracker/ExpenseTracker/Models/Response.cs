@@ -13,7 +13,7 @@ namespace ExpenseTracker.Models
         /// <summary>
         /// Is there error in response or not
         /// </summary>
-        public bool IsError { get; set; } = false;
+        public bool HasError { get; set; } = false;
 
         /// <summary>
         /// Status Code
