@@ -53,16 +53,6 @@ namespace _12_Database_With_CRUD.BL
         {
             _objResponse = new Response();
 
-            // validate annual package
-            if (_objEmp01.P01f04 <= 0)
-            {
-                _objResponse.IsError = true;
-                _objResponse.Message = "Annual package is not valid";
-                _objResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-
-                return _objResponse;
-            }
-
             return _objResponse;
         }
 

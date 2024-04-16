@@ -1,4 +1,5 @@
 ﻿using _12_Database_With_CRUD.BL;
+using _12_Database_With_CRUD.Filter;
 using _12_Database_With_CRUD.Models;
 using System.Web.Http;
 using static _12_Database_With_CRUD.BL.Common;
@@ -41,6 +42,7 @@ namespace _12_Database_With_CRUD.Controllers
         /// <param name="objEmp01"> Data which will be added </param>
         /// <returns> Ok </returns>
         [HttpPost]
+        [ValidateModel]
         [Route("api/Emp01ORM/add")]
         public IHttpActionResult AddEmp01([FromBody] DTOEmp01 objDTOEmp01)
         {
@@ -82,6 +84,7 @@ namespace _12_Database_With_CRUD.Controllers
         /// <param name="objEmp01"> Details which will be saved </param>
         /// <returns> Response </returns>
         [HttpPut]
+        [ValidateModel]
         [Route("api/Emp01ORM/Update")]
         public IHttpActionResult UpdateEmp01([FromBody] DTOEmp01 objDTOEmp01)
         {

@@ -174,6 +174,7 @@
     <Compile Include="BL\BLEmp01.cs" />
     <Compile Include="BL\BLEmp01ORM.cs" />
     <Compile Include="Controllers\CLEmp01ORMController.cs" />
+    <Compile Include="Filter\ValidateModelAttribute.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="DL\DbEmp01Context.cs" />
     <Compile Include="Connection\Connection.cs" />
