@@ -277,6 +277,7 @@
     <Compile Include="BL\BLExp01.cs" />
     <Compile Include="BL\BLReportManager.cs" />
     <Compile Include="BL\BLUserManager.cs" />
+    <Compile Include="BL\Common.cs" />
     <Compile Include="BL\IWallet.cs" />
     <Compile Include="Connection\DatabaseConnection.cs" />
     <Compile Include="Controllers\CLCreditController.cs" />
