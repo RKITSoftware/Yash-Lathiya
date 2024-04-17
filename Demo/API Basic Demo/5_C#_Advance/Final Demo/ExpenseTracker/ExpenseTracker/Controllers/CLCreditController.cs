@@ -54,7 +54,7 @@ namespace ExpenseTracker.Controllers
         public IHttpActionResult AddCredit(DTOCre01 objDTOCre01)
         {
             // set operation type
-            _objBLCre01.operation = Operation.Create;
+            _objBLCre01.operation = EnmOperation.C;
 
             // presave
             _objBLCre01.Presave(objDTOCre01);
@@ -93,7 +93,7 @@ namespace ExpenseTracker.Controllers
         public IHttpActionResult UpdateCredit(DTOCre01 objDTOCre01)
         {
             // set operation type
-            _objBLCre01.operation = Operation.Update;
+            _objBLCre01.operation = EnmOperation.U;
 
             // presave
             _objBLCre01.Presave(objDTOCre01);

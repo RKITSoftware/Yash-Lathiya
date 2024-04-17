@@ -53,7 +53,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/Expense/Add")]
         public IHttpActionResult AddExpense(DTOExp01 objDTOExp01)
         {
-            _objBLExp01.operation = Operation.Create;
+            _objBLExp01.operation = EnmOperation.C;
 
             // presave
             _objBLExp01.Presave(objDTOExp01);
@@ -92,7 +92,7 @@ namespace ExpenseTracker.Controllers
         public IHttpActionResult UpdateExpense(DTOExp01 objDTOExp01)
         {
             // set operation type
-            _objBLExp01.operation = Operation.Update;
+            _objBLExp01.operation = EnmOperation.U;
 
             // presave
             _objBLExp01.Presave(objDTOExp01);
@@ -129,7 +129,6 @@ namespace ExpenseTracker.Controllers
             }
 
             return Ok(_objResponse);
-
         }
 
         #endregion

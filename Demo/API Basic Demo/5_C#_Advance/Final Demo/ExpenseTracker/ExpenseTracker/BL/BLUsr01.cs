@@ -44,7 +44,7 @@ namespace ExpenseTracker.BL
         /// <summary>
         /// Type of operation
         /// </summary>
-        public Operation operation;
+        public EnmOperation operation;
 
         #endregion
 
@@ -76,12 +76,12 @@ namespace ExpenseTracker.BL
             AesAlgo aes = new AesAlgo();
             _objUsr01.R01f05 = aes.Encrypt(_objUsr01.R01f05);
 
-            if (operation == Operation.Create)
+            if (operation == EnmOperation.C)
             {
                 // creation time
                 _objUsr01.R01f06 = DateTime.Now;
             }
-            else if(operation == Operation.Update)
+            else if(operation == EnmOperation.U)
             {
                 // updation time
                 _objUsr01.R01f07 = DateTime.Now;
@@ -96,7 +96,7 @@ namespace ExpenseTracker.BL
         {
             _objResponse = new Response();
 
-            if(operation == Operation.Create)
+            if(operation == EnmOperation.C)
             {
                 // unique username
                 if (IsUsernameExist(_objUsr01.R01f02))
@@ -120,7 +120,7 @@ namespace ExpenseTracker.BL
                 }
             }
 
-            if(operation == Operation.Update)
+            if(operation == EnmOperation.U)
             {
                 // unique username ( check all records except current one )
                 if (IsUsernameExist(_objUsr01.R01f02, Common.GetUserIdFromClaims()))
@@ -155,7 +155,7 @@ namespace ExpenseTracker.BL
         {
             _objResponse = new Response();
 
-            if(operation == Operation.Create)
+            if(operation == EnmOperation.C)
             {
                 _objResponse = _objDbUsr01Context.AddUsr01(_objUsr01);
 
@@ -166,7 +166,7 @@ namespace ExpenseTracker.BL
                 _objResponse.SetResponse(" user added ", null);
                 return _objResponse;
             }
-            else if(operation == Operation.Update)
+            else if(operation == EnmOperation.U)
             {
                 _objDbUsr01Context.UpdateUsr01(_objUsr01);
 

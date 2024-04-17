@@ -50,7 +50,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/User/Register")]
         public IHttpActionResult RegisterUser([FromBody] DTOUsr01 objDTOUsr01) 
         {
-            _objBLUsr01.operation = Operation.Create;
+            _objBLUsr01.operation = EnmOperation.C;
 
             // presave
             _objBLUsr01.Presave(objDTOUsr01);
@@ -77,7 +77,7 @@ namespace ExpenseTracker.Controllers
         [Route("api/User/Update")]
         public IHttpActionResult UpdateUser([FromBody] DTOUsr01 objDTOUsr01)
         {
-            _objBLUsr01.operation = Operation.Update;
+            _objBLUsr01.operation = EnmOperation.U;
 
             // presave
             _objBLUsr01.Presave(objDTOUsr01);
@@ -115,7 +115,6 @@ namespace ExpenseTracker.Controllers
             // invalid credential
             return Ok(_objResponse);
         }
-
         #endregion
     }
 }

@@ -49,11 +49,6 @@ namespace ExpenseTracker.DL
         {
             // Create a DataTable
             DataTable dtCre01 = new DataTable();
-            dtCre01.Columns.Add("E01f01", typeof(int));
-            dtCre01.Columns.Add("E01f03", typeof(decimal));
-            dtCre01.Columns.Add("E01f04", typeof(string));
-            dtCre01.Columns.Add("E01f05", typeof(DateTime));
-            dtCre01.Columns.Add("E01f06", typeof(DateTime)).AllowDBNull = true ;
 
             // retrieve credit from the database in form of datatable
             using (MySqlCommand command = new MySqlCommand())
@@ -72,26 +67,9 @@ namespace ExpenseTracker.DL
 
                 try
                 {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                     _mySqlConnection.Open();
-
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        // Check if there are rows to read
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                // Create a new row in the DataTable and fill it with data from the reader
-                                DataRow row = dtCre01.NewRow();
-                                row["E01f01"] = reader.GetInt32(0);
-                                row["E01f03"] = reader.GetDecimal(1);
-                                row["E01f04"] = reader.GetString(2);
-                                row["E01f05"] = reader.GetDateTime(3);
-                                row["E01f06"] = reader.IsDBNull(4) ? DBNull.Value: (object)reader.GetDateTime(4);
-                                dtCre01.Rows.Add(row);
-                            }
-                        }
-                    }
+                    adapter.Fill(dtCre01);
                 }
                 finally
                 {

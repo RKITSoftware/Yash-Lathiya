@@ -11,19 +11,6 @@ using System.Web;
 
 namespace ExpenseTracker.BL
 {
-    #region Enum
-
-    /// <summary>
-    /// Opeartions for databse
-    /// </summary>
-    public enum Operation
-    {
-        Create,
-        Update
-    }
-
-    #endregion
-
     /// <summary>
     /// consists all methods & variable which are frequently used in this project 
     /// </summary>

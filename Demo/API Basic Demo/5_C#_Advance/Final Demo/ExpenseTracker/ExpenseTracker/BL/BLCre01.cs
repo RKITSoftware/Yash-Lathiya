@@ -37,7 +37,7 @@ namespace ExpenseTracker.BL
         /// <summary>
         /// Which type of operation is performing on database 
         /// </summary>
-        public Operation operation;
+        public EnmOperation operation;
 
         #endregion
 
@@ -82,12 +82,12 @@ namespace ExpenseTracker.BL
             // set userid 
             _objCre01.E01f02 = _r01f01;
 
-            if(operation == Operation.Create)
+            if(operation == EnmOperation.C)
             {
                 // set creation time
                 _objCre01.E01f05 = DateTime.Now;
             }
-            else if (operation == Operation.Update)
+            else if (operation == EnmOperation.U)
             {
                 // set updation time
                 _objCre01.E01f06 = DateTime.Now;
@@ -100,7 +100,7 @@ namespace ExpenseTracker.BL
         /// <returns> object of response </returns>
         public Response Validate()
         {
-            if(operation == Operation.Update)
+            if(operation == EnmOperation.U)
             {
                 if (!IsIdExists(_objCre01.E01f01))
                 {
@@ -119,7 +119,7 @@ namespace ExpenseTracker.BL
         /// <returns> object of response </returns>
         public Response Save()
         {
-            if (Operation.Create == operation)
+            if (EnmOperation.C == operation)
             {
                 // add credit in databse
                 using (var db = Common.OrmContext.OpenDbConnection())
@@ -130,7 +130,7 @@ namespace ExpenseTracker.BL
                 _objResponse.SetResponse("Credit added", null);
                 return _objResponse;               
             }
-            else if(Operation.Update == operation)
+            else if(EnmOperation.U == operation)
             {
                 // update in database
                 using (var db = Common.OrmContext.OpenDbConnection())
