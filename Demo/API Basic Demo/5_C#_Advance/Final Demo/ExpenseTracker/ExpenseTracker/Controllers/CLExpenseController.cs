@@ -20,7 +20,7 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// consists BL logic of Expense Manager
         /// </summary>
-        private BLExp01 _objBLExp01;
+        private readonly BLExp01 _objBLExp01;
 
         /// <summary>
         /// Response of HTTP action method
@@ -61,8 +61,7 @@ namespace ExpenseTracker.Controllers
             // validate 
             _objResponse = _objBLExp01.Validate();
 
-
-            if (!_objResponse.IsError)
+            if (!_objResponse.HasError)
             {
                 // add
                 _objBLExp01.Save();
@@ -101,7 +100,7 @@ namespace ExpenseTracker.Controllers
             // validate 
             _objResponse = _objBLExp01.Validate();
 
-            if (!_objResponse.IsError)
+            if (!_objResponse.HasError)
             {
                 // update 
                 _objBLExp01.Save();
@@ -123,7 +122,7 @@ namespace ExpenseTracker.Controllers
             // pre delete validate 
             _objResponse = _objBLExp01.PreDeleteValidate(p01101);
 
-            if (!_objResponse.IsError)
+            if (!_objResponse.HasError)
             {
                 // delete
                 _objResponse = _objBLExp01.DeleteExp01(p01101);

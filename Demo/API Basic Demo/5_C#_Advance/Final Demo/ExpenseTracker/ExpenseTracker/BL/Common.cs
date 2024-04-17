@@ -103,7 +103,7 @@ namespace ExpenseTracker.BL
         /// <param name="dt"> data </param>
         public static void SetResponse(this Response response, bool isErrorFlag, HttpStatusCode statusCode, string message, DataTable dt)
         {
-            response.IsError = isErrorFlag;
+            response.HasError = isErrorFlag;
             response.StatusCode = statusCode;
             response.Message = message;
             response.Data = dt;

@@ -37,7 +37,7 @@ namespace ExpenseTracker.Models.DTO
         /// Password
         /// </summary>
         [Required(ErrorMessage = " password required ")]
-        [JsonProperty("r0104")]
+        [JsonProperty("r01104")]
         public string R01f05 { get; set; }
 
         #endregion

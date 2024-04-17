@@ -1,6 +1,7 @@
 ***** Expense *****
+P01F01	P01F03	P01F05	P01F06
+3	12000	Appeareals	Watch	17-04-2024 15:24:44		
+4	12000	Appeareals	Watch	17-04-2024 15:24:49		
 ***** Credit *****
-Credit Id : 119, 	 Credit Amount : 50000, 	 Description : salary by rkit,  	Credit Time : 05-04-2024 18:30:07
- Credit Id : 120, 	 Credit Amount : 50000, 	 Description : salary by XYZ,  	Credit Time : 05-04-2024 18:30:21
- Credit Id : 121, 	 Credit Amount : 50000, 	 Description : salary by XYZ,  	Credit Time : 05-04-2024 18:30:39
- 
+P01F01	P01F03	P01F05	P01F06
+3	100000	Mutual funds	17-04-2024 15:10:11		

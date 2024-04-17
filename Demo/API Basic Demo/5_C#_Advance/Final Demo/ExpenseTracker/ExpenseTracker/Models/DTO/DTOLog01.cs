@@ -9,11 +9,12 @@ namespace ExpenseTracker.Models.DTO
     public class DTOLog01
     {
         /// <summary>
-        /// userid
+        /// email id 
         /// </summary>
-        [Required(ErrorMessage = " user id required ")]
+        [Required(ErrorMessage = " email id required ")]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = " invalid email id ")]
         [JsonProperty("G01101")]
-        public int G01f01 { get; set; }
+        public string G01f01 { get; set; }
 
         /// <summary>
         /// password

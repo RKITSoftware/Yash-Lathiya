@@ -62,7 +62,7 @@ namespace ExpenseTracker.Controllers
             // validate 
             _objResponse = _objBLCre01.Validate();
 
-            if (!_objResponse.IsError)
+            if (!_objResponse.HasError)
             {
                 // add
                 _objBLCre01.Save();
@@ -101,7 +101,7 @@ namespace ExpenseTracker.Controllers
             // validate 
             _objResponse = _objBLCre01.Validate();
 
-            if (!_objResponse.IsError)
+            if (!_objResponse.HasError)
             {
                 // update 
                 _objBLCre01.Save();
@@ -122,7 +122,7 @@ namespace ExpenseTracker.Controllers
             // pre delete validate 
             _objResponse = _objBLCre01.PreDeleteValidate(e01101);
 
-            if (!_objResponse.IsError)
+            if (!_objResponse.HasError)
             {
                 // delete
                 _objResponse = _objBLCre01.DeleteCre01(e01101);

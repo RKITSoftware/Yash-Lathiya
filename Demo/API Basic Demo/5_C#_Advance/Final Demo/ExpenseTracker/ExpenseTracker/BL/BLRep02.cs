@@ -1,7 +1,13 @@
-﻿using ExpenseTracker.Models.POCO;
+﻿using ExpenseTracker.DL;
+using ExpenseTracker.Models.POCO;
 using MySql.Data.MySqlClient;
+using ServiceStack.OrmLite;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Web.Script.Serialization;
 
 namespace ExpenseTracker.BL
@@ -14,38 +20,12 @@ namespace ExpenseTracker.BL
         #region Private Members
 
         /// <summary>
-        /// MySql Connection
-        /// </summary>
-        private MySqlConnection _mySqlConnection;
-
-        /// <summary>
         /// user id retrieved from current user context
         /// </summary>
-        private int _r01f01 = Common.GetUserIdFromClaims();
+        private readonly int _r01f01 = Common.GetUserIdFromClaims();
 
         #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Default constructor assigning connection
-        /// </summary>
-        /// <exception cref="Exception"></exception>
-        public BLRep02()
-        {
-            try
-            {
-                // Get the MySqlConnection instance from the Connection class
-                _mySqlConnection = Connection.DatabaseConnection.GetMySqlConnection();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        #endregion
-
+        
         #region Public Methods
 
         /// <summary>
@@ -54,146 +34,52 @@ namespace ExpenseTracker.BL
         /// <returns> Path of file which contains this data </returns>
         public string GenerateReport()
         {
-            // list of Expense & Credit 
-            List<Exp01> lstExp01 = new List<Exp01>();
-            List<Cre01> lstCre01 = new List<Cre01>();
-
             // Report Content 
-            string reportContent = "***** Expense *****\r\n";
+            StringBuilder reportContent = new StringBuilder("***** Expense *****\r\n");
 
-            // Add expense in list & reportContent 
-            using(MySqlCommand command = new MySqlCommand())
+            DbExp01Context objDbExp01Context = new DbExp01Context();
+            DataTable dtExp01 = objDbExp01Context.GetExp01(_r01f01);
+
+            // Add Expense table headings
+            reportContent.AppendLine("P01F01\tP01F03\tP01F05\tP01F06");
+            foreach (DataRow row in dtExp01.Rows)
             {
-                command.Connection = _mySqlConnection;
-                command.CommandText = @"SELECT
-                                            p01f01,
-                                            p01f03,
-                                            p01f07,
-                                            p01f05,
-                                            p01f06
-                                        FROM 
-                                            exp01
-                                        WHERE
-                                            p01f02 = @p01f02";
-
-                command.Parameters.AddWithValue("@p01f02", _r01f01);
-
-                try
+                // Append each row's values to the reportContent StringBuilder
+                foreach (var item in row.ItemArray)
                 {
-                    _mySqlConnection.Open();
-
-                    using(MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            lstExp01.Add(new Exp01() { p01f01 = Convert.ToInt32(reader["p01f01"]),
-                                                       p01f03 = Convert.ToDecimal(reader["p01f03"]),
-                                                       p01f07 = Convert.ToDateTime(reader["p01f07"]),
-                                                       p01f05 = Convert.ToString(reader["p01f05"]),
-                                                       p01f06 = Convert.ToString(reader["p01f06"])
-                            });
-                            reportContent += $"Expense Id : {reader["p01f01"]}, \t " +
-                                             $"Amount : {reader["p01f03"]}, \t " +
-                                             $"Category : {reader["p01f05"]}, \t " +
-                                             $"Description : {reader["p01f06"]}, \t" +
-                                             $"Time : {reader["p01f07"]}, \r\n ";
-                        }
-                    }
+                    reportContent.Append(item.ToString()).Append("\t"); // Assuming tab-separated values
                 }
-                catch(Exception ex)
-                {
-                    reportContent = ex.Message;
-                }
-                finally
-                {
-                    _mySqlConnection.Close();
-                }
+                reportContent.AppendLine(); // Add a new line after each row
             }
 
-            reportContent += "***** Credit *****\r\n";
+            DbCre01Context objDbCre01Context = new DbCre01Context();
+            DataTable dtCre01 = objDbCre01Context.GetCre01(_r01f01);
 
-            // Add credit in list & reportContent 
-            using (MySqlCommand command = new MySqlCommand())
+            reportContent.AppendLine("***** Credit *****");
+            // Add Credit table headings
+            reportContent.AppendLine("P01F01\tP01F03\tP01F05\tP01F06");
+            foreach (DataRow row in dtCre01.Rows)
             {
-                command.Connection = _mySqlConnection;
-                command.CommandText = @"SELECT
-                                            e01f01,
-                                            e01f05,
-                                            e01f03,
-                                            e01f04
-                                        FROM 
-                                            cre01
-                                        WHERE
-                                            e01f02 = @p01f02";
-
-                command.Parameters.AddWithValue("@p01f02", _r01f01);
-
-                try
+                // Append each row's values to the reportContent StringBuilder
+                foreach (var item in row.ItemArray)
                 {
-                    _mySqlConnection.Open();
+                    reportContent.Append(item.ToString()).Append("\t"); // Assuming tab-separated values
+                }
+                reportContent.AppendLine(); // Add a new line after each row
+            }
 
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            lstCre01.Add(new Cre01()
-                            {
-                                e01f01 = Convert.ToInt32(reader["e01f01"]),
-                                e01f05 = Convert.ToDateTime(reader["e01f05"]),
-                                e01f03 = Convert.ToDecimal(reader["e01f03"]),
-                                e01f04 = Convert.ToString(reader["e01f04"]),
-
-                            });
-                            reportContent += $"Credit Id : {reader["e01f01"]}, \t " +
-                                             $"Credit Amount : {reader["e01f03"]}, \t " +
-                                             $"Description : {reader["e01f04"]},  \t" +
-                                             $"Credit Time : {reader["e01f05"]}\r\n ";
-                        }
-                    }
-                }
-                catch (Exception ex)
+            // Add entry in database
+            using(var db = Common.OrmContext.OpenDbConnection())
+            {
+                db.Insert<Rep02>(new Rep02()
                 {
-                    reportContent = ex.Message;
-                }
-                finally
-                {
-                    _mySqlConnection.Close();
-                }
+                    P02f02 = reportContent.ToString()
+                });
             }
 
             // Save the report content to a file
             string filePath = "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\Final Demo\\ExpenseTracker\\ExpenseTracker\\Report\\report.txt";
-            System.IO.File.WriteAllText(filePath, reportContent);
-
-            // Serialize List of objects to string
-            // Purpose  : To store that data in database ( REP01 class )
-
-            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
-            string serializedExpenseData = javaScriptSerializer.Serialize(lstExp01);
-            string serializedCreditData = javaScriptSerializer.Serialize(lstCre01);
-
-            // Combine Credit & Expense data which will be stored in database
-            string serializedReportData = serializedCreditData + serializedExpenseData;
-
-            using (MySqlCommand command = new MySqlCommand())
-            {
-                command.Connection = _mySqlConnection;
-                command.CommandText = @"INSERT INTO 
-                                            rep01 
-                                            (p01f02) 
-                                        VALUES (@p01f02)";
-                command.Parameters.AddWithValue("@p01f02", serializedReportData);
-
-                try
-                {
-                    _mySqlConnection.Open();
-                    command.ExecuteNonQuery();
-                }
-                finally
-                {
-                    _mySqlConnection.Close();
-                }
-            }
+            System.IO.File.WriteAllText(filePath, reportContent.ToString());
 
             return filePath;
         }

@@ -82,9 +82,8 @@ namespace ExpenseTracker.Security
 
             // For simplicity, let's just decode the token here
             var handler = new JwtSecurityTokenHandler();
-            var jsonToken = handler.ReadToken(token) as JwtSecurityToken;
 
-            if (jsonToken != null)
+            if (handler.ReadToken(token) is JwtSecurityToken jsonToken)
             {
                 var claims = new ClaimsIdentity(jsonToken.Claims, "jwt");
                 return new ClaimsPrincipal(claims);

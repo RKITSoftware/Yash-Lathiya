@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.BL;
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -20,7 +21,7 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// Consists BL logic of Report Manager
         /// </summary>
-        private readonly BLRep02 _objBLReportManager;
+        private readonly BLRep02 _objBLRep02;
 
         #endregion
 
@@ -31,7 +32,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         public CLReportController()
         {
-            _objBLReportManager = new BLRep02();
+            _objBLRep02 = new BLRep02();
         }
 
         #endregion
@@ -39,14 +40,14 @@ namespace ExpenseTracker.Controllers
         #region Public Methods
 
         /// <summary>
-        /// Generates Report for USer
+        /// Generates Report for User
         /// </summary>
         /// <returns> Downloads Report File </returns>
         [HttpGet]
         [Route("api/report")]
         public IHttpActionResult GenerateReport() 
         {
-            string filePath = _objBLReportManager.GenerateReport();
+            string filePath = _objBLRep02.GenerateReport();
 
             // Check if the file exists
             if (File.Exists(filePath))
@@ -62,7 +63,7 @@ namespace ExpenseTracker.Controllers
                 response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
                 {
                     // File Name = expense_report_userId.txt
-                    FileName = $"expense_report_{Static.Static.GetUserIdFromClaims()}.txt" // Set the desired file name
+                    FileName = $"expense_report_{Common.GetUserIdFromClaims()}_{DateTime.Now}.txt" // Set the desired file name
                 };
                 response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
 

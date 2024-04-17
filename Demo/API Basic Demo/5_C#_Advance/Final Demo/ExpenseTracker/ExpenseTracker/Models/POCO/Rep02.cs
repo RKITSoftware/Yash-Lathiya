@@ -22,7 +22,7 @@ namespace ExpenseTracker.Models.POCO
         /// <summary>
         /// Report Creation Time
         /// </summary>
-        public DateTime P02f03 { get; set; }
+        public DateTime P02f03 { get; set; } = DateTime.Now;
 
         #endregion
     }

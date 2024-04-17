@@ -3,7 +3,6 @@ using ExpenseTracker.Models;
 using ExpenseTracker.Models.POCO;
 using MySql.Data.MySqlClient;
 using System;
-using System.Data;
 
 namespace ExpenseTracker.DL
 {
@@ -57,36 +56,28 @@ namespace ExpenseTracker.DL
         {
             _objResponse = new Response();
 
-            // Create a DataTable to hold the generated user ID
-            DataTable dtUsr01Id = new DataTable();
-            dtUsr01Id.Columns.Add("r01f01", typeof(int));
-
             // Add user in database
             using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = _mySqlConnection;
                 command.CommandText = String.Format(@"INSERT INTO 
                                                         USR01 
-                                                            (r01f01, r01f02, r01f03, r01f04, r01f05, r01f06) 
+                                                            (r01f02, r01f03, r01f04, r01f05, r01f06) 
                                                         VALUES 
-                                                            ({0}, {1}, {2}, {3}, {4}, {5})
-                                                        SELECT
-                                                            SCOPE_IDENTITY();",
-                                        objUsr01.R01f01,
+                                                            ('{0}', '{1}', {2}, '{3}', '{4}')",
                                         objUsr01.R01f02,
                                         objUsr01.R01f03,
                                         objUsr01.R01f04,
                                         objUsr01.R01f05,
-                                        objUsr01.R01f06);
+                                        objUsr01.R01f06.ToString("yyyy-MM-dd hh-mm-ss"));
 
                 try
                 {
                     _mySqlConnection.Open();
 
-                    int r01f01 = Convert.ToInt32(command.ExecuteScalar());
-                    dtUsr01Id.Rows.Add(r01f01);
+                    command.ExecuteNonQuery();
 
-                    _objResponse.SetResponse("user added", dtUsr01Id);
+                    _objResponse.SetResponse("user added", null);
                     return _objResponse;
                 }
                 finally
@@ -110,18 +101,18 @@ namespace ExpenseTracker.DL
             {
                 command.Connection = _mySqlConnection;
                 command.CommandText = String.Format(@"UPDATE USR01 
-                                    SET r01f02 = {0}, 
-                                        r01f03 = {1}, 
+                                    SET r01f02 = '{0}', 
+                                        r01f03 = '{1}', 
                                         r01f04 = {2}, 
-                                        r01f05 = {3}, 
-                                        r01f07 = {4}
+                                        r01f05 = '{3}', 
+                                        r01f07 = '{4}'
                                     WHERE r01f01 = {5}",
                                     objUsr01.R01f02,
                                     objUsr01.R01f03,
                                     objUsr01.R01f04,
                                     objUsr01.R01f05,
-                                    objUsr01.R01f07,
-                                    objUsr01.R01f01);
+                                    objUsr01.R01f07.ToString("yyyy-MM-dd hh-mm-ss"),
+                                    Common.GetUserIdFromClaims());
 
                 try
                 {

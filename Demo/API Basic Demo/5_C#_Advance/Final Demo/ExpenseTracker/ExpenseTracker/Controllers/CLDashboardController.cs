@@ -17,7 +17,7 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// reference of Iwallet interface  
         /// </summary>
-        private IWallet _objBLDashboard;
+        private readonly IWallet _objBLDashboard;
 
         #endregion
 

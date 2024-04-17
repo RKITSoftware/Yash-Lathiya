@@ -15,17 +15,17 @@ namespace ExpenseTracker.Security
         /// <summary>
         /// AES Crypto Service Provider class implements logic of AES Algorithm
         /// </summary>
-        private AesCryptoServiceProvider _aes;
+        private readonly AesCryptoServiceProvider _aes;
         
         /// <summary>
         /// key for AES algorithm
         /// </summary>
-        private byte[] key = Encoding.UTF8.GetBytes("IamPrivateKeyofExpenseTracker123");
+        private readonly byte[] key = Encoding.UTF8.GetBytes("IamPrivateKeyofExpenseTracker123");
         
         /// <summary>
         /// initial vector for AES algorithm
         /// </summary>
-        private byte[] iv = Encoding.UTF8.GetBytes("IamInitialVector");
+        private readonly byte[] iv = Encoding.UTF8.GetBytes("IamInitialVector");
 
         #endregion
 
@@ -36,9 +36,11 @@ namespace ExpenseTracker.Security
         /// </summary>
         public AesAlgo()
         {
-            _aes = new AesCryptoServiceProvider();
-            _aes.Key = key;
-            _aes.IV = iv;
+            _aes = new AesCryptoServiceProvider
+            {
+                Key = key,
+                IV = iv
+            };
         }
 
         #endregion

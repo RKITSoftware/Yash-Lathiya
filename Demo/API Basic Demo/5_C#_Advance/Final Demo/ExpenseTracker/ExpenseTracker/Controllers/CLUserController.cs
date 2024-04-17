@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.BL;
+using ExpenseTracker.Filters;
 using ExpenseTracker.Models;
 using ExpenseTracker.Models.DTO;
 using System.Web.Http;
@@ -45,6 +46,7 @@ namespace ExpenseTracker.Controllers
         /// <param name="objDTOUsr01"> DTO Object of User </param>
         /// <returns> object of response </returns>
         [HttpPost]
+        [ValidateModel]
         [Route("api/User/Register")]
         public IHttpActionResult RegisterUser([FromBody] DTOUsr01 objDTOUsr01) 
         {
@@ -57,7 +59,7 @@ namespace ExpenseTracker.Controllers
             _objResponse = _objBLUsr01.Validate();
             if (!_objResponse.HasError)
             {
-                // update
+                // add
                 _objResponse = _objBLUsr01.Save();
             }
 
@@ -69,7 +71,9 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         /// <param name="objDTOUsr01"> DTO Object of User </param>
         /// <returns> object of response </returns>
-        [HttpPost]
+        [Authorize]
+        [HttpPut]
+        [ValidateModel]
         [Route("api/User/Update")]
         public IHttpActionResult UpdateUser([FromBody] DTOUsr01 objDTOUsr01)
         {
@@ -94,6 +98,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
+        [ValidateModel]
         [Route("api/User/Login")]
         public IHttpActionResult LoginUser([FromBody] DTOLog01 objDTOLog01) 
         {

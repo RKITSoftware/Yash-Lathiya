@@ -71,13 +71,13 @@ namespace ExpenseTracker.BL
         {
             _objUsr01 = objDTOUsr01.ConvertModel<Usr01>();
 
-            if(operation == Operation.Create)
-            {
-                // Encrypt the password by using Aes Algorithm
-                // Encrypted password will be stored in database
-                AesAlgo aes = new AesAlgo();
-                _objUsr01.R01f05 = aes.Encrypt(_objUsr01.R01f05);
+            // Encrypt the password by using Aes Algorithm
+            // Encrypted password will be stored in database
+            AesAlgo aes = new AesAlgo();
+            _objUsr01.R01f05 = aes.Encrypt(_objUsr01.R01f05);
 
+            if (operation == Operation.Create)
+            {
                 // creation time
                 _objUsr01.R01f06 = DateTime.Now;
             }
@@ -104,35 +104,53 @@ namespace ExpenseTracker.BL
                     _objResponse.SetResponse(true, HttpStatusCode.BadRequest, " username already exists ", null);
                     return _objResponse;
                 }
-            }
 
-            if(operation == Operation.Update)
-            {
-                // unique username
-                if (!IsUsernameExist(_objUsr01.R01f02))
+                // unique email id
+                if (IsEmailExist(_objUsr01.R01f03))
                 {
-                    _objResponse.SetResponse(true, HttpStatusCode.BadRequest, " username dont exists ", null);
+                    _objResponse.SetResponse(true, HttpStatusCode.BadRequest, " email-id already exists ", null);
+                    return _objResponse;
+                }
+
+                // unique mobile number
+                if (IsMobileExist(_objUsr01.R01f04))
+                {
+                    _objResponse.SetResponse(true, HttpStatusCode.BadRequest, " mobile number already exists ", null);
                     return _objResponse;
                 }
             }
 
-            // unique email id
-            if (IsEmailExist(_objUsr01.R01f03))
+            if(operation == Operation.Update)
             {
-                _objResponse.SetResponse(true, HttpStatusCode.BadRequest, " email-id already exists ", null);
-                return _objResponse;
-            }
+                // unique username ( check all records except current one )
+                if (IsUsernameExist(_objUsr01.R01f02, Common.GetUserIdFromClaims()))
+                {
+                    _objResponse.SetResponse(true, HttpStatusCode.BadRequest, " username already exists in the database ", null);
+                    return _objResponse;
+                }
 
-            // unique mobile number
-            if (IsMobileExist(_objUsr01.R01f04))
-            {
-                _objResponse.SetResponse(true, HttpStatusCode.BadRequest, " mobile number already exists ", null);
-                return _objResponse;
+                // unique email id ( check all records except current one )
+                if (IsEmailExist(_objUsr01.R01f03, Common.GetUserIdFromClaims()))
+                {
+                    _objResponse.SetResponse(true, HttpStatusCode.BadRequest, " email-id already exists in the database ", null);
+                    return _objResponse;
+                }
+
+                // unique mobile number ( check all records except current one )
+                if (IsMobileExist(_objUsr01.R01f04, Common.GetUserIdFromClaims()))
+                {
+                    _objResponse.SetResponse(true, HttpStatusCode.BadRequest, " mobile number already exists in the database ", null);
+                    return _objResponse;
+                }
             }
 
             return _objResponse;
         }
-
+        
+        /// <summary>
+        /// Save record in the database 
+        /// </summary>
+        /// <returns> object of response </returns>
         public Response Save()
         {
             _objResponse = new Response();
@@ -141,16 +159,18 @@ namespace ExpenseTracker.BL
             {
                 _objResponse = _objDbUsr01Context.AddUsr01(_objUsr01);
 
+                string message = $"username : {_objUsr01.R01f02} \r\n mobile : {_objUsr01.R01f04}";
                 // send mail to notify user id
-                SendRegistrationEmail(Convert.ToInt32(_objResponse.Data.Rows[0]["r01f01"]), _objUsr01.R01f03);
+                SendRegistrationEmail(message, _objUsr01.R01f03);
 
+                _objResponse.SetResponse(" user added ", null);
                 return _objResponse;
             }
             else if(operation == Operation.Update)
             {
                 _objDbUsr01Context.UpdateUsr01(_objUsr01);
 
-                _objResponse.SetResponse(" user added ", null);
+                _objResponse.SetResponse(" user updated ", null);
                 return _objResponse;
             }
 
@@ -164,7 +184,7 @@ namespace ExpenseTracker.BL
         /// <param name="r01f05"> Password </param>
         /// <returns> true -> if credential is correct
         ///           false -> if credential is incorrect </returns>
-        public Response LoginUser(int r01f01,  string r01f05)
+        public Response LoginUser(string r01f03,  string r01f05)
         {
             bool isAuthenticated;
             _objResponse = new Response();
@@ -174,12 +194,13 @@ namespace ExpenseTracker.BL
             
             using(var db = Common.OrmContext.OpenDbConnection())
             {
-                isAuthenticated =  db.Exists<Usr01>(x => x.R01f01 == r01f01 && x.R01f05 == r01f05);
+                isAuthenticated =  db.Exists<Usr01>(x => x.R01f03 == r01f03 && x.R01f05 == r01f05);
             }
 
             if (!isAuthenticated)
             {
                 _objResponse.SetResponse(true, HttpStatusCode.Unauthorized, " invalid credential ", null);
+                return _objResponse;
             }
 
             _objResponse.SetResponse("login successful", null);
@@ -190,11 +211,19 @@ namespace ExpenseTracker.BL
         /// Generate Jwt token 
         /// Also add userId as claim 
         /// </summary>
-        /// <param name="r01f01"> User Id </param>
+        /// <param name="r01f03"> email id </param>
         /// <returns> Jwt token </returns>
-        public Response GenerateJwtToken(int r01f01)
+        public Response GenerateJwtToken(string r01f03)
         {
             _objResponse = new Response();
+
+            int r01f01;
+
+            using(var db = Common.OrmContext.OpenDbConnection())
+            {
+                Usr01 objUsr01 = db.Single<Usr01>(usr => usr.R01f03 == r01f03);
+                r01f01 = objUsr01.R01f01;
+            }
 
             // Create a DataTable to hold the generated jwt token
             DataTable dtUsr01Token = new DataTable();
@@ -244,6 +273,20 @@ namespace ExpenseTracker.BL
         }
 
         /// <summary>
+        /// Is username exists in database or not except current record of user        
+        /// </summary>
+        /// <param name="r01f02"> username </param>
+        /// <param name="r01f02"> userid </param>
+        /// <returns></returns>
+        private bool IsUsernameExist(string r01f02, int r01f01)
+        {
+            using (var db = Common.OrmContext.OpenDbConnection())
+            {
+                return db.Exists<Usr01>(usr => usr.R01f02 == r01f02 && usr.R01f01 != r01f01);
+            }
+        }
+
+        /// <summary>
         /// Is email id exists in database or not         
         /// </summary>
         /// <param name="r01f03"> email id </param>
@@ -253,6 +296,20 @@ namespace ExpenseTracker.BL
             using (var db = Common.OrmContext.OpenDbConnection())
             {
                 return db.Exists<Usr01>(usr => usr.R01f03 == r01f03);
+            }
+        }
+
+        /// <summary>
+        /// Is email id exists in database or not except current record of user        
+        /// </summary>
+        /// <param name="r01f03"> email id </param>
+        /// <param name="r01f01"> user id </param>
+        /// <returns></returns>
+        private bool IsEmailExist(string r01f03, int r01f01)
+        {
+            using (var db = Common.OrmContext.OpenDbConnection())
+            {
+                return db.Exists<Usr01>(usr => usr.R01f03 == r01f03 && usr.R01f01 != r01f01);
             }
         }
 
@@ -270,11 +327,25 @@ namespace ExpenseTracker.BL
         }
 
         /// <summary>
+        /// Is mobile number exists in database or not except current record of user               
+        /// </summary>
+        /// <param name="r01f04"> mobile number </param>
+        /// <param name="r01f01"> user id </param>
+        /// <returns></returns>
+        private bool IsMobileExist(long r01f04, int r01f01)
+        {
+            using (var db = Common.OrmContext.OpenDbConnection())
+            {
+                return db.Exists<Usr01>(usr => usr.R01f04 == r01f04 && usr.R01f01 != r01f01);
+            }
+        }
+
+        /// <summary>
         /// Sending userId on registered email
         /// </summary>
         /// <param name="userId"> In database (r01f01)</param>
         /// <param name="userEmail">In database (r01f03)</param>
-        private void SendRegistrationEmail(int userId, string userEmail)
+        private void SendRegistrationEmail(string message, string userEmail)
         {
             try
             {
@@ -285,7 +356,7 @@ namespace ExpenseTracker.BL
                 MailMessage mail = new MailMessage(senderEmail, recipientEmail)
                 {
                     Subject = "Welcome to Expense Tracker !!",
-                    Body = $"Thank you for registering! \r\n Your user ID is: {userId}"
+                    Body = $"Thank you for registering! \r\n {message}"
                 };
 
                 SmtpClient smtpClient = new SmtpClient("smtp-mail.outlook.com")

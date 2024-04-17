@@ -29,6 +29,9 @@ namespace ExpenseTracker.Models.POCO
         /// <summary>
         /// Date & Time of Expense 
         /// </summary>
+        [IgnoreOnInsert]
+        [IgnoreOnSelect]
+        [IgnoreOnUpdate]
         public DateTime P01f04 { get; set; }
 
         /// <summary>

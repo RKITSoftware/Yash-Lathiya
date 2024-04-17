@@ -18,7 +18,7 @@ namespace ExpenseTracker.BL
         /// <summary>
         /// user id retrieved from current user context
         /// </summary>
-        private int _r01f01 = Common.GetUserIdFromClaims();
+        private readonly int _r01f01 = Common.GetUserIdFromClaims();
 
         /// <summary>
         /// POCO Moodel
@@ -28,7 +28,7 @@ namespace ExpenseTracker.BL
         /// <summary>
         /// object of response to HTTP Action Result 
         /// </summary>
-        private Response _objResponse;
+        private readonly Response _objResponse;
 
         #endregion
 
@@ -38,6 +38,18 @@ namespace ExpenseTracker.BL
         /// Type of operation
         /// </summary>
         public Operation operation;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// initializes object of response 
+        /// </summary>
+        public BLExp01()
+        {
+            _objResponse = new Response();
+        }
 
         #endregion
 
@@ -171,7 +183,7 @@ namespace ExpenseTracker.BL
             using (var db = Common.OrmContext.OpenDbConnection())
             {
                 // Check if the user is authorized to delete the expense
-                db.Delete<Cre01>(x => x.E01f01 == p01f01);
+                db.Delete<Exp01>(x => x.P01f01 == p01f01);
             }
 
             _objResponse.SetResponse(System.Net.HttpStatusCode.OK, "expense deleted", null);
