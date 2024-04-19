@@ -28,7 +28,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         public CLDashboardController()
         {
-            _objBLDashboard = new BLDashboard();
+            _objBLDashboard = new BLDashboardHandler();
         }
 
         #endregion

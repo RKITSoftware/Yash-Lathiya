@@ -9,7 +9,7 @@ namespace ExpenseTracker.BL
     /// <summary>
     /// Dashboard Manager inherits abstract class wallet & implements all its methods 
     /// </summary>
-    public class BLDashboard : IWallet
+    public class BLDashboardHandler : IWallet
     {
         #region Private Members
 
@@ -25,7 +25,7 @@ namespace ExpenseTracker.BL
         /// <summary>
         /// Initializes object of response 
         /// </summary>
-        public BLDashboard()
+        public BLDashboardHandler()
         {
             _objResponse = new Response();
         }

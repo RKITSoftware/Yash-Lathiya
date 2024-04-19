@@ -19,7 +19,7 @@ namespace ExpenseTracker.BL
     /// <summary>
     /// Consist Buisness Logic of all methods related to User
     /// </summary>
-    public class BLUsr01
+    public class BLUsr01Handler
     {
         #region Private Members
 
@@ -54,7 +54,7 @@ namespace ExpenseTracker.BL
         /// Get the MySqlConnection instance from the Connection class
         /// </summary>
         /// <exception cref="Exception"> If there is error in database connection process </exception>
-        public BLUsr01()
+        public BLUsr01Handler()
         {
             _objDbUsr01Context = new DbUsr01Context();
         }

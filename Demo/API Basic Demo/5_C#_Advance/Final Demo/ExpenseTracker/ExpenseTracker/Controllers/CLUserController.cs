@@ -18,7 +18,7 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// BL logic for User Manager 
         /// </summary>
-        private readonly BLUsr01 _objBLUsr01;
+        private readonly BLUsr01Handler _objBLUsr01;
 
         /// <summary>
         /// object of response
@@ -33,7 +33,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         public CLUserController()
         {
-             _objBLUsr01 = new BLUsr01();
+             _objBLUsr01 = new BLUsr01Handler();
         }
 
         #endregion

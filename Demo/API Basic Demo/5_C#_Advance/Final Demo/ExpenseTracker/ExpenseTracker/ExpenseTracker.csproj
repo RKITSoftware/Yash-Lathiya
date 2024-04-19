@@ -272,11 +272,11 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BL\BLCre01.cs" />
-    <Compile Include="BL\BLDashboard.cs" />
-    <Compile Include="BL\BLExp01.cs" />
-    <Compile Include="BL\BLRep02.cs" />
-    <Compile Include="BL\BLUsr01.cs" />
+    <Compile Include="BL\BLCre01Handler.cs" />
+    <Compile Include="BL\BLDashboardHandler.cs" />
+    <Compile Include="BL\BLExp01Handler.cs" />
+    <Compile Include="BL\BLRep02Handler.cs" />
+    <Compile Include="BL\BLUsr01Handler.cs" />
     <Compile Include="BL\Common.cs" />
     <Compile Include="BL\Enums.cs" />
     <Compile Include="BL\IWallet.cs" />

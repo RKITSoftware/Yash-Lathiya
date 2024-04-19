@@ -11,7 +11,7 @@ namespace ExpenseTracker.BL
     /// <summary>
     /// Consist Buisness Logic of all methods related to Expense
     /// </summary>
-    public class BLExp01
+    public class BLExp01Handler
     {
         #region Private Members
     
@@ -46,7 +46,7 @@ namespace ExpenseTracker.BL
         /// <summary>
         /// initializes object of response 
         /// </summary>
-        public BLExp01()
+        public BLExp01Handler()
         {
             _objResponse = new Response();
         }

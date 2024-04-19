@@ -11,7 +11,7 @@ namespace ExpenseTracker.BL
     /// <summary>
     /// CreditManager class performs CRUD operation with Cre01 class by using ORM ( CreditService )
     /// </summary>
-    public class BLCre01
+    public class BLCre01Handler
     {
         #region Private Members
 
@@ -46,7 +46,7 @@ namespace ExpenseTracker.BL
         /// <summary>
         /// Initializes necessary memebers for BL of Cre01
         /// </summary>
-        public BLCre01()
+        public BLCre01Handler()
         {
             _objResponse = new Response();
         }

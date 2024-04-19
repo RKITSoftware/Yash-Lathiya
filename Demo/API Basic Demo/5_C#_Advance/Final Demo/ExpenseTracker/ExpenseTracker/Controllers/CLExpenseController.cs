@@ -20,7 +20,7 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// consists BL logic of Expense Manager
         /// </summary>
-        private readonly BLExp01 _objBLExp01;
+        private readonly BLExp01Handler _objBLExp01;
 
         /// <summary>
         /// Response of HTTP action method
@@ -36,7 +36,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         public CLExpenseController()
         {
-            _objBLExp01 = new BLExp01();
+            _objBLExp01 = new BLExp01Handler();
         }
 
         #endregion

@@ -15,7 +15,7 @@ namespace ExpenseTracker.BL
     /// <summary>
     /// Consist Buisness Logic of all methods related to Report
     /// </summary>
-    public class BLRep02
+    public class BLRep02Handler
     {
         #region Private Members
 

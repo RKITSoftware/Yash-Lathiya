@@ -20,7 +20,7 @@ namespace ExpenseTracker.Controllers
         /// <summary>
         /// Reference of credit manager
         /// </summary>
-        private readonly BLCre01 _objBLCre01;
+        private readonly BLCre01Handler _objBLCre01;
 
         /// <summary>
         /// Response object of action method
@@ -36,7 +36,7 @@ namespace ExpenseTracker.Controllers
         /// </summary>
         public CLCreditController()
         {
-            _objBLCre01 = new BLCre01();
+            _objBLCre01 = new BLCre01Handler();
         }
 
         #endregion
