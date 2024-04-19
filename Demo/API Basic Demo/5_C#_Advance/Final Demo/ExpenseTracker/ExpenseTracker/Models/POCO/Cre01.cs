@@ -14,6 +14,7 @@ namespace ExpenseTracker.Models.POCO
         /// <summary>
         /// Credit Id
         /// </summary>
+        [PrimaryKey]
         public int E01f01 { get; set; }
 
         /// <summary>

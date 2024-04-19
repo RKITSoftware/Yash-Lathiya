@@ -6,6 +6,7 @@ namespace ExpenseTracker.Models.POCO
     /// <summary>
     /// Model of User 
     /// </summary>
+    [Alias("Usr01")]
     public class Usr01
     {
         #region Public Members
@@ -13,6 +14,7 @@ namespace ExpenseTracker.Models.POCO
         /// <summary>
         /// User Id
         /// </summary>
+        [PrimaryKey]
         public int R01f01 { get; set; }
 
         /// <summary>
