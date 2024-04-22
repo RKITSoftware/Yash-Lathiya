@@ -11,7 +11,7 @@
 
         #endregion
 
-        #region Public Members
+        #region Constructor
 
         /// <summary>
         /// Generates cuurent date time 
@@ -20,6 +20,8 @@
         {
             _dateTime = System.DateTime.Now.ToString();
         }
+
+        #region Public Methods
 
         /// <summary>
         /// provodes generated dateTime

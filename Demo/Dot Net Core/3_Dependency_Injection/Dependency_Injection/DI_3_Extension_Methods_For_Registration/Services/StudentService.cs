@@ -8,12 +8,15 @@ namespace DI_3_Extension_Methods_For_Registration.Services
     public class StudentService : IStudentService
     {
         #region Private Members
-
+        
+        /// <summary>
+        /// List of students
+        /// </summary>
         private List<Stu01> lstStu01;
 
         #endregion
 
-        #region Public Members
+        #region Constructor
 
         /// <summary>
         /// Add students in list
@@ -24,6 +27,10 @@ namespace DI_3_Extension_Methods_For_Registration.Services
             lstStu01.Add(new Stu01() { u01f01 = 1001, u02f01 = "Sachin Tendulkar"});
             lstStu01.Add(new Stu01() { u01f01 = 1002, u02f01 = "Mahendra Singh Dhoni" });
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Get all students from list

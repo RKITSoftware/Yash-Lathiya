@@ -13,12 +13,15 @@ namespace DI_2_Understanding_Lifetime.Controllers
     public class CLDate : ControllerBase
     {
         #region Private Members
-
+        
+        /// <summary>
+        /// refere to IDateTime interface
+        /// </summary>
         private readonly IDateTime _date;
 
         #endregion
 
-        #region Public Members
+        #region Constructor
 
         /// <summary>
         /// added dependency of service IDateTime
@@ -28,6 +31,10 @@ namespace DI_2_Understanding_Lifetime.Controllers
         { 
             _date = date;
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Which will compare both the date from middleware & from this controller 

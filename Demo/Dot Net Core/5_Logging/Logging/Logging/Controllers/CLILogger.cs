@@ -10,12 +10,15 @@ namespace Logging.Controllers
     public class CLILogger : ControllerBase
     {
         #region Private Members 
-
+        
+        /// <summary>
+        /// Refer to ILogger
+        /// </summary>
         private readonly ILogger<CLILogger> _logger;
 
         #endregion
 
-        #region Public Members
+        #region Constructor
 
         /// <summary>
         /// Constructor injection of ILogger<T>
@@ -25,6 +28,10 @@ namespace Logging.Controllers
         {
             _logger = logger;
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Log information into console 

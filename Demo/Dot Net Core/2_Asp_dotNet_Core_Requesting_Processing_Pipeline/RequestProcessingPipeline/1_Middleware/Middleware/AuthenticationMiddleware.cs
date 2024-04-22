@@ -10,7 +10,16 @@ namespace _1_Middleware.Middleware
     /// </summary>
     public class AuthenticationMiddleware
     {
+        #region Private Members
+
+        /// <summary>
+        /// Request delegete processing HTTP request
+        /// </summary>
         private readonly RequestDelegate _next;
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Calls constuctor of chain of middleware
@@ -78,5 +87,7 @@ namespace _1_Middleware.Middleware
                 await _next(context);
             }
         }
+
+        #endregion
     }
 }

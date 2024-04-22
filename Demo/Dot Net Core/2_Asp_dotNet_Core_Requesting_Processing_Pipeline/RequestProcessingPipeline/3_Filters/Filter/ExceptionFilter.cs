@@ -8,6 +8,8 @@ namespace _3_Filters.Filter
     /// </summary>
     public class ExceptionFilter : IExceptionFilter
     {
+        #region Public Methods
+
         /// <summary>
         /// When execption occur, it will throw an exeption according to here customized
         /// </summary>
@@ -30,5 +32,7 @@ namespace _3_Filters.Filter
             // Mark the exception as handled
             context.ExceptionHandled = true;
         }
+
+        #endregion
     }
 }

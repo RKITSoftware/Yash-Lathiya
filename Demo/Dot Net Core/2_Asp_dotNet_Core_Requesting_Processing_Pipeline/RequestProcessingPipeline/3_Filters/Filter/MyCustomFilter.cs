@@ -7,7 +7,16 @@ namespace _3_Filters.Filter
     /// </summary>
     public class MyCustomFilter : IActionFilter
     {
+        #region Private Members
+
+        /// <summary>
+        /// ILogger for MyCustomFilter
+        /// </summary>
         private readonly ILogger<MyCustomFilter> _logger;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// constructor -- initializes logger
@@ -17,6 +26,10 @@ namespace _3_Filters.Filter
         {
             _logger = logger;
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// on filter execution
@@ -41,5 +54,7 @@ namespace _3_Filters.Filter
             Console.WriteLine("Action is executed");
             // Your custom logic after the action method executes
         }
+
+        #endregion
     }
 }

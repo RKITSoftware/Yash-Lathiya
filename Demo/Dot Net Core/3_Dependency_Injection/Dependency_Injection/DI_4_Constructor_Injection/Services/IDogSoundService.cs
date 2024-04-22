@@ -5,7 +5,7 @@
     /// </summary>
     public interface IDogSoundService
     {
-        #region Abstract Methods
+        #region Public Methods
 
         /// <summary>
         /// Provides Dog Sound

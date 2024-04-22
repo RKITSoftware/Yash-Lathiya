@@ -8,7 +8,16 @@ namespace _3_Filters.Filter
     /// </summary>
     public class AsyncStopwatchFilter : IAsyncActionFilter
     {
+        #region Private Members
+
+        /// <summary>
+        /// Measures time
+        /// </summary>
         private readonly Stopwatch _stopwatch;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Initialized stopwatch
@@ -17,6 +26,10 @@ namespace _3_Filters.Filter
         {
             _stopwatch = new Stopwatch();
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// start stopwatch at pre-execution time &
@@ -47,5 +60,7 @@ namespace _3_Filters.Filter
 
             Console.WriteLine("Async Stopwatch filter executed");
         }
+
+        #endregion
     }
 }

@@ -12,12 +12,14 @@ namespace DI_4_Constructor_Injection.Controllers
     {
         #region Private Members
 
-        // dependency over IAnimalSoundService interface
+        /// <summary>
+        /// dependency over IAnimalSoundService interface
+        /// </summary>
         private IAnimalSoundService _animalSoundService;
 
         #endregion
 
-        #region Public Members 
+        #region Constructor 
 
         /// <summary>
         /// constructor injection
@@ -27,6 +29,10 @@ namespace DI_4_Constructor_Injection.Controllers
         {
             _animalSoundService = animalSoundService;
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Extracts content by using different constuctor injection approaches

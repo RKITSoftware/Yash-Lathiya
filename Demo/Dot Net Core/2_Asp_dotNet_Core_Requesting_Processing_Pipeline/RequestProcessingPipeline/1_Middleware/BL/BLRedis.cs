@@ -7,8 +7,21 @@ namespace _1_Middleware.BL
     /// </summary>
     public class BLRedis
     {
+        #region Private Members
+
+        /// <summary>
+        /// Redis Connection
+        /// </summary>
         private readonly ConnectionMultiplexer _redis;
+
+        /// <summary>
+        /// Redis Database
+        /// </summary>
         private readonly IDatabase _db;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Connection Establishment with Redis 
@@ -16,11 +29,14 @@ namespace _1_Middleware.BL
         public BLRedis()
         {
             // Initialize the ConnectionMultiplexer in the constructor
-
             // Cloud Redis
             _redis = ConnectionMultiplexer.Connect("redis-16091.c330.asia-south1-1.gce.cloud.redislabs.com:16091,password=WPtUQqvPD4D3cPVzQyuKUEECVYnGSCPP");
             _db = _redis.GetDatabase();
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Add value to the Redis cache
@@ -53,5 +69,7 @@ namespace _1_Middleware.BL
                 _db.KeyDelete(key);
             }
         }
+
+        #endregion
     }
 }

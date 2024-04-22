@@ -1,5 +1,4 @@
 ﻿using DI_3_Extension_Methods_For_Registration.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DI_3_Extension_Methods_For_Registration.Controllers
@@ -12,12 +11,15 @@ namespace DI_3_Extension_Methods_For_Registration.Controllers
     public class CLTest : ControllerBase
     {
         #region Private Members
-
+        
+        /// <summary>
+        /// Refer to IstudentService interface
+        /// </summary>
         private readonly IStudentService _studentService;
 
         #endregion
 
-        #region Public Members
+        #region Constructor
         
         /// <summary>
         /// reference to IStudentService Interface 
@@ -27,6 +29,8 @@ namespace DI_3_Extension_Methods_For_Registration.Controllers
         {
             _studentService = studentService;
         }
+
+        #region Public Methods 
 
         /// <summary>
         /// Get all students from interface implementation 

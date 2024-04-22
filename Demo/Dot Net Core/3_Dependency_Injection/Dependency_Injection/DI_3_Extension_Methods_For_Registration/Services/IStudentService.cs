@@ -7,8 +7,12 @@ namespace DI_3_Extension_Methods_For_Registration.Services
     /// </summary>
     public interface IStudentService
     {
-        #region Abstract Methods 
+        #region Public Methods 
 
+        /// <summary>
+        /// Method which returns List of students 
+        /// </summary>
+        /// <returns> list of students </returns>
         public List<Stu01> GetStudents();
 
         #endregion

@@ -5,7 +5,7 @@
     /// </summary>
     public interface IDateTime
     {
-        #region Abstract Methods 
+        #region Public Methods
 
         /// <summary>
         /// Get Date & Time

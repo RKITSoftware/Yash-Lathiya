@@ -7,10 +7,14 @@
     {
         #region Public Members
 
-        // Enrollement Id
+        /// <summary>
+        /// Enrollement Id
+        /// </summary>
         public int u01f01 { get; set; }
 
-        // Student Name
+        /// <summary>
+        /// Student Name
+        /// </summary>
         public string u02f01 { get; set; }
 
         #endregion

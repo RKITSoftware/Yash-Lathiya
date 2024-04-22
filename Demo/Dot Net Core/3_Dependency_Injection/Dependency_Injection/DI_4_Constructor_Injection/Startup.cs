@@ -6,7 +6,9 @@ namespace DI_4_Constructor_Injection
     {
         #region Private Members 
 
-        // configuration interface
+        /// <summary>
+        /// configuration interface
+        /// </summary>
         private readonly IConfiguration _config;
 
         #endregion

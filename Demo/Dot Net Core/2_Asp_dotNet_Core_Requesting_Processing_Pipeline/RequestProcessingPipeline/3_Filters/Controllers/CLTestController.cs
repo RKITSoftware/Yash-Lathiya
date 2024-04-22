@@ -10,11 +10,20 @@ namespace _3_Filters.Controllers
     [ApiController]
     public class CLTestController : ControllerBase
     {
-        // To check when controller is initialized
+        #region Constructor
+
+        /// <summary>
+        /// To check when controller is initialized
+        /// </summary>
         public CLTestController()
         {
             Console.WriteLine("Test Controller is initialized");
         }
+
+        #endregion
+
+        #region Public Methods
+
         /// <summary>
         /// Executes custom filter here 
         /// </summary>
@@ -80,6 +89,8 @@ namespace _3_Filters.Controllers
         {
             return Ok("Execution of async filter is printed in console");
         }
+
+        #endregion
     }
 
 }

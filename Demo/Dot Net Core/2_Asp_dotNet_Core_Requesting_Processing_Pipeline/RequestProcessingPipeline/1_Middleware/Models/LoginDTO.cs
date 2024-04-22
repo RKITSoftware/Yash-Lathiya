@@ -5,6 +5,8 @@
     /// </summary>
     public class LoginDTO
     {
+        #region Public Members
+
         /// <summary>
         /// Email Id
         /// </summary>
@@ -14,5 +16,7 @@
         /// Password
         /// </summary>
         public string? Password { get; set; }
+
+        #endregion
     }
 }

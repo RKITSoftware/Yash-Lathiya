@@ -8,12 +8,15 @@ namespace DI_4_Constructor_Injection.Services
     public class AnimalSoundService : IAnimalSoundService
     {
         #region Private Members
-
+        
+        /// <summary>
+        /// List of animal sounds
+        /// </summary>
         private readonly List<string> lstAnimalSounds;
 
         #endregion
 
-        #region Public Members 
+        #region Constructor
 
         /// <summary>
         /// Used different constructor injection approaches
@@ -32,6 +35,10 @@ namespace DI_4_Constructor_Injection.Services
                 sheepSound
             };
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// get list of all animal sound 

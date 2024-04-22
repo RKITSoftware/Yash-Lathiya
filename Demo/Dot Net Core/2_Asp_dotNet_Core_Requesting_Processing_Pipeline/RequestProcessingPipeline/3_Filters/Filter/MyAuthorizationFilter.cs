@@ -10,6 +10,8 @@ namespace _3_Filters.Filter
     /// </summary>
     public class MyAuthorizationFilter : IAuthorizationFilter
     {
+        #region Public Methods
+
         /// <summary>
         /// checks jwt has authorized claim or not
         /// </summary>
@@ -30,6 +32,10 @@ namespace _3_Filters.Filter
             // If authorization fails, return forbidden status code
             // Otherwise, do nothing and let the request proceed
         }
+
+        #endregion
+
+        #region Private Members
 
         /// <summary>
         /// reads jwt token and check jwt claims
@@ -66,5 +72,7 @@ namespace _3_Filters.Filter
                 return false;
             }
         }
+
+        #endregion
     }
 }

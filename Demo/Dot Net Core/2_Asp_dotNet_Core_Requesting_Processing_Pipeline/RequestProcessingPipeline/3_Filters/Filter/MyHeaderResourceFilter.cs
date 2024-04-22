@@ -8,7 +8,16 @@ namespace _3_Filters.Filter
     /// </summary>
     public class MyHeaderResourceFilter : Attribute, IResourceFilter
     {
+        #region Private Members
+
+        /// <summary>
+        /// Request header name
+        /// </summary>
         private readonly string _headerName;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// initializes filter name
@@ -18,6 +27,10 @@ namespace _3_Filters.Filter
         {
             _headerName = headerName;
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// check that header is present in request or not 
@@ -41,5 +54,8 @@ namespace _3_Filters.Filter
         {
             // No action needed after the resource is executed
         }
+
+        #endregion
+
     }
 }

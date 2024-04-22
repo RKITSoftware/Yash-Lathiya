@@ -7,8 +7,21 @@ namespace _3_Filters.Filter
     /// </summary>
     public class MyResponseHeaderFilter : ActionFilterAttribute
     {
+        #region Private Members
+
+        /// <summary>
+        /// Response header name
+        /// </summary>
         private readonly string _name;
+
+        /// <summary>
+        /// Response header value
+        /// </summary>
         private readonly string _value;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// to accept parameters for header name and value
@@ -21,6 +34,10 @@ namespace _3_Filters.Filter
             _value = value;
         }
 
+        #endregion
+
+        #region Public Methods
+
         /// <summary>
         /// Override the OnResultExecuting method to add the header to the response
         /// </summary>
@@ -31,5 +48,7 @@ namespace _3_Filters.Filter
             context.HttpContext.Response.Headers.Add(_name, _value);
             base.OnResultExecuting(context);
         }
+
+        #endregion
     }
 }

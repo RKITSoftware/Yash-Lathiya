@@ -3,6 +3,8 @@ namespace _2_Routing
 {
     public class Startup
     {
+        #region Public Methods
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -58,5 +60,6 @@ namespace _2_Routing
             });
             
         }
+        #endregion
     }
 }

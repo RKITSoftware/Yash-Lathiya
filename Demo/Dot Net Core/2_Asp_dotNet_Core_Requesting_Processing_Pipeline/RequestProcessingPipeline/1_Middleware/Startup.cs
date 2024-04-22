@@ -4,6 +4,7 @@ namespace _1_Middleware
 {
     public class Startup
     {
+        #region Public Methods
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -37,5 +38,7 @@ namespace _1_Middleware
             });
 
         }
+
+        #endregion
     }
 }

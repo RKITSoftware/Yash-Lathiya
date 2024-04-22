@@ -8,13 +8,20 @@ namespace DI_2_Understanding_Lifetime.Middleware
     public class DateCustomMiddleware
     {
         #region Private Members
-
+        
+        /// <summary>
+        /// Delegate which processes request 
+        /// </summary>
         private readonly RequestDelegate _next;
+
+        /// <summary>
+        /// refer to IDateTime interface 
+        /// </summary>
         private readonly IDateTime _dateTime;
 
         #endregion
 
-        #region Public Members
+        #region Constructor
 
         /// <summary>
         /// creating instance of request delegate & interface
@@ -26,6 +33,10 @@ namespace DI_2_Understanding_Lifetime.Middleware
             _next = next;
             _dateTime = dateTime;
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Implementation of Async Filter

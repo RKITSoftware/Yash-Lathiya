@@ -7,7 +7,7 @@ namespace Dependency_Injection.Interfaces
     /// </summary>
     public interface IProductService
     {
-        #region Abstract Methods
+        #region Public Methods
 
         /// <summary>
         /// Add product 

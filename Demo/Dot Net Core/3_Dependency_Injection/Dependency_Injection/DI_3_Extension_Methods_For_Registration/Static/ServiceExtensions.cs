@@ -8,7 +8,7 @@ namespace DI_3_Extension_Methods_For_Registration.Static
     /// </summary>
     public static class ServiceExtensions
     {
-        #region Static Methods
+        #region Public Methods 
 
         /// <summary>
         /// extension methos which register student service in DI container 

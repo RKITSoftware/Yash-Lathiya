@@ -13,12 +13,14 @@ namespace Dependency_Injection.Controllers
     {
         #region Private Members
 
-        // interface of product service 
+        /// <summary>
+        /// interface of product service 
+        /// </summary>
         private readonly IProductService _productService;
 
         #endregion
 
-        #region Public Members
+        #region Constructor
 
         /// <summary>
         /// Added dependency of IProductService
@@ -28,6 +30,10 @@ namespace Dependency_Injection.Controllers
         {
             _productService = productService;
         }
+
+        #endregion
+
+        #region Public Members
 
         /// <summary>
         /// To get all products 

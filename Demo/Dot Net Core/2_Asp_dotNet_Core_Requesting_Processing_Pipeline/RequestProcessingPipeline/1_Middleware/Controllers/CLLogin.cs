@@ -11,6 +11,8 @@ namespace _1_Middleware.Controllers
     [ApiController]
     public class CLLogin : ControllerBase
     {
+        #region Public Methods
+
         /// <summary>
         /// Find userid from redis cache
         /// </summary>
@@ -42,5 +44,7 @@ namespace _1_Middleware.Controllers
         {
             return Ok("Login Successfull ");
         }
+
+        #endregion
     }
 }

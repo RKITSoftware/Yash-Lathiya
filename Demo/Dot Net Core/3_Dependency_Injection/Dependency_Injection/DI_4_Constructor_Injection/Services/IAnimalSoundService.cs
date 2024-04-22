@@ -5,7 +5,7 @@
     /// </summary>
     public interface IAnimalSoundService
     {
-        #region Abstract Methods
+        #region Public Methods
 
         /// <summary>
         /// Provides list which contains all animal sounds 

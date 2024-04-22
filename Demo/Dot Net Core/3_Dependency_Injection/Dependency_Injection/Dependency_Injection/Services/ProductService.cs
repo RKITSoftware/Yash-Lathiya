@@ -11,7 +11,10 @@ namespace Dependency_Injection.Services
     public class ProductService : IProductService
     {
         #region Private Members 
-
+        
+        /// <summary>
+        /// list of product 
+        /// </summary>
         private List<Pro01> lstProduct = new List<Pro01>();
 
         #endregion

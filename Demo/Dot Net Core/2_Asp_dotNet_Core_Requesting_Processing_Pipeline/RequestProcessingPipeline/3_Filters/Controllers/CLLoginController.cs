@@ -15,6 +15,8 @@ namespace _3_Filters.Controllers
     [ApiController]
     public class CLLoginController : ControllerBase
     {
+        #region Public Methods
+
         /// <summary>
         /// Generates jwt token with username claim
         /// username : yash
@@ -70,5 +72,7 @@ namespace _3_Filters.Controllers
         {
             return Ok("Authorized");
         }
+
+        #endregion
     }
 }

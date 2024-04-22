@@ -8,7 +8,16 @@ namespace _1_Middleware.Middleware
     /// </summary>
     public class UserIdMiddleware
     {
+        #region Private Members
+
+        /// <summary>
+        /// Delegate processing current request
+        /// </summary>
         private readonly RequestDelegate _next;
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Calls constuctor of chain of middleware
@@ -43,5 +52,7 @@ namespace _1_Middleware.Middleware
             await _next(context);
 
         }
+
+        #endregion
     }
 }

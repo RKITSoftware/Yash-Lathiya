@@ -10,9 +10,16 @@ namespace Dependency_Injection.Services
     /// </summary>
     public class MySqlProductService : IProductService
     {
-        #region dbFactory setup 
+        #region Private Members
 
+        /// <summary>
+        /// OrmLite Database Factory
+        /// </summary>
         private IDbConnectionFactory _dbFactory;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Setup Orm lite connection

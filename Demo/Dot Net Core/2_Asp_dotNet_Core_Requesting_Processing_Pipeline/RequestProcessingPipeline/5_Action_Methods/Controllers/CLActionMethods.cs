@@ -10,6 +10,8 @@ namespace _5_Action_Methods.Controllers
     [ApiController]
     public class CLActionMethods : ControllerBase
     {
+        #region Public Methods
+
         /// <summary>
         /// Useful for client side javascript
         /// </summary>
@@ -81,5 +83,7 @@ namespace _5_Action_Methods.Controllers
         {
             return Unauthorized(); 
         }
+
+        #endregion
     }
 }

@@ -8,6 +8,8 @@ namespace _3_Filters.Filter
     /// </summary>
     public class AsyncConsoleFilter : IAsyncActionFilter
     {
+        #region Public Methods
+
         /// <summary>
         /// Prints message in cnsole
         /// </summary>
@@ -23,6 +25,8 @@ namespace _3_Filters.Filter
 
             Console.WriteLine("Async Console filter execution completed");
         }
+
+        #endregion
     }
 
 }

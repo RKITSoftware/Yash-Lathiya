@@ -2,6 +2,8 @@ namespace _1_Middleware
 {
     public class Program
     {
+        #region Public Methods
+
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
@@ -13,5 +15,7 @@ namespace _1_Middleware
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        #endregion
     }
 }

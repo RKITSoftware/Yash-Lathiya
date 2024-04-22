@@ -10,7 +10,7 @@ namespace ExceptionHandling.Controllers
     [ApiController]
     public class CLTest : ControllerBase
     {
-        #region Public Actions
+        #region Public Methods
 
         /// <summary>
         /// Devide by zero exception 

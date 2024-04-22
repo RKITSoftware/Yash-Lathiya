@@ -11,11 +11,10 @@ namespace Logging.Controllers
     {
         #region Private Members 
 
-        #region Static Members
-
+        /// <summary>
+        /// logger configuration
+        /// </summary>
         private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
-
-        #endregion
 
         #endregion
 
