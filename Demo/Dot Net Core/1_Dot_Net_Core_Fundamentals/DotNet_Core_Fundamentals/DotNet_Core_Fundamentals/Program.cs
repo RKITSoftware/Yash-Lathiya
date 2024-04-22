@@ -5,13 +5,14 @@ namespace DotNet_Core_Fundamentals
     /// </summary>
     public class Program
     {
+        #region Public Methods
+
         /// <summary>
         /// Main method responsible for starting an application
         /// </summary>
         /// <param name="args"> Command line arguments </param>
         public static void Main(string[] args)
         {
-            
             // Build and run the application.
             CreateHostBuilder(args).Build().Run();
         }
@@ -28,5 +29,7 @@ namespace DotNet_Core_Fundamentals
                     // configures the web host with startup class
                     webBuilder.UseStartup<Startup>();
                 });
+
+        #endregion
     }
 }

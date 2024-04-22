@@ -2,8 +2,13 @@
 
 namespace DotNet_Core_Fundamentals
 {
+    /// <summary>
+    /// Confugures servises
+    /// </summary>
     public class Startup
     {
+        #region Public Methods
+
         /// <summary>
         /// This method gets called by the runtime. Use this method to add services to the container.
         /// </summary>
@@ -66,5 +71,6 @@ namespace DotNet_Core_Fundamentals
             });
         }
 
+        #endregion
     }
 }

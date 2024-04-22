@@ -4,14 +4,34 @@ using System.Diagnostics;
 
 namespace DotNet_Core_Fundamentals.Controllers
 {
+    /// <summary>
+    /// Home page 
+    /// </summary>
     public class HomeController : Controller
     {
+        #region Private Members
+
+        /// <summary>
+        /// ILogger
+        /// </summary>
         private readonly ILogger<HomeController> _logger;
 
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// takes reference of ILogger object
+        /// </summary>
+        /// <param name="logger"></param>
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
+
+        #endregion
+
+        #region Public Methods
 
         public IActionResult Index()
         {
@@ -39,5 +59,7 @@ namespace DotNet_Core_Fundamentals.Controllers
         {
             return Ok("Hello from Yash");
         }
+
+        #endregion
     }
 }
