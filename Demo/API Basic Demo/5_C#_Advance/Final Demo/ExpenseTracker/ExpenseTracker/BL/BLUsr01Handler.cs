@@ -37,6 +37,7 @@ namespace ExpenseTracker.BL
         /// Response to HTTP action method
         /// </summary>
         private Response _objResponse;
+
         #endregion
 
         #region Public Members
@@ -141,6 +142,14 @@ namespace ExpenseTracker.BL
                 {
                     _objResponse.SetResponse(true, HttpStatusCode.BadRequest, " mobile number already exists in the database ", null);
                     return _objResponse;
+                }
+            }
+
+            if(operation == EnmOperation.AA)
+            {
+                if(Common.GetUserIdFromClaims() != 2)
+                {
+                    _objResponse.SetResponse(true, HttpStatusCode.Forbidden, " Unauthorized access ", null);
                 }
             }
 
@@ -252,6 +261,17 @@ namespace ExpenseTracker.BL
             dtUsr01Token.Rows.Add(jwtToken);
 
             _objResponse.SetResponse(" login successful, token generated", dtUsr01Token);
+            return _objResponse;
+        }
+
+        /// <summary>
+        /// Get all users 
+        /// </summary>
+        /// <returns> object of response </returns>
+        public Response GetAllUsers()
+        {
+            _objResponse = new Response();
+            _objResponse.SetResponse("Fetched User Data", _objDbUsr01Context.GetAllUsers());
             return _objResponse;
         }
 

@@ -28,14 +28,6 @@ namespace ExpenseTracker.Models.POCO
         public decimal P01f03 { get; set; }
 
         /// <summary>
-        /// Date & Time of Expense 
-        /// </summary>
-        [IgnoreOnInsert]
-        [IgnoreOnSelect]
-        [IgnoreOnUpdate]
-        public DateTime P01f04 { get; set; }
-
-        /// <summary>
         /// Category of Expense 
         /// </summary>
         public string P01f05 { get; set; } = string.Empty;

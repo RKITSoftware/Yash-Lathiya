@@ -3,6 +3,7 @@ using ExpenseTracker.Models;
 using ExpenseTracker.Models.POCO;
 using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 
 namespace ExpenseTracker.DL
 {
@@ -129,6 +130,42 @@ namespace ExpenseTracker.DL
             }
         }
 
+        /// <summary>
+        /// Get all users from database        
+        /// </summary>
+        /// <returns> Data table consisting users details </returns>
+        public DataTable GetAllUsers()
+        {
+            // Create a DataTable
+            DataTable dtUsr01 = new DataTable();
+
+            // retrieve credit from the database in form of datatable
+            using (MySqlCommand command = new MySqlCommand())
+            {
+                command.Connection = _mySqlConnection;
+                command.CommandText = String.Format(@"SELECT 
+                                                        R01F01,
+                                                        R01F02,
+                                                        R01F03,
+                                                        R01F04,
+                                                        R01F06,
+                                                        R01F07
+                                                     FROM
+                                                        USR01");
+
+                try
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    _mySqlConnection.Open();
+                    adapter.Fill(dtUsr01);
+                }
+                finally
+                {
+                    _mySqlConnection.Close();
+                }
+            }
+            return dtUsr01;
+        }
         #endregion
     }
 

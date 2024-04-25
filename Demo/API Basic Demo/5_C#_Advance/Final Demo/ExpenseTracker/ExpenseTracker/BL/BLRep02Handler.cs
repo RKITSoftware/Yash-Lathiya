@@ -1,14 +1,10 @@
 ﻿using ExpenseTracker.DL;
 using ExpenseTracker.Models.POCO;
-using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using ServiceStack.OrmLite;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Net.Http;
 using System.Text;
-using System.Web.Script.Serialization;
 
 namespace ExpenseTracker.BL
 {
@@ -68,17 +64,21 @@ namespace ExpenseTracker.BL
                 reportContent.AppendLine(); // Add a new line after each row
             }
 
+            // Serialize different JSON objects
+            string expenseJson = JsonConvert.SerializeObject(dtExp01);
+            string creditJson = JsonConvert.SerializeObject(dtCre01);
+
             // Add entry in database
-            using(var db = Common.OrmContext.OpenDbConnection())
+            using (var db = Common.OrmContext.OpenDbConnection())
             {
                 db.Insert<Rep02>(new Rep02()
                 {
-                    P02f02 = reportContent.ToString()
+                    P02f02 = expenseJson + creditJson
                 });
             }
 
             // Save the report content to a file
-            string filePath = "C:\\Users\\yash.l\\source\\repos\\Yash-Lathiya\\Demo\\API Basic Demo\\5_C#_Advance\\Final Demo\\ExpenseTracker\\ExpenseTracker\\Report\\report.txt";
+            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Report", "report.txt");
             System.IO.File.WriteAllText(filePath, reportContent.ToString());
 
             return filePath;

@@ -49,6 +49,8 @@ namespace ExpenseTracker.DL
         {
             // Create a DataTable
             DataTable dtCre01 = new DataTable();
+            //string yash = String.Format(@"where r01f03 != {0}", )
+
 
             // retrieve credit from the database in form of datatable
             using (MySqlCommand command = new MySqlCommand())

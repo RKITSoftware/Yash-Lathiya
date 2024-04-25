@@ -13,7 +13,12 @@
         /// <summary>
         /// Update in database
         /// </summary>
-        U
+        U,
+
+        /// <summary>
+        /// Admin Access
+        /// </summary>
+        AA
     }
 
 }

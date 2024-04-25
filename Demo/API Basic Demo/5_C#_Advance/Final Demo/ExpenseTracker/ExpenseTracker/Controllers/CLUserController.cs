@@ -2,7 +2,9 @@
 using ExpenseTracker.Filters;
 using ExpenseTracker.Models;
 using ExpenseTracker.Models.DTO;
+using System.Net;
 using System.Web.Http;
+using System.Web.Routing;
 
 namespace ExpenseTracker.Controllers
 {
@@ -115,6 +117,29 @@ namespace ExpenseTracker.Controllers
             // invalid credential
             return Ok(_objResponse);
         }
+
+        /// <summary>
+        /// Get all users from database
+        /// Admin method with specific user id 
+        /// </summary>
+        /// <returns> list of all users </returns>
+        [HttpGet]
+        [Route("GetAllUsers")]
+        public IHttpActionResult GetAllUsers()
+        {
+            _objBLUsr01.operation = EnmOperation.AA;
+
+            _objResponse = _objBLUsr01.Validate();
+            
+            if(_objResponse.HasError)
+            {
+                return Ok(_objResponse);
+            }
+
+            _objResponse = _objBLUsr01.GetAllUsers();
+            return Ok(_objResponse);
+        }
+
         #endregion
     }
 }
