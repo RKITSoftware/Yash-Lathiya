@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.Extensions.Logging;
-
-namespace Logging
+﻿namespace Logging
 {
     public class Startup
     {

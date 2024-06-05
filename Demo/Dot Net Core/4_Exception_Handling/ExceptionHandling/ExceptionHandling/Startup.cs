@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace ExceptionHandling
 {
@@ -23,7 +22,7 @@ namespace ExceptionHandling
 
                 // Added developer exception page
                 // consists original line of code 
-                //app.UseDeveloperExceptionPage();
+                // app.UseDeveloperExceptionPage();
 
                 // Added ExceptionHandler Page 
                 // Content is delivered to web browser

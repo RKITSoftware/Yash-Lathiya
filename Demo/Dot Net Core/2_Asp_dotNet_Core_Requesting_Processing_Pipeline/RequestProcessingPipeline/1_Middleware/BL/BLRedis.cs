@@ -30,7 +30,7 @@ namespace _1_Middleware.BL
         {
             // Initialize the ConnectionMultiplexer in the constructor
             // Cloud Redis
-            _redis = ConnectionMultiplexer.Connect("redis-16091.c330.asia-south1-1.gce.cloud.redislabs.com:16091,password=WPtUQqvPD4D3cPVzQyuKUEECVYnGSCPP");
+            _redis = ConnectionMultiplexer.Connect("redis-14023.c330.asia-south1-1.gce.redns.redis-cloud.com:14023,password=QD48PqAL6a1C3H5bQgozS3LWyexwVbFr");
             _db = _redis.GetDatabase();
         }
 

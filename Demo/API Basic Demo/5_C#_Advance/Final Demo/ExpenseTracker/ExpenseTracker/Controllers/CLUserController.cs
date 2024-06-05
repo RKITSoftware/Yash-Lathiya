@@ -2,7 +2,6 @@
 using ExpenseTracker.Filters;
 using ExpenseTracker.Models;
 using ExpenseTracker.Models.DTO;
-using System.Net;
 using System.Web.Http;
 using System.Web.Routing;
 
@@ -26,6 +25,7 @@ namespace ExpenseTracker.Controllers
         /// object of response
         /// </summary>
         private Response _objResponse;
+
         #endregion
 
         #region Constructor

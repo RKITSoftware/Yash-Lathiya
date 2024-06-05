@@ -1,18 +1,15 @@
 using ExpenseTracker.BL;
 using Newtonsoft.Json;
 using ServiceStack.OrmLite;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
-using System.Web.Routing;
 
 namespace ExpenseTracker
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        #region Protected Methods
+
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -20,6 +17,10 @@ namespace ExpenseTracker
             // Configuration of Orm Lite
             ConfigureOrmLite();
         }
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// Configures orm lite to connect mySql
@@ -47,5 +48,7 @@ namespace ExpenseTracker
             Common.OrmContext = dbFactory;
 
         }
+
+        #endregion
     }
 }

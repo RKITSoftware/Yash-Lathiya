@@ -43,6 +43,8 @@ namespace ExpenseTracker.Models.POCO
         [IgnoreOnUpdate]
         public DateTime R01f06 { get; set; }
 
+        //// Json Ignore 
+       
         /// <summary>
         /// User Updation Time
         /// </summary>
