@@ -9,12 +9,15 @@ namespace Logging.Controllers
     [ApiController]
     public class CLNlog : ControllerBase
     {
+        //// dynamic lof sile creation 
+        
         #region Private Members 
 
         /// <summary>
         /// logger configuration
         /// </summary>
         private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+   
 
         #endregion
 
@@ -28,6 +31,7 @@ namespace Logging.Controllers
         [Route("LogInfoInConsoleAndFile")]
         public IActionResult LogInfoInConsole()
         {
+           
             _logger.Info("This is an information message");
 
             _logger.Warn("This is a warning message");

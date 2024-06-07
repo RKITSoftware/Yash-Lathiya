@@ -1,0 +1,36 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.root {
+  display: flex;
+}
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  flex: left;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+.sidebar div {
+  margin-top: 5px;
+}
+.container {
+  flex: right;
+  padding: 20px;
+}
+.left-right {
+  display: flex;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  margin: 10px;
+}
+.left {
+  flex: left;
+  margin: 20px;
+}
+.right {
+  flex: right;
+  margin: 20px;
+}

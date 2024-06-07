@@ -22,12 +22,12 @@ namespace ExceptionHandling
 
                 // Added developer exception page
                 // consists original line of code 
-                // app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
 
                 // Added ExceptionHandler Page 
                 // Content is delivered to web browser
                 // It is used in production level, where original lines of code should not be visible to users.
-                app.UseExceptionHandler( (options) =>
+                app.UseExceptionHandler((options) =>
                 {
                     options.Run(async (context) =>
                     {
