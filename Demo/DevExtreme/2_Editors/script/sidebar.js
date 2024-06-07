@@ -8,6 +8,7 @@ import showButton from "./components/button.js";
 import showFileUploader from "./components/fileUploader.js";
 import showValidation from "./components/validation.js";
 import showRadioGrp from "./components/radioGrp.js";
+import showDateBox from "./components/dateBoxButton.js";
 
 $(() => {
   $("#checkBoxBtn").dxButton({
@@ -17,6 +18,16 @@ $(() => {
     },
     onClick: () => {
       showCheckBox();
+    },
+  });
+
+  $("#dateBoxBtn").dxButton({
+    text: "Date Box",
+    width: () => {
+      return window.innerHeight;
+    },
+    onClick: () => {
+      showDateBox();
     },
   });
 
