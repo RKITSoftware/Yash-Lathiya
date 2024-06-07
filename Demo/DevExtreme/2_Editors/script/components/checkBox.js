@@ -1,36 +1,42 @@
 export default function showCheckBox() {
   $("#content").remove();
   $(".container").append("<div id='content'></div>");
+
   $("#content").append(
     `<div class='left-right'>
       <div class='left'>Checked</div>
       <div class='right' id='checked'></div>
     </div>`
   );
+
   $("#content").append(
     `<div class='left-right'>
       <div class='left'>Unhecked</div>
       <div class='right' id='unchecked'></div>
     </div>`
   );
+
   $("#content").append(
     `<div class='left-right'>
       <div class='left'>Undefined</div>
       <div class='right' id='undefined'></div>
     </div>`
   );
+
   // $("#content").append(
   //   `<div class='left-right'>
   //     <div class='left'>Three State</div>
   //     <div class='right' id='threeState'></div>
   //   </div>`
   // );
+
   $("#content").append(
     `<div class='left-right'>
       <div class='left'>Handle Value Change : IsLocationIndia</div>
       <div class='right' id='isLocationIndia'></div>
     </div>`
   );
+
   $("#content").append(
     `<div class='left-right'>
       <div class='left'>Handle Value Change : IsLocationUSA</div>
@@ -44,10 +50,18 @@ export default function showCheckBox() {
       <div class='right' id='inr'></div>
     </div>`
   );
+
   $("#content").append(
     `<div class='left-right'>
       <div class='left'>USD</div>
       <div class='right' id='usd'></div>
+    </div>`
+  );
+
+  $("#content").append(
+    `<div class='left-right'>
+      <div class='left'>Validation</div>
+      <div class='right' id='validation'></div>
     </div>`
   );
 
@@ -58,6 +72,21 @@ export default function showCheckBox() {
       <div class='right' id='withLabel2'></div>
     </div>`
   );
+
+  $("#content").append(
+    `<div class='left-right'>
+      <div class='left'>On Off Events</div>
+      <div class='right' id='switch'></div>
+    </div>`
+  );
+
+  // default options for all checkboxes
+  DevExpress.ui.dxCheckBox.defaultOptions({
+    options: {
+      // Here go the CheckBox properties
+      hint: "hint is set from default options",
+    },
+  });
 
   $("#checked").dxCheckBox({
     value: true,
@@ -87,6 +116,9 @@ export default function showCheckBox() {
     })
     .dxCheckBox("instance");
 
+  // set focus on the element
+  locationIndiaChkBox.focus();
+
   const locationUsaChkBox = $("#isLocationUSA")
     .dxCheckBox({
       value: false,
@@ -102,6 +134,12 @@ export default function showCheckBox() {
     .dxCheckBox({
       value: false,
       disabled: true,
+      onContentReady: () => {
+        console.log("rupee check box is ready");
+      },
+      onDispoaing: () => {
+        console.log("rupee check box is dispoaing");
+      },
     })
     .dxCheckBox("instance");
 
@@ -109,14 +147,66 @@ export default function showCheckBox() {
     .dxCheckBox({
       value: false,
       disabled: true,
+      onContentReady: () => {
+        console.log("usd check box is ready");
+      },
+      onDispoaing: () => {
+        console.log("usd check box is dispoaing");
+      },
     })
     .dxCheckBox("instance");
 
-  $("#withLabel1").dxCheckBox({
-    text: "Technical",
+  const techChkBox = $("#withLabel1")
+    .dxCheckBox({
+      text: "Technical",
+    })
+    .dxCheckBox("instance");
+
+  // batch changes proceessing
+  techChkBox.beginUpdate();
+
+  locationIndiaChkBox.option("value", true);
+  locationUsaChkBox.option("value", true);
+
+  techChkBox.endUpdate();
+  // all changes will be modified after endUpdate() call
+
+  techChkBox.registerKeyHandler("enter", function () {
+    const val = techChkBox.option("value");
+    techChkBox.option("value", !val);
   });
 
-  $("#withLabel2").dxCheckBox({
-    text: "Non-Technical",
+  const nonTechChkBox = $("#withLabel2")
+    .dxCheckBox({
+      text: "Non-Technical",
+    })
+    .dxCheckBox("instance");
+
+  nonTechChkBox.registerKeyHandler("enter", function () {
+    const val = nonTechChkBox.option("value");
+    nonTechChkBox.option("value", !val);
+  });
+
+  $("#validation").dxCheckBox({
+    // isValid: false,
+    // accepts json or array of json
+    validationErrors: [
+      { message: "validation msg" },
+      { message: "validation msg" },
+    ],
+    validationMessageMode: "auto", // accepts auto and always
+    validationStatus: "invalid", // accepts valid, invalid & pending validation
+  });
+
+  const switchWidget = $("#switch").dxSwitch({
+    value: true,
+    onValueChanged: function (e) {
+      locationIndiaChkBox.off(); //  only off the events which are attached by on
+      if (e.value == false) {
+        rupeeChkBox.dispose();
+        usdChkBox.dispose();
+        console.log(rupeeChkBox);
+      }
+    },
   });
 }
