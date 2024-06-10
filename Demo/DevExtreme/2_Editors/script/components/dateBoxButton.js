@@ -70,39 +70,128 @@ export default function showDateBox() {
     type: "date",
     value: now,
     displayFormat: "dd/MM/yyyy",
+    acceptCustomValue: false, // default value is true
+    accessKey: "q", // focus on alt + accessKey
+    adaptivityEnabled: true, // default value is false --> screen specific UI --> supports UI on smaller screens too
+    applyButtonText: "Date is selected", //text displayed on apply button
   });
 
   $("#time").dxDateBox({
     type: "time",
     value: now,
     displayFormat: "HH:mm:ss ",
+    useMaskedBehaviour: true,
+    inputAttr: {
+      id: "inputTimeId",
+    },
   });
 
+  const time = $("#inputTimeId");
+
+  console.log("selected time : ", time);
   $("#dateAndTime").dxDateBox({
     pickerType: "rollers",
+    stylingMode: "filled",
     type: "datetime",
     value: now,
     showClearButton: true,
     displayFormat: "dd/MM/yyyy HH:mm:ss ",
+    invalidDateMessage: "Value must be a data or time",
   });
 
-  $("#customFormat").dxDateBox({
-    value: now,
-    displayFormat: "EEEE, MMM dd, hh:mm a",
-    disabledDates: holidays,
-  });
+  const customDateInstance = $("#customFormat")
+    .dxDateBox({
+      value: now,
+      displayFormat: "EEEE, MMM dd, hh:mm a",
+      disabledDates: holidays,
+      type: "datetime",
+      pickerType: "calender",
+      showAnalogClock: true,
+      onValueChanged: (e) => {
+        console.log("onChange");
+        DevExpress.ui.notify({
+          message: "value is changed to " + customDateInstance.value,
+          position: { my: "top-left", at: "bottom-right", of: "#customFormat" },
+        });
+      },
+      onCopy: () => {
+        console.log("onCopy");
+        DevExpress.ui.notify({
+          message: "value is copied to clipboard",
+        });
+      },
+      onOpened: () => {
+        DevExpress.ui.notify({
+          message: "drop down is opened",
+        });
+      },
+      // onOptionChanged: () => {
+      //   DevExpress.ui.notify({
+      //     message: "option is changed",
+      //   });
+      // },
+    })
+    .dxDateBox("instance");
 
-  $("#birthday").dxDateBox({
-    type: "date",
-    value: now,
-    displayFormat: "dd/MM/yyyy",
-    onValueChanged: (e) => {
-      const birthday = new Date(e.value);
-      const age = now.getFullYear() - birthday.getFullYear();
-      $("#age").dxTextBox({
-        disabled: true,
-        value: age + " years",
-      });
-    },
-  });
+  const millisecondsInDay = 24 * 60 * 60 * 1000;
+
+  const birthdayDxBox = $("#birthday")
+    .dxDateBox({
+      type: "date",
+      value: now,
+      displayFormat: "dd/MM/yyyy",
+      applyValueMode: "useButtons", // can accept "useButtons" or "instantly" (which does not consist buttons)
+      max: new Date(),
+      min: new Date("1900-01-01"),
+      deferRendering: false, // ui will be in html if changes on outside pop up box
+      dateOutOfRangeMessage: "Birthdate can not be future date",
+      buttons: [
+        {
+          name: "today",
+          location: "before",
+
+          options: {
+            text: "Today",
+            stylingMode: "text",
+            onClick() {
+              birthdayDxBox.option("value", new Date().getTime());
+            },
+          },
+        },
+        {
+          name: "prevDate",
+          location: "before",
+          options: {
+            icon: "spinprev",
+            stylingMode: "text",
+            onClick() {
+              const currentDate = birthdayDxBox.option("value");
+              birthdayDxBox.option("value", currentDate - millisecondsInDay);
+            },
+          },
+        },
+        {
+          name: "nextDate",
+          location: "after",
+          options: {
+            icon: "spinnext",
+            stylingMode: "text",
+            onClick() {
+              const currentDate = birthdayDxBox.option("value");
+              birthdayDxBox.option("value", currentDate + millisecondsInDay);
+            },
+          },
+        },
+        "dropDown",
+      ],
+      onValueChanged: (e) => {
+        const birthday = new Date(e.value);
+        const age = now.getFullYear() - birthday.getFullYear();
+        $("#age").dxTextBox({
+          disabled: true,
+          value: age + " years",
+        });
+      },
+    })
+    .dxDateBox("instance");
 }
