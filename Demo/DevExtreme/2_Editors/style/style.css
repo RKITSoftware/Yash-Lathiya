@@ -55,3 +55,7 @@ body {
 .wMax {
   width: 600px;
 }
+
+.btn {
+  margin: 15px;
+}
