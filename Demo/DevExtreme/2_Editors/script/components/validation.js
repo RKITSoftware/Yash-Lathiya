@@ -99,9 +99,16 @@ export default function showValidation() {
   const email = $("#email")
     .dxTextBox({
       placeholder: "example@example.com",
-      // onKeyDown() {
-      //   email.option("validationStatus", "pending");
-      // },
+      onValueChanged() {
+        const emailValidator = $("#email").dxValidator("instance");
+        const result = emailValidator.validate();
+        console.log(result.status);
+        if (result.status === "valid") {
+          DevExpress.ui.notify({
+            message: "You can continue with this email address",
+          });
+        }
+      },
     })
     .dxValidator({
       validationGroup: "registrationGroup",
