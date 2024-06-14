@@ -64,8 +64,7 @@ body {
 .low.dx-radiobutton-checked .dx-radiobutton-icon .dx-radiobutton-icon-dot {
   background: gray;
 }
-
-.normal.dx-radiobutton-checked .dx-radiobutton-icon .dx-radiobutton-icon-dot {
+j .normal.dx-radiobutton-checked .dx-radiobutton-icon .dx-radiobutton-icon-dot {
   background: green;
 }
 
@@ -75,4 +74,14 @@ body {
 
 .high.dx-radiobutton-checked .dx-radiobutton-icon .dx-radiobutton-icon-dot {
   background: red;
+}
+
+/* registration btn in validation */
+
+#registrationBtn {
+  margin-left: 250px;
+}
+
+.danger {
+  color: red;
 }
