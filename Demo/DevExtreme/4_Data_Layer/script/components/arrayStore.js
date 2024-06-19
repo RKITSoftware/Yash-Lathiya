@@ -5,6 +5,9 @@ export default function showArrayStore() {
   $("#content").append(
     `<div id='heading'></div>
     <div class='row'>
+      <div id='selectBox'></div>
+    </div>
+    <div class='row'>
       <div id='byKey'></div>
     </div>
     <div class='row'>
@@ -106,6 +109,17 @@ export default function showArrayStore() {
 
   console.log("store", store);
 
+  const selectBox = $("#selectBox")
+    .dxSelectBox({
+      dataSource: store,
+      valueExpr: "id",
+      displayExpr: "state",
+      onValueChanged: (e) => {
+        console.log(e);
+      },
+    })
+    .dxSelectBox("instance");
+
   $("#byKey").dxButton({
     text: "By Key (1)",
     onClick: () => {
@@ -153,6 +167,7 @@ export default function showArrayStore() {
             "key",
             key
           );
+          selectBox.option("dataSource", store);
         })
         .fail(() => {
           console.log("**fail | data insertion failed");
@@ -242,10 +257,14 @@ export default function showArrayStore() {
   $("#update").dxButton({
     text: "Upadte 1 Delhi New Delhi",
     onClick: () => {
-      store.update(1, {
-        state: "Delhi",
-        capital: "New Delhi",
-      });
+      store
+        .update(1, {
+          state: "Delhi",
+          capital: "New Delhi",
+        })
+        .done(() => {
+          selectBox.option("dataSource", store);
+        });
     },
   });
 }
