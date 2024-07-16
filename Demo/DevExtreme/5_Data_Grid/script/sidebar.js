@@ -1,5 +1,5 @@
 import showDataBinding from "./components/dataBinding.js";
-// import showCustomStore from "./components/customStore.js";
+import showPagingAndScrolling from "./components/pagingAndScrolling.js";
 // import showDataSource from "./components/dataSource.js";
 // import showLocalStore from "./components/localStore.js";
 // import showQuery from "./components/query.js";
@@ -15,15 +15,15 @@ $(() => {
     },
   });
 
-  //   $("#customStoreBtn").dxButton({
-  //     text: "Custom Store",
-  //     width: () => {
-  //       return window.innerHeight;
-  //     },
-  //     onClick: () => {
-  //       showCustomStore();
-  //     },
-  //   });
+    $("#pagingAndScrollingBtn").dxButton({
+      text: "Paging & Scrolling",
+      width: () => {
+        return window.innerHeight;
+      },
+      onClick: () => {
+        showPagingAndScrolling();
+      },
+    });
 
   //   $("#dataSourceBtn").dxButton({
   //     text: "Data Source",
