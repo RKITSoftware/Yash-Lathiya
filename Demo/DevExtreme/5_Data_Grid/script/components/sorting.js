@@ -16,7 +16,8 @@ export default function showSorting() {
           columns : [
             {
               dataField : 'EmployeeID',
-              allowEditing : false
+              allowEditing : false,
+              sortOrder: 'asc',
             },
             {
               dataField : "FullName",
