@@ -1,7 +1,7 @@
 import showDataBinding from "./components/dataBinding.js";
 import showPagingAndScrolling from "./components/pagingAndScrolling.js";
 import showEditing from "./components/editing.js";
-// import showLocalStore from "./components/localStore.js";
+import showGrouping from "./components/grouping.js";
 // import showQuery from "./components/query.js";
 
 $(() => {
@@ -41,7 +41,7 @@ $(() => {
         return window.innerHeight;
       },
       onClick: () => {
-        // showDataSource();
+        showGrouping();
       },
     });
     
