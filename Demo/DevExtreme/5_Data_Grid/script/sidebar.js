@@ -4,6 +4,7 @@ import showEditing from "./components/editing.js";
 import showGrouping from "./components/grouping.js";
 import showFiltering from "./components/filtering.js";
 import showSorting from "./components/sorting.js";
+import showSelection from "./components/selection.js"
 
 $(() => {
   $("#dataBindingBtn").dxButton({
@@ -72,7 +73,7 @@ $(() => {
         return window.innerHeight;
       },
       onClick: () => {
-        // showDataSource();
+        showSelection();
       },
     });
     
