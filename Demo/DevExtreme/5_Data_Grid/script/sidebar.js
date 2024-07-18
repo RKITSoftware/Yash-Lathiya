@@ -8,6 +8,7 @@ import showSelection from "./components/selection.js"
 import showColumns from "./components/columns.js";
 import showStatePersistence from "./components/statePersistence.js";
 import showAppearance from "./components/appearance.js";
+import showTemplate from "./components/template.js";
 
 $(() => {
   $("#dataBindingBtn").dxButton({
@@ -116,7 +117,7 @@ $(() => {
         return window.innerHeight;
       },
       onClick: () => {
-        // showDataSource();
+        showTemplate();
       },
     });
     
