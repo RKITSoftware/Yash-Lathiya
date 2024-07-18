@@ -5,6 +5,8 @@ import showGrouping from "./components/grouping.js";
 import showFiltering from "./components/filtering.js";
 import showSorting from "./components/sorting.js";
 import showSelection from "./components/selection.js"
+import showColumns from "./components/columns.js";
+import showStatePersistence from "./components/statePersistence.js";
 
 $(() => {
   $("#dataBindingBtn").dxButton({
@@ -83,7 +85,7 @@ $(() => {
         return window.innerHeight;
       },
       onClick: () => {
-        // showDataSource();
+        showColumns();
       },
     });
     
@@ -93,7 +95,7 @@ $(() => {
         return window.innerHeight;
       },
       onClick: () => {
-        // showDataSource();
+        showStatePersistence();
       },
     });
     
