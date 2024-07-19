@@ -9,6 +9,7 @@ import showColumns from "./components/columns.js";
 import showStatePersistence from "./components/statePersistence.js";
 import showAppearance from "./components/appearance.js";
 import showTemplate from "./components/template.js";
+import showDataSummaries from "./components/dataSummaries.js";
 
 $(() => {
   $("#dataBindingBtn").dxButton({
@@ -127,7 +128,7 @@ $(() => {
         return window.innerHeight;
       },
       onClick: () => {
-        // showDataSource();
+        showDataSummaries();
       },
     });
     
