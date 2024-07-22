@@ -10,6 +10,7 @@ import showStatePersistence from "./components/statePersistence.js";
 import showAppearance from "./components/appearance.js";
 import showTemplate from "./components/template.js";
 import showDataSummaries from "./components/dataSummaries.js";
+import showmasterDetails from "./components/masterDetails.js";
 
 $(() => {
   $("#dataBindingBtn").dxButton({
@@ -138,7 +139,7 @@ $(() => {
         return window.innerHeight;
       },
       onClick: () => {
-        // showDataSource();
+        showmasterDetails();
       },
     });
     
