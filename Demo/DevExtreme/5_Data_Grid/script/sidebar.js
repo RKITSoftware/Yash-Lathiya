@@ -11,6 +11,7 @@ import showAppearance from "./components/appearance.js";
 import showTemplate from "./components/template.js";
 import showDataSummaries from "./components/dataSummaries.js";
 import showmasterDetails from "./components/masterDetails.js";
+import showExport from "./components/export.js";
 
 $(() => {
   $("#dataBindingBtn").dxButton({
@@ -149,7 +150,7 @@ $(() => {
         return window.innerHeight;
       },
       onClick: () => {
-        // showDataSource();
+        showExport();
       },
     });
     
