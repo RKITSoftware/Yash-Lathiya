@@ -399,14 +399,13 @@ $(() => {
         {
           id: 1,
           proofName: "Aadhar Card",
-          imgLink:
-            "/2_Editors/final-demo/acc-opening-form/assets/images/aadhar.png",
+          imgLink : "../assets/images/aadhar.png"
         },
         {
           id: 2,
           proofName: "Election Card",
           imgLink:
-            "/2_Editors/final-demo/acc-opening-form/assets/images/election.png",
+            "../assets/images/election.png"
         },
       ],
     },
@@ -417,13 +416,13 @@ $(() => {
           id: 4,
           proofName: "MAA Amrutam Card",
           imgLink:
-            "/2_Editors/final-demo/acc-opening-form/assets/images/maa.jpg",
+            "../assets/images/maa.jpg",
         },
         {
           id: 5,
           proofName: "Certificate issued by DDO",
           imgLink:
-            "/2_Editors/final-demo/acc-opening-form/assets/images/images.jpg",
+            "../assets/images/images.jpg"
         },
       ],
     },
@@ -475,25 +474,25 @@ $(() => {
           id: 1,
           proofName: "Aadhar Card",
           imgLink:
-            "/2_Editors/final-demo/acc-opening-form/assets/images/aadhar.png",
+            "../assets/images/aadhar.png",
         },
         {
           id: 2,
           proofName: "Election Card",
           imgLink:
-            "/2_Editors/final-demo/acc-opening-form/assets/images/election.png",
+            "../assets/images/election.png",
         },
         {
           id: 3,
           proofName: "PAN Card",
           imgLink:
-            "/2_Editors/final-demo/acc-opening-form/assets/images/pan.jpg",
+            "../assets/images/pan.jpg"
         },
         {
           id: 6,
           proofName: "Driving Licence",
           imgLink:
-            "/2_Editors/final-demo/acc-opening-form/assets/images/driving.svg",
+            "../assets/images/driving.svg"
         },
       ],
     },
@@ -504,13 +503,13 @@ $(() => {
           id: 4,
           proofName: "MAA Amrutam Card",
           imgLink:
-            "/2_Editors/final-demo/acc-opening-form/assets/images/maa.jpg",
+            "../assets/images/maa.jpg",
         },
         {
           id: 5,
           proofName: "Certificate issued by DDO",
           imgLink:
-            "/2_Editors/final-demo/acc-opening-form/assets/images/images.jpg",
+            "../assets/images/images.jpg",
         },
       ],
     },
