@@ -181,7 +181,7 @@ export default function showColumns() {
                           type : "percent",
                           precision : 1
                         }
-                        }
+                      }
                   ]
                 }
               ]
@@ -246,24 +246,114 @@ export default function showColumns() {
       }
     })
 
+    var states;
     $.ajax({
-      url : "../script/data/employees.json",
+      url : "../script/data/states.json",
       method : "GET",
       dataType : "json",
-      success : (employees) => {
+      success : (response) => {
+        states = response
+      },
+      error : () => {
+        console.log("error occured")
+      }
+    })
+    
+    $.ajax({
+      url : "../script/data/customers.json",
+      method : "GET",
+      dataType : "json",
+      success : (customers) => {
+        console.log(customers)
+        let maxID = customers[customers.length-1].ID
+
+        const isChief = (position) => position && ["CEO", "CMO"].indexOf(position.trim().toUpperCase()) >= 0
+
         $("#commandColumnCustomization").dxDataGrid({
-          dataSource : employees,
-          keyExpr : "EmployeeID",
+          dataSource : customers,
+          keyExpr : "ID",
           paging: {
-            pageSize: 10,
+            enabled : false
           },
           showBorders : true,
           editing : {
             mode : "row",
             allowUpdating : true,
-            allowDeleting : true,
+            allowDeleting(e){
+              console.log(e)
+              return !isChief(e.row.data.Position)
+            },
             useIcons : true
-          }
+          },
+          onRowValidating(e){
+            const position  = e.newData.Position
+            if(isChief(position)){
+              e.errorText = `The company can have only one ${position.toUpperCase()}. Please choose another position.`
+              e.isValid = false
+            }
+          },
+          onEditorPreparing(e){
+            if(e.parentType === "dataRow" && e.dataField === "Position"){
+              e.editorOptions.readOnly = isChief(e.value)
+            }
+          },
+          columns : [
+            {
+              type : "buttons",
+              width : 110,
+              buttons : [
+                "edit",
+                "delete",
+                {
+                  hint : "clone",
+                  icon : "copy",
+                  visible(e) {
+                    return !e.row.isEditing;
+                  },
+                  disabled(e){
+                    return isChief(e.row.data.Position)
+                  },
+                  onClick(e){
+
+                    // extend method merges content of two or more objects into first one
+                    const clonedItem = $.extend({}, e.row.data, { ID: maxID += 1 })
+                    customers.splice(e.row.rowIndex, 0, clonedItem)
+                    e.component.refresh(true)
+                    e.event.preventDefault()
+                  }
+                }
+              ]
+            },
+            {
+              dataField : "Prefix",
+              caption  :"Title"
+            },
+            {
+              dataField : "FirstName"
+            },
+            {
+              dataField : "LastName"
+            },
+            {
+              dataField : "Position",
+              width : 130
+            },
+            {
+              dataField : "StateID",
+              caption : "State",
+              width : 125,
+              lookup: {
+                dataSource : states,
+                displayExpr : "Name",
+                valueExpr : "ID"
+              }
+            },
+            {
+              dataField : "BirthDate",
+              dataType : "date",
+              width : 125
+            }
+          ]
         });
       },
       error : () => {
