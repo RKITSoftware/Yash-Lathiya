@@ -1,13 +1,19 @@
 export default function showTemplate() {
     $("#content").remove();
-    $(".container").append("<div id='content'></div>");
+    $(".container").append(`
+      <div id='content'>
+        <h1>Template</h1>
+        <div id='template'></div>
+        <h1>Toolbar Customization</h1>
+        <div id='toolbarCustomization'></div>
+      </div>`);
   
     $.ajax({
       url : "../script/data/employees.json",
       method : "GET",
       dataType : "json",
       success : (employees) => {
-        let datagrid = $("#content").dxDataGrid({
+        let datagrid = $("#template").dxDataGrid({
           dataSource : employees,
           keyExpr : "EmployeeID",
           paging: {
@@ -88,5 +94,64 @@ export default function showTemplate() {
       }
     })
     
+    $.ajax({
+      url : "../script/data/orders.json",
+      method : "GET",
+      dataType : "json",
+      success : (orders) => {
+        let datagrid = $("#toolbarCustomization").dxDataGrid({
+          dataSource : orders,
+          keyExpr : "ID",
+          showBorders : true,
+          columnChooser : {
+            enabled : true
+          },
+          loadPanel : {
+            enabled : true
+          },
+          columns : [
+            {
+              dataField :"OrderNumber",
+              caption : " Invoice Number"
+            },
+            "OrderDate",
+            "Employee",
+            {
+              caption : "City",
+              dataField : "CustomerStoreCity"
+            },
+            {
+              caption : "State",
+              groupIndex: 0,
+              dataField : "CustomerStoreState"
+            },
+            {
+              dataField : "SaleAmount",
+              alignment : "right",
+              format : "currency"
+            }
+          ],
+          onToolbarPreparing: function (e) {
+            let toolbarItems = e.toolbarOptions.items;
+  
+            // Add refresh button
+            toolbarItems.push({
+              widget: "dxButton",
+              options: {
+                icon: "refresh",
+                onClick: function () {
+                  datagrid.refresh(); // Reloads data from the server
+                }
+              },
+              location: "after"
+            });
+          }
+        })
+          .dxDataGrid("instance");
+      },
+      error : () => {
+        console.log("error to fetch employees from ajax request")
+      }
+    })
   }
   
