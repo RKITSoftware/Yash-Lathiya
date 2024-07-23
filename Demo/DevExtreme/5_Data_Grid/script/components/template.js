@@ -22,19 +22,18 @@ export default function showTemplate() {
           dataRowTemplate(container, item) {
             const { data } = item;
             const markup = '<tr class=\'main-row\' role=\'row\'>'
-          + `<td rowspan='2' role="gridcell"><img src='${data.Photo}' alt='Picture of ${data.FirstName} ${data.LastName}' tabindex='0'/></td>`
-          + `<td role='gridcell'>${data.EmployeeID}</td>`
-          + `<td role='gridcell'>${data.FullName}</td>`
-          + `<td role='gridcell'>${data.Position}</td>`
-          + `<td role='gridcell'>${data.TitleOfCourtesy}</td>`
-          + `<td role='gridcell'>${formatDate(new Date(data.BirthDate))}</td>`
-          + `<td role='gridcell'>${formatDate(new Date(data.Country))}</td>`
-      + '</tr>'
-      + '<tr class=\'notes-row\' role=\'row\'>'
-          + `<td colspan='6' role='gridcell'><div>Customized Row Template</div></td>`
-      + '</tr>';
-
-      container.append(markup);
+              + `<td rowspan='2' role="gridcell"><img src='${data.Photo}' alt='Picture of ${data.FirstName} ${data.LastName}' tabindex='0'/></td>`
+              + `<td role='gridcell'>${data.EmployeeID}</td>`
+              + `<td role='gridcell'>${data.FullName}</td>`
+              + `<td role='gridcell'>${data.Position}</td>`
+              + `<td role='gridcell'>${data.TitleOfCourtesy}</td>`
+              + `<td role='gridcell'>${formatDate(new Date(data.BirthDate))}</td>`
+              + `<td role='gridcell'>${formatDate(new Date(data.Country))}</td>`
+              + '</tr>'
+              + '<tr class=\'notes-row\' role=\'row\'>'
+              + `<td colspan='6' role='gridcell'><div>Customized Row Template</div></td>`
+              + '</tr>';
+            container.append(markup);
           },
 
           // cell  customization
