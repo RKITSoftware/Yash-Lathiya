@@ -24,20 +24,15 @@ export default function showFiltering() {
             visible : true
           },
           filterSyncEnabled: true,
-        //   filterBuilderPopup: {
-        //     width: 400,
-        //     title: "Filter Builder"
-        //   },
-        //   filterBuilder : { ggit 
-        //     customOperations : [{
-        //         name : "isUsaEmployee",
-        //         caption : "Is USA Employee ?",
-        //         calculateFilterExpression : (filterValue, field) => {
-        //             console.log(filterValue, field)
-        //             return ["Country", "=", "USA"]
-        //         }
-        //     }]
-        //   },
+          filterBuilder: {
+            customOperations: [{
+              name: "isUsaEmployee",
+              caption: "Is USA Employee?",
+              calculateFilterExpression: () => {
+                return ["Country", "=", "USA"];
+              }
+            }]
+          },
           columns : [
             {
               dataField : 'EmployeeID',
@@ -61,7 +56,7 @@ export default function showFiltering() {
             },
             {
               dataField : "Country",
-            //   filterOperations: ["equals", "isUsaEmployee"]
+              filterOperations: ["=", "isUsaEmployee"]
             }
           ]
         });
