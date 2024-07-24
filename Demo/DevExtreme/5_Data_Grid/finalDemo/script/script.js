@@ -1,27 +1,256 @@
-$.ajax({
-    url: "https://literate-space-waddle-jvr4475rq6v2j57r-5246.app.github.dev/api/Orders/Hello",
-    method: "GET",
-    success: function(data, status, xhr) {
-      // Handle success response
-      console.log(data);
-    },
-    error: function(xhr, status, error) {
-      if (xhr.status === 302) {
-        // Get the redirected URL from the Location header
-        let redirectedUrl = xhr.getResponseHeader('Location');
-        // Make another AJAX request to the redirected URL
-        $.ajax({
-          url: redirectedUrl,
-          method: "GET",
-          success: function(data) {
-            console.log(data); // Handle the data from the redirected response
-          },
-          error: function(xhr, status, error) {
-            console.error('Error:', error);
-          }
-        });
-      } else {
-        console.error('Error:', error);
-      }
-    }
-  });
+$(document).ready(function () {
+    
+    $.ajax({
+        url: "../assets/orders.json",
+        method: "GET",
+        success: function(res, status, xhr) {
+          orders = res
+
+            // Function to get index by key
+            function getIndexByKey(key) {
+                for (var i = 0; i < orders.length; i++) {
+                    if (orders[i]["Order ID"] === key) {
+                        return i;
+                    }
+                }
+                return -1;
+            }
+
+            // custom store
+            var ordersStore = new DevExpress.data.CustomStore({
+                key : "Order ID",
+                load : (loadOptions) => {
+                    return orders
+                },
+                insert : (values) => {
+                    console.log(values)
+                    values.id = orders.length + 1
+                    orders.push(values)
+                    return values
+                },
+                update : (key, values) => {
+                    var index = getIndexByKey(key)
+                    if(index >=0) {
+                        $.extend(true, orders[index], values) // true --> new values will overwrite previous values
+                    }
+                    return values
+                },
+                remove : (key) => {
+                    var index = getIndexByKey(key)
+                    if(index >= 0){
+                        orders.splice(index, 1) // remove one element from STARTING INDEX index.
+                    }
+                }
+            })
+
+            $("#content").dxDataGrid({
+                dataSource : {
+                    store :ordersStore,
+                    group : ["Product", "catégorie"]
+                },
+                showBorders : true,
+                height : 600,
+                
+                // paging
+                paging : {
+                    pageSize : 10
+                },
+                pager : {
+                    visible : true,
+                    showInfo : true,
+                    showNavigationButtons : true,
+                    displayMode : "full"
+                },
+                
+                // scrolling
+                scrolling : {
+                    mode : "virtual",
+                    useNative : false,
+                    scrollByContent : false,
+                    scrollByThumb : true,
+                    showScrollbar : "onHover"
+                },
+                
+                // editing
+                editing : {
+                    allowUpdating : true,
+                    allowAdding : true,
+                    allowDeleting : true,
+                    mode : "popup",
+                    popup : {
+                        height : 400,
+                        width : 800
+                    },
+                    useIcons : true
+                },
+
+                // grouping
+                grouping : {
+                    autoExpandAll : true
+                },
+
+                // filtering
+                filterRow : {
+                    visible : true,
+                },
+                headerFilter : {
+                    visible : true
+                },
+                searchPanel : {
+                    visible : true
+                },
+                filterPanel : {
+                    visible : true
+                },
+                filterSyncEnabled : true,
+                filterBuilder : {
+                    // customOperations : [
+                    //     {
+                    //         name : "MoreThan10PercentMargin",
+                    //         caption : " More than 10 % Margin",
+                    //         calculateFilterExpression : (e) => {
+                    //             console.log(e)
+                    //         }
+                    //     }
+                    // ]
+                },
+
+                // sorting
+                sorting : {
+                    mode : "multiple"
+                },
+
+                // selection
+                selection : {
+                    mode : "multiple",
+                    selectAllMode: "all",
+                    showCheckBoxesMode : "always"
+                },
+                onSelectionChanged : (selectedItems) => { 
+                    console.log(selectedItems)
+                },
+
+                // state persistance
+                stateStoring : {
+                    enabled : true,
+                    type : "localStorage",
+                    storageKey : "dxOrderDataGrid"
+                },
+
+                // appearance
+                showColumnLines : true,
+                showRowLines: true,
+                rowAlternationEnabled : false,
+                showBorders : true,
+
+                // column customization
+                allowColumnResizing : true,
+                allowColumnReordering : true,
+                columnAutoWidth : true,
+                columnChooser : {
+                    enabled : true
+                },
+                customizeColumns : (columns) => {
+                    columns[0].width = 100
+                },
+                columns : [
+                    {
+                        dataField : "Order ID",
+                        allowEditing : false,
+                        sortOrder : "asc"
+                    },
+                    {
+                        dataField : "Order Date",
+                        calculateCellValue(data){
+                            return data["Order Date"].split(" ")[0]
+                        },
+                    },
+                    "CustomerID",
+                    {
+                        dataField : "Product",
+                        groupIndex : 1
+                    },
+                    {
+                        dataField : "catégorie",
+                        caption : "Category",
+                        groupIndex : 0
+                    },
+                    "Quantity Ordered",
+                    {
+                        caption : "Order Economics",
+                        columns : [
+                            {
+                                dataField : "Price Each",
+                                caption : "Price",
+                                format : "currency"
+                            },
+                            {
+                                dataField : "Cost price",
+                                caption : "Cost" ,
+                                format : "currency"
+                            },
+                            "turnover",
+                            "margin"
+                        ]
+                    }
+                ],
+
+                // masterDetail
+                masterDetail : {
+                    enabled :true,
+                    template(container, option){
+                        const currentOrderData = option.data
+                        $("<div>")
+                            .text(`Purchase Address :  ${currentOrderData["Purchase Address"]}`)
+                            .appendTo(container)
+                    }
+                },
+
+                // export
+                export : {
+                    enabled :true,
+                    allowExportSelectedData : true
+                },
+                onExporting(e) {
+                    const workbook = new ExcelJS.Workbook();
+                    const worksheet = workbook.addWorksheet('Employees');
+
+                    DevExpress.excelExporter.exportDataGrid({
+                        component: e.component,
+                        worksheet,
+                        autoFilterEnabled: true,
+                    })
+                    .then(() => {
+                        workbook.xlsx.writeBuffer().then((buffer) => {
+                        saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Orders.xlsx')});
+                    });
+                },
+
+                // adaptibility
+                columnHidingEnabled : true,
+
+                // data summary
+                sortByGroupSummaryInfo: [{
+                    summaryItem: 'sum',
+                    column: "Price Each",
+                    displayFormat: "Total: {0}"
+                }],
+                summary : {
+                    groupItems : [
+                        {
+                            column: "Price Each",
+                            summaryType: "sum",
+                            valueFormat: "currency",
+                            displayFormat: "Total Sell: {0}",
+                            showInGroupFooter: true,
+                        }
+                    ]
+                }
+            })
+
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr, status, error)
+        }
+    });    
+})

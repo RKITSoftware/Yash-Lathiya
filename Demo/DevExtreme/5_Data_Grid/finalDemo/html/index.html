@@ -4,13 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orders</title>
-    <!-- ... -->
+    
+    <!-- jQuery -->
     <script
       type="text/javascript"
       src="https://code.jquery.com/jquery-3.5.1.min.js"
     ></script>
+
+    <!-- jsExcel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+    <!-- DevExtreme theme -->
+    <link
+      rel="stylesheet"
+      href="https://cdn3.devexpress.com/jslib/21.1.11/css/dx.light.css"
+    />
+
+    <!-- DevExtreme library -->
+    <script
+      type="text/javascript"
+      src="https://cdn3.devexpress.com/jslib/21.1.11/js/dx.all.js"
+    ></script>
+
 </head>
 <body>
-    <script src="../script/script.js" />
+    <div id="container">
+        <div id="header"></div>
+        <div id="content"></div>
+        <div id="footer"></div>
+    </div>
+    <script src="../script/script.js" ></script>
 </body>
 </html>
