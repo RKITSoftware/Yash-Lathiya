@@ -24,7 +24,7 @@ $(document).ready(function () {
                 },
                 insert : (values) => {
                     console.log(values)
-                    values.id = orders.length + 1
+                    values["Order ID"] = orders.length + 1
                     orders.push(values)
                     return values
                 },
@@ -161,8 +161,10 @@ $(document).ready(function () {
                     },
                     {
                         dataField : "Order Date",
+                        caption : "Order Time",
                         calculateCellValue(data){
-                            return data["Order Date"].split(" ")[0]
+                            console.log(data)
+                            return data["Order Date"]
                         },
                     },
                     "CustomerID",
