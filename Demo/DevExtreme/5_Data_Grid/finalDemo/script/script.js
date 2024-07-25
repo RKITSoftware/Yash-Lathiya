@@ -4,7 +4,7 @@ $(document).ready(function () {
         url: "../assets/orders.json",
         method: "GET",
         success: function(res, status, xhr) {
-          orders = res
+            orders = res
 
             // Function to get index by key
             function getIndexByKey(key) {
@@ -103,17 +103,6 @@ $(document).ready(function () {
                     visible : true
                 },
                 filterSyncEnabled : true,
-                filterBuilder : {
-                    // customOperations : [
-                    //     {
-                    //         name : "MoreThan10PercentMargin",
-                    //         caption : " More than 10 % Margin",
-                    //         calculateFilterExpression : (e) => {
-                    //             console.log(e)
-                    //         }
-                    //     }
-                    // ]
-                },
 
                 // sorting
                 sorting : {
@@ -127,7 +116,58 @@ $(document).ready(function () {
                     showCheckBoxesMode : "always"
                 },
                 onSelectionChanged : (selectedItems) => { 
-                    console.log(selectedItems)
+                    // console.log(selectedItems)
+                    let customerIds = []
+                    selectedItems.selectedRowsData.forEach(element => {
+                        // console.log(element.CustomerID)
+                        if(!customerIds.includes(element.CustomerID)){
+                            customerIds.push(element.CustomerID)
+                        }
+                    })
+                    // console.log(customerIds)
+                    let customers = []
+                    $.get(
+                        "../assets/customers.json",
+                        res => {
+                            // console.log(res)
+                            res.forEach(customer => {
+                                console.log(customer.CustomerID)
+                                if(customerIds.includes(customer.CustomerID)){
+                                    console.log("*")
+                                    customers.push(customer)
+                                }
+                            })
+                            
+                            console.log(customers)
+                            console.log(footer.dataSource)
+
+                            $("#footer").dxDataGrid({
+                                dataSource : customers,
+                                columns : [
+                                    {
+                                        dataField : "Photo",
+                                        cellTemplate :  (element, itemData) => {
+                                            $("<img>")
+                                                .attr("src", itemData.value)
+                                                .css({width : 30, height : 30})
+                                                .appendTo(element)
+                                        },
+                                        width : 50
+                                    },
+                                    "CustomerID",
+                                    "FullName",
+                                    "Address",
+                                    "City",
+                                    "Region",
+                                    "PostalCode",
+                                    "Country",
+                                    "HomePhone",
+                                    "Extension",
+                                ]
+                            })
+                        }
+                    )
+                    
                 },
 
                 // state persistance
@@ -163,7 +203,7 @@ $(document).ready(function () {
                         dataField : "Order Date",
                         caption : "Order Time",
                         calculateCellValue(data){
-                            console.log(data)
+                            // console.log(data)
                             return data["Order Date"]
                         },
                     },
@@ -254,5 +294,6 @@ $(document).ready(function () {
         error: function(xhr, status, error) {
             console.log(xhr, status, error)
         }
-    });    
+    }); 
+    
 })
