@@ -45,7 +45,7 @@ $(() => {
       },
     });
 
-    $("toastBtn").dxButton({
+    $("#toastBtn").dxButton({
       text: "toast",
       width: () => {
         return window.innerHeight;
