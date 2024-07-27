@@ -1,0 +1,36 @@
+[
+    {
+        "id" : "1",
+        "name" : "Static Projects",
+        "items" : [
+            {
+                "id" : "1_1",
+                "name" : "Without any framework",
+                "icon" : "../assets/images/withoutFramework.jpg"
+            },
+            {
+                "id" : "1_2",
+                "name" : "Using framework",
+                "icon" : "../assets/images/framework.jpg"
+            }
+        ]
+        
+    },
+    {
+        "id" : "2",
+        "name" : "Full Stack Projects",
+        "items" : [
+            {
+                "id" : "2_1",
+                "name" : "Using Java as a backend",
+                "icon" : "../assets/images/java.webp"
+            },
+            {
+                "id" : "2_2",
+                "name" : "Using .NET as a backend",
+                "icon" : "../assets/images/dotnet.png"
+            }
+        ]
+        
+    }
+]

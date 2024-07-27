@@ -1,0 +1,4 @@
+/* Ensure that only parent nodes or top-level nodes have bold text */
+.dx-treeview-item.dx-treeview-node-parent > .dx-treeview-item-content {
+    font-weight: bold;
+}

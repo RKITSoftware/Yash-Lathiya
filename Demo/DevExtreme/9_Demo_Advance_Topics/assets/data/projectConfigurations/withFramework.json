@@ -1,0 +1,138 @@
+[
+    {
+        "id": 1,
+        "text": "HTML"
+    },
+    {
+        "id": 2,
+        "text": "Style",
+        "items": [
+            {
+                "id": 3,
+                "text": "CSS"
+            },
+            {
+                "id": 4,
+                "text": "SCSS"
+            },
+            {
+                "id": 5,
+                "text": "Bootstrap"
+            },
+            {
+                "id": 6,
+                "text": "Tailwind CSS"
+            },
+            {
+                "id": 7,
+                "text": "Foundation"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "text": "Script",
+        "items": [
+            {
+                "id": 9,
+                "text": "JavaScript"
+            },
+            {
+                "id": 10,
+                "text": "TypeScript"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "text": "Framework",
+        "items": [
+            {
+                "id": 12,
+                "text": "React"
+            },
+            {
+                "id": 13,
+                "text": "Vue.js"
+            },
+            {
+                "id": 14,
+                "text": "Angular"
+            },
+            {
+                "id": 15,
+                "text": "Svelte"
+            },
+            {
+                "id": 16,
+                "text": "Ember.js"
+            },
+            {
+                "id": 17,
+                "text": "Backbone.js"
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "text": "Build Tools",
+        "items": [
+            {
+                "id": 19,
+                "text": "Webpack"
+            },
+            {
+                "id": 20,
+                "text": "Parcel"
+            },
+            {
+                "id": 21,
+                "text": "Rollup"
+            },
+            {
+                "id": 22,
+                "text": "Vite"
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "text": "Testing",
+        "items": [
+            {
+                "id": 24,
+                "text": "Jest"
+            },
+            {
+                "id": 25,
+                "text": "Mocha"
+            },
+            {
+                "id": 26,
+                "text": "Chai"
+            },
+            {
+                "id": 27,
+                "text": "Cypress"
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "text": "Version Control",
+        "items": [
+            {
+                "id": 29,
+                "text": "Git"
+            },
+            {
+                "id": 30,
+                "text": "Subversion (SVN)"
+            },
+            {
+                "id": 31,
+                "text": "Mercurial"
+            }
+        ]
+    }
+]

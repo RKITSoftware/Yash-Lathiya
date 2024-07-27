@@ -1,0 +1,190 @@
+[
+    {
+        "id": 1,
+        "text": "Frontend",
+        "items": [
+            {
+                "id": 2,
+                "text": "HTML"
+            },
+            {
+                "id": 3,
+                "text": "Style",
+                "items": [
+                    {
+                        "id": 4,
+                        "text": "CSS"
+                    },
+                    {
+                        "id": 5,
+                        "text": "SCSS"
+                    },
+                    {
+                        "id": 6,
+                        "text": "Bootstrap"
+                    },
+                    {
+                        "id": 7,
+                        "text": "Tailwind CSS"
+                    },
+                    {
+                        "id": 8,
+                        "text": "Foundation"
+                    }
+                ]
+            },
+            {
+                "id": 9,
+                "text": "Script",
+                "items": [
+                    {
+                        "id": 10,
+                        "text": "JavaScript"
+                    },
+                    {
+                        "id": 11,
+                        "text": "TypeScript"
+                    }
+                ]
+            },
+            {
+                "id": 12,
+                "text": "Framework",
+                "items": [
+                    {
+                        "id": 13,
+                        "text": "React"
+                    },
+                    {
+                        "id": 14,
+                        "text": "Vue.js"
+                    },
+                    {
+                        "id": 15,
+                        "text": "Angular"
+                    },
+                    {
+                        "id": 16,
+                        "text": "Svelte"
+                    },
+                    {
+                        "id": 17,
+                        "text": "Ember.js"
+                    },
+                    {
+                        "id": 18,
+                        "text": "Backbone.js"
+                    }
+                ]
+            },
+            {
+                "id": 19,
+                "text": "Build Tools",
+                "items": [
+                    {
+                        "id": 20,
+                        "text": "Webpack"
+                    },
+                    {
+                        "id": 21,
+                        "text": "Parcel"
+                    },
+                    {
+                        "id": 22,
+                        "text": "Rollup"
+                    },
+                    {
+                        "id": 23,
+                        "text": "Vite"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "text": "Backend",
+        "items": [
+            {
+                "id": 25,
+                "text": ".NET",
+                "items": [
+                    {
+                        "id": 26,
+                        "text": "ASP.NET Core"
+                    },
+                    {
+                        "id": 27,
+                        "text": "Entity Framework Core"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "text": "Deployment",
+        "items": [
+            {
+                "id": 29,
+                "text": "Docker"
+            },
+            {
+                "id": 30,
+                "text": "Kubernetes"
+            },
+            {
+                "id": 31,
+                "text": "Jenkins"
+            },
+            {
+                "id": 32,
+                "text": "AWS"
+            },
+            {
+                "id": 33,
+                "text": "Azure"
+            },
+            {
+                "id": 34,
+                "text": "Google Cloud"
+            }
+        ]
+    },
+    {
+        "id": 35,
+        "text": "Testing",
+        "items": [
+            {
+                "id": 36,
+                "text": "xUnit"
+            },
+            {
+                "id": 37,
+                "text": "NUnit"
+            },
+            {
+                "id": 38,
+                "text": "Moq"
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "text": "Version Control",
+        "items": [
+            {
+                "id": 40,
+                "text": "Git"
+            },
+            {
+                "id": 41,
+                "text": "Subversion (SVN)"
+            },
+            {
+                "id": 42,
+                "text": "Mercurial"
+            }
+        ]
+    }
+]

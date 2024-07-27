@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "text": "HTML"
+    },
+    {
+        "id": 2,
+        "text": "Style",
+        "items": [
+            {
+                "id": 3,
+                "text": "CSS"
+            },
+            {
+                "id": 4,
+                "text": "SCSS"
+            },
+            {
+                "id": 5,
+                "text": "Bootstrap"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "text": "Script",
+        "items": [
+            {
+                "id": 7,
+                "text": "JavaScript"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "text": "Version Control",
+        "items": [
+            {
+                "id": 9,
+                "text": "Git"
+            },
+            {
+                "id": 10,
+                "text": "Subversion (SVN)"
+            },
+            {
+                "id": 11,
+                "text": "Mercurial"
+            }
+        ]
+    }
+]
