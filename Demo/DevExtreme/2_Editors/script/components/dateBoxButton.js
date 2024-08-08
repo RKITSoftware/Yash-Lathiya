@@ -80,7 +80,7 @@ export default function showDateBox() {
     type: "time",
     value: now,
     displayFormat: "HH:mm:ss ",
-    useMaskedBehaviour: true,
+    useMaskBehavior: true,
     inputAttr: {
       id: "inputTimeId",
     },

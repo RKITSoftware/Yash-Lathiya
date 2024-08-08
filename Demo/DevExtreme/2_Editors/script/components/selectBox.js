@@ -121,7 +121,7 @@ export default function showSelectBox() {
       },
       onValueChanged(data) {
         const selectedTeam = teams
-          .flatMap((group) => group.items)
+          .flatMap((group) => group.items) // can iterate group items instead of group
           .find((team) => team.id === data.value);
         msgwidget.option("value", selectedTeam ? selectedTeam.msg : "");
       },
