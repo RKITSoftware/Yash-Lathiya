@@ -1,6 +1,12 @@
 export default function showValidation() {
+
+  // remove "content" to delete previously loaded script
   $("#content").remove();
+
+  // append again "content" to container 
   $(".container").append("<div id='content'></div>");
+
+  /* added html components for demonstration */
 
   $("#content").append(
     `<div class='left-right wMax'>
@@ -74,7 +80,7 @@ export default function showValidation() {
       value: "",
     })
     .dxValidator({
-      validationGroup: "registrationGroup",
+      validationGroup: "registrationGroup", // specified validation group
       validationRules: [
         {
           type: "required",

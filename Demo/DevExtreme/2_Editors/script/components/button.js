@@ -1,11 +1,18 @@
 export default function showButton() {
+
+  // remove "content" to delete previously loaded script
   $("#content").remove();
+
+  // append again "content" to container 
   $(".container").append("<div id='content'></div>");
 
+  /* added html components for demonstration */
+  
   $("#content").append(`<div class='btn' id='stylingMode'></div>`);
 
   $("#content").append(`<div class='btn' id='type'></div>`);
 
+  // diffterent stylingModes of dxButton
   const styles = [
     {
       id: 0,
@@ -24,6 +31,7 @@ export default function showButton() {
     },
   ];
 
+  // diffterent types of dxButton
   const types = [
     {
       id: 0,
@@ -52,6 +60,7 @@ export default function showButton() {
     },
   ];
 
+  // index for loading options
   let currentIndex = 0;
   let currentTypeIndex = 0;
 
@@ -86,6 +95,7 @@ export default function showButton() {
         // Get the new type
         const newType = types[currentTypeIndex];
         console.log(newType);
+        
         // Update the button's text and type
         typeButton.option("text", newType.text);
         typeButton.option("type", newType.type);

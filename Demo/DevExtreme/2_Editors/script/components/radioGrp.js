@@ -1,6 +1,12 @@
 export default function showRadioGrp() {
+  
+  // remove "content" to delete previously loaded script
   $("#content").remove();
+
+  // append again "content" to container 
   $(".container").append("<div id='content'></div>");
+
+  /* added html components for demonstration */
 
   $("#content").append(
     `<div class='left-right'>
@@ -25,6 +31,7 @@ export default function showRadioGrp() {
 
   const priorities = ["Low", "Normal", "Urgent", "High"];
 
+  // it's vertical ui of radio group
   const vertical = $("#vertical")
     .dxRadioGroup({
       items: priorities,

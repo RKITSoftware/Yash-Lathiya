@@ -1,7 +1,13 @@
 export default function showDateBox() {
+
+  // remove "content" to delete previously loaded script
   $("#content").remove();
+
+  // append again "content" to container 
   $(".container").append("<div id='content'></div>");
 
+  /* added html components for demonstration */
+  
   $("#content").append(
     `<div class='left-right'>
       <div class='left'>Date</div>
@@ -46,6 +52,7 @@ export default function showDateBox() {
   );
 
   const now = new Date();
+  
   const holidays = [
     new Date("2024-01-14"), // Makar Sankranti
     new Date("2024-01-26"), // Republic Day
@@ -68,7 +75,7 @@ export default function showDateBox() {
 
   $("#date").dxDateBox({
     type: "date",
-    value: now,
+    value: now, // assigned value
     displayFormat: "dd/MM/yyyy",
     acceptCustomValue: false, // default value is true
     accessKey: "q", // focus on alt + accessKey
@@ -79,7 +86,7 @@ export default function showDateBox() {
   $("#time").dxDateBox({
     type: "time",
     value: now,
-    displayFormat: "HH:mm:ss ",
+    displayFormat: "HH:mm:ss",
     useMaskBehavior: true,
     inputAttr: {
       id: "inputTimeId",
@@ -103,10 +110,12 @@ export default function showDateBox() {
     .dxDateBox({
       value: now,
       displayFormat: "EEEE, MMM dd, hh:mm a",
-      disabledDates: holidays,
+      disabledDates: holidays, // all dates in "holidays" json file will be disabled in calander ui
       type: "datetime",
       pickerType: "calender",
       showAnalogClock: true,
+
+      // on value change ==> it notifies the selected value of "customDateInstance"
       onValueChanged: (e) => {
         console.log("onChange");
         DevExpress.ui.notify({
@@ -114,17 +123,22 @@ export default function showDateBox() {
           position: { my: "top-left", at: "bottom-right", of: "#customFormat" },
         });
       },
+
+      // on copy ==> it notifies the copy msg
       onCopy: () => {
         console.log("onCopy");
         DevExpress.ui.notify({
           message: "value is copied to clipboard",
         });
       },
+
+      // on open ==> it notifies the open msg 
       onOpened: () => {
         DevExpress.ui.notify({
           message: "drop down is opened",
         });
       },
+
       // onOptionChanged: () => {
       //   DevExpress.ui.notify({
       //     message: "option is changed",
@@ -141,10 +155,11 @@ export default function showDateBox() {
       value: now,
       displayFormat: "dd/MM/yyyy",
       applyValueMode: "useButtons", // can accept "useButtons" or "instantly" (which does not consist buttons)
-      max: new Date(),
-      min: new Date("1900-01-01"),
+      max: new Date(), // maximum select value is today
+      min: new Date("1900-01-01"), // minimum user can select 1900-01-01
       deferRendering: false, // ui will be in html if changes on outside pop up box
-      dateOutOfRangeMessage: "Birthdate can not be future date",
+      dateOutOfRangeMessage: "Birthdate can not be future date", // msg for date from incorrect range
+      // buttons in UI
       buttons: [
         {
           name: "today",
@@ -153,6 +168,8 @@ export default function showDateBox() {
           options: {
             text: "Today",
             stylingMode: "text",
+
+            // on click ==> set today value
             onClick() {
               birthdayDxBox.option("value", new Date().getTime());
             },
@@ -164,6 +181,8 @@ export default function showDateBox() {
           options: {
             icon: "spinprev",
             stylingMode: "text",
+
+            // on click ==> set previous day of currently selected date
             onClick() {
               const currentDate = birthdayDxBox.option("value");
               birthdayDxBox.option("value", currentDate - millisecondsInDay);
@@ -176,6 +195,8 @@ export default function showDateBox() {
           options: {
             icon: "spinnext",
             stylingMode: "text",
+
+            // on click ==> set next day of currently selected date
             onClick() {
               const currentDate = birthdayDxBox.option("value");
               birthdayDxBox.option("value", currentDate + millisecondsInDay);
@@ -184,6 +205,8 @@ export default function showDateBox() {
         },
         "dropDown",
       ],
+
+      // on value change ==> it set calculated age in "age" dxTextBox
       onValueChanged: (e) => {
         const birthday = new Date(e.value);
         const age = now.getFullYear() - birthday.getFullYear();

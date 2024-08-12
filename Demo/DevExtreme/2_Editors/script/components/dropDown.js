@@ -1,6 +1,12 @@
 export default function showCdropDown() {
+
+  // remove "content" to delete previously loaded script
   $("#content").remove();
+
+  // append again "content" to container 
   $(".container").append("<div id='content'></div>");
+
+  /* added html components for demonstration */
 
   $("#content").append(
     `<div class='left-right'>
@@ -43,17 +49,19 @@ export default function showCdropDown() {
 
   const jobRoleWidget = $("#jobrole")
     .dxDropDownBox({
-      value: "",
-      dataSource: jobRoles,
+      value: "", // no value is selected on intialization
+      dataSource: jobRoles, // array as datasource
       placeholder: "job profile",
       hint: "you can type your custom role too",
       acceptCustomValue: true, //user can add custom value
       buttons: [
         {
-          name: "clearr",
+          name: "clearr", // here "clear" cannot be used as it has attached/used with internal dx setup. thats why "r" is appended, which makes it custom.
           location: "after",
           options: {
             icon: "close",
+           
+            // on click ==> it set selected value & print msg in console
             onClick: (e) => {
               jobRoleWidget.option("value", ""); // Clear the dropdown value
               console.log("clear button clicked");
@@ -61,6 +69,7 @@ export default function showCdropDown() {
           },
         },
       ],
+
       contentTemplate: (e) => {
         const $list = $("<div>").dxList({
           dataSource: e.component.option("dataSource"),
@@ -73,6 +82,9 @@ export default function showCdropDown() {
         });
         return $list;
       },
+
+      /* on different events ==> it notifies respetive msg to user */
+
       onEnterKey: () => {
         DevExpress.ui.notify({
           message: "enter is pressed",
@@ -90,7 +102,7 @@ export default function showCdropDown() {
       },
       onKeyDown: () => {
         DevExpress.ui.notify({
-          message: jobRoleWidget.option("value"),
+          message: jobRoleWidget.option("value"), // currently selected value
         });
       },
       onOpened: () => {
@@ -139,29 +151,32 @@ export default function showCdropDown() {
   const selectedValue = cricketers[0].bcci_id;
 
   $("#fav").dxDropDownBox({
-    value: selectedValue,
-    valueExpr: "bcci_id",
-    displayExpr: "name",
+    value: selectedValue, // intialized with custom selected value
+    valueExpr: "bcci_id", // works as a key
+    displayExpr: "name", // displays this property on selected key
     showDropDownButton: false,
     stylingMode: "underlined", // accepts outlined, underlined & filled
     showClearButton: true,
+    // data source is cricketers json as array in array store
     dataSource: new DevExpress.data.ArrayStore({
       data: cricketers,
       key: "bcci_id",
     }),
     dropDownOptions: {
-      width: "500px",
+      width: "500px", // set custom width
     },
     contentTemplate: (e) => {
       const $dataGrid = $("<div>").dxDataGrid({
         dataSource: e.component.option("dataSource"),
         columns: ["name", "role", "team"],
         height: 250,
-        selection: { mode: "single" },
-        selectedRowKeys: [selectedValue],
+        selection: { mode: "single" }, // no multiple values can be selected
+        selectedRowKeys: [selectedValue], // specified keys of the selected row
+
+        // on selection change ==> modifies selected keys & related props
         onSelectionChanged: (selectedItems) => {
           const keys = selectedItems.selectedRowKeys,
-            hasSelection = keys.length;
+          hasSelection = keys.length;
           e.component.option("value", hasSelection ? keys[0] : null);
           e.component.close();
         },
@@ -187,6 +202,10 @@ export default function showCdropDown() {
     dataSource: skills,
     isValid: false,
     placeholder: "skill-set",
+
+
+    // content template contains tag box for better ui 
+    // e represents "skills" dxDropDown not tag box
     contentTemplate: (e) => {
       // console.log(e);
       const $tagBox = $("<div>").dxTagBox({
@@ -202,6 +221,9 @@ export default function showCdropDown() {
       });
       return $tagBox;
     },
+
+    /* on different events ==> it notifies user (or) consoles the msg */
+
     onChange: () => {
       console.log("onChange");
     },
@@ -213,6 +235,7 @@ export default function showCdropDown() {
     },
   });
 
+  // fetching data from api & prepared "countryList" array 
   let countryList = [];
   $.get("https://api.first.org/data/v1/countries", (data) => {
     Object.values(data.data).map((countryObj) => {
@@ -234,13 +257,18 @@ export default function showCdropDown() {
           location: "after",
           options: {
             icon: "close",
+
+            // onclick ==> clears value of dropdown
             onClick: (e) => {
               countriesWidget.option("value", ""); // Clear the dropdown value
               console.log("clear button clicked");
             },
+
           },
         },
       ],
+
+      // content template contains "dxList"
       contentTemplate: (e) => {
         const $list = $("<div>").dxList({
           dataSource: e.component.option("dataSource"),
@@ -258,6 +286,8 @@ export default function showCdropDown() {
 
   $("#hideBtn").dxButton({
     text: "Hide Job Profile",
+
+    // onclick ==> hides "jobRoleWidget"
     onClick: () => {
       jobRoleWidget.option("visible", false);
     },
@@ -265,6 +295,8 @@ export default function showCdropDown() {
 
   $("#consoleDataSourceBtn").dxButton({
     text: "Console Data Source",
+
+    // on click ==> consoles dta source of "jobRoleWidget"
     onClick: () => {
       const ds = jobRoleWidget.getDataSource();
       console.log("dataSource", ds);

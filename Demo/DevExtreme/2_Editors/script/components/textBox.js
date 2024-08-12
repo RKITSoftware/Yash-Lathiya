@@ -1,7 +1,13 @@
 export default function showTextBox() {
+
+  // remove "content" to delete previously loaded script
   $("#content").remove();
+
+  // append again "content" to container 
   $(".container").append("<div id='content'></div>");
 
+  /* added html components for demonstration */
+  
   $("#content").append(
     `<div class='left-right '>
       <div class='left'>Username</div>
@@ -65,7 +71,7 @@ export default function showTextBox() {
   const mobileNumber = $("#mobileNumber")
     .dxTextBox({
       showClearButton: true,
-      mask: "(+\\91) X0000 00000",
+      mask: "(+\\91) X0000 00000", // should be in this format
       maskRules: { X: /[2-9]/ },
     })
     .dxTextBox("instance");

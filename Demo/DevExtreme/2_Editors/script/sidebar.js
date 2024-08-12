@@ -11,6 +11,9 @@ import showRadioGrp from "./components/radioGrp.js";
 import showDateBox from "./components/dateBoxButton.js";
 
 $(() => {
+
+  // Here each button of sidebar contains onClick event which loads the respective Demo of dxEditor on "content" container
+
   $("#checkBoxBtn").dxButton({
     text: "Check Box",
     width: () => {

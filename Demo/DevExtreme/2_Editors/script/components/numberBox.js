@@ -1,6 +1,12 @@
 export default function showNumberBox() {
+
+  // remove "content" to delete previously loaded script
   $("#content").remove();
+
+  // append again "content" to container 
   $(".container").append("<div id='content'></div>");
+
+  /* added html components for demonstration */
 
   $("#content").append(
     `<div class='left-right'>
@@ -41,10 +47,11 @@ export default function showNumberBox() {
 
   $("#sipAmount").dxNumberBox({
     showClearButton: true,
-    min: 0,
+    min: 0, // minimum value
     format: "₹ #", // integer format
     hint: "Monthly SIP Amount",
     mode: "number",
+    // on input enter (or) changes
     onInput: () => {
       console.log(calculateWidget);
       // calculateWidget.click();

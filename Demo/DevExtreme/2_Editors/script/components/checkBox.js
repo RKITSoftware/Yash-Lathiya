@@ -1,7 +1,13 @@
 export default function showCheckBox() {
+
+  // remove "content" to delete previously loaded script
   $("#content").remove();
+
+  // append again "content" to container 
   $(".container").append("<div id='content'></div>");
 
+  /* added html components for demonstration */
+  
   $("#content").append(
     `<div class='left-right'>
       <div class='left'>Checked</div>
@@ -108,6 +114,9 @@ export default function showCheckBox() {
   const locationIndiaChkBox = $("#isLocationIndia")
     .dxCheckBox({
       value: false,
+
+      // If locationIndiaChkBox is selected => rupeeChkBox is selected & locationUsaChkBox is unselected..
+      // Vice versa true. 
       onValueChanged: function (e) {
         console.log("is location India : ", e.value);
         rupeeChkBox.option("value", e.value);
@@ -122,6 +131,9 @@ export default function showCheckBox() {
   const locationUsaChkBox = $("#isLocationUSA")
     .dxCheckBox({
       value: false,
+
+      // If locationUSAChkBox is selected => usdChkBox is selected & locationIndiaChkBox is unselected..
+      // Vice versa true. 
       onValueChanged: function (e) {
         console.log("is loacation USA : ", e.value);
         usdChkBox.option("value", e.value);
@@ -133,11 +145,11 @@ export default function showCheckBox() {
   const rupeeChkBox = $("#inr")
     .dxCheckBox({
       value: false,
-      disabled: true,
+      disabled: true, // intialized with default disable
       onContentReady: () => {
         console.log("rupee check box is ready");
       },
-      onDispoaing: () => {
+      onDisposing: () => {
         console.log("rupee check box is dispoaing");
       },
     })
@@ -146,11 +158,11 @@ export default function showCheckBox() {
   const usdChkBox = $("#usd")
     .dxCheckBox({
       value: false,
-      disabled: true,
+      disabled: true, // intialized with default disable
       onContentReady: () => {
         console.log("usd check box is ready");
       },
-      onDispoaing: () => {
+      onDisposing: () => {
         console.log("usd check box is dispoaing");
       },
     })
@@ -162,7 +174,7 @@ export default function showCheckBox() {
     })
     .dxCheckBox("instance");
 
-  // batch changes proceessing
+  // batch changes proceessing (for just purpose of demonstrating)
   techChkBox.beginUpdate();
 
   locationIndiaChkBox.option("value", true);
@@ -171,6 +183,7 @@ export default function showCheckBox() {
   techChkBox.endUpdate();
   // all changes will be modified after endUpdate() call
 
+  // on enter click ==> swaps the value of check box
   techChkBox.registerKeyHandler("enter", function () {
     const val = techChkBox.option("value");
     techChkBox.option("value", !val);
@@ -182,6 +195,7 @@ export default function showCheckBox() {
     })
     .dxCheckBox("instance");
 
+  // on enter click ==> swaps the value of check box
   nonTechChkBox.registerKeyHandler("enter", function () {
     const val = nonTechChkBox.option("value");
     nonTechChkBox.option("value", !val);
@@ -202,6 +216,8 @@ export default function showCheckBox() {
     value: true,
     onValueChanged: function (e) {
       locationIndiaChkBox.off(); //  only off the events which are attached by on
+
+      // on Switch Off it disposes "rupeeChkBox" & "usdChkBox"
       if (e.value == false) {
         rupeeChkBox.dispose();
         usdChkBox.dispose();

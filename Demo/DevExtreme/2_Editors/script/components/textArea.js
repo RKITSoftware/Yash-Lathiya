@@ -1,6 +1,12 @@
 export default function showTextArea() {
+  
+  // remove "content" to delete previously loaded script
   $("#content").remove();
+
+  // append again "content" to container 
   $(".container").append("<div id='content'></div>");
+
+  /* added html components for demonstration */
 
   $("#content").append(
     `<div class='left-right wMax'>
@@ -42,7 +48,10 @@ export default function showTextArea() {
     </div>`
   );
 
-  const firstName = $("#firstName").dxTextArea({}).dxTextArea("instance");
+  // attached textbox without any additional configuration
+  const firstName = $("#firstName")
+    .dxTextArea({})
+    .dxTextArea("instance");
 
   const isBothAddressSame = $("#isBothAddressSame")
     .dxCheckBox({
