@@ -14,6 +14,7 @@ export default function showPagingAndScrolling() {
           height : 300,
           paging : {
             pageSize : 5,
+            pageIndex : 1, // page index
           },
           pager : {
             visible : true, // accepts true & false
