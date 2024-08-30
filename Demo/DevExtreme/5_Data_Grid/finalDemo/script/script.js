@@ -19,7 +19,7 @@ $(document).ready(function () {
             // custom store
             var ordersStore = new DevExpress.data.CustomStore({
                 key : "Order ID",
-                load : (loadOptions) => {
+                load : () => {
                     return orders
                 },
                 insert : (values) => {
@@ -139,7 +139,6 @@ $(document).ready(function () {
                             })
                             
                             console.log(customers)
-                            console.log(footer.dataSource)
 
                             $("#footer").dxDataGrid({
                                 dataSource : customers,
@@ -272,11 +271,6 @@ $(document).ready(function () {
                 columnHidingEnabled : true,
 
                 // data summary
-                sortByGroupSummaryInfo: [{
-                    summaryItem: 'sum',
-                    column: "Price Each",
-                    displayFormat: "Total: {0}"
-                }],
                 summary : {
                     groupItems : [
                         {
