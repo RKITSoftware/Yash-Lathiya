@@ -21,7 +21,6 @@ export default function saveTreeNodesInSessionStorage(treeView) {
             message : "Your project is configured & key is " + key,
             type : "success",
             displayTime: 10000,
-
         })
         .dxToast("instance")
 

@@ -102,7 +102,7 @@ $(document).ready(function () {
                 filterPanel : {
                     visible : true
                 },
-                filterSyncEnabled : true,
+                filterSyncEnabled : true, // synchronizes all filter operation performed by filter-panel, filter-header etc.
 
                 // sorting
                 sorting : {

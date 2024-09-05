@@ -138,12 +138,30 @@ $(() => {
     </div>`
   );
 
+  
   const accType = $("#accTypeId")
     .dxSelectBox({
       width: 300,
       placeholder: "Choose Account Type",
-      items: ["Savings Account", "Current Account", "Salaried Account"],
+      items: [
+      {
+          S10101: 1,
+          S10102: "ABC"
+      },
+      {
+        S10101: 2,
+        S10102: "DEF"
+      },
+      {
+        S10101: 3,
+        S10102: "GHE"
+      },
+    ],    //["Savings Account", "Current Account", "Salaried Account"],
       acceptCustomValue: false,
+      displayExpr: "S10102",
+      valueExpr : "S10101",
+      value : 2,
+      validationMessageMode : "always",
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -155,6 +173,8 @@ $(() => {
       ],
     })
     .dxSelectBox("instance");
+
+  console.log(accType.option("displayValue")) //// RP : displayValue returns selected value of select box
 
   const firstName = $("#firstNameId")
     .dxTextBox({
