@@ -180,6 +180,7 @@ $(() => {
     .dxTextBox({
       width: 300,
       placeholder: "Sachin",
+      validationMessageMode : "always"
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -201,6 +202,7 @@ $(() => {
     .dxTextBox({
       width: 300,
       placeholder: "Tendulkar",
+      validationMessageMode : "always"
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -232,6 +234,7 @@ $(() => {
       width: 300,
       placeholder: "sachin@gmail.com",
       value: "",
+      validationMessageMode : "always"
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -261,6 +264,7 @@ $(() => {
       width: 300,
       mode: "password",
       placeholder: "Password@123",
+      validationMessageMode : "always"
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -285,6 +289,7 @@ $(() => {
       mode: "password",
       placeholder: "Password@123",
       width: 300,
+      validationMessageMode : "always"
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -310,6 +315,7 @@ $(() => {
       showClearButton: true,
       mask: "(+\\91) X0000 00000",
       maskRules: { X: /[2-9]/ },
+      validationMessageMode : "always"
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -325,6 +331,7 @@ $(() => {
   const dob = $("#dobId")
     .dxDateBox({
       width: 300,
+      validationMessageMode : "always"
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -346,6 +353,7 @@ $(() => {
     .dxRadioGroup({
       items: ["Male", "Female"],
       value: "Male",
+      validationMessageMode : "always"
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -363,6 +371,7 @@ $(() => {
       width: 300,
       height: 70,
       autoResizeEnabled: true,
+      validationMessageMode : "always"
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -400,6 +409,7 @@ $(() => {
       width: 300,
       height: 70,
       autoResizeEnabled: true,
+      validationMessageMode : "always"
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -457,6 +467,7 @@ $(() => {
       acceptCustomValue: false,
       grouped: true, // data source is grouped
       searchEnabled: true, // enabling
+      validationMessageMode : "always",
       fieldTemplate(data, container) {
         const result = $(`<div class='proof'>
                             <img src='${data.imgLink}' />
@@ -544,6 +555,7 @@ $(() => {
       acceptCustomValue: false,
       grouped: true, // data source is grouped
       searchEnabled: true, // enabling
+      validationMessageMode : "always",
       fieldTemplate(data, container) {
         const result = $(`<div class='proof'>
                           <img src='${data.imgLink}' />
@@ -627,6 +639,7 @@ $(() => {
       format: "₹ #,###.##",
       stylingMode: "underlined",
       hint: "Total amount consists priciple amount + your profit",
+      validationMessageMode : "always",
     })
     .dxValidator({
       validationGroup: "AccOpeningGroup",
@@ -693,12 +706,13 @@ $(() => {
           DevExpress.ui.dialog.alert({
             messageHtml: "Registration Suceessful !",
           });
-        } else {
-          DevExpress.ui.dialog.alert({
-            title: "Data is invalid !!",
-            messageHtml: brokenRules,
-          });
-        }
+        } 
+        // else {
+        //   DevExpress.ui.dialog.alert({
+        //     title: "Data is invalid !!",
+        //     messageHtml: brokenRules,
+        //   });
+        // }
       },
     })
     .dxButton("instance");
