@@ -175,10 +175,10 @@ $(() => {
 ```
 
 - Request Payload  
-![alt text](Demo/DevExtreme/4_Data_Layer/Images/payload.PNG?raw=true)
+![alt text](https://github.com/RKITSoftware/Yash-Lathiya/blob/main/Demo/DevExtreme/4_Data_Layer/Images/payload.PNG?raw=true)
 
 - Response Preview
-![alt text](Demo/DevExtreme/4_Data_Layer/Images/responsePreview.PNG?raw=true)
+![alt text](https://github.com/RKITSoftware/Yash-Lathiya/blob/main/Demo/DevExtreme/4_Data_Layer/Images/responsePreview.PNG?raw=true)
 
 
 
