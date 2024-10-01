@@ -75,7 +75,7 @@ export default function showQuery() {
     .select("price")
     .avg()
     .done(function (result) {
-      console.log("avg", result); // outputs the average price
+      console.log(result); // outputs the average price
     });
 
   DevExpress.data
@@ -84,13 +84,6 @@ export default function showQuery() {
     .done(function (result) {
       console.log(result); // outputs 5
     });
-
-  // DevExpress.data
-  //   .query("http://mydomain.com/MyDataService", queryOptions)
-  //   .enumerate()
-  //   .done(function (result) {
-  //     console.log("enumerate", result); // outputs the obtained array
-  //   });
 
   var dataObjects = [
     { id: 1, name: "Alice", price: 300 },

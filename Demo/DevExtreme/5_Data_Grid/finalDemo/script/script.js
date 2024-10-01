@@ -51,6 +51,12 @@ $(document).ready(function () {
                 showBorders : true,
                 height : 600,
                 
+                // remote operations
+                // loadMode : "processed",
+                // remoteOperations:{
+                //     summary : true,
+                // },
+
                 // paging
                 paging : {
                     pageSize : 10

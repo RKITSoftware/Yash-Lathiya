@@ -87,7 +87,7 @@ export default function showDateBox() {
     type: "time",
     value: now,
     displayFormat: "HH:mm:ss",
-    useMaskBehavior: true,
+    useMaskBehavior: true, // Specifies whether to control user input using a mask created based on the displayFormat.
     inputAttr: {
       id: "inputTimeId",
     },

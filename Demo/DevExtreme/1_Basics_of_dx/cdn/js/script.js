@@ -39,7 +39,7 @@ $(function () {
       alert("Hello world!");
     },
 
-    // when contenmt is ready
+    // when content is ready
     onContentReady: () => {
       toast.option({
         message: "Dx Button is ready",

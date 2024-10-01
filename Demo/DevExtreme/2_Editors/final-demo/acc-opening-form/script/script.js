@@ -138,7 +138,18 @@ $(() => {
     </div>`
   );
 
-  
+  function chkVal(val){
+    // const invalidEmail = "sachin@gmail.com";
+    if(val !== undefined){
+      
+    }
+    const d = $.Deferred();
+    setTimeout(() => {
+      d.resolve(val > 0 && val < 4); 
+    }, 1000);
+    return d.promise();
+  }
+
   const accType = $("#accTypeId")
     .dxSelectBox({
       width: 300,
@@ -146,21 +157,21 @@ $(() => {
       items: [
       {
           S10101: 1,
-          S10102: "ABC"
+          S10102: "Savings Acc"
       },
       {
         S10101: 2,
-        S10102: "DEF"
+        S10102: "Current Acc"
       },
       {
         S10101: 3,
-        S10102: "GHE"
+        S10102: "Premium Account"
       },
     ],    //["Savings Account", "Current Account", "Salaried Account"],
       acceptCustomValue: false,
       displayExpr: "S10102",
       valueExpr : "S10101",
-      value : 2,
+      value : 4,
       validationMessageMode : "always",
     })
     .dxValidator({
@@ -170,9 +181,19 @@ $(() => {
           type: "required",
           message: "Account type is required.",
         },
+        {
+          type: "async",
+          message: "Email is already registered",
+          validationCallback(params) {
+            // console.log("validation callback");
+            return chkVal(params.value);
+          },
+        },
       ],
     })
     .dxSelectBox("instance");
+
+
 
   console.log(accType.option("displayValue")) //// RP : displayValue returns selected value of select box
 
@@ -214,7 +235,7 @@ $(() => {
         {
           type: "pattern",
           pattern: "^[a-zA-Z]+$",
-          message: "Enter valid first name",
+          message: "Enter valid last name",
         },
       ],
     })
@@ -322,7 +343,7 @@ $(() => {
       validationRules: [
         {
           type: "required",
-          message: "Confirm Password is required.",
+          message: "Mobile number required.",
         },
       ],
     })
@@ -556,6 +577,7 @@ $(() => {
       grouped: true, // data source is grouped
       searchEnabled: true, // enabling
       validationMessageMode : "always",
+      // selected item
       fieldTemplate(data, container) {
         const result = $(`<div class='proof'>
                           <img src='${data.imgLink}' />
@@ -567,6 +589,7 @@ $(() => {
         });
         container.append(result);
       },
+      // list of items of dropdown
       itemTemplate(data) {
         return `<div class='proof'>
                 <img src='${data.imgLink}' />
