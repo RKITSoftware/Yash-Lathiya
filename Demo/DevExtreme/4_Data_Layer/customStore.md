@@ -174,6 +174,11 @@ $(() => {
 });
 ```
 
+- Request Payload  
+![alt text](Demo/DevExtreme/4_Data_Layer/Images/payload.PNG?raw=true)
+
+- Response Preview
+![alt text](Demo/DevExtreme/4_Data_Layer/Images/responsePreview.PNG?raw=true)
 
 
 
